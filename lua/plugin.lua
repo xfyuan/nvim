@@ -62,13 +62,16 @@ return packer.startup(
         use 'mg979/vim-visual-multi'
 
         -- Tim Pope
-        use 'tpope/vim-surround'
         use 'tpope/vim-unimpaired' -- pairs of handy bracket mappings, like ]n jumpt to SCM conflict
         use 'tpope/vim-sleuth' -- automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
         use 'tpope/vim-abolish' -- switch case using crc, crs, crm, etc.
         use 'tpope/vim-rails'
         use 'tpope/vim-dadbod'
         use 'tpope/vim-fugitive'
+        use {
+          'tpope/vim-surround',
+          'wellle/targets.vim' -- provides additional powerfull text objects!!
+        }
 
         -- Junegunn Choi
         use 'junegunn/vim-fnr' -- Find-N-Replace in Vim with live preview
@@ -97,7 +100,18 @@ return packer.startup(
         use 'onsails/lspkind-nvim'
         use 'folke/lsp-trouble.nvim'
         use 'simrat39/symbols-outline.nvim'
-        use 'hrsh7th/nvim-compe'
+        use {
+          'hrsh7th/nvim-cmp',
+          requires = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-nvim-lua',
+            'hrsh7th/cmp-vsnip',
+            'f3fora/cmp-spell',
+            'onsails/lspkind-nvim'
+          }
+        }
         use 'hrsh7th/vim-vsnip'
         use 'hrsh7th/vim-vsnip-integ'
         use 'rafamadriz/friendly-snippets'

@@ -116,29 +116,49 @@ ts_config.setup {
 }
 -- }}}
 
--- nvim-compe {{{
-require "compe".setup {
-    enabled = true,
-    autocomplete = true,
-    debug = false,
-    min_length = 1,
-    preselect = "enable",
-    throttle_time = 80,
-    source_timeout = 200,
-    incomplete_delay = 400,
-    max_abbr_width = 100,
-    max_kind_width = 100,
-    max_menu_width = 100,
-    documentation = true,
-    source = {
-        path = true;
-        buffer = true;
-        calc = true;
-        nvim_lsp = true;
-        nvim_lua = true;
-        vsnip = true;
-        vim_dadbod_completion = true;
-    }
+-- nvim-cmp {{{
+local cmp = require('cmp')
+
+cmp.setup {
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'nvim_lua' },
+    { name = 'vsnip' },
+    { name = 'spell' },
+  },
+  snippet = {
+    expand = function(args)
+      vim.fn['vsnip#anonymous'](args.body)
+    end,
+  },
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-k>'] = cmp.mapping.select_prev_item(),
+    ['<tab>'] = cmp.mapping.select_next_item(),
+    ['<C-j>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true
+    })
+  },
+  formatting = {
+    format = function(entry, vim_item)
+      local icon = require('lspkind').presets.default[vim_item.kind]
+      vim_item.kind = string.format('%s %s', icon, vim_item.kind)
+
+      vim_item.menu = ({
+        buffer = '[Buffer]',
+        vsnip = '[VSnip]',
+        nvim_lsp = '[LSP]',
+        nvim_lua = '[Lua]',
+        spell = '[Spell]'
+      })[entry.source.name]
+
+      return vim_item
+    end,
+  },
 }
 -- }}}
 
