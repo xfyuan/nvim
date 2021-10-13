@@ -148,7 +148,7 @@ wk.register({
     b = {'<cmd>Telescope git_branches<cr>', 'list branches'},
     -- vim-fugitive plugin
     g = {'<cmd>Git blame<cr>', 'blame'},
-    s = {'<cmd>Gstatus<cr>', 'status'},
+    s = {'<cmd>Git<cr>', 'status'},
     l = {'<cmd>GFiles?<cr>', 'changed files'},
     d = {'<cmd>Gdiff<cr>', 'diff'},
     r = {'<cmd>Gread<cr>', 'read'},
