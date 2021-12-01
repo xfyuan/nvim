@@ -132,7 +132,7 @@ cmp.setup {
     ['<C-j>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
-    })
+    }),
   },
   formatting = {
     format = function(entry, vim_item)
@@ -158,7 +158,7 @@ vim.api.nvim_command("let test#strategy = 'basic'")
 -- vim.api.nvim_command("let test#neovim#term_position = 'vert'")
 -- vim.api.nvim_command("let test#ruby#rails#executable = 'dip rspec'")
 -- vim.api.nvim_command("let test#ruby#rspec#executable = 'dip rspec'")
-vim.api.nvim_command("let test#ruby#rspec#executable = 'DATABASE_URL=postgres://xfyuan:@localhost:5432/lb_esop_test bundle exec rspec'")
+vim.api.nvim_command("let test#ruby#rspec#executable = 'bundle exec rspec'")
 -- }}}
 
 -- any-jump.vim {{{
@@ -188,6 +188,7 @@ cmd([[nmap <leader>dn  <Plug>(DBExeLine)]])
 -- }}}
 
 require("lspkind").init()
+
 -- require("nvim_comment").setup()
 
 -- formatter.nvim {{{
