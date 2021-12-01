@@ -166,6 +166,7 @@ wk.register({
     h = {'<cmd>Telescope git_files<cr>', 'find git files'},
     f = {'<cmd>Telescope find_files<cr>', 'find files'},
     b = {'<cmd>Telescope buffers<cr>', 'find buffers'},
+    d = {'<cmd>Telescope commands<cr>', 'search commands'},
     o = {'<cmd>Telescope oldfiles<cr>', 'opened files history'},
     r = {'<cmd>Telescope registers<cr>', 'vim registers'},
     g = {'<cmd>Telescope grep_string<cr>', 'grep word under cursor'},
