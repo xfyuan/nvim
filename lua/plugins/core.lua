@@ -66,9 +66,9 @@ local g = vim.g
 vim.o.termguicolors = true
 
 g.nvim_tree_git_hl = 1
-g.nvim_tree_hide_dotfiles = 1
-g.nvim_tree_indent_markers = 1
-g.nvim_tree_highlight_opened_files = 3
+g.nvim_tree_group_empty = 1
+-- g.nvim_tree_indent_markers = 1
+g.nvim_tree_highlight_opened_files = 2
 g.nvim_tree_show_icons = {
   git = 1,
   folders = 1,
@@ -83,6 +83,7 @@ require'nvim-tree'.setup {
     side = 'left',
   },
   auto_close = true,
+  hijack_cursor = true,
   update_focused_file = { enable = true },
   ignore_ft_on_setup  = {
     '.git',
@@ -91,6 +92,10 @@ require'nvim-tree'.setup {
     '.vscode',
     '.idea',
   },
+  filters = {
+    dotfiles = true,
+    custom = {}
+  }
 }
 
 vim.api.nvim_set_keymap(
