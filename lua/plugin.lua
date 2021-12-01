@@ -126,6 +126,7 @@ return packer.startup(
         -- use 'sbdchd/neoformat'
         use 'mhartington/formatter.nvim'
         use 'rizzatti/dash.vim'
+        use 'github/copilot.vim'
 
         use 'vim-test/vim-test' -- test running tool for many languages
         use 'pechorin/any-jump.vim' -- code inspection plugin for finding defitinitions and references/usages
