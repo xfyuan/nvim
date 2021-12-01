@@ -50,6 +50,7 @@ return packer.startup(
         use 'voldikss/vim-floaterm' -- neovim terminal in the floating window
         use 'voldikss/vim-translator' -- Asynchronous translating plugin
         use 'famiu/bufdelete.nvim' -- Delete Neovim buffers without losing window layout
+        use { "beauwilliams/focus.nvim", config = function() require("focus").setup({signcolumn = false}) end }
 
         -- new generation multiple cursors plugin,
         -- select words with Ctrl-N (like Ctrl-d in Sublime Text/VS Code)

@@ -140,6 +140,7 @@ wk.register({
     f = {'<cmd>Files<cr>', 'find files'},
     b = {'<cmd>Buffers<cr>', 'find buffers'},
     o = {'<cmd>History<cr>', 'find old history'},
+    t = {'<cmd>FocusToggle<cr>', 'Toggle focus.nvim'},
   },
   g = {
     name = 'git',
