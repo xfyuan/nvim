@@ -2,6 +2,14 @@ local g = vim.g
 local cmd = vim.cmd
 
 -- lsp config {{{
+local servers = {
+    "gopls",
+    "tsserver",
+    "tailwindcss",
+    "sumneko_lua",
+    "solargraph",
+}
+
 function on_attach(client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -41,57 +49,40 @@ end
 
 -- lspInstall + lspconfig stuff
 
-local function setup_servers()
-    require "lspinstall".setup()
+local lsp_installer = require("nvim-lsp-installer")
 
-    local lspconf = require("lspconfig")
-    local servers = require "lspinstall".installed_servers()
-
-    for _, lang in pairs(servers) do
-        if lang ~= "lua" then
-            lspconf[lang].setup {
-                on_attach = on_attach,
-                root_dir = vim.loop.cwd
-            }
-        elseif lang == "lua" then
-            lspconf[lang].setup {
-                root_dir = function()
-                    return vim.loop.cwd()
-                end,
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = {"vim"}
-                        },
-                        workspace = {
-                            library = {
-                                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-                            }
-                        },
-                        telemetry = {
-                            enable = false
-                        }
-                    }
-                }
-            }
-        end
+for _, name in pairs(servers) do
+  local ok, server = lsp_installer.get_server(name)
+  -- Check that the server is supported in nvim-lsp-installer
+  if ok then
+    if not server:is_installed() then
+      print("Installing " .. name)
+      server:install()
     end
+  end
 end
 
-setup_servers()
+local nvim_lsp = require('lspconfig')
+for _, lsp in ipairs(servers) do
+  lsp_installer.on_server_ready(function(lsp)
+    local opts = {}
+    lsp:setup(opts)
+  end)
 
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require "lspinstall".post_install_hook = function()
-    setup_servers() -- reload installed servers
-    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    -- root_dir = vim.loop.cwd,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
 end
 
 -- replace the default lsp diagnostic letters with prettier symbols
-vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
-vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
-vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
+-- vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
+-- vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
+-- vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
+-- vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
 -- }}}
 
 -- lsp treesitters {{{

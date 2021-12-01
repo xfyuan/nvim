@@ -96,7 +96,7 @@ return packer.startup(
         -- ============ Development ============ -- {{{
         use 'nvim-treesitter/nvim-treesitter'
         use 'neovim/nvim-lspconfig'
-        use 'kabouzeid/nvim-lspinstall'
+        use 'williamboman/nvim-lsp-installer'
         use 'onsails/lspkind-nvim'
         use 'folke/lsp-trouble.nvim'
         use 'simrat39/symbols-outline.nvim'
