@@ -124,6 +124,7 @@ return packer.startup(
         use 'tomtom/tcomment_vim'
         use 'lewis6991/gitsigns.nvim'
         -- use 'sbdchd/neoformat'
+        use 'mhartington/formatter.nvim'
         use 'rizzatti/dash.vim'
 
         use 'vim-test/vim-test' -- test running tool for many languages
