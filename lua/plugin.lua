@@ -47,7 +47,7 @@ return packer.startup(
         use 'windwp/nvim-spectre' -- Find the enemy and replace them with dark power
         use 'rhysd/clever-f.vim' -- Extended f, F, t and T key mappings
         use 'xtal8/traces.vim' -- Range, pattern and substitute preview tool
-        use 'voldikss/vim-floaterm' -- neovim terminal in the floating window
+        use 'akinsho/toggleterm.nvim' -- A neovim lua plugin to help easily manage multiple terminal windows
         use 'voldikss/vim-translator' -- Asynchronous translating plugin
         use 'famiu/bufdelete.nvim' -- Delete Neovim buffers without losing window layout
         use { "beauwilliams/focus.nvim", config = function() require("focus").setup({signcolumn = false}) end }
