@@ -67,15 +67,15 @@ g.dashboard_custom_header = {
 }
 
 g.dashboard_custom_section = {
-    a = {description = {"  Find File                 Space f f"}, command = "Telescope find_files"},
-    b = {description = {"  Recents                   Space f o"}, command = "Telescope oldfiles"},
-    c = {description = {"  Find Word                 Space f w"}, command = "Telescope live_grep"},
-    d = {description = {"洛 New File                  Space f n"}, command = "DashboardNewFile"},
-    e = {description = {"  Bookmarks                 Space b m"}, command = "Telescope marks"},
-    f = {description = {"  Load Last Session         Space s l"}, command = "SessionLoad"}
+    a = {description = {"  Find File                Space f f"}, command = "Telescope find_files"},
+    b = {description = {"  New File                 Space f n"}, command = "DashboardNewFile"},
+    c = {description = {"ﭯ  Recents                  Space f o"}, command = "Telescope oldfiles"},
+    d = {description = {"  Find Word                Space f w"}, command = "Telescope live_grep"},
+    -- e = {description = {"  Bookmarks                Space b m"}, command = "Telescope marks"},
+    -- f = {description = {"  Load Last Session        Space s l"}, command = "SessionLoad"}
 }
 
 g.dashboard_custom_footer = {
     "   ",
-    "NeoVim by Mr.Z v0.5"
+    "NeoVim by Mr.Z v0.6"
 }
