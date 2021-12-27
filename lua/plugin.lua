@@ -119,6 +119,7 @@ return packer.startup(
         use 'quoyi/rails-vscode'
 
         use 'zackhsi/fzf-tags'
+        use 'rmagatti/goto-preview'
 
         -- use 'terrortylor/nvim-comment'
         use 'tomtom/tcomment_vim'

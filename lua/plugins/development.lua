@@ -5,8 +5,10 @@ local cmd = vim.cmd
 local servers = {
     "gopls",
     "tsserver",
+    "html",
+    "cssls",
     "tailwindcss",
-    "sumneko_lua",
+    -- "sumneko_lua",
     "solargraph",
 }
 
@@ -190,6 +192,10 @@ cmd([[nmap <leader>dn  <Plug>(DBExeLine)]])
 require("lspkind").init()
 
 -- require("nvim_comment").setup()
+
+require('goto-preview').setup {
+  default_mappings = true; -- Bind default mappings
+}
 
 -- formatter.nvim {{{
 local prettierConfig = function()
