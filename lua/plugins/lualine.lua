@@ -36,7 +36,7 @@ local config = {
     lualine_a = { "mode" },
     lualine_b = {},
     lualine_c = { { "filename", file_status = true, path = 1, shorting_target = 100 } },
-    lualine_x = { { "diagnostics", sources = { "nvim_lsp" } }, lsp_progress },
+    lualine_x = { { "diagnostics", sources = { "nvim_lsp" } } },
     lualine_y = { 'encoding', 'filetype' },
     lualine_z = { "location" },
   },
