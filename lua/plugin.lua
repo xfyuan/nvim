@@ -102,6 +102,7 @@ return packer.startup(
         use 'ray-x/lsp_signature.nvim'
         use 'folke/lsp-trouble.nvim'
         use 'simrat39/symbols-outline.nvim'
+        use 'stevearc/aerial.nvim'
         use {
           'hrsh7th/nvim-cmp',
           requires = {

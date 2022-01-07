@@ -23,6 +23,7 @@ function on_attach(client, bufnr)
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     require "lsp_signature".on_attach()
+    require("aerial").on_attach(client, bufnr)
 
     -- Mappings.
     -- local opts = {noremap = true, silent = true}
@@ -198,6 +199,12 @@ require("lspkind").init()
 require('goto-preview').setup {
   default_mappings = true; -- Bind default mappings
 }
+
+require("aerial").setup({
+  manage_folds = true,
+  link_folds_to_tree = true,
+  link_tree_to_folds = true,
+})
 
 -- formatter.nvim {{{
 local prettierConfig = function()
