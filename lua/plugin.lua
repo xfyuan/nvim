@@ -99,6 +99,7 @@ return packer.startup(
         use 'neovim/nvim-lspconfig'
         use 'williamboman/nvim-lsp-installer'
         use 'onsails/lspkind-nvim'
+        use 'ray-x/lsp_signature.nvim'
         use 'folke/lsp-trouble.nvim'
         use 'simrat39/symbols-outline.nvim'
         use {
