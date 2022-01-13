@@ -95,28 +95,46 @@ return packer.startup(
         -- }}}
 
         -- ============ Development ============ -- {{{
-        use 'nvim-treesitter/nvim-treesitter'
-        use 'neovim/nvim-lspconfig'
-        use 'williamboman/nvim-lsp-installer'
-        use 'onsails/lspkind-nvim'
-        use 'ray-x/lsp_signature.nvim'
-        use 'folke/lsp-trouble.nvim'
-        use 'simrat39/symbols-outline.nvim'
+        -- Treesitter
+        use({
+        { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        'nvim-treesitter/nvim-treesitter-refactor',
+        'nvim-treesitter/playground',
+        'lewis6991/spellsitter.nvim',
+        'SmiteshP/nvim-gps',
+        })
+
+        -- LSP
+        use({
+        'neovim/nvim-lspconfig',
+        'williamboman/nvim-lsp-installer',
+        -- generic LSP for diagnostic, formatting, etc
+        'jose-elias-alvarez/null-ls.nvim',
+        })
+
+        -- Completion
+        use({
+        'hrsh7th/nvim-cmp',
+        requires = {
+          'hrsh7th/cmp-nvim-lsp',
+          'hrsh7th/cmp-buffer',
+          'hrsh7th/cmp-path',
+          'hrsh7th/cmp-nvim-lua',
+          'hrsh7th/cmp-vsnip',
+          'f3fora/cmp-spell',
+          'onsails/lspkind-nvim',
+          'ray-x/cmp-treesitter',
+          -- snippets
+          'hrsh7th/vim-vsnip',
+          'hrsh7th/vim-vsnip-integ',
+        },
+        })
+
+        -- use 'ray-x/lsp_signature.nvim'
+        -- use 'folke/lsp-trouble.nvim'
+        -- use 'simrat39/symbols-outline.nvim'
         use 'stevearc/aerial.nvim'
-        use {
-          'hrsh7th/nvim-cmp',
-          requires = {
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lua',
-            'hrsh7th/cmp-vsnip',
-            'f3fora/cmp-spell',
-            'onsails/lspkind-nvim'
-          }
-        }
-        use 'hrsh7th/vim-vsnip'
-        use 'hrsh7th/vim-vsnip-integ'
         use 'rafamadriz/friendly-snippets'
         use 'quoyi/rails-vscode'
 
