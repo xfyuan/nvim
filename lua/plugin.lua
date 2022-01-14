@@ -20,8 +20,8 @@ return packer.startup(
 
         -- ============ Appearance ============ -- {{{
         use {
-            "hoob3rt/lualine.nvim",
-            config = [[require('plugins.lualine')]],
+            "nvim-lualine/lualine.nvim",
+            -- config = [[require('plugins.lualine')]],
             requires = { "kyazdani42/nvim-web-devicons", opt = true },
         }
         -- use 'akinsho/nvim-bufferline.lua'
