@@ -189,20 +189,19 @@ wk.register({
     -- nvim-lspfuzzy plugin
     -- e = {"<cmd>lua vim.lsp.buf.definition()<cr>", 'fzf list definition'},
     n = {"<cmd>lua vim.lsp.buf.references()<cr>", 'fzf list references'},
-    o = {"<cmd>SymbolsOutline<cr>", 'toggle symbols-outline window'},
+    -- o = {"<cmd>SymbolsOutline<cr>", 'toggle symbols-outline window'},
     -- b = {"<cmd>lua vim.lsp.buf.document_symbol()<CR>", 'fzf list symbols'},
     -- v = {
     --   name = 'vista',
     --   -- vista.vim plugin
     --   v = {'<cmd>Vista!!<cr>', 'toggle vista window'},
-    --   -- symbols-outline.nvim plugin
     --   s = {'<cmd>SymbolsOutline<cr>', 'toggle symbols-outline window'},
     -- },
     t = {
       name = 'Trouble',
       -- lsp-trouble.nvim plugin
-      t = {"<cmd>LspTroubleToggle lsp_document_diagnostics<cr>", 'list troubles diagnostic'},
-      r = {"<cmd>LspTroubleToggle lsp_references<cr>", 'list troubles reference'},
+      t = {"<cmd>TroubleToggle document_diagnostics<cr>", 'list troubles diagnostic'},
+      r = {"<cmd>TroubleToggle lsp_references<cr>", 'list troubles reference'},
     },
     -- o = {
     --   name = 'LSP original function',

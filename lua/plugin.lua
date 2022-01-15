@@ -145,10 +145,13 @@ return packer.startup(
         use 'stevearc/aerial.nvim'
         use 'zackhsi/fzf-tags'
         use 'rmagatti/goto-preview'
-        -- use 'ray-x/lsp_signature.nvim'
-        -- use 'folke/lsp-trouble.nvim'
-        -- use 'simrat39/symbols-outline.nvim'
-
+        use 'ray-x/lsp_signature.nvim'
+        use {
+          "folke/trouble.nvim",
+          config = function()
+            require("trouble").setup {}
+          end
+        }
         use 'github/copilot.vim'
 
         use 'lewis6991/gitsigns.nvim'
