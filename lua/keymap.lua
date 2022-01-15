@@ -124,7 +124,6 @@ wk.register({
   -- ['1'] = {':normal "lyy"lpwv$r=^"lyyk"lP<cr>', 'mark ======'},
   q = {':q!<cr>', 'quit without saving'},
   k = {'<Plug>DashSearch', 'search word in Dash'}, -- dash.vim plugin
-  -- o = {'<cmd>ToggleTerm<cr>', 'toggle terminal window'}, -- toggleterm.nvim plugin
   o = {'<cmd>AerialToggle<cr>', 'toggle code outline window'}, -- aerial.nvim plugin
   d = {
     name = 'db, buffer',

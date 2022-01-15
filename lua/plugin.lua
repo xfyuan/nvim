@@ -36,9 +36,7 @@ return packer.startup(
 
         -- ============ Core ============ -- {{{
         use 'folke/which-key.nvim'
-        use 'nvim-telescope/telescope.nvim'
         use 'kyazdani42/nvim-tree.lua'
-        -- use 'kyazdani42/nvim-web-devicons'
         use 'phaazon/hop.nvim' -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
         use 'tversteeg/registers.nvim' -- Preview the contents of the registers
         use 'windwp/nvim-autopairs'
@@ -51,6 +49,15 @@ return packer.startup(
         use 'voldikss/vim-translator' -- Asynchronous translating plugin
         use 'famiu/bufdelete.nvim' -- Delete Neovim buffers without losing window layout
         use { "beauwilliams/focus.nvim", config = function() require("focus").setup({signcolumn = false}) end }
+        use 'rcarriga/nvim-notify'
+
+        -- Fuzzy Finder
+        use({
+          'nvim-telescope/telescope.nvim',
+          requires = {
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+          },
+        })
 
         -- new generation multiple cursors plugin,
         -- select words with Ctrl-N (like Ctrl-d in Sublime Text/VS Code)
@@ -94,60 +101,62 @@ return packer.startup(
         use 'bootleq/vim-textobj-rubysymbol'      -- a: | i:
         -- }}}
 
-        -- ============ Development ============ -- {{{
+        -- ============ Programming ============ -- {{{
         -- Treesitter
         use({
-        { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        'nvim-treesitter/nvim-treesitter-refactor',
-        'nvim-treesitter/playground',
-        'lewis6991/spellsitter.nvim',
-        'SmiteshP/nvim-gps',
+          { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
+          'nvim-treesitter/nvim-treesitter-textobjects',
+          'nvim-treesitter/nvim-treesitter-refactor',
+          'nvim-treesitter/playground',
+          'lewis6991/spellsitter.nvim',
+          'SmiteshP/nvim-gps',
         })
 
         -- LSP
         use({
-        'neovim/nvim-lspconfig',
-        'williamboman/nvim-lsp-installer',
-        -- generic LSP for diagnostic, formatting, etc
-        'jose-elias-alvarez/null-ls.nvim',
+          'neovim/nvim-lspconfig',
+          'williamboman/nvim-lsp-installer',
+          -- generic LSP for diagnostic, formatting, etc
+          'jose-elias-alvarez/null-ls.nvim',
         })
 
         -- Completion
         use({
-        'hrsh7th/nvim-cmp',
-        requires = {
-          'hrsh7th/cmp-nvim-lsp',
-          'hrsh7th/cmp-buffer',
-          'hrsh7th/cmp-path',
-          'hrsh7th/cmp-nvim-lua',
-          'hrsh7th/cmp-vsnip',
-          'f3fora/cmp-spell',
-          'onsails/lspkind-nvim',
-          'ray-x/cmp-treesitter',
-          -- snippets
-          'hrsh7th/vim-vsnip',
-          'hrsh7th/vim-vsnip-integ',
-        },
+          'hrsh7th/nvim-cmp',
+          requires = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-nvim-lua',
+            'hrsh7th/cmp-vsnip',
+            'f3fora/cmp-spell',
+            'onsails/lspkind-nvim',
+            'ray-x/cmp-treesitter',
+            -- vsnip
+            'hrsh7th/vim-vsnip',
+            'hrsh7th/vim-vsnip-integ',
+            -- snippets
+            'rafamadriz/friendly-snippets',
+            'quoyi/rails-vscode',
+          },
         })
 
+        -- LSP Powerfull Plugins
+        use 'stevearc/aerial.nvim'
+        use 'zackhsi/fzf-tags'
+        use 'rmagatti/goto-preview'
         -- use 'ray-x/lsp_signature.nvim'
         -- use 'folke/lsp-trouble.nvim'
         -- use 'simrat39/symbols-outline.nvim'
-        use 'stevearc/aerial.nvim'
-        use 'rafamadriz/friendly-snippets'
-        use 'quoyi/rails-vscode'
 
-        use 'zackhsi/fzf-tags'
-        use 'rmagatti/goto-preview'
+        use 'github/copilot.vim'
 
+        use 'lewis6991/gitsigns.nvim'
+        use 'rizzatti/dash.vim'
         -- use 'terrortylor/nvim-comment'
         use 'tomtom/tcomment_vim'
-        use 'lewis6991/gitsigns.nvim'
         -- use 'sbdchd/neoformat'
         use 'mhartington/formatter.nvim'
-        use 'rizzatti/dash.vim'
-        use 'github/copilot.vim'
 
         use 'vim-test/vim-test' -- test running tool for many languages
         use 'pechorin/any-jump.vim' -- code inspection plugin for finding defitinitions and references/usages
