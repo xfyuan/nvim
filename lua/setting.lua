@@ -69,6 +69,9 @@ opt("b", "smartindent", true)
 opt("b", "shiftwidth", 2)
 opt("b", "tabstop", 2)
 
+opt("o", "foldenable", false)
+opt("o", "foldmethod", 'indent')
+opt("o", "foldlevel", 1)
 -- ================= Useful ================= --
 -- remove trailing whitespaces
 cmd([[autocmd BufWritePre * %s/\s\+$//e]])

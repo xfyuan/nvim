@@ -152,6 +152,14 @@ return packer.startup(
             require("trouble").setup {}
           end
         }
+        use{ 'anuvyklack/pretty-fold.nvim',
+           config = function()
+              require('pretty-fold').setup{}
+              require('pretty-fold.preview').setup{
+                key = 'h',
+              }
+           end
+        }
         use 'github/copilot.vim'
 
         use 'lewis6991/gitsigns.nvim'
