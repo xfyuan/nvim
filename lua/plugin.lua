@@ -193,7 +193,7 @@ return packer.startup({
         -- }}}
     end,
     config = {
-      max_jobs = 32,
+      max_jobs = 36,
       git = {
         subcommands = {
           update = 'pull --ff-only --progress --rebase=true',
