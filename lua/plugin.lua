@@ -12,7 +12,7 @@ local packer = require("packer")
 local use = packer.use
 
 -- using { } for using different branch , loading plugin with certain commands etc
-return packer.startup(
+return packer.startup({
     function()
         use 'wbthomason/packer.nvim'
         use 'nvim-lua/popup.nvim'
@@ -185,9 +185,12 @@ return packer.startup(
         -- use 'kdav5758/TrueZen.nvim'
         -- }}}
     end,
-    {
-        display = {
-            border = {"┌", "─", "┐", "│", "┘", "─", "└", "│"}
+    config = {
+      max_jobs = 16,
+      git = {
+        subcommands = {
+          update = 'pull --ff-only --progress --rebase=true',
         }
-    }
-)
+      },
+    },
+})
