@@ -24,12 +24,22 @@ lualine.setup({
   options = {
     theme = 'auto',
     icons_enabled = true,
-    section_separators = '',
-    component_separators = '',
-    -- section_separators = { left = '', right = ''},
-    -- component_separators = { left = '', right = ''},
+    -- section_separators = '',
     -- section_separators = { left = '', right = ''},
+    section_separators = { left = '', right = '' },
+    -- section_separators = { left = '', right = ''},
+
+    component_separators = '',
+    -- component_separators = { left = '', right = ''},
     -- component_separators = { left = '', right = ''},
+  },
+  tabline = {
+    lualine_a = {},
+    lualine_b = {'branch'},
+    lualine_c = {'filename'},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
   },
   sections = {
     lualine_a = { mode },
