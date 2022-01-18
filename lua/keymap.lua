@@ -92,6 +92,8 @@ map("i", "vv", "<bar>>", opt)
 -- toggle numbers
 -- map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 
+-- toggle diff buffers
+map("n", "<leader>df", "&diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'", {expr = true})
 -- }}}
 
 -- ================= Plugins Mapping ================= -- {{{
