@@ -18,4 +18,4 @@ require "plugins.programming"
 require "plugins.misc"
 
 -- key mapping
-require "keymap"
+require "keymaps"
