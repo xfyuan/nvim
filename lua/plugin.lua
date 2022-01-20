@@ -56,6 +56,12 @@ return packer.startup({
           end
         }
         use 'rcarriga/nvim-notify'
+        use {
+          'kevinhwang91/nvim-hlslens', -- helps you better glance at matched information, seamlessly jump between matched instances.
+          branch = 'main',
+          keys = {{'n', '*'}, {'n', '#'}, {'n', 'n'}, {'n', 'N'}},
+          config = [[require('plugins.hlslens')]]
+        }
 
         -- Fuzzy Finder
         use({
@@ -88,11 +94,11 @@ return packer.startup({
         }
 
         -- Junegunn Choi
-        use 'junegunn/vim-fnr' -- Find-N-Replace in Vim with live preview
-        use 'junegunn/vim-slash' -- automatically clearing Vim's search highlighting whenever the cursor moves or insert mode is entered
-        use 'junegunn/gv.vim'
-        -- use 'junegunn/fzf.vim'
         use { 'junegunn/fzf.vim', requires = {'junegunn/fzf', opt = true} }
+        use 'junegunn/vim-fnr' -- Find-N-Replace in Vim with live preview
+        use 'junegunn/gv.vim'
+        -- conflict with hlslens plugin, so disable it ⬇️
+        -- use 'junegunn/vim-slash' -- automatically clearing Vim's search highlighting whenever the cursor moves or insert mode is entered
 
         -- Text Objects
         use 'kana/vim-textobj-user'               -- Create your own text objects
