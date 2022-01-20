@@ -177,8 +177,13 @@ return packer.startup({
 
         use 'lewis6991/gitsigns.nvim'
         use 'rizzatti/dash.vim'
-        -- use 'terrortylor/nvim-comment'
-        use 'tomtom/tcomment_vim'
+        -- use 'tomtom/tcomment_vim'
+        use {
+            'numToStr/Comment.nvim',
+            config = function()
+                require('Comment').setup()
+            end
+        }
         -- use 'sbdchd/neoformat'
         use 'mhartington/formatter.nvim'
 
