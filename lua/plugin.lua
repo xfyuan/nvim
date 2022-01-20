@@ -97,7 +97,7 @@ return packer.startup({
         use { 'junegunn/fzf.vim', requires = {'junegunn/fzf', opt = true} }
         use 'junegunn/vim-fnr' -- Find-N-Replace in Vim with live preview
         use 'junegunn/gv.vim'
-        -- conflict with hlslens plugin, so disable it ⬇️
+        -- CONFLICT with hlslens plugin, so disable it 👇
         -- use 'junegunn/vim-slash' -- automatically clearing Vim's search highlighting whenever the cursor moves or insert mode is entered
 
         -- Text Objects
