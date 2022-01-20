@@ -13,6 +13,7 @@ local default_sources = {
     max_item_count = 5,
     option = { get_bufnrs = api.nvim_list_bufs },
   },
+  emoji = { name = 'emoji', insert = true, },
   spell = { name = 'spell', keyword_length = 3, max_item_count = 5 },
   path = { name = 'path', max_item_count = 10 },
 }
@@ -39,6 +40,7 @@ cmp.setup({
 
       vim_item.menu = ({
         buffer = '',
+        emoji = '',
         vsnip = '',
         nvim_lsp = '',
         nvim_lua = '',
@@ -74,6 +76,7 @@ cmp.setup({
     'snippets',
     'treesitter',
     'buffer',
+    'emoji',
     'spell',
     'path',
   }),
