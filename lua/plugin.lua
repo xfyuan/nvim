@@ -198,7 +198,11 @@ return packer.startup({
         -- }}}
 
         -- ============ Misc ============ -- {{{
-        use 'glepnir/dashboard-nvim'
+        -- use 'glepnir/dashboard-nvim'
+        use {
+            'goolord/alpha-nvim',
+            config = [[require('plugins.alpha-nvim')]]
+        }
         -- use 'tweekmonster/startuptime.vim'
         -- use 'kdav5758/TrueZen.nvim'
         -- }}}
