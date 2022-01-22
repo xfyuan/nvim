@@ -28,10 +28,6 @@ require("gitsigns").setup {
 }
 -- }}}
 
-require('hop').setup{}
-
-require("nvim-autopairs").setup()
-
 require("toggleterm").setup{
     direction = 'float',
     open_mapping = [[<c-y>]],

@@ -36,9 +36,11 @@ return packer.startup({
         -- ============ Core ============ -- {{{
         use 'folke/which-key.nvim'
         use 'kyazdani42/nvim-tree.lua'
-        use 'phaazon/hop.nvim' -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
+        -- use 'yianwillis/vimcdoc'
+        -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
         use 'tversteeg/registers.nvim' -- Preview the contents of the registers
-        use 'windwp/nvim-autopairs'
+        use {'phaazon/hop.nvim', config = [[require('hop').setup()]]}
+        use {'windwp/nvim-autopairs', config = [[require('nvim-autopairs').setup()]]}
         use 'ethanholz/nvim-lastplace' -- Intelligently reopen files at your last edit position in Vim
         -- use 'dyng/ctrlsf.vim' -- A powered code search and view tool
         use 'windwp/nvim-spectre' -- Find the enemy and replace them with dark power
