@@ -39,8 +39,14 @@ return packer.startup({
         -- use 'yianwillis/vimcdoc'
         -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
         use 'tversteeg/registers.nvim' -- Preview the contents of the registers
-        use {'phaazon/hop.nvim', config = [[require('hop').setup()]]}
-        use {'windwp/nvim-autopairs', config = [[require('nvim-autopairs').setup()]]}
+        use {
+          'phaazon/hop.nvim',
+          config = function () require('hop').setup() end
+        }
+        use {
+          'windwp/nvim-autopairs',
+          config = function () require('nvim-autopairs').setup() end
+        }
         use 'ethanholz/nvim-lastplace' -- Intelligently reopen files at your last edit position in Vim
         -- use 'dyng/ctrlsf.vim' -- A powered code search and view tool
         use 'windwp/nvim-spectre' -- Find the enemy and replace them with dark power
@@ -167,9 +173,7 @@ return packer.startup({
         use 'ray-x/lsp_signature.nvim'
         use {
           "folke/trouble.nvim",
-          config = function()
-            require("trouble").setup {}
-          end
+          config = function() require("trouble").setup {} end
         }
         use{ 'anuvyklack/pretty-fold.nvim',
            config = function()
@@ -186,9 +190,7 @@ return packer.startup({
         -- use 'tomtom/tcomment_vim'
         use {
             'numToStr/Comment.nvim',
-            config = function()
-                require('Comment').setup()
-            end
+            config = function() require('Comment').setup() end
         }
         -- use 'sbdchd/neoformat'
         use {
@@ -204,6 +206,7 @@ return packer.startup({
         use 'kristijanhusak/vim-dadbod-completion'
         use 'alvan/vim-closetag'
         use 'kchmck/vim-coffee-script'
+
         -- }}}
 
         -- ============ Misc ============ -- {{{
