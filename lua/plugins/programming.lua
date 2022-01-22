@@ -7,6 +7,7 @@ vim.api.nvim_command("let test#strategy = 'basic'")
 -- vim.api.nvim_command("let test#ruby#rails#executable = 'dip rspec'")
 -- vim.api.nvim_command("let test#ruby#rspec#executable = 'dip rspec'")
 vim.api.nvim_command("let test#ruby#rspec#executable = 'bundle exec rspec'")
+vim.api.nvim_command("let test#go#gotest#executable = 'go test -v'")
 -- }}}
 
 -- any-jump.vim {{{
