@@ -58,6 +58,7 @@ M.setup = function(attacher, capabilities)
     server:setup(vim.tbl_extend('keep', config, lspconfig[server.name]))
   end)
 
+  require("lsp_signature").setup()
 end
 
 M.install = function()
