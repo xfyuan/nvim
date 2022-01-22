@@ -64,6 +64,7 @@ return packer.startup({
           keys = {{'n', '*'}, {'n', '#'}, {'n', 'n'}, {'n', 'N'}},
           config = [[require('plugins.hlslens')]]
         }
+        use { "kevinhwang91/nvim-bqf", ft = "qf" } -- Better quickfix window in Neovim
 
         -- Fuzzy Finder
         use({
