@@ -14,7 +14,7 @@ local filename = {
   file_status = true,
   path = 1,
   shorting_target = 40,
-  symbols = { modified = ' +', readonly = ' -' },
+  symbols = { modified = ' +', readonly = ' ' },
 }
 
 lualine.setup({
