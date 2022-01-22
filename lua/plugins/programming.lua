@@ -35,26 +35,6 @@ cmd([[omap <leader>db  <Plug>(DBExe)]])
 cmd([[nmap <leader>dn  <Plug>(DBExeLine)]])
 -- }}}
 
--- formatter.nvim {{{
-local prettierConfig = function()
-  return {
-    exe = "prettier",
-    args = {"--stdin-filepath", vim.fn.shellescape(vim.api.nvim_buf_get_name(0)), "--single-quote"},
-    stdin = true
-  }
-end
-require('formatter').setup({
-  filetype = {
-    lua = {function() return {exe = "lua-format", stdin = true} end},
-    json = {prettierConfig},
-    html = {prettierConfig},
-    javascript = {prettierConfig},
-    typescript = {prettierConfig},
-    typescriptreact = {prettierConfig}
-  }
-})
--- }}}
-
 -- Others {{{
 require('goto-preview').setup {
   default_mappings = true; -- Bind default mappings

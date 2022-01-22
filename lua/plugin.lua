@@ -185,7 +185,10 @@ return packer.startup({
             end
         }
         -- use 'sbdchd/neoformat'
-        use 'mhartington/formatter.nvim'
+        use {
+          'mhartington/formatter.nvim',
+          config = [[require('plugins.formatter')]]
+        }
 
         use 'vim-test/vim-test' -- test running tool for many languages
         use 'pechorin/any-jump.vim' -- code inspection plugin for finding defitinitions and references/usages
