@@ -21,11 +21,11 @@ return packer.startup({
         -- ============ Appearance ============ -- {{{
         use {
             'goolord/alpha-nvim',
-            config = [[require('plugins.alpha-nvim')]]
+            config = [[require('plugins.config.alpha-nvim')]]
         }
         use {
             "nvim-lualine/lualine.nvim",
-            -- config = [[require('plugins.lualine')]],
+            -- config = [[require('plugins.config.lualine')]],
             requires = { "kyazdani42/nvim-web-devicons", opt = true },
         }
         use 'norcalli/nvim-colorizer.lua'
@@ -72,7 +72,7 @@ return packer.startup({
           'kevinhwang91/nvim-hlslens', -- helps you better glance at matched information, seamlessly jump between matched instances.
           branch = 'main',
           keys = {{'n', '*'}, {'n', '#'}, {'n', 'n'}, {'n', 'N'}},
-          config = [[require('plugins.hlslens')]]
+          config = [[require('plugins.config.hlslens')]]
         }
         use { "kevinhwang91/nvim-bqf", ft = "qf" } -- Better quickfix window in Neovim
 
@@ -199,7 +199,7 @@ return packer.startup({
         -- use 'sbdchd/neoformat'
         use {
           'mhartington/formatter.nvim',
-          config = [[require('plugins.formatter')]]
+          config = [[require('plugins.config.formatter')]]
         }
 
         use 'vim-test/vim-test' -- test running tool for many languages
