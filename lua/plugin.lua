@@ -145,14 +145,19 @@ return packer.startup({
             'f3fora/cmp-spell',
             'onsails/lspkind-nvim',
             'ray-x/cmp-treesitter',
-            -- vsnip
-            'hrsh7th/vim-vsnip',
-            'hrsh7th/vim-vsnip-integ',
             -- snippets
             'rafamadriz/friendly-snippets',
             'quoyi/rails-vscode',
           },
         })
+        -- vsnip
+        use {
+          'hrsh7th/vim-vsnip',
+          config = function()
+            vim.g.vsnip_snippet_dir = os.getenv('HOME') .. '/.config/nvim/snippets/'
+          end
+        }
+        use 'hrsh7th/vim-vsnip-integ'
 
         -- LSP Powerfull Plugins
         use 'stevearc/aerial.nvim'
