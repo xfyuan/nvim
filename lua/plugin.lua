@@ -20,6 +20,10 @@ return packer.startup({
 
         -- ============ Appearance ============ -- {{{
         use {
+            'goolord/alpha-nvim',
+            config = [[require('plugins.alpha-nvim')]]
+        }
+        use {
             "nvim-lualine/lualine.nvim",
             -- config = [[require('plugins.lualine')]],
             requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -207,16 +211,6 @@ return packer.startup({
         use 'alvan/vim-closetag'
         use 'kchmck/vim-coffee-script'
 
-        -- }}}
-
-        -- ============ Misc ============ -- {{{
-        -- use 'glepnir/dashboard-nvim'
-        use {
-            'goolord/alpha-nvim',
-            config = [[require('plugins.alpha-nvim')]]
-        }
-        -- use 'tweekmonster/startuptime.vim'
-        -- use 'kdav5758/TrueZen.nvim'
         -- }}}
     end,
     config = {

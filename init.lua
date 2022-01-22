@@ -15,7 +15,6 @@ require "plugins.completion"
 require "plugins.treesitter"
 require "plugins.lsp"
 require "plugins.programming"
-require "plugins.misc"
 
 -- key mapping
 require "keymaps"
