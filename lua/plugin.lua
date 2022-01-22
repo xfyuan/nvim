@@ -128,8 +128,6 @@ return packer.startup({
         use({
           'neovim/nvim-lspconfig',
           'williamboman/nvim-lsp-installer',
-          -- generic LSP for diagnostic, formatting, etc
-          'jose-elias-alvarez/null-ls.nvim',
         })
 
         -- Completion

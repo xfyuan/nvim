@@ -1,7 +1,6 @@
 local lspconfig = require('lspconfig')
 local lsp_installer = require('nvim-lsp-installer')
 local customizations = require('plugins.lsp.customizations')
-local nullls = require('plugins.lsp.nullls')
 
 local M = {}
 
@@ -59,7 +58,6 @@ M.setup = function(attacher, capabilities)
     server:setup(vim.tbl_extend('keep', config, lspconfig[server.name]))
   end)
 
-  nullls.setup()
 end
 
 M.install = function()
