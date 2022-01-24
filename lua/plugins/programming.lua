@@ -10,14 +10,6 @@ vim.api.nvim_command("let test#ruby#rspec#executable = 'bundle exec rspec'")
 vim.api.nvim_command("let test#go#gotest#executable = 'go test -v'")
 -- }}}
 
--- any-jump.vim {{{
-g.any_jump_search_prefered_engine = 'rg'
-g.any_jump_list_numbers = 1
-g.any_jump_window_top_offset = 6
-g.any_jump_window_width_ratio  = 0.7
-g.any_jump_window_height_ratio = 0.7
--- }}}
-
 -- vim-dadbod.vim {{{
 g.db_ui_use_nerd_fonts = 1
 g.completion_matching_ignore_case = 1

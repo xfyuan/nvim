@@ -203,7 +203,6 @@ return packer.startup({
         }
 
         use 'vim-test/vim-test' -- test running tool for many languages
-        use 'pechorin/any-jump.vim' -- code inspection plugin for finding defitinitions and references/usages
         use 'AndrewRadev/splitjoin.vim' -- Switch between single-line and multiline forms of code: gS to split a one-liner into multiple lines. gJ (with the cursor on the first line of a block) to join a block into a single-line.
         use 'AndrewRadev/switch.vim' -- switch segments of text with predefined replacements. default mapping `gs` to trigger the command
         use 'kristijanhusak/vim-dadbod-ui'
