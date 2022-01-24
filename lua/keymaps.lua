@@ -101,7 +101,7 @@ map("n", "<C-p>", [[<Cmd>GitFiles<CR>]], opt)
 
 -- map("n", "<C-e>", [[<Cmd>CtrlSF<CR>]], opt)
 
-map("n", "<leader>ss", ":lua require('spectre').open()<cr>", opt)
+map("n", "<leader>sR", ":lua require('spectre').open()<cr>", opt)
 map("n", "<leader>sw", "viw:lua require('spectre').open_visual()<cr>", opt)
 map("v", "<leader>sw", ":lua require('spectre').open_visual()<cr>", opt)
 map("n", "<leader>sf", "viw:lua require('spectre').open_file_search()<cr>", opt)
@@ -136,44 +136,66 @@ wk.register({
     -- l = {'<Plug>(DBExeLine)', 'run line as query'},
   },
   f = {
-    name = "fzf",
-    -- fzf.vim plugin
-    j = {'<cmd>GitFiles<cr>', 'find git files'},
-    f = {'<cmd>Files<cr>', 'find files'},
-    b = {'<cmd>Buffers<cr>', 'find buffers'},
-    o = {'<cmd>History<cr>', 'find old history'},
-    t = {'<cmd>FocusToggle<cr>', 'Toggle focus.nvim'},
+    name = "fuzzy finder",
+    -- fzf.vim
+    -- j = {'<cmd>GitFiles<cr>', 'find git files'},
+    -- f = {'<cmd>Files<cr>', 'find files'},
+    -- b = {'<cmd>Buffers<cr>', 'find buffers'},
+    -- o = {'<cmd>History<cr>', 'find old history'},
+    -- telescope
+    o = {'<cmd>Telescope git_files<cr>', 'find git files'},
+    f = {'<cmd>Telescope find_files<cr>', 'find files'},
+    b = {'<cmd>Telescope buffers<cr>', 'find buffers'},
+    h = {'<cmd>Telescope oldfiles<cr>', 'opened files history'},
+    -- r = {'<cmd>Telescope registers<cr>', 'vim registers'},
+    -- g = {'<cmd>Telescope grep_string<cr>', 'grep word under cursor'},
+    -- l = {'<cmd>Telescope live_grep<cr>', 'grep string'},
+    -- m = {'<cmd>Telescope commands<cr>', 'search commands'},
   },
   g = {
     name = 'git',
-    -- nvim-telescope plugin
+    -- telescope
     -- l = {'<cmd>Telescope git_status<cr>', 'changed files'},
-    b = {'<cmd>Telescope git_branches<cr>', 'list branches'},
     -- vim-fugitive plugin
     g = {'<cmd>Git blame<cr>', 'blame'},
     s = {'<cmd>Git<cr>', 'status'},
     l = {'<cmd>GFiles?<cr>', 'changed files'},
     d = {'<cmd>Gdiff<cr>', 'diff'},
     r = {'<cmd>Gread<cr>', 'read'},
-    w = {'<cmd>Gwrite<cr>', 'write'},
-    p = {'<cmd>Gpush<cr>', 'push'},
+    -- w = {'<cmd>Gwrite<cr>', 'write'},
+    p = {'<cmd>Git push<cr>', 'push'},
     c = {'<cmd>Gcommit -v<cr>', 'commit'},
+    -- gitsigns plugin
+    j = {"<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk"},
+    k = {"<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk"},
+    a = {"<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk"},
+    u = {"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk"},
     -- vim-rhubarb plugin
     -- b = {'<cmd>Gbrowser<cr>', 'browse github'},
     -- gv.vim plugin
     h = {'<cmd>GV!<cr>', 'list only current file commits'},
   },
-  h = {
-    name = "telescope",
-    -- nvim-telescope plugin
-    h = {'<cmd>Telescope git_files<cr>', 'find git files'},
-    f = {'<cmd>Telescope find_files<cr>', 'find files'},
-    b = {'<cmd>Telescope buffers<cr>', 'find buffers'},
-    d = {'<cmd>Telescope commands<cr>', 'search commands'},
-    o = {'<cmd>Telescope oldfiles<cr>', 'opened files history'},
-    r = {'<cmd>Telescope registers<cr>', 'vim registers'},
-    g = {'<cmd>Telescope grep_string<cr>', 'grep word under cursor'},
-    w = {'<cmd>Telescope live_grep<cr>', 'grep string'},
+  -- h = {
+  --   name = "telescope",
+  --   -- nvim-telescope plugin
+  --   h = {'<cmd>Telescope git_files<cr>', 'find git files'},
+  --   f = {'<cmd>Telescope find_files<cr>', 'find files'},
+  --   b = {'<cmd>Telescope buffers<cr>', 'find buffers'},
+  --   d = {'<cmd>Telescope commands<cr>', 'search commands'},
+  --   o = {'<cmd>Telescope oldfiles<cr>', 'opened files history'},
+  --   r = {'<cmd>Telescope registers<cr>', 'vim registers'},
+  --   g = {'<cmd>Telescope grep_string<cr>', 'grep word under cursor'},
+  --   w = {'<cmd>Telescope live_grep<cr>', 'grep string'},
+  -- },
+  j = {
+    name = 'hop(easymotion)',
+    -- hop.nvim plugin
+    j = {'<cmd>HopWord<cr>', 'word'},
+    c = {'<cmd>HopChar2<cr>', '2 char'},
+    l = {'<cmd>HopLine<cr>', 'line'},
+    p = {'<cmd>HopPattern<cr>', 'pattern'},
+    -- vim-prettier plugin
+    -- t = {'<Plug>(Prettier)', 'prettier format current buffer'},
   },
   l = {
     name = 'LSP',
@@ -215,29 +237,45 @@ wk.register({
     --   t = {'<cmd>lua vim.lsp.buf.type_definition()<CR>', 'type definition'},
     -- },
   },
-  m = {
-    name = 'hop(easymotion)',
-    -- hop.nvim plugin
-    m = {'<cmd>HopWord<cr>', 'word'},
-    l = {'<cmd>HopLine<cr>', 'line'},
-    p = {'<cmd>HopPattern<cr>', 'pattern'},
-    -- vim-prettier plugin
-    -- t = {'<Plug>(Prettier)', 'prettier format current buffer'},
-  },
-  r = {
-    name = 'ripgrep',
-    -- fzf.vim plugin
-    g = {':Rg <c-r><c-w><cr>', 'search cursor word'},
+  -- r = {
+  --   name = 'ripgrep',
+  --   -- fzf.vim plugin
+  --   g = {':Rg <c-r><c-w><cr>', 'search cursor word'},
+  -- },
+  s = {
+    name = "Search",
+    c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
+    C = {"<cmd>Telescope commands<cr>", "Commands"},
+    h = {"<cmd>Telescope help_tags<cr>", "Find Help"},
+    H = {"<cmd>Telescope heading<cr>", "Find Header"},
+    M = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
+    r = {"<cmd>Telescope registers<cr>", "Registers"},
+    t = {"<cmd>Telescope live_grep<cr>", "Text"},
+    s = {"<cmd>Telescope grep_string<cr>", "Text under cursor"},
+    S = {"<cmd>Telescope symbols<cr>", "Search symbols"},
+    k = {"<cmd>Telescope keymaps<cr>", "Keymaps"},
+    P = {
+        "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
+        "Colorscheme with Preview"
+    }
   },
   t = {
-    name = 'test',
+    name = 'test & trouble',
     -- vim-test plugin
     t = {'<cmd>TestNearest<cr>', 'nearest case'},
     l = {'<cmd>TestLast<cr>', 'last case'},
     f = {'<cmd>TestFile<cr>', 'whole file'},
+    -- lsp-trouble plugin
+    w = {"<cmd>Trouble lsp_workspace_diagnostics<cr>", "Workspace Diagnostics"},
+    d = {"<cmd>Trouble lsp_document_diagnostics<cr>", "Document Diagnostic"},
+    j = {"<cmd>Trouble lsp_definitions<cr>", "Lsp Definitions"},
+    r = {"<cmd>Trouble lsp_references<cr>", "LSP References"},
+    q = {"<cmd>Trouble quickfix<cr>", "Quickfix"},
   },
   w = {
-    name = 'translator window',
+    name = 'window & word',
+    w = {'<cmd>FocusToggle<cr>', 'Toggle focus window size'},
+    t = {"<c-w>t", "Move to new tab"},
     -- vim-test plugin
     -- w = {'<cmd>MacDictPopup<cr>', 'search cursor word in macOS distionary'},
     -- d = {'<cmd>MacDictWord<cr>', 'search in macOS distionary and show in quickfix'},

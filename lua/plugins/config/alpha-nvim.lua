@@ -31,8 +31,8 @@ dashboard.section.header.val = {
 dashboard.section.buttons.val = {
     dashboard.button( "e",          "  New file" , ":enew <CR>"),
     dashboard.button( "u",          "  Update plugins" , ":PackerUpdate<CR>"),
-    dashboard.button( "Leader h f", "  Find file", ":Telescope find_files<CR>"),
-    dashboard.button( "Leader h o", "  Recent files"   , ":Telescope oldfiles<CR>"),
+    dashboard.button( "Leader f f", "  Find file", ":Telescope find_files<CR>"),
+    dashboard.button( "Leader f h", "  Recent files"   , ":Telescope oldfiles<CR>"),
 }
 
 local fortune = require("alpha.fortune")
