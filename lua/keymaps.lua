@@ -147,10 +147,6 @@ wk.register({
     f = {'<cmd>Telescope find_files<cr>', 'find files'},
     b = {'<cmd>Telescope buffers<cr>', 'find buffers'},
     h = {'<cmd>Telescope oldfiles<cr>', 'opened files history'},
-    -- r = {'<cmd>Telescope registers<cr>', 'vim registers'},
-    -- g = {'<cmd>Telescope grep_string<cr>', 'grep word under cursor'},
-    -- l = {'<cmd>Telescope live_grep<cr>', 'grep string'},
-    -- m = {'<cmd>Telescope commands<cr>', 'search commands'},
   },
   g = {
     name = 'git',
@@ -175,18 +171,6 @@ wk.register({
     -- gv.vim plugin
     h = {'<cmd>GV!<cr>', 'list only current file commits'},
   },
-  -- h = {
-  --   name = "telescope",
-  --   -- nvim-telescope plugin
-  --   h = {'<cmd>Telescope git_files<cr>', 'find git files'},
-  --   f = {'<cmd>Telescope find_files<cr>', 'find files'},
-  --   b = {'<cmd>Telescope buffers<cr>', 'find buffers'},
-  --   d = {'<cmd>Telescope commands<cr>', 'search commands'},
-  --   o = {'<cmd>Telescope oldfiles<cr>', 'opened files history'},
-  --   r = {'<cmd>Telescope registers<cr>', 'vim registers'},
-  --   g = {'<cmd>Telescope grep_string<cr>', 'grep word under cursor'},
-  --   w = {'<cmd>Telescope live_grep<cr>', 'grep string'},
-  -- },
   j = {
     name = 'hop(easymotion)',
     -- hop.nvim plugin
@@ -199,34 +183,11 @@ wk.register({
   },
   l = {
     name = 'LSP',
-    -- lspsaga.nvim plugin
     l = {"<cmd>Telescope lsp_definitions<cr>", 'list word definition and reference'},
     s = {"<cmd>Telescope lsp_document_symbols<cr>", 'list document symbols'},
     k = {'<cmd>lua vim.lsp.buf.hover()<cr>', 'show hover doc'},
-    -- p = {"<cmd>lua require'lspsaga.provider'.preview_definition()<cr>", 'preview definition'},
     r = {"<cmd>lua vim.lsp.buf.rename()<CR>", 'rename'},
     a = {"<cmd>Telescope lsp_code_actions<CR>", 'code action'},
-    -- s = {"<cmd>lua require('lspsaga.signaturehelp').signature_help()<cr>", 'show signature help'},
-    -- d = {"<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<cr>", 'show diagnostic'},
-    -- [';'] = {"<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<cr>", 'jump previous diagnostic'},
-    -- [','] = {"<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<cr>", 'jump previous diagnostic'},
-    -- nvim-lspfuzzy plugin
-    -- e = {"<cmd>lua vim.lsp.buf.definition()<cr>", 'fzf list definition'},
-    n = {"<cmd>lua vim.lsp.buf.references()<cr>", 'fzf list references'},
-    -- o = {"<cmd>SymbolsOutline<cr>", 'toggle symbols-outline window'},
-    -- b = {"<cmd>lua vim.lsp.buf.document_symbol()<CR>", 'fzf list symbols'},
-    -- v = {
-    --   name = 'vista',
-    --   -- vista.vim plugin
-    --   v = {'<cmd>Vista!!<cr>', 'toggle vista window'},
-    --   s = {'<cmd>SymbolsOutline<cr>', 'toggle symbols-outline window'},
-    -- },
-    t = {
-      name = 'Trouble',
-      -- lsp-trouble.nvim plugin
-      t = {"<cmd>TroubleToggle document_diagnostics<cr>", 'list troubles diagnostic'},
-      r = {"<cmd>TroubleToggle lsp_references<cr>", 'list troubles reference'},
-    },
     -- o = {
     --   name = 'LSP original function',
     --   d = {'<cmd>lua vim.lsp.buf.definition()<cr>', 'definition'},
@@ -237,13 +198,8 @@ wk.register({
     --   t = {'<cmd>lua vim.lsp.buf.type_definition()<CR>', 'type definition'},
     -- },
   },
-  -- r = {
-  --   name = 'ripgrep',
-  --   -- fzf.vim plugin
-  --   g = {':Rg <c-r><c-w><cr>', 'search cursor word'},
-  -- },
   s = {
-    name = "Search",
+    name = "search",
     c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
     C = {"<cmd>Telescope commands<cr>", "Commands"},
     h = {"<cmd>Telescope help_tags<cr>", "Find Help"},
