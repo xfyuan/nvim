@@ -97,7 +97,8 @@ map("n", "<leader>df", "&diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'", {
 -- }}}
 
 -- ================= Plugins Mapping ================= -- {{{
-map("n", "<C-p>", [[<Cmd>GitFiles<CR>]], opt)
+-- map("n", "<C-p>", [[<Cmd>GitFiles<CR>]], opt)
+map("n", "<C-p>", [[<Cmd>Telescope git_files<CR>]], opt)
 
 -- map("n", "<C-e>", [[<Cmd>CtrlSF<CR>]], opt)
 
@@ -183,7 +184,7 @@ wk.register({
   },
   l = {
     name = 'LSP',
-    l = {"<cmd>Telescope lsp_definitions<cr>", 'list word definition and reference'},
+    j = {"<cmd>Telescope lsp_definitions<cr>", 'list word definition and reference'},
     s = {"<cmd>Telescope lsp_document_symbols<cr>", 'list document symbols'},
     k = {'<cmd>lua vim.lsp.buf.hover()<cr>', 'show hover doc'},
     r = {"<cmd>lua vim.lsp.buf.rename()<CR>", 'rename'},
@@ -218,15 +219,15 @@ wk.register({
   t = {
     name = 'test & trouble',
     -- vim-test plugin
-    t = {'<cmd>TestNearest<cr>', 'nearest case'},
-    l = {'<cmd>TestLast<cr>', 'last case'},
-    f = {'<cmd>TestFile<cr>', 'whole file'},
+    t = {'<cmd>TestNearest<cr>', 'Test nearest case'},
+    l = {'<cmd>TestLast<cr>', 'Test last case'},
+    f = {'<cmd>TestFile<cr>', 'Test whole file'},
     -- lsp-trouble plugin
-    w = {"<cmd>Trouble lsp_workspace_diagnostics<cr>", "Workspace Diagnostics"},
-    d = {"<cmd>Trouble lsp_document_diagnostics<cr>", "Document Diagnostic"},
+    w = {"<cmd>Trouble lsp_workspace_diagnostics<cr>", "Lsp Workspace Diagnostics"},
+    d = {"<cmd>Trouble lsp_document_diagnostics<cr>", "Lsp Document Diagnostic"},
     j = {"<cmd>Trouble lsp_definitions<cr>", "Lsp Definitions"},
     r = {"<cmd>Trouble lsp_references<cr>", "LSP References"},
-    q = {"<cmd>Trouble quickfix<cr>", "Quickfix"},
+    q = {"<cmd>Trouble quickfix<cr>", "Lsp Quickfix"},
   },
   w = {
     name = 'window & word',

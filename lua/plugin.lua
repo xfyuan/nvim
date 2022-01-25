@@ -33,16 +33,18 @@ return packer.startup({
         use 'lukas-reineke/indent-blankline.nvim'
         -- Themes
         use 'sainnhe/everforest'
-        use 'shaunsingh/nord.nvim'
         use 'folke/tokyonight.nvim'
+        use 'EdenEast/nightfox.nvim'
         -- }}}
 
         -- ============ Core ============ -- {{{
         use 'folke/which-key.nvim'
         use 'kyazdani42/nvim-tree.lua'
-        -- use 'yianwillis/vimcdoc'
-        -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
+        use 'rcarriga/nvim-notify'
         use 'tversteeg/registers.nvim' -- Preview the contents of the registers
+        use 'yianwillis/vimcdoc'
+
+        -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
         use {
           'phaazon/hop.nvim',
           config = function () require('hop').setup() end
@@ -59,7 +61,7 @@ return packer.startup({
         use 'akinsho/toggleterm.nvim' -- A neovim lua plugin to help easily manage multiple terminal windows
         use 'voldikss/vim-translator' -- Asynchronous translating plugin
         use 'famiu/bufdelete.nvim' -- Delete Neovim buffers without losing window layout
-        use { 'beauwilliams/focus.nvim',
+        use {'beauwilliams/focus.nvim',
           config = function()
             require("focus").setup({
               signcolumn = false,
@@ -67,7 +69,14 @@ return packer.startup({
             })
           end
         }
-        use 'rcarriga/nvim-notify'
+        use{'anuvyklack/pretty-fold.nvim',
+           config = function()
+              require('pretty-fold').setup{}
+              require('pretty-fold.preview').setup{
+                key = 'h',
+              }
+           end
+        }
         use {
           'kevinhwang91/nvim-hlslens', -- helps you better glance at matched information, seamlessly jump between matched instances.
           branch = 'main',
@@ -174,23 +183,16 @@ return packer.startup({
 
         -- LSP Powerfull Plugins
         use 'stevearc/aerial.nvim'
-        use 'zackhsi/fzf-tags'
         use 'rmagatti/goto-preview'
         use 'ray-x/lsp_signature.nvim'
         use {
           "folke/trouble.nvim",
           config = function() require("trouble").setup {} end
         }
-        use{ 'anuvyklack/pretty-fold.nvim',
-           config = function()
-              require('pretty-fold').setup{}
-              require('pretty-fold.preview').setup{
-                key = 'h',
-              }
-           end
-        }
-        use 'github/copilot.vim'
 
+        -- Enhancement Plugins
+        use 'github/copilot.vim'
+        use 'zackhsi/fzf-tags'
         use 'lewis6991/gitsigns.nvim'
         use 'rizzatti/dash.vim'
         -- use 'tomtom/tcomment_vim'
@@ -198,7 +200,6 @@ return packer.startup({
             'numToStr/Comment.nvim',
             config = function() require('Comment').setup() end
         }
-        -- use 'sbdchd/neoformat'
         use {
           'mhartington/formatter.nvim',
           config = [[require('plugins.config.formatter')]]
@@ -210,8 +211,7 @@ return packer.startup({
         use 'kristijanhusak/vim-dadbod-ui'
         use 'kristijanhusak/vim-dadbod-completion'
         use 'alvan/vim-closetag'
-        use 'kchmck/vim-coffee-script'
-
+        -- use 'kchmck/vim-coffee-script'
         -- }}}
     end,
     config = {
