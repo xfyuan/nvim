@@ -68,6 +68,9 @@ telescope.setup({
       '--column',
       '--smart-case',
     },
+    preview = {
+      treesitter = false,
+    },
     winblend = 0,
   },
 })
