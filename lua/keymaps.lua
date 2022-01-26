@@ -231,7 +231,7 @@ wk.register({
   },
   w = {
     name = 'window & word',
-    w = {'<cmd>FocusToggle<cr>', 'Toggle focus window size'},
+    w = {'<cmd>NeoZoomToggle<cr>', 'Toggle window zoom'},
     t = {"<c-w>t", "Move to new tab"},
     -- vim-test plugin
     -- w = {'<cmd>MacDictPopup<cr>', 'search cursor word in macOS distionary'},
