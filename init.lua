@@ -6,7 +6,6 @@ require "setting"
 
 -- all plugins configuration
 require "plugins.appearance"
-require "plugins.completion"
 require "plugins.core"
 require "plugins.filetree"
 require "plugins.fuzzyfinder"

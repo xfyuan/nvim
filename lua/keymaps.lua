@@ -111,12 +111,6 @@ cmd([[nmap <C-]> <Plug>(fzf_tags)]])
 
 -- }}}
 
--- ================= Compe and VSnip Mapping ================= -- {{{
--- vsnip mapping
-cmd([[imap <expr> <C-l> vsnip#available(1) ? "<Plug>(vsnip-expand-or-jump)" : "<C-l>"]])
-cmd([[imap <expr> <C-k> vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)"      : "<C-k>"]])
--- }}}
-
 -- ================= Whichkey Mapping ================= -- {{{
 require("which-key").setup {}
 

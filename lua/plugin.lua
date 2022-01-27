@@ -164,6 +164,7 @@ return packer.startup({
             'rafamadriz/friendly-snippets',
             'quoyi/rails-vscode',
           },
+          config = [[require('plugins.config.cmp')]]
         })
         -- vsnip
         use {
