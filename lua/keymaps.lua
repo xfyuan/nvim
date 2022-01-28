@@ -153,11 +153,11 @@ wk.register({
   g = {
     name = 'git',
     -- telescope
-    -- l = {'<cmd>Telescope git_status<cr>', 'changed files'},
+    l = {'<cmd>Telescope git_status<cr>', 'changed files'},
     -- vim-fugitive plugin
     g = {'<cmd>Git blame<cr>', 'blame'},
     s = {'<cmd>Git<cr>', 'status'},
-    l = {'<cmd>GFiles?<cr>', 'changed files'},
+    -- l = {'<cmd>GFiles?<cr>', 'changed files'},
     d = {'<cmd>Gdiff<cr>', 'diff'},
     r = {'<cmd>Gread<cr>', 'read'},
     -- w = {'<cmd>Gwrite<cr>', 'write'},
@@ -234,6 +234,7 @@ wk.register({
     name = 'window & word',
     w = {'<cmd>NeoZoomToggle<cr>', 'Toggle window zoom'},
     t = {"<c-w>t", "Move to new tab"},
+    j = {"<c-w>w", "Switch window"},
     -- vim-test plugin
     -- w = {'<cmd>MacDictPopup<cr>', 'search cursor word in macOS distionary'},
     -- d = {'<cmd>MacDictWord<cr>', 'search in macOS distionary and show in quickfix'},
