@@ -20,7 +20,7 @@ require("gitsigns").setup {
         ["n <leader>hp"] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
         ["n <leader>hb"] = '<cmd>lua require"gitsigns".blame_line()<CR>'
     },
-    watch_index = {
+    watch_gitdir = {
         interval = 100
     },
     sign_priority = 5,
