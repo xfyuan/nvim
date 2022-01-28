@@ -160,6 +160,7 @@ return packer.startup({
             'f3fora/cmp-spell',
             'onsails/lspkind-nvim',
             'ray-x/cmp-treesitter',
+            'lukas-reineke/cmp-under-comparator',
             -- snippets
             'rafamadriz/friendly-snippets',
             'quoyi/rails-vscode',
