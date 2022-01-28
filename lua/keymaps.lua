@@ -224,8 +224,8 @@ wk.register({
     l = {'<cmd>TestLast<cr>', 'Test last case'},
     f = {'<cmd>TestFile<cr>', 'Test whole file'},
     -- lsp-trouble plugin
-    w = {"<cmd>Trouble lsp_workspace_diagnostics<cr>", "Lsp Workspace Diagnostics"},
-    d = {"<cmd>Trouble lsp_document_diagnostics<cr>", "Lsp Document Diagnostic"},
+    w = {"<cmd>Trouble workspace_diagnostics<cr>", "Lsp Workspace Diagnostics"},
+    d = {"<cmd>Trouble document_diagnostics<cr>", "Lsp Document Diagnostic"},
     j = {"<cmd>Trouble lsp_definitions<cr>", "Lsp Definitions"},
     r = {"<cmd>Trouble lsp_references<cr>", "LSP References"},
     q = {"<cmd>Trouble quickfix<cr>", "Lsp Quickfix"},
