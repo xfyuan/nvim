@@ -38,6 +38,11 @@ opt("o", "backup", false)
 opt("o", "writebackup", false)
 opt("o", "autoread", true)
 
+opt("o", "undofile", true)
+opt("o", "undolevels", 1000)
+opt("o", "undoreload", 1000)
+opt("o", "undodir", vim.fn.stdpath('config') .. '/undo')
+
 opt("o", "ruler", false)
 opt("o", "showmode", false)
 opt("o", "hidden", true)
