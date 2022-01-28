@@ -78,7 +78,6 @@ map("i", "hh", "-", opt)
 map("i", "ii", "=", opt)
 map("i", "kk", "->", opt)
 map("i", "jk", "=>", opt)
-map("i", "ii", "=", opt)
 map("i", "vv", "<bar>>", opt)
 
 -- OPEN TERMINALS --
@@ -112,7 +111,15 @@ cmd([[nmap <C-]> <Plug>(fzf_tags)]])
 -- }}}
 
 -- ================= Whichkey Mapping ================= -- {{{
-require("which-key").setup {}
+require("which-key").setup {
+  triggers_blacklist = {
+    -- list of mode / prefixes that should never be hooked by WhichKey
+    -- this is mostly relevant for key maps that start with a native binding
+    -- most people should not need to change this
+    i = { "i", "j", "k", "h", "u", "v" },
+    v = { "j", "k" },
+  },
+}
 
 local wk = require("which-key")
 
