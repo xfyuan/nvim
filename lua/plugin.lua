@@ -177,6 +177,7 @@ return packer.startup({
 
         -- LSP Powerfull Plugins
         use 'stevearc/aerial.nvim'
+        use 'kosayoda/nvim-lightbulb'
         use 'rmagatti/goto-preview'
         use 'ray-x/lsp_signature.nvim'
         use {

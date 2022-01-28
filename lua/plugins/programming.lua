@@ -33,6 +33,10 @@ cmd([[imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")]])
 g.copilot_no_tab_map = true
 -- }}}
 
+-- nvim-lightbulb {{{
+cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+-- }}}
+
 -- Others {{{
 require('goto-preview').setup {
   default_mappings = true; -- Bind default mappings
