@@ -1,9 +1,6 @@
 -- telescope {{{
 local telescope = require('telescope')
 local actions = require('telescope.actions')
--- local builtin = require('telescope.builtin')
-
--- local utils = vim.my.utils
 
 telescope.setup({
   extensions = {
@@ -17,8 +14,10 @@ telescope.setup({
 
   defaults = {
     dynamic_preview_title = true,
+    layout_strategy = 'flex',
     layout_config = {
       prompt_position = 'top',
+      preview_cutoff = 3,
       flex = {
         flip_columns = 250,
         flip_lines = 50,
@@ -34,7 +33,6 @@ telescope.setup({
         },
       },
     },
-    layout_strategy = 'flex',
     mappings = {
       i = {
         ["<esc>"] = actions.close,
@@ -44,6 +42,7 @@ telescope.setup({
         ['<C-n>'] = actions.cycle_history_next,
         ['<C-p>'] = actions.cycle_history_prev,
         ['<C-u>'] = { '<c-u>', type = 'command' }, -- delete inputted text
+        ["<C-g>"] = actions.send_selected_to_qflist + actions.open_qflist
       },
       n = {
         ['<C-j>'] = actions.move_selection_next,
@@ -59,6 +58,7 @@ telescope.setup({
     selection_caret = '› ',
     set_env = { ['COLORTERM'] = 'truecolor' },
     sorting_strategy = 'ascending',
+    file_ignore_patterns = {"node_modules", "%.jpg", "%.png"},
     vimgrep_arguments = {
       'rg',
       '--color=never',
