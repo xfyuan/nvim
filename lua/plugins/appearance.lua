@@ -13,16 +13,32 @@ vim.api.nvim_exec(
     false
 )
 
--- blankline
+-- indent-blankline.nvim
+require("indent_blankline").setup {
+  buftype_exclude = {"terminal", "telescope", "nofile"},
+  filetype_exclude = {"help", "alpha", "packer", "NvimTree", "Trouble", "TelescopePrompt", "Float"},
+  show_current_context = true,
+  show_current_context_start = false,
+  show_end_of_line = false,
+  show_trailing_blankline_indent = false,
+  space_char_blankline = " ",
+  use_treesitter = true,
+}
 
-g.indentLine_enabled = 1
-g.indent_blankline_char = "▏"
-
-g.indent_blankline_filetype_exclude = {"help", "terminal", "NvimTree", "TelescopePrompt", "dashboard", "alpha", ""}
-g.indent_blankline_buftype_exclude = {"terminal", "nofile"}
-
-g.indent_blankline_show_trailing_blankline_indent = false
-g.indent_blankline_show_first_indent_level = false
+-- nvim-colorizer.lua
+require('colorizer').setup(
+  {'*';},
+  {
+    RGB      = true;         -- #RGB hex codes
+    RRGGBB   = true;         -- #RRGGBB hex codes
+    names    = true;         -- "Name" codes like Blue
+    RRGGBBAA = true;         -- #RRGGBBAA hex codes
+    rgb_fn   = true;         -- CSS rgb() and rgba() functions
+    hsl_fn   = true;         -- CSS hsl() and hsla() functions
+    css      = true;         -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+    css_fn   = true;         -- Enable all CSS *functions*: rgb_fn, hsl_fn
+  }
+)
 
 -- Misc
 
