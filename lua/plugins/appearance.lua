@@ -41,6 +41,4 @@ require('colorizer').setup(
 )
 
 -- Misc
-
-require("colorizer").setup()
 require("neoscroll").setup()
