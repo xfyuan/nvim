@@ -15,6 +15,7 @@ local use = packer.use
 return packer.startup({
     function()
         use 'wbthomason/packer.nvim'
+        use 'lewis6991/impatient.nvim'
         use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'
 

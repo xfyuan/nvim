@@ -1,3 +1,4 @@
+require('impatient')
 -- load all plugins
 require "plugin"
 
