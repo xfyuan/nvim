@@ -32,12 +32,6 @@ return packer.startup({
         use 'norcalli/nvim-colorizer.lua'
         use 'karb94/neoscroll.nvim' -- smooth scroll
         use 'lukas-reineke/indent-blankline.nvim'
-        use {
-            'lukas-reineke/headlines.nvim',
-            config = function()
-              require('headlines').setup()
-            end,
-          }
         -- Themes
         use 'sainnhe/everforest'
         use 'folke/tokyonight.nvim'
