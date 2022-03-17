@@ -16,10 +16,11 @@ vim.api.nvim_exec(
 -- indent-blankline.nvim
 require("indent_blankline").setup {
   buftype_exclude = {"terminal", "telescope", "nofile"},
-  filetype_exclude = {"help", "alpha", "packer", "NvimTree", "Trouble", "TelescopePrompt", "Float"},
+  filetype_exclude = {"help", "alpha", "packer", "NvimTree", "Trouble", "TelescopePrompt", "Float", ""},
   show_current_context = true,
   show_current_context_start = false,
   show_end_of_line = false,
+  show_first_indent_level = false,
   show_trailing_blankline_indent = false,
   space_char_blankline = " ",
   use_treesitter = true,
