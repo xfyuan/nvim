@@ -14,6 +14,7 @@ M.servers = {
   'sumneko_lua',
   'tailwindcss',
   'tsserver',
+  'vuels',
   'yamlls',
   -- 'sqlls',
   -- 'sqls',
@@ -52,10 +53,27 @@ M.setup = function(attacher, capabilities)
     },
   })
 
-  lsp_installer.on_server_ready(function(server)
-    local config = vim.tbl_extend('keep', customizations[server.name] or {}, default_opts)
+  local tsserver_setting = {
+    init_options = require("nvim-lsp-ts-utils").init_options,
+    on_attach = function(client)
+      local ts_utils = require('nvim-lsp-ts-utils')
+      ts_utils.setup({
+        update_imports_on_move = true,
+        inlay_hints_highlight = 'NvimLspTSUtilsInlineHint',
+        degbug = false,
+      })
+      ts_utils.setup_client(client)
+    end
+  }
 
-    server:setup(vim.tbl_extend('keep', config, lspconfig[server.name]))
+  lsp_installer.on_server_ready(function(server)
+    if server.name == "tsserver" then
+      server:setup(tsserver_setting)
+      vim.cmd 'do User LspAttachBuffers'
+    else
+      local config = vim.tbl_extend('keep', customizations[server.name] or {}, default_opts)
+      server:setup(vim.tbl_extend('keep', config, lspconfig[server.name]))
+    end
   end)
 
   require("lsp_signature").setup()
