@@ -9,9 +9,10 @@ g.nvim_tree_show_icons = {
   folder_arrows = 0,
   files = 1,
 }
+-- automatically close the tab/vim when nvim-tree is the last window in the tab
+vim.cmd([[autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]])
 
 require('nvim-tree').setup({
-  auto_close = true,
   disable_netrw = true,
   hijack_netrw = true,
   diagnostics = {
