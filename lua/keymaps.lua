@@ -215,7 +215,9 @@ wk.register({
     P = {
         "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
         "Colorscheme with Preview"
-    }
+    },
+    a = {"<cmd>SaveSession<cr>", "add auto session"},
+    d = {"<cmd>DeleteSession<cr>", "delete auto session"},
   },
   t = {
     name = 'test & trouble',

@@ -45,6 +45,19 @@ return packer.startup({
         use 'tversteeg/registers.nvim' -- Preview the contents of the registers
         use 'yianwillis/vimcdoc'
 
+        use {
+          'rmagatti/auto-session',
+          config = function()
+            require('auto-session').setup {
+              auto_session_root_dir = vim.fn.stdpath('config').."/sessions/",
+              auto_session_create_enabled = false,
+            }
+          end
+        }
+        use {
+          'rmagatti/session-lens',
+          config = function() require('session-lens').setup({}) end
+        }
         -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
         use {
           'phaazon/hop.nvim',
