@@ -185,7 +185,7 @@ wk.register({
     -- t = {'<Plug>(Prettier)', 'prettier format current buffer'},
   },
   l = {
-    name = 'LSP',
+    name = 'lsp',
     j = {"<cmd>Telescope lsp_definitions<cr>", 'list word definition and reference'},
     s = {"<cmd>Telescope lsp_document_symbols<cr>", 'list document symbols'},
     k = {'<cmd>lua vim.lsp.buf.hover()<cr>', 'show hover doc'},
@@ -202,7 +202,7 @@ wk.register({
     -- },
   },
   s = {
-    name = "search",
+    name = "search/session",
     c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
     C = {"<cmd>Telescope commands<cr>", "Commands"},
     h = {"<cmd>Telescope help_tags<cr>", "Find Help"},

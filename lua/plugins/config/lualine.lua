@@ -23,6 +23,7 @@ local config = {
     -- section_separators = { "", "" },
     -- component_separators = { "", "" },
     icons_enabled = true,
+    globalstatus = true,
   },
   tabline = {
     lualine_a = {},
@@ -48,7 +49,7 @@ local config = {
     lualine_y = { 'encoding', 'filetype' },
     lualine_z = {},
   },
-  extensions = { "nvim-tree" },
+  extensions = { "nvim-tree", "quickfix", "fugitive", "aerial", "toggleterm" },
 }
 
 -- try to load matching lualine theme
