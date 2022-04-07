@@ -170,25 +170,22 @@ return packer.startup({
             'hrsh7th/cmp-emoji',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-nvim-lua',
-            'hrsh7th/cmp-vsnip',
+            'saadparwaiz1/cmp_luasnip',
             'f3fora/cmp-spell',
             'onsails/lspkind-nvim',
             'ray-x/cmp-treesitter',
             'lukas-reineke/cmp-under-comparator',
-            -- snippets
-            'rafamadriz/friendly-snippets',
-            'quoyi/rails-vscode',
           },
           config = [[require('plugins.config.cmp')]]
         })
-        -- vsnip
-        use {
-          'hrsh7th/vim-vsnip',
-          config = function()
-            vim.g.vsnip_snippet_dir = os.getenv('HOME') .. '/.config/nvim/snippets/'
-          end
+        -- snippets
+        use { "L3MON4D3/LuaSnip",
+          requires = {
+            'rafamadriz/friendly-snippets',
+            'quoyi/rails-vscode',
+            'benfowler/telescope-luasnip.nvim',
+          }
         }
-        use 'hrsh7th/vim-vsnip-integ'
 
         -- LSP Powerfull Plugins
         use 'stevearc/aerial.nvim'

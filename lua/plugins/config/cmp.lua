@@ -1,16 +1,14 @@
 -- Setup nvim-cmp.
 local cmp = require "cmp"
+local luasnip = require("luasnip")
+require("luasnip/loaders/from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({paths = {vim.fn.stdpath('config') .. '/snippets'}})
 
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0
                and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(
                    col, col):match("%s") == nil
-end
-
-local feedkey = function(key, mode)
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true),
-                          mode, true)
 end
 
 cmp.setup({
@@ -41,7 +39,7 @@ cmp.setup({
     experimental = {native_menu = false, ghost_text = false},
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            luasnip.lsp_expand(args.body) -- For `luasnip` users.
         end
     },
     mapping = {
@@ -58,8 +56,8 @@ cmp.setup({
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif vim.fn["vsnip#available"](1) == 1 then
-                feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
             elseif has_words_before() then
                 cmp.complete()
             else
@@ -69,8 +67,8 @@ cmp.setup({
         ["<C-p>"] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-                feedkey("<Plug>(vsnip-jump-prev)", "")
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
             end
         end, {"i", "s"})
     },
@@ -79,7 +77,7 @@ cmp.setup({
         {name = 'nvim_lua'},
         {name = 'treesitter'},
         {name = "buffer", keyword_length = 5},
-        {name = "vsnip"},
+        {name = "luasnip"},
         {name = "calc"},
         {name = "emoji"},
         {name = "spell"},

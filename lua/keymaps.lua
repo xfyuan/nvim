@@ -149,7 +149,8 @@ wk.register({
     f = {'<cmd>Telescope find_files<cr>', 'find files'},
     b = {'<cmd>Telescope buffers<cr>', 'find buffers'},
     h = {'<cmd>Telescope oldfiles<cr>', 'opened files history'},
-    s = {'<cmd>SearchSession<cr>', 'search session'},
+    s = {'<cmd>Telescope luasnip<cr>', 'search snippet'},
+    S = {'<cmd>SearchSession<cr>', 'search session'},
   },
   g = {
     name = 'git',
