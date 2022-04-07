@@ -193,6 +193,9 @@ wk.register({
     r = {"<cmd>Telescope lsp_references<CR>", 'list references'},
     R = {"<cmd>lua vim.lsp.buf.rename()<CR>", 'rename'},
     a = {"<cmd>Telescope lsp_code_actions<CR>", 'code action'},
+    i = {'<cmd>TSLspImportAll<CR>', 'ts import all'},
+    o = {'<cmd>TSLspOrganize<CR>', 'ts organize imports'},
+    q = {'<cmd>TSLspFixCurrent<CR>', 'ts quick fix' },
     -- o = {
     --   name = 'LSP original function',
     --   d = {'<cmd>lua vim.lsp.buf.definition()<cr>', 'definition'},
@@ -209,6 +212,7 @@ wk.register({
     C = {"<cmd>Telescope commands<cr>", "Commands"},
     h = {"<cmd>Telescope help_tags<cr>", "Find Help"},
     H = {"<cmd>Telescope heading<cr>", "Find Header"},
+    m = {"<cmd>Telescope marks<cr>", "Find Mark"},
     M = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
     r = {"<cmd>Telescope registers<cr>", "Registers"},
     t = {"<cmd>Telescope live_grep<cr>", "Text"},
