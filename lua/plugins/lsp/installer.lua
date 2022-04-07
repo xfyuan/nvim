@@ -35,10 +35,15 @@ local check_installed = function()
 end
 
 M.setup = function(attacher, capabilities)
+  local handlers =  {
+    ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = 'rounded'}),
+    ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = 'rounded'}),
+  }
   local default_opts = {
     single_file_support = true,
     on_attach = attacher,
     capabilities = capabilities,
+    handlers = handlers,
   }
 
   check_installed()
