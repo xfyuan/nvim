@@ -38,10 +38,6 @@ cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightb
 -- }}}
 
 -- Others {{{
-require('goto-preview').setup {
-  default_mappings = true; -- Bind default mappings
-}
-
 require("aerial").setup({
   manage_folds = true,
   link_folds_to_tree = true,

@@ -191,7 +191,6 @@ return packer.startup({
         use 'stevearc/aerial.nvim'
         use 'kosayoda/nvim-lightbulb'
         use 'jose-elias-alvarez/nvim-lsp-ts-utils'
-        use 'rmagatti/goto-preview'
         use 'ray-x/lsp_signature.nvim'
         use {
           "folke/trouble.nvim",
