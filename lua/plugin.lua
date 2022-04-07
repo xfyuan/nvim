@@ -42,7 +42,6 @@ return packer.startup({
         use 'folke/which-key.nvim'
         use 'kyazdani42/nvim-tree.lua'
         use 'rcarriga/nvim-notify'
-        use 'tversteeg/registers.nvim' -- Preview the contents of the registers
         use 'yianwillis/vimcdoc'
 
         use {
