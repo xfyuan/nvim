@@ -18,6 +18,7 @@ return packer.startup({
         use 'lewis6991/impatient.nvim'
         use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'
+        use 'stevearc/dressing.nvim'
 
         -- ============ Appearance ============ -- {{{
         use {
