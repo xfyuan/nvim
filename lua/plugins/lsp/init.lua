@@ -27,12 +27,6 @@ local attacher = function(client, bufnr)
   end
   local opts = {noremap = true, silent = true}
 
-  buf_set_keymap("n", "glD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  buf_set_keymap("n", "gld", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap("n", "glr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  buf_set_keymap("n", "gla", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  buf_set_keymap("n", "glf", "<cmd>vim.lsp.buf.formatting()<CR>", opts)
-  buf_set_keymap("n", "glR", "<cmd>LspRestart<CR>", opts)
   buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
   print('LSP: ' .. client.name)

@@ -250,4 +250,37 @@ wk.register({
     l = {'<Plug>TranslateW', 'Translate word online'},
   },
 }, { prefix = "<leader>" })
+
+wk.register({
+  l = {
+    name = 'lsp origin actions',
+    d = {'<cmd>lua vim.lsp.buf.definition()<cr>', 'go to definition'},
+    D = {'<cmd>lua vim.lsp.buf.declaration()<cr>', 'go to declaration'},
+    r = {'<cmd>lua vim.lsp.buf.references()<cr>', 'go to references'},
+    a = {'<cmd>lua vim.lsp.buf.code_action()<cr>', 'go to code action'},
+    f = {'<cmd>vim.lsp.buf.formatting()<cr>', 'formatting code'},
+    R = {'<cmd>LspRestart<cr>', 'restart lsp'},
+  },
+  o = {
+    name = "Go with go.nvim",
+    a = { "<cmd>GoAlt<CR>", "alternate impl and test" },
+    i = { "<cmd>GoInstall<CR>", "go install" },
+    b = { "<cmd>GoBuild<CR>", "go build" },
+    d = { "<cmd>GoDoc<CR>", "go doc" },
+    f = {"<cmd>GoFmt<cr>", 'formatting code'},
+    r = { "<cmd>!go run %:.<CR>", "go run current file" },
+    e = { "<cmd>GoIfErr<CR>", "add if err" },
+    w = { "<cmd>GoFillSwitch<CR>", "fill switch" },
+    g = { "<cmd>GoAddTag<CR>", "add json tag" },
+    c = { "<cmd>lua require('go.comment').gen()<CR>", "comment current func" },
+    t = {
+      name = "Testing",
+      t = { "<cmd>GoTestFunc<CR>", "go test -s [current test]" },
+      f = { "<cmd>GoTestFile<CR>", "go test [current file]" },
+      a = { "<cmd>GoTest ./...<CR>", "go test ./..." },
+      c = { "<cmd>GoCoverage<CR>", "annotate with coverage" },
+      -- d = { "<cmd>call vimspector#LaunchWithSettings( #{ configuration: 'single test', TestName: go#util#TestName() } )<CR>", "Debug current test" },
+    },
+  },
+}, { prefix = "g" })
 -- }}}

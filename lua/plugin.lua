@@ -192,6 +192,9 @@ return packer.startup({
         use 'kosayoda/nvim-lightbulb'
         use 'jose-elias-alvarez/nvim-lsp-ts-utils'
         use 'ray-x/lsp_signature.nvim'
+        use { 'ray-x/go.nvim', config = function()
+          require('go').setup()
+        end}
         use {
           "folke/trouble.nvim",
           config = function() require("trouble").setup {} end
