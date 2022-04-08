@@ -64,7 +64,6 @@ M.setup = function(attacher, capabilities)
       local ts_utils = require('nvim-lsp-ts-utils')
       ts_utils.setup({
         update_imports_on_move = true,
-        inlay_hints_highlight = 'NvimLspTSUtilsInlineHint',
         degbug = false,
       })
       ts_utils.setup_client(client)
