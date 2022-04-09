@@ -24,12 +24,6 @@ cmd("nnoremap : ;")
 opt("o", "termguicolors", true)
 opt("o", "background", 'dark')
 
--- g.tokyonight_style = "storm"
--- g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
--- cmd('colorscheme tokyonight')
-cmd('colorscheme everforest')
--- vim.api.nvim_command('let g:palenight_terminal_italics=1')
-
 -- ================= Main ================= --
 
 opt("o", "swapfile", false)
