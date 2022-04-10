@@ -43,6 +43,3 @@ require('colorizer').setup(
     css_fn   = true;         -- Enable all CSS *functions*: rgb_fn, hsl_fn
   }
 )
-
--- Misc
-require("neoscroll").setup()

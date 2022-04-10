@@ -30,8 +30,11 @@ return packer.startup({
             requires = { "kyazdani42/nvim-web-devicons", opt = true },
         }
         use 'norcalli/nvim-colorizer.lua'
-        use 'karb94/neoscroll.nvim' -- smooth scroll
         use 'lukas-reineke/indent-blankline.nvim'
+        use {
+          'karb94/neoscroll.nvim',
+          config = function() require('neoscroll').setup({}) end
+        }
         -- Themes
         use 'sainnhe/everforest'
         use 'folke/tokyonight.nvim'
