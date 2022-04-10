@@ -82,7 +82,7 @@ return packer.startup({
         use 'voldikss/vim-translator' -- Asynchronous translating plugin
         use 'famiu/bufdelete.nvim' -- Delete Neovim buffers without losing window layout
         use 'nyngwang/NeoZoom.lua'
-        use{'anuvyklack/pretty-fold.nvim',
+        use {'anuvyklack/pretty-fold.nvim',
            config = function()
               require('pretty-fold').setup{}
               require('pretty-fold.preview').setup{
@@ -197,10 +197,15 @@ return packer.startup({
         use 'stevearc/aerial.nvim'
         use 'kosayoda/nvim-lightbulb'
         use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+        use {
+          "windwp/nvim-ts-autotag",
+          config = function() require('nvim-ts-autotag').setup() end
+        }
         use 'ray-x/lsp_signature.nvim'
-        use { 'ray-x/go.nvim', config = function()
-          require('go').setup()
-        end}
+        use {
+          'ray-x/go.nvim',
+          config = function() require('go').setup() end
+        }
         use {
           "folke/trouble.nvim",
           config = function() require("trouble").setup {} end
@@ -213,8 +218,8 @@ return packer.startup({
         use 'rizzatti/dash.vim'
         -- use 'tomtom/tcomment_vim'
         use {
-            'numToStr/Comment.nvim',
-            config = function() require('Comment').setup() end
+          'numToStr/Comment.nvim',
+          config = function() require('Comment').setup() end
         }
         use {
           'mhartington/formatter.nvim',
