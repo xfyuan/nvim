@@ -7,8 +7,13 @@ local gps = require('nvim-gps')
 vim.g.matchup_matchparen_offscreen = {}
 
 treesitter.setup({
-  ensure_installed = 'maintained',
-  ignore_install = { 'kotlin' },
+  ensure_installed = {
+    'bash', 'cmake', 'css', 'dockerfile', 'eex', 'elixir', 'erlang',
+    'go', 'gomod', 'html', 'heex', 'help', 'http', 'markdown',
+    'javascript', 'jsdoc', 'json', 'lua', 'regex', 'ruby', 'scss',
+    'toml', 'tsx', 'typescript', 'vim', 'vue', 'yaml',
+  },
+  ignore_install = { 'kotlin', 'java' },
   highlight = {
     enable = true,
   },
