@@ -41,9 +41,9 @@ M.setup = function(attacher, capabilities)
   }
   local default_opts = {
     single_file_support = true,
-    on_attach = attacher,
     capabilities = capabilities,
     handlers = handlers,
+    on_attach = attacher,
   }
 
   check_installed()
@@ -60,6 +60,8 @@ M.setup = function(attacher, capabilities)
 
   local tsserver_setting = {
     init_options = require("nvim-lsp-ts-utils").init_options,
+    capabilities = capabilities,
+    handlers = handlers,
     on_attach = function(client)
       local ts_utils = require('nvim-lsp-ts-utils')
       ts_utils.setup({
