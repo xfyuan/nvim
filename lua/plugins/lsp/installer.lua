@@ -58,28 +58,10 @@ M.setup = function(attacher, capabilities)
     },
   })
 
-  local tsserver_setting = {
-    init_options = require("nvim-lsp-ts-utils").init_options,
-    capabilities = capabilities,
-    handlers = handlers,
-    on_attach = function(client)
-      local ts_utils = require('nvim-lsp-ts-utils')
-      ts_utils.setup({
-        update_imports_on_move = true,
-        degbug = false,
-      })
-      ts_utils.setup_client(client)
-    end
-  }
-
   lsp_installer.on_server_ready(function(server)
-    if server.name == "tsserver" then
-      server:setup(tsserver_setting)
-      vim.cmd 'do User LspAttachBuffers'
-    else
-      local config = vim.tbl_extend('keep', customizations[server.name] or {}, default_opts)
-      server:setup(vim.tbl_extend('keep', config, lspconfig[server.name]))
-    end
+    local config = vim.tbl_extend('keep', customizations[server.name] or {}, default_opts)
+    server:setup(vim.tbl_extend('keep', config, lspconfig[server.name]))
+    vim.cmd 'do User LspAttachBuffers'
   end)
 
   require("lsp_signature").setup()

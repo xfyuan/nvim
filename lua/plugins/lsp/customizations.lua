@@ -51,4 +51,16 @@ return {
       },
     },
   },
+
+  tsserver = {
+    init_options = require("nvim-lsp-ts-utils").init_options,
+    on_attach = function(client)
+      local ts_utils = require('nvim-lsp-ts-utils')
+      ts_utils.setup({
+        update_imports_on_move = true,
+        degbug = false,
+      })
+      ts_utils.setup_client(client)
+    end
+  }
 }
