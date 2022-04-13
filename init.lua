@@ -13,7 +13,6 @@ require "plugins.fuzzyfinder"
 require "plugins.lsp"
 require "plugins.notification"
 require "plugins.programming"
-require "plugins.statusline"
 require "plugins.treesitter"
 
 -- key mapping

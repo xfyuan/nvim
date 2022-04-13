@@ -26,7 +26,7 @@ return packer.startup({
         }
         use {
             "nvim-lualine/lualine.nvim",
-            -- config = [[require('plugins.config.lualine')]],
+            config = [[require('plugins.config.lualine')]],
             requires = { "kyazdani42/nvim-web-devicons", opt = true },
         }
         use 'norcalli/nvim-colorizer.lua'

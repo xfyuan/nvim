@@ -1,74 +1,105 @@
-local function lsp_progress()
-  local messages = vim.lsp.util.get_progress_messages()
-  if #messages == 0 then
-    return
-  end
-  local status = {}
-  for _, msg in pairs(messages) do
-    table.insert(status, (msg.percentage or 0) .. "%% " .. (msg.title or ""))
-  end
-  local spinners = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-  local ms = vim.loop.hrtime() / 1000000
-  local frame = math.floor(ms / 120) % #spinners
-  return table.concat(status, " | ") .. " " .. spinners[frame + 1]
+local lualine = require('lualine')
+local gps = require("nvim-gps")
+
+local bufnr = function()
+  return tostring(vim.api.nvim_get_current_buf())
+end
+local spacer = function()
+  return ' '
 end
 
-vim.cmd([[autocmd User LspProgressUpdate let &ro = &ro]])
+local filename = {
+  'filename',
+  file_status = true,
+  path = 1,
+  shorting_target = 40,
+  symbols = { modified = ' +', readonly = ' ' },
+}
 
-local config = {
+lualine.setup({
+  extensions = { "nvim-tree", "quickfix", "fugitive", "aerial", "toggleterm" },
   options = {
-    -- theme = "tokyonight",
-    section_separators = { "", "" },
-    component_separators = { "", "" },
-    -- section_separators = { "", "" },
-    -- component_separators = { "", "" },
+    theme = 'auto',
     icons_enabled = true,
-    globalstatus = true,
+    -- section_separators = '',
+    -- section_separators = { left = '', right = ''},
+    section_separators = { left = '', right = '' },
+    -- section_separators = { left = '', right = ''},
+
+    component_separators = '',
+    -- component_separators = { left = '', right = ''},
+    -- component_separators = { left = '', right = ''},
   },
   tabline = {
     lualine_a = {},
     lualine_b = {'branch'},
-    lualine_c = {},
+    lualine_c = {'filename'},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {{'tabs', mode = 2}}
   },
   sections = {
-    lualine_a = { "mode" },
-    lualine_b = {},
-    lualine_c = { { "filename", file_status = true, path = 1, shorting_target = 100 } },
-    lualine_x = { { "diagnostics", sources = { "nvim_diagnostic" } } },
-    lualine_y = { 'encoding', 'filetype' },
-    lualine_z = { "location" },
+    lualine_a = { 'mode' },
+    lualine_b = {
+      {
+        bufnr,
+        separator = '│',
+      },
+      {
+        spacer,
+        padding = 0,
+      },
+      {
+        'filetype',
+        colored = true,
+        icon_only = true,
+        padding = 0,
+      },
+      filename,
+    },
+    lualine_c = {
+      {
+        'diagnostics',
+        sources = { 'nvim_diagnostic' },
+        symbols = {
+          error = '',
+          warn = '',
+          hint = '',
+          info = '',
+        },
+        color_error = '#CA1243',
+        color_warn = '#F7C154',
+        color_hint = '#50A14F',
+        color_info = '#6699CC',
+      },
+      { gps.get_location, cond = gps.is_available }
+    },
+    lualine_x = {
+      {
+        'encoding',
+        padding = 0,
+        separator = ' ',
+      },
+      {
+        'fileformat',
+        padding = 0,
+      },
+      {
+        spacer,
+        padding = 0,
+      },
+    },
+    lualine_y = { 'diff' },
+    lualine_z = {
+      { '[[%3l:%-3c]]' },
+    },
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = {},
-    lualine_c = { { "filename", file_status = true, path = 1 } },
+    lualine_b = { bufnr },
+    lualine_c = { filename },
     lualine_x = {},
-    lualine_y = { 'encoding', 'filetype' },
+    lualine_y = {},
     lualine_z = {},
   },
-  extensions = { "nvim-tree", "quickfix", "fugitive", "aerial", "toggleterm" },
-}
-
--- try to load matching lualine theme
-
-local M = {}
-
-function M.load()
-  local name = vim.g.colors_name or ""
-  local ok, _ = pcall(require, "lualine.themes." .. name)
-  if ok then
-    config.options.theme = name
-  end
-  require("lualine").setup(config)
-end
-
-M.load()
-
--- vim.api.nvim_exec([[
---   autocmd ColorScheme * lua require("config.lualine").load();
--- ]], false)
-
-return M
+})
