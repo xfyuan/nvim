@@ -12,10 +12,10 @@ local has_words_before = function()
 end
 
 cmp.setup({
-    documentation = {
-      border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
-
     formatting = {
       format = function(entry, vim_item)
         local icon = require('lspkind').presets.default[vim_item.kind]
