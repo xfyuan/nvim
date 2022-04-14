@@ -255,6 +255,12 @@ wk.register({
 }, { prefix = "<leader>" })
 
 wk.register({
+  d = {
+    name = 'diff view',
+    o = {'<cmd>DiffviewOpen<CR>', 'open diffview'},
+    u = {'<cmd>DiffviewOpen -uno<CR>', 'open diffview hide untracked files'},
+    h = {'<cmd>DiffviewFileHistory<CR>', 'open diffview file history'},
+  },
   l = {
     name = 'lsp origin actions',
     d = {'<cmd>lua vim.lsp.buf.definition()<cr>', 'go to definition'},

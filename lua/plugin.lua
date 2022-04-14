@@ -81,6 +81,7 @@ return packer.startup({
         use 'akinsho/toggleterm.nvim' -- A neovim lua plugin to help easily manage multiple terminal windows
         use 'voldikss/vim-translator' -- Asynchronous translating plugin
         use 'famiu/bufdelete.nvim' -- Delete Neovim buffers without losing window layout
+        use 'sindrets/diffview.nvim'
         use 'nyngwang/NeoZoom.lua'
         use {
           'https://gitlab.com/yorickpeterse/nvim-window.git',
