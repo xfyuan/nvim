@@ -82,6 +82,18 @@ return packer.startup({
         use 'voldikss/vim-translator' -- Asynchronous translating plugin
         use 'famiu/bufdelete.nvim' -- Delete Neovim buffers without losing window layout
         use 'nyngwang/NeoZoom.lua'
+        use {
+          'https://gitlab.com/yorickpeterse/nvim-window.git',
+          config = function()
+            vim.cmd [[hi BlackOnLightYellow guifg=#000000 guibg=#f2de91]];
+            require('nvim-window').setup({
+              chars = {"a", "s", "f", "g", "h", "j", "k", "l"},
+              normal_hl = 'BlackOnLightYellow',
+              hint_hl = 'Bold',
+              border = 'none',
+            })
+          end
+        }
         use {'anuvyklack/pretty-fold.nvim',
            config = function()
               require('pretty-fold').setup{}
