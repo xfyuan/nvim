@@ -150,7 +150,6 @@ wk.register({
     b = {'<cmd>Telescope buffers<cr>', 'find buffers'},
     h = {'<cmd>Telescope oldfiles<cr>', 'opened files history'},
     s = {'<cmd>Telescope luasnip<cr>', 'search snippet'},
-    S = {'<cmd>SearchSession<cr>', 'search session'},
   },
   g = {
     name = 'git',
@@ -224,7 +223,9 @@ wk.register({
         "Colorscheme with Preview"
     },
     a = {"<cmd>SaveSession<cr>", "add auto session"},
+    l = {"<cmd>RestoreSession<cr>", "load auto session"},
     d = {"<cmd>DeleteSession<cr>", "delete auto session"},
+    f = {'<cmd>SearchSession<cr>', 'search auto session'},
   },
   t = {
     name = 'test & trouble',

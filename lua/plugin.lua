@@ -58,7 +58,9 @@ return packer.startup({
             require('session-lens').setup({})
             require('auto-session').setup {
               auto_session_root_dir = vim.fn.stdpath('config').."/sessions/",
-              auto_session_create_enabled = false,
+              auto_session_enabled = false,
+              pre_save_cmds = {"NvimTreeClose"},
+              post_restore_cmds = {"NvimTreeOpen"},
             }
           end
         }
