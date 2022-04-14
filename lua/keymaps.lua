@@ -244,6 +244,7 @@ wk.register({
   w = {
     name = 'window & word',
     w = {'<cmd>NeoZoomToggle<cr>', 'Toggle window zoom'},
+    o = {"<cmd>lua require('nvim-window').pick()<cr>", 'Choose window'},
     t = {"<c-w>t", "Move to new tab"},
     j = {"<c-w>w", "Switch window"},
     -- vim-test plugin
