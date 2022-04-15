@@ -72,6 +72,7 @@ opt("o", "foldenable", false)
 opt("o", "foldmethod", 'indent')
 opt("o", "foldlevel", 1)
 
+opt("o", "sessionoptions", 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal')
 -- ================= Useful ================= --
 -- remove trailing whitespaces
 cmd([[autocmd BufWritePre * %s/\s\+$//e]])
