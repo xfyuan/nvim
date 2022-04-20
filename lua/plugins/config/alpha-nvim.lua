@@ -24,7 +24,7 @@ dashboard.section.header.val = {
 "                                   ✿         ❀                                   ",
 "                                  ✿           ❀                                  ",
 "                                                                                 ",
-"                                NeoVim for XY v0.6                               ",
+"                               The NeoVim of XY v0.7                             ",
 }
 
 -- Set menu
