@@ -209,6 +209,7 @@ return packer.startup({
         -- LSP Powerfull Plugins
         use 'stevearc/aerial.nvim'
         use 'kosayoda/nvim-lightbulb'
+        use 'haringsrob/nvim_context_vt'
         use 'jose-elias-alvarez/nvim-lsp-ts-utils'
         use {
           "windwp/nvim-ts-autotag",
