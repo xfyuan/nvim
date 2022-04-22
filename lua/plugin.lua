@@ -108,6 +108,10 @@ return packer.startup({
           config = function() require("gitlinker").setup() end,
         }
         use {
+          "folke/todo-comments.nvim",
+          config = function() require("todo-comments").setup() end
+        }
+        use {
           'kevinhwang91/nvim-hlslens', -- helps you better glance at matched information, seamlessly jump between matched instances.
           branch = 'main',
           keys = {{'n', '*'}, {'n', '#'}, {'n', 'n'}, {'n', 'N'}},
