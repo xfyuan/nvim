@@ -139,6 +139,20 @@ return packer.startup({
         -- press Q to remove current cursor/selection
         use 'mg979/vim-visual-multi'
 
+        -- Text Objects
+        use 'kana/vim-textobj-user'               -- Create your own text objects
+        use 'kana/vim-textobj-line'               -- al | il
+        use 'kana/vim-textobj-syntax'             -- ay | iy
+        use 'kana/vim-textobj-indent'             -- ai | ii
+        use 'kana/vim-textobj-lastpat'            -- a/ | i/
+        use 'nelstrom/vim-textobj-rubyblock'      -- ar | ir
+        use 'osyo-manga/vim-textobj-multiblock'   -- ab | ib
+        use 'idbrii/textobj-word-column.vim'      -- ac | ic
+        use 'Julian/vim-textobj-variable-segment' -- av | iv
+        use 'bootleq/vim-textobj-rubysymbol'      -- a: | i:
+        -- }}}
+
+        -- ============ Legend ============ -- {{{
         -- Tim Pope
         use 'tpope/vim-unimpaired' -- pairs of handy bracket mappings, like ]n jumpt to SCM conflict
         use 'tpope/vim-sleuth' -- automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
@@ -157,18 +171,6 @@ return packer.startup({
         use 'junegunn/gv.vim'
         -- CONFLICT with hlslens plugin, so disable it 👇
         -- use 'junegunn/vim-slash' -- automatically clearing Vim's search highlighting whenever the cursor moves or insert mode is entered
-
-        -- Text Objects
-        use 'kana/vim-textobj-user'               -- Create your own text objects
-        use 'kana/vim-textobj-line'               -- al | il
-        use 'kana/vim-textobj-syntax'             -- ay | iy
-        use 'kana/vim-textobj-indent'             -- ai | ii
-        use 'kana/vim-textobj-lastpat'            -- a/ | i/
-        use 'nelstrom/vim-textobj-rubyblock'      -- ar | ir
-        use 'osyo-manga/vim-textobj-multiblock'   -- ab | ib
-        use 'idbrii/textobj-word-column.vim'      -- ac | ic
-        use 'Julian/vim-textobj-variable-segment' -- av | iv
-        use 'bootleq/vim-textobj-rubysymbol'      -- a: | i:
         -- }}}
 
         -- ============ Programming ============ -- {{{
