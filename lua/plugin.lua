@@ -222,8 +222,8 @@ return packer.startup({
         use 'haringsrob/nvim_context_vt'
         use 'jose-elias-alvarez/nvim-lsp-ts-utils'
         use {
-          "windwp/nvim-ts-autotag",
-          config = function() require('nvim-ts-autotag').setup() end
+          "j-hui/fidget.nvim",
+          config = function() require("fidget").setup {} end,
         }
         use 'ray-x/lsp_signature.nvim'
         use {
