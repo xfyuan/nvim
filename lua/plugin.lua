@@ -175,14 +175,26 @@ return packer.startup({
 
         -- ============ Programming ============ -- {{{
         -- Treesitter
-        use({
-          { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
-          'nvim-treesitter/nvim-treesitter-textobjects',
-          'nvim-treesitter/nvim-treesitter-refactor',
-          'nvim-treesitter/playground',
-          'lewis6991/spellsitter.nvim',
-          'SmiteshP/nvim-gps',
-        })
+        use {
+          'nvim-treesitter/nvim-treesitter',
+          run = ':TSUpdate',
+          requires = {
+            {'nvim-treesitter/nvim-treesitter-textobjects'},
+            {'nvim-treesitter/nvim-treesitter-refactor'},
+            {'nvim-treesitter/playground'},
+            {'RRethy/nvim-treesitter-textsubjects'},
+            {'lewis6991/spellsitter.nvim'},
+            {'SmiteshP/nvim-gps'},
+            {
+              'romgrk/nvim-treesitter-context',
+              config = function() require('treesitter-context.config').setup() end
+            },
+            {
+              'windwp/nvim-ts-autotag',
+              config = function() require('nvim-ts-autotag').setup() end
+            },
+          }
+        }
 
         -- LSP
         use({
