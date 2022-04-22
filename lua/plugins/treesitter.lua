@@ -31,14 +31,41 @@ treesitter.setup({
   textobjects = {
     select = {
       enable = true,
+      lookahead = true,
       keymaps = {
         ['ab'] = '@block.outer',
         ['ib'] = '@block.inner',
-        ['am'] = '@function.outer',
-        ['im'] = '@function.inner',
-        ['aM'] = '@class.outer',
-        ['iM'] = '@class.inner',
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
       },
+    },
+    swap = {
+      enable = true,
+      swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
+      },
+    },
+    lsp_interop = {
+      enable = true,
+      border = 'rounded',
+      peek_definition_code = {
+        ["<leader>da"] = "@function.outer",
+        ["<leader>dA"] = "@class.outer",
+      },
+    },
+  },
+  textsubjects = {
+    enable = true,
+    prev_selection = ',', -- (Optional) keymap to select the previous selection
+    keymaps = {
+      ['.'] = 'textsubjects-smart',
+      [';'] = 'textsubjects-container-outer',
+      ['i;'] = 'textsubjects-container-inner',
     },
   },
   refactor = {
