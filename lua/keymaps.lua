@@ -246,8 +246,6 @@ wk.register({
     w = {'<cmd>NeoZoomToggle<cr>', 'Toggle window zoom'},
     o = {"<cmd>lua require('nvim-window').pick()<cr>", 'Choose window'},
     t = {"<c-w>t", "Move to new tab"},
-    j = {"<c-w>w", "Switch window"},
-    -- vim-test plugin
     -- w = {'<cmd>MacDictPopup<cr>', 'search cursor word in macOS distionary'},
     -- d = {'<cmd>MacDictWord<cr>', 'search in macOS distionary and show in quickfix'},
     l = {'<Plug>TranslateW', 'Translate word online'},
