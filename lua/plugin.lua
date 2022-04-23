@@ -138,6 +138,11 @@ return packer.startup({
         -- press q to skip current and get next occurrence
         -- press Q to remove current cursor/selection
         use 'mg979/vim-visual-multi'
+        use {
+          "iamcco/markdown-preview.nvim",
+          run = "cd app && yarn install",
+          ft = "markdown",
+        }
 
         -- Text Objects
         use 'kana/vim-textobj-user'               -- Create your own text objects
