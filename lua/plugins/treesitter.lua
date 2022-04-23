@@ -28,6 +28,9 @@ treesitter.setup({
       node_decremental = 'gnm',
     },
   },
+  context_commentstring = {
+    enable = true
+  },
   textobjects = {
     select = {
       enable = true,

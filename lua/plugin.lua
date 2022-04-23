@@ -188,6 +188,7 @@ return packer.startup({
             {'nvim-treesitter/nvim-treesitter-refactor'},
             {'nvim-treesitter/playground'},
             {'RRethy/nvim-treesitter-textsubjects'},
+            {'JoosepAlviste/nvim-ts-context-commentstring'},
             {'lewis6991/spellsitter.nvim'},
             {'SmiteshP/nvim-gps'},
             {
