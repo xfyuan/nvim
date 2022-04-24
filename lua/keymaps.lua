@@ -151,7 +151,8 @@ wk.register({
     b = {'<cmd>Telescope buffers<cr>', 'find buffers'},
     h = {'<cmd>Telescope oldfiles<cr>', 'opened files history'},
     s = {'<cmd>Telescope luasnip<cr>', 'search snippet'},
-    p = {"<cmd>lua require'telescope'.extensions.project.project{}<cr>", "find project"},
+    p = {'<cmd>Telescope packer<cr>', 'list packer info'},
+    P = {"<cmd>lua require'telescope'.extensions.project.project{}<cr>", "find project"},
   },
   g = {
     name = 'git',
