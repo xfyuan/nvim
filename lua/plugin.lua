@@ -69,10 +69,6 @@ return packer.startup({
           'phaazon/hop.nvim',
           config = function () require('hop').setup() end
         }
-        use {
-          'windwp/nvim-autopairs',
-          config = function () require('nvim-autopairs').setup() end
-        }
         use 'ethanholz/nvim-lastplace' -- Intelligently reopen files at your last edit position in Vim
         -- use 'dyng/ctrlsf.vim' -- A powered code search and view tool
         use 'windwp/nvim-spectre' -- Find the enemy and replace them with dark power
@@ -196,6 +192,10 @@ return packer.startup({
             {
               'romgrk/nvim-treesitter-context',
               config = function() require('treesitter-context.config').setup() end
+            },
+            {
+              'windwp/nvim-autopairs',
+              config = function () require('nvim-autopairs').setup() end
             },
             {
               'windwp/nvim-ts-autotag',
