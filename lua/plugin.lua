@@ -125,6 +125,7 @@ return packer.startup({
           requires = {
             {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
             {'nvim-telescope/telescope-symbols.nvim'},
+            {'nvim-telescope/telescope-project.nvim'},
             {'crispgm/telescope-heading.nvim'},
           },
         })
