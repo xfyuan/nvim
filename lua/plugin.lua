@@ -156,19 +156,19 @@ return packer.startup({
         -- }}}
 
         -- ============ Legend ============ -- {{{
-        -- Tim Pope
+        -- Tim Pope ⭐
+        use 'tpope/vim-fugitive'
         use 'tpope/vim-unimpaired' -- pairs of handy bracket mappings, like ]n jumpt to SCM conflict
         use 'tpope/vim-sleuth' -- automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
         use 'tpope/vim-abolish' -- switch case using crc, crs, crm, etc.
         use 'tpope/vim-rails'
         use 'tpope/vim-dadbod'
-        use 'tpope/vim-fugitive'
         use {
           'tpope/vim-surround',
           'wellle/targets.vim' -- provides additional powerfull text objects!!
         }
 
-        -- Junegunn Choi
+        -- Junegunn Choi ⭐
         use { 'junegunn/fzf.vim', requires = {'junegunn/fzf', opt = true} }
         use 'junegunn/vim-fnr' -- Find-N-Replace in Vim with live preview
         use 'junegunn/gv.vim'
