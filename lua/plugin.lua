@@ -18,6 +18,7 @@ return packer.startup({
         use 'wbthomason/packer.nvim'
         use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'
+        use 'kyazdani42/nvim-web-devicons'
 
         -- ============ Appearance ============ -- {{{
         use {
@@ -27,7 +28,6 @@ return packer.startup({
         use {
             "nvim-lualine/lualine.nvim",
             config = [[require('plugins.config.lualine')]],
-            requires = { "kyazdani42/nvim-web-devicons", opt = true },
         }
         use 'norcalli/nvim-colorizer.lua'
         use 'lukas-reineke/indent-blankline.nvim'
