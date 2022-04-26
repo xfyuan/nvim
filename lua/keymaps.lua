@@ -101,10 +101,10 @@ map("n", "<C-p>", [[<Cmd>Telescope git_files<CR>]], opt)
 
 -- map("n", "<C-e>", [[<Cmd>CtrlSF<CR>]], opt)
 
-map("n", "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", opt)
-map("v", "<leader>sw", "<cmd>lua require('spectre').open_visual()<cr>", opt)
+map("n", "<leader>sR", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", opt)
+map("v", "<leader>sR", "<cmd>lua require('spectre').open_visual()<cr>", opt)
 map("n", "<leader>sF", "viw:lua require('spectre').open_file_search()<cr>", opt)
-map("n", "<leader>so", ":lua require('spectre').open()<cr>", opt)
+map("n", "<leader>sO", ":lua require('spectre').open()<cr>", opt)
 
 cmd([[nmap <C-]> <Plug>(fzf_tags)]])
 
