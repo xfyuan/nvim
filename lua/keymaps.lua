@@ -101,10 +101,10 @@ map("n", "<C-p>", [[<Cmd>Telescope git_files<CR>]], opt)
 
 -- map("n", "<C-e>", [[<Cmd>CtrlSF<CR>]], opt)
 
-map("n", "<leader>sR", ":lua require('spectre').open()<cr>", opt)
-map("n", "<leader>sw", "viw:lua require('spectre').open_visual()<cr>", opt)
-map("v", "<leader>sw", ":lua require('spectre').open_visual()<cr>", opt)
-map("n", "<leader>sf", "viw:lua require('spectre').open_file_search()<cr>", opt)
+map("n", "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", opt)
+map("v", "<leader>sw", "<cmd>lua require('spectre').open_visual()<cr>", opt)
+map("n", "<leader>sF", "viw:lua require('spectre').open_file_search()<cr>", opt)
+map("n", "<leader>so", ":lua require('spectre').open()<cr>", opt)
 
 cmd([[nmap <C-]> <Plug>(fzf_tags)]])
 
@@ -209,7 +209,8 @@ wk.register({
     -- },
   },
   s = {
-    name = "search/session",
+    name = "search/session/spectre",
+    -- search
     c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
     C = {"<cmd>Telescope commands<cr>", "Commands"},
     h = {"<cmd>Telescope help_tags<cr>", "Find Help"},
@@ -225,6 +226,7 @@ wk.register({
         "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
         "Colorscheme with Preview"
     },
+    -- session
     a = {"<cmd>SaveSession<cr>", "add auto session"},
     l = {"<cmd>RestoreSession<cr>", "load auto session"},
     d = {"<cmd>DeleteSession<cr>", "delete auto session"},
