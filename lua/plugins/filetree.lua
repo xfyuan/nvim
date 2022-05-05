@@ -41,7 +41,6 @@ require('nvim-tree').setup({
   view = {
     width = 32,
     side = 'left',
-    auto_resize = false,
     number = false,
     relativenumber = false,
     signcolumn = 'yes',
