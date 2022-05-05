@@ -92,12 +92,13 @@ return packer.startup({
           end
         }
         use {'anuvyklack/pretty-fold.nvim',
-           config = function()
-              require('pretty-fold').setup{}
-              require('pretty-fold.preview').setup{
-                key = 'h',
-              }
-           end
+          requires = 'anuvyklack/nvim-keymap-amend',
+          config = function()
+            require('pretty-fold').setup{}
+            require('pretty-fold.preview').setup{
+              key = 'h',
+            }
+          end
         }
         use {
           "ruifm/gitlinker.nvim",
