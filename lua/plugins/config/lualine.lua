@@ -33,10 +33,10 @@ lualine.setup({
   tabline = {
     lualine_a = {},
     lualine_b = {'branch'},
-    lualine_c = {'filename'},
+    lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {{'tabs', mode = 2}}
+    lualine_z = {{'tabs', mode = 2, tabs_color = { active = 'IncSearch'}}}
   },
   sections = {
     lualine_a = { 'mode' },
