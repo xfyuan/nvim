@@ -36,7 +36,7 @@ lualine.setup({
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {{'tabs', mode = 2, tabs_color = { active = { bg = '#d699b6' } } }},
+    lualine_z = {{ 'tabs', mode = 2, tabs_color = { active = 'TSNote' } }},
   },
   sections = {
     lualine_a = { 'mode' },
