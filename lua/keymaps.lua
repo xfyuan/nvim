@@ -244,6 +244,7 @@ wk.register({
     j = {"<cmd>Trouble lsp_definitions<cr>", "Lsp Definitions"},
     r = {"<cmd>Trouble lsp_references<cr>", "LSP References"},
     q = {"<cmd>Trouble quickfix<cr>", "Lsp Quickfix"},
+    o = {"<cmd>TodoLocList<cr>", "list todos in quickfix"},
   },
   w = {
     name = 'window & word',
