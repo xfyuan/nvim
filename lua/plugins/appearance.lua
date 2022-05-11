@@ -3,11 +3,6 @@ local g = vim.g
 
 cmd "syntax on"
 
-require('nightfox').setup {
-  groups = {
-    CursorLine = { bg = 'palette.bg2' },
-  }
-}
 -- cmd('colorscheme nordfox')
 -- g.tokyonight_style = "storm"
 -- g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
