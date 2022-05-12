@@ -40,6 +40,7 @@ return packer.startup({
           end
         }
         -- Themes
+        use 'xfyuan/nightforest.nvim'
         use 'sainnhe/everforest'
         use 'folke/tokyonight.nvim'
         use 'EdenEast/nightfox.nvim'
