@@ -192,7 +192,7 @@ return packer.startup({
             {'SmiteshP/nvim-gps'},
             {
               'romgrk/nvim-treesitter-context',
-              config = function() require('treesitter-context.config').setup() end
+              config = function() require('treesitter-context').setup() end
             },
             {
               'windwp/nvim-autopairs',
