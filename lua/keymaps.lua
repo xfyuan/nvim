@@ -273,6 +273,8 @@ wk.register({
     a = {'<cmd>lua vim.lsp.buf.code_action()<cr>', 'go to code action'},
     f = {'<cmd>vim.lsp.buf.formatting()<cr>', 'formatting code'},
     R = {'<cmd>LspRestart<cr>', 'restart lsp'},
+    i = {'<cmd>lua vim.diagnostic.config{virtual_text=false}<cr>', 'hide inline diagnosis virtual text'},
+    I = {'<cmd>lua vim.diagnostic.config{virtual_text=true}<cr>', 'show inline diagnosis virtual text'},
   },
   o = {
     name = "Go with go.nvim",
