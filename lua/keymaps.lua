@@ -189,7 +189,7 @@ wk.register({
   },
   l = {
     name = 'lsp',
-    j = {"<cmd>vsplit <bar> Telescope lsp_definitions<cr>", 'list word definition and reference'},
+    j = {"<cmd>Telescope lsp_definitions jump_type=vsplit<cr>", 'list word definition and reference'},
     s = {"<cmd>Telescope lsp_document_symbols<cr>", 'list document symbols'},
     k = {'<cmd>lua vim.lsp.buf.hover()<cr>', 'show hover doc'},
     r = {"<cmd>Telescope lsp_references<CR>", 'list references'},
