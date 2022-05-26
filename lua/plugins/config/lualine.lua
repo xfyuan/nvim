@@ -22,9 +22,9 @@ lualine.setup({
     theme = 'auto',
     icons_enabled = true,
     -- section_separators = '',
-    -- section_separators = { left = '', right = ''},
     section_separators = { left = '', right = '' },
     -- section_separators = { left = '', right = ''},
+    -- section_separators = { left = '', right = ''},
 
     component_separators = '',
     -- component_separators = { left = '', right = ''},

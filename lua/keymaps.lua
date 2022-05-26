@@ -108,6 +108,7 @@ map("n", "<leader>sO", ":lua require('spectre').open()<cr>", opt)
 
 cmd([[nmap <C-]> <Plug>(fzf_tags)]])
 
+map("v", "<leader>aa", ":SimpleAlign -l 0 ", {})
 -- }}}
 
 -- ================= Whichkey Mapping ================= -- {{{
@@ -131,12 +132,32 @@ wk.register({
   k = {'<Plug>DashSearch', 'search word in Dash'}, -- dash.vim plugin
   o = {'<cmd>AerialToggle<cr>', 'toggle code outline window'}, -- aerial.nvim plugin
   d = {
-    name = 'db, buffer',
+    name = 'debugger/db/buffer',
     -- bufdelete.nvim plugin
     d = {'<cmd>Bdelete<cr>', 'delete buffer'},
     -- vim-dadbod plugin
-    u = {'<cmd>DBUI<cr>', 'open db ui'},
+    -- u = {'<cmd>DBUI<cr>', 'open db ui'},
     -- l = {'<Plug>(DBExeLine)', 'run line as query'},
+    -- g = { function() require('dapui').toggle() end, "Toggle debbuger" },
+    b = { function() require('dap').toggle_breakpoint() end, "Toggle breakpoint" },
+    c = { function() require('dap').continue() end, "Continue or start debuggger" },
+    n = { function() require('dap').step_over() end, "Step over" },
+    i = { function() require('dap').step_into() end, "Step in" },
+    o = { function() require('dap').step_out() end, "Step out" },
+    k = { function() require('dap').up() end, "Go up" },
+    j = { function() require('dap').down() end, "Go down" },
+    u = { function() require("dapui").toggle() end, "Toggle UI" },
+    t = { function()
+      local dap = require("dap")
+      dap.run({
+        type = "go",
+        name = "",
+        request = "launch",
+        mode = "test",
+        program = "./${relativeFileDirname}",
+        args = {"-test.run", ""},
+      })
+    end, "Debug test" },
   },
   f = {
     name = "fuzzy finder",
@@ -233,7 +254,7 @@ wk.register({
     f = {'<cmd>SearchSession<cr>', 'search auto session'},
   },
   t = {
-    name = 'test & trouble',
+    name = 'test/trouble',
     -- vim-test plugin
     t = {'<cmd>TestNearest<cr>', 'Test nearest case'},
     l = {'<cmd>TestLast<cr>', 'Test last case'},

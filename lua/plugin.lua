@@ -44,6 +44,7 @@ return packer.startup({
         use 'sainnhe/everforest'
         use 'folke/tokyonight.nvim'
         use 'EdenEast/nightfox.nvim'
+        use 'Shatur/neovim-ayu'
         -- }}}
 
         -- ============ Core ============ -- {{{
@@ -110,6 +111,10 @@ return packer.startup({
           config = function() require("todo-comments").setup() end
         }
         use {
+          'nmac427/guess-indent.nvim',
+          config = function() require('guess-indent').setup {} end,
+        }
+        use {
           'kevinhwang91/nvim-hlslens', -- helps you better glance at matched information, seamlessly jump between matched instances.
           branch = 'main',
           keys = {{'n', '*'}, {'n', '#'}, {'n', 'n'}, {'n', 'N'}},
@@ -125,6 +130,7 @@ return packer.startup({
             {'nvim-telescope/telescope-symbols.nvim'},
             {'nvim-telescope/telescope-project.nvim'},
             {'nvim-telescope/telescope-packer.nvim'},
+            {'nvim-telescope/telescope-dap.nvim'},
             {'crispgm/telescope-heading.nvim'},
           },
         })
@@ -212,6 +218,37 @@ return packer.startup({
           'williamboman/nvim-lsp-installer',
         })
 
+        -- Debugger
+        use {
+            "rcarriga/nvim-dap-ui",
+            requires = {
+                "mfussenegger/nvim-dap",
+                "theHamsta/nvim-dap-virtual-text",
+                "leoluz/nvim-dap-go",
+            },
+            config = function ()
+              vim.fn.sign_define('DapBreakpoint', {text='⛔', texthl='', linehl='', numhl=''})
+              vim.fn.sign_define('DapStopped', {text='👉', texthl='', linehl='', numhl=''})
+              -- vim.fn.sign_define('DapBreakpoint', {text='', texthl='', linehl='', numhl=''})
+              -- vim.fn.sign_define('DapBreakpointCondition', {text='', texthl='', linehl='', numhl=''})
+              -- vim.fn.sign_define('DapLogPoint', {text='ﱴ', texthl='', linehl='', numhl=''})
+              -- vim.fn.sign_define('DapStopped', {text='', texthl='', linehl='', numhl=''})
+              -- vim.fn.sign_define('DapBreakpointRejected', {text='', texthl='', linehl='', numhl=''})
+              require('dapui').setup({
+                mappings = {
+                  expand = { "o", "<2-LeftMouse>" },
+                  open = "<CR>",
+                  remove = "d",
+                  edit = "e",
+                  repl = "r",
+                  toggle = "t",
+                },
+              })
+              require("nvim-dap-virtual-text").setup()
+              require('dap-go').setup()
+              require('dap.ext.vscode').load_launchjs()
+            end
+        }
         -- Completion
         use({
           'hrsh7th/nvim-cmp',
@@ -273,11 +310,13 @@ return packer.startup({
         }
 
         use 'vim-test/vim-test' -- test running tool for many languages
+        use 'buoto/gotests-vim' -- generate go table driven tests easily
         use 'AndrewRadev/splitjoin.vim' -- Switch between single-line and multiline forms of code: gS to split a one-liner into multiple lines. gJ (with the cursor on the first line of a block) to join a block into a single-line.
         use 'AndrewRadev/switch.vim' -- switch segments of text with predefined replacements. default mapping `gs` to trigger the command
         use 'kristijanhusak/vim-dadbod-ui'
         use 'kristijanhusak/vim-dadbod-completion'
-        use 'alvan/vim-closetag'
+        use 'kg8m/vim-simple-align'
+        -- use 'alvan/vim-closetag'
         -- use 'kchmck/vim-coffee-script'
         -- }}}
     end,
