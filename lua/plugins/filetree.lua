@@ -1,13 +1,5 @@
 local g = vim.g
 
-g.nvim_tree_git_hl = 1
-g.nvim_tree_highlight_opened_files = 3
-g.nvim_tree_show_icons = {
-  git = 1,
-  folders = 1,
-  folder_arrows = 0,
-  files = 1,
-}
 -- automatically close the tab/vim when nvim-tree is the last window in the tab
 vim.cmd([[autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]])
 
@@ -36,6 +28,11 @@ require('nvim-tree').setup({
     '.byebug_history',
     '.vscode',
     '.idea',
+  },
+  renderer = {
+    group_empty = true,
+    highlight_git = true,
+    highlight_opened_files = '3',
   },
   update_focused_file = { enable = true },
   view = {
