@@ -243,10 +243,6 @@ wk.register({
     s = {"<cmd>Telescope grep_string<cr>", "Text under cursor"},
     S = {"<cmd>Telescope symbols<cr>", "Search symbols"},
     k = {"<cmd>Telescope keymaps<cr>", "Keymaps"},
-    P = {
-        "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
-        "Colorscheme with Preview"
-    },
     -- session
     a = {"<cmd>SaveSession<cr>", "add auto session"},
     l = {"<cmd>RestoreSession<cr>", "load auto session"},

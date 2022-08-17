@@ -12,6 +12,12 @@ telescope.setup({
     },
   },
 
+  pickers = {
+    colorscheme = {
+      enable_preview = true
+    }
+  },
+
   defaults = {
     dynamic_preview_title = true,
     layout_strategy = 'flex',
