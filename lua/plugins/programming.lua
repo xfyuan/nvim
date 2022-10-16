@@ -28,11 +28,6 @@ cmd([[omap <leader>db  <Plug>(DBExe)]])
 cmd([[nmap <leader>dn  <Plug>(DBExeLine)]])
 -- }}}
 
--- Copilot.nvim {{{
-cmd([[imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")]])
-g.copilot_no_tab_map = true
--- }}}
-
 -- nvim-lightbulb {{{
 cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 -- }}}

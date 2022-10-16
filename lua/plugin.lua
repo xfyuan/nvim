@@ -289,7 +289,6 @@ return packer.startup({
         }
 
         -- Enhancement Plugins
-        use 'github/copilot.vim'
         use 'zackhsi/fzf-tags'
         use 'lewis6991/gitsigns.nvim'
         use 'rizzatti/dash.vim'
