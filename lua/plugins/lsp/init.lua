@@ -2,7 +2,7 @@ local installer = require('plugins.lsp.installer')
 
 -- Add additional capabilities supported by nvim-cmp
 local protocol = vim.lsp.protocol
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
   protocol.make_client_capabilities()
 )
 local completionItem = capabilities.textDocument.completion.completionItem
