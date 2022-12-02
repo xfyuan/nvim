@@ -43,7 +43,6 @@ opt("o", "hidden", true)
 -- opt("o", "ignorecase", true)
 opt("o", "splitbelow", true)
 opt("o", "splitright", true)
-opt("o", "termguicolors", true)
 opt("w", "cul", true)
 
 opt("o", "mouse", "a")
@@ -73,24 +72,8 @@ opt("o", "foldmethod", 'indent')
 opt("o", "foldlevel", 1)
 
 opt("o", "sessionoptions", 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal')
+
 -- ================= Useful ================= --
 -- remove trailing whitespaces
 cmd([[autocmd BufWritePre * %s/\s\+$//e]])
 cmd([[autocmd BufWritePre * %s/\n\+\%$//e]])
-
--- ================= Utils ================= --
-local M = {}
-
-function M.is_buffer_empty()
-    -- Check whether the current buffer is empty
-    return vim.fn.empty(vim.fn.expand("%:t")) == 1
-end
-
-function M.has_width_gt(cols)
-    -- Check if the windows width is greater than a given number of columns
-    return vim.fn.winwidth(0) / 2 > cols
-end
--- file extension specific tabbing
-cmd([[autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])
-
-return M
