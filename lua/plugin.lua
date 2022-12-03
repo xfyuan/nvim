@@ -301,6 +301,16 @@ return packer.startup({
           'mhartington/formatter.nvim',
           config = [[require('plugins.config.formatter')]]
         }
+        use {
+          'RRethy/nvim-treesitter-endwise',
+          config = function()
+            require('nvim-treesitter.configs').setup {
+                endwise = {
+                  enable = true,
+                },
+            }
+          end
+        }
 
         use 'vim-test/vim-test' -- test running tool for many languages
         use 'buoto/gotests-vim' -- generate go table driven tests easily
