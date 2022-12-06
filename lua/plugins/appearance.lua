@@ -26,8 +26,13 @@ require("indent_blankline").setup {
 }
 
 -- nvim-colorizer.lua
-require('colorizer').setup(
-  {'*';},
+require('colorizer').setup({
+  'css';
+  'scss';
+  'erb';
+  'html';
+  'javascript';
+  },
   {
     RGB      = true;         -- #RGB hex codes
     RRGGBB   = true;         -- #RRGGBB hex codes
