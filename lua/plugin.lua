@@ -93,9 +93,11 @@ return packer.startup({
             })
           end
         }
-        use {'anuvyklack/pretty-fold.nvim',
-          config = function() require('pretty-fold').setup() end,
-        }
+        use({
+          "kevinhwang91/nvim-ufo",
+          requires = "kevinhwang91/promise-async",
+          config = [[require('plugins.config.ufo')]]
+        })
         use {
           "ruifm/gitlinker.nvim",
           config = function() require("gitlinker").setup() end,
