@@ -264,6 +264,11 @@ wk.register({
     q = {"<cmd>Trouble quickfix<cr>", "Lsp Quickfix"},
     o = {"<cmd>TodoLocList<cr>", "list todos in quickfix"},
   },
+  u = {
+    name = 'Url view',
+    u = { "<cmd>UrlView buffer<cr>", "Find URL and open" },
+    l = { "<cmd>UrlView buffer action=clipboard<cr>", "Copy URL" },
+  },
   w = {
     name = 'window & word',
     w = {'<cmd>NeoZoomToggle<cr>', 'Toggle window zoom'},
