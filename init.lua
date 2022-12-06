@@ -11,7 +11,6 @@ require "plugins.core"
 require "plugins.filetree"
 require "plugins.fuzzyfinder"
 require "plugins.lsp"
-require "plugins.notification"
 require "plugins.programming"
 require "plugins.treesitter"
 

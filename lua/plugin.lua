@@ -50,8 +50,15 @@ return packer.startup({
         -- ============ Core ============ -- {{{
         use 'folke/which-key.nvim'
         use 'kyazdani42/nvim-tree.lua'
-        use 'rcarriga/nvim-notify'
         use 'yianwillis/vimcdoc'
+        use({
+            "folke/noice.nvim",
+            config = [[require('plugins.config.noice')]],
+            requires = {
+              "MunifTanjim/nui.nvim",
+              { "rcarriga/nvim-notify", config = [[require('plugins.config.notify')]] },
+            },
+        })
 
         use {
           'rmagatti/auto-session',
