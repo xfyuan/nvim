@@ -82,6 +82,14 @@ return packer.startup({
         use 'sindrets/diffview.nvim'
         use 'nyngwang/NeoZoom.lua'
         use {
+          'axieax/urlview.nvim',
+          config = function ()
+            require('urlview').setup({
+              default_picker = "telescope",
+            })
+          end
+        }
+        use {
           'https://gitlab.com/yorickpeterse/nvim-window.git',
           config = function()
             vim.cmd [[hi BlackOnLightYellow guifg=#000000 guibg=#f2de91]];

@@ -174,6 +174,7 @@ wk.register({
     s = {'<cmd>Telescope luasnip<cr>', 'search snippet'},
     p = {'<cmd>Telescope packer<cr>', 'list packer info'},
     P = {"<cmd>lua require'telescope'.extensions.project.project{}<cr>", "find project"},
+    u = { "<cmd>UrlView buffer action=clipboard<cr>", "Copy URL" },
   },
   g = {
     name = 'git',
