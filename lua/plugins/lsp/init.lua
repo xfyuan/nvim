@@ -19,8 +19,6 @@ completionItem.resolveSupport = {
 }
 
 local attacher = function(client, bufnr)
-  require("aerial").on_attach(client, bufnr)
-
   -- Keymaps
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
