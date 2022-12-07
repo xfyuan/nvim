@@ -30,7 +30,7 @@ dashboard.section.header.val = {
 -- Set menu
 dashboard.section.buttons.val = {
     dashboard.button( "e",          "  New file" , ":enew <CR>"),
-    dashboard.button( "u",          "  Update plugins" , ":PackerUpdate<CR>"),
+    dashboard.button( "u",          "  Update plugins" , ":PackerSync<CR>"),
     -- dashboard.button( "Leader f f", "  Find file", ":Telescope find_files<CR>"),
     -- dashboard.button( "Leader f h", "  Recent files"   , ":Telescope oldfiles<CR>"),
     dashboard.button( "Leader f h", "  Recent files"   , ":Telescope oldfiles<CR>"),
