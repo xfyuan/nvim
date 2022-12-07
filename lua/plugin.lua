@@ -52,12 +52,8 @@ return packer.startup({
         use 'kyazdani42/nvim-tree.lua'
         use 'yianwillis/vimcdoc'
         use({
-            "folke/noice.nvim",
-            config = [[require('plugins.config.noice')]],
-            requires = {
-              "MunifTanjim/nui.nvim",
-              { "rcarriga/nvim-notify", config = [[require('plugins.config.notify')]] },
-            },
+            "rcarriga/nvim-notify",
+            config = [[require('plugins.config.notify')]],
         })
 
         use {
