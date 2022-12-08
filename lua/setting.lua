@@ -1,79 +1,102 @@
-local g = vim.g
-local cmd = vim.cmd
+local options = {
+  cmdheight      = 1,                       --- Give more space for displaying messages
+  completeopt    = "menu,menuone,noselect", --- Better autocompletion
+  emoji          = false,                   --- Fix emoji display
+  ignorecase     = true,                    --- Needed for smartcase
+  -- lazyredraw     = true,                    --- Makes macros faster & prevent errors in complicated mappings
+  mouse          = "a",                     --- Enable mouse
+  number         = true,                    --- Shows current line number
+  scrolloff      = 4,                       --- Always keep space when scrolling to bottom/top edge
+  showtabline    = 2,                       --- Always show tabs
+  signcolumn     = "yes:2",                 --- Add extra sign column next to line number
+  smartcase      = true,                    --- Uses case in search
+  splitbelow     = true,                    --- Horizal splits will automatically be to the bottom
+  splitright     = true,                    --- Vertical splits will automatically be to the right
+  termguicolors  = true,                    --- Correct terminal colors
+  timeoutlen     = 500,                     --- Faster completion (cannot be lower than 200 because then commenting doesn't work)
+  updatetime     = 250,                     --- Faster completion
+  viminfo        = "'1000",                 --- Increase the size of file history
+  wildignore     = "*node_modules/**",      --- Don't search inside Node.js modules (works for gutentag)
+  -- cursorline     = true,                    --- Highlight of current line
+  -- laststatus     = 3,                       --- Have a global statusline at the bottom instead of one for each window
+  -- pumheight      = 10,                      --- Max num of items in completion menu
+  -- relativenumber = false,                   --- Enables relative number
+  -- wrap           = true,                    --- Display long lines as wrap line
+  ruler          = false,
+  hidden         = true,
+  cul            = true,
+  numberwidth    = 4,
+  sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal',
 
-local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
+  -- Backup
+  swapfile       = false,                   --- Swap not needed
+  backup         = false,                   --- Recommended by coc
+  writebackup    = false,                   --- Not needed
+  autoread       = true,
 
-local function opt(scope, key, value)
-    scopes[scope][key] = value
-    if scope ~= "o" then
-        scopes["o"][key] = value
-    end
+  -- Undo
+  undofile       = true,                    --- Sets undo to file
+  undolevels     = 1000,
+  undoreload     = 1000,
+  undodir        = vim.fn.stdpath('config') .. '/undo',
+
+  -- Fold
+  foldenable     = true,                    --- Use spaces instead of tabs
+  foldlevel      = 99,                      --- Using ufo provider need a large value
+  foldlevelstart = 99,                      --- Expand all folds by default
+  -- foldmethod     = 'indent',                --- Use spaces instead of tabs
+  foldcolumn     = "0",
+  -- foldnestmax    = 0,
+
+  -- Indentation
+  expandtab      = true,                    --- Use spaces instead of tabs
+  smartindent    = true,                    --- Makes indenting smart
+  smarttab       = true,                    --- Makes tabbing smarter will realize you have 2 vs 4
+  softtabstop    = 2,                       --- Insert 2 spaces for a tab
+  shiftwidth     = 2,                       --- Change a number of space characeters inseted for indentation
+  tabstop        = 2,                       --- Insert 2 spaces for a tab
+
+  -- Neovim defaults
+  autoindent     = true,                    --- Good auto indent
+  backspace      = "indent,eol,start",      --- Making sure backspace works
+  conceallevel   = 0,                       --- Show `` in markdown files
+  showmode       = false,                   --- Don't show things like -- INSERT -- anymore
+  -- errorbells     = false,                   --- Disables sound effect for errors
+  -- incsearch      = true,                    --- Start searching before pressing enter
+  -- encoding       = "utf-8",                 --- The encoding displayed
+  -- fileencoding   = "utf-8",                 --- The encoding written to file
+}
+
+local globals = {
+  mapleader                   = ' ',        --- Map leader key to SPC
+  speeddating_no_mappings     = 1,          --- Disable default mappings for speeddating
+}
+
+vim.opt.shortmess:append('c');
+vim.opt.formatoptions:remove('c');
+vim.opt.formatoptions:remove('r');
+vim.opt.formatoptions:remove('o');
+vim.opt.fillchars:append('stl: ');
+vim.opt.fillchars:append('eob: ');
+vim.opt.fillchars:append('fold: ');
+vim.opt.fillchars:append('foldopen: ');
+vim.opt.fillchars:append('foldsep: ');
+vim.opt.fillchars:append('foldclose:');
+
+for k, v in pairs(options) do
+  vim.opt[k] = v
 end
 
--- ################# Basic settings ################ --
+for k, v in pairs(globals) do
+  vim.g[k] = v
+end
 
--- ================= Holy leader key ================= --
-
-g.mapleader = ' '
+-- ================= Useful ================= --
+local cmd = vim.cmd
 
 cmd("nnoremap ; :")
 cmd("nnoremap : ;")
 
--- ================= Visualization ================= --
-
-opt("o", "termguicolors", true)
-opt("o", "background", 'dark')
-
--- ================= Main ================= --
-
-opt("o", "swapfile", false)
-opt("b", "swapfile", false)
-opt("o", "backup", false)
-opt("o", "writebackup", false)
-opt("o", "autoread", true)
-
-opt("o", "undofile", true)
-opt("o", "undolevels", 1000)
-opt("o", "undoreload", 1000)
-opt("o", "undodir", vim.fn.stdpath('config') .. '/undo')
-
-opt("o", "ruler", false)
-opt("o", "showmode", false)
-opt("o", "hidden", true)
--- opt("o", "ignorecase", true)
-opt("o", "splitbelow", true)
-opt("o", "splitright", true)
-opt("w", "cul", true)
-
-opt("o", "mouse", "a")
-
-opt("w", "signcolumn", "yes")
-opt("o", "cmdheight", 1)
-
-opt("o", "updatetime", 250) -- update interval for gitsigns
--- opt("o", "clipboard", "unnamedplus")
-opt("o", "timeoutlen", 500)
-
-opt("o", "completeopt", "menuone,noselect")
-
--- Numbers
-opt("w", "number", true)
-opt("o", "numberwidth", 4)
--- opt("w", "relativenumber", true)
-
--- for indenline
-opt("b", "expandtab", true)
-opt("b", "smartindent", true)
-opt("b", "shiftwidth", 2)
-opt("b", "tabstop", 2)
-
-opt("o", "foldenable", false)
-opt("o", "foldmethod", 'indent')
-opt("o", "foldlevel", 1)
-
-opt("o", "sessionoptions", 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal')
-
--- ================= Useful ================= --
 -- remove trailing whitespaces
 cmd([[autocmd BufWritePre * %s/\s\+$//e]])
 cmd([[autocmd BufWritePre * %s/\n\+\%$//e]])
