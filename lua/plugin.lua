@@ -424,7 +424,6 @@ return packer.startup({
     use("zackhsi/fzf-tags")
     use("lewis6991/gitsigns.nvim")
     use("rizzatti/dash.vim")
-    -- use 'tomtom/tcomment_vim'
     use("LudoPinelli/comment-box.nvim")
     use({
       "numToStr/Comment.nvim",
@@ -438,7 +437,6 @@ return packer.startup({
     use("AndrewRadev/switch.vim") -- switch segments of text with predefined replacements. default mapping `gs` to trigger the command
     use("kg8m/vim-simple-align")
     -- use("buoto/gotests-vim") -- generate go table driven tests easily
-    -- use 'kchmck/vim-coffee-script'
     -- }}}
   end,
   config = {
