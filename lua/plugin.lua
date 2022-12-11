@@ -21,17 +21,17 @@ return packer.startup({
 
     -- ============ Appearance ============ -- {{{
     use({
-      "goolord/alpha-nvim",
+      "goolord/alpha-nvim", -- a fast and fully programmable greeter
       config = [[require('plugins.config.alpha-nvim')]],
     })
     use({
-      "nvim-lualine/lualine.nvim",
+      "nvim-lualine/lualine.nvim", -- A blazing fast and easy to configure statusline
       config = [[require('plugins.config.lualine')]],
     })
-    use("norcalli/nvim-colorizer.lua")
-    use("lukas-reineke/indent-blankline.nvim")
+    use("norcalli/nvim-colorizer.lua") -- A high-performance color highlighter
+    use("lukas-reineke/indent-blankline.nvim") -- adds indentation guides to all lines
     use({
-      "karb94/neoscroll.nvim",
+      "karb94/neoscroll.nvim", -- a smooth scrolling neovim plugin
       config = function()
         require("neoscroll").setup({
           mappings = { "<C-d>", "<C-b>", "<C-f>", "<C-e>", "zt", "zz", "zb" },
@@ -47,17 +47,17 @@ return packer.startup({
     -- }}}
 
     -- ============ Core ============ -- {{{
-    use("folke/which-key.nvim")
-    use("kyazdani42/nvim-tree.lua")
+    use("folke/which-key.nvim") -- create keybindings and displays a popup with possible keybindings
+    use("kyazdani42/nvim-tree.lua") -- A file explorer tree for neovim written in lua
     use("yianwillis/vimcdoc")
-    use({ "milisims/nvim-luaref", event = "BufReadPre" })
+    use({ "milisims/nvim-luaref", event = "BufReadPre" }) -- Add a vim :help reference for lua
     use({
-      "rcarriga/nvim-notify",
+      "rcarriga/nvim-notify", -- A fancy, configurable, notification manager
       config = [[require('plugins.config.notify')]],
     })
 
     use({
-      "rmagatti/auto-session",
+      "rmagatti/auto-session", -- Auto Session takes advantage of Neovim's existing session management capabilities to provide seamless automatic session management
       requires = { "rmagatti/session-lens" },
       config = function()
         require("session-lens").setup({})
@@ -69,9 +69,8 @@ return packer.startup({
         })
       end,
     })
-    -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
     use({
-      "phaazon/hop.nvim",
+      "phaazon/hop.nvim", -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
       config = function()
         require("hop").setup()
       end,
@@ -85,7 +84,7 @@ return packer.startup({
     use("voldikss/vim-translator") -- Asynchronous translating plugin
     use("famiu/bufdelete.nvim") -- Delete Neovim buffers without losing window layout
     use({ "kevinhwang91/nvim-bqf", ft = "qf" }) -- Better quickfix window in Neovim
-    use("sindrets/diffview.nvim")
+    use("sindrets/diffview.nvim") -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
     use({
       "beauwilliams/focus.nvim", -- Auto-Focusing and Auto-Resizing Splits/Windows
       config = function()
@@ -97,7 +96,7 @@ return packer.startup({
       end,
     })
     use({
-      "potamides/pantran.nvim",
+      "potamides/pantran.nvim", -- Use your favorite machine translation engines without having to leave your favorite editor
       config = function()
         require("pantran").setup({
           default_engine = "google",
@@ -110,7 +109,7 @@ return packer.startup({
       end,
     })
     use({
-      "axieax/urlview.nvim",
+      "axieax/urlview.nvim", -- viewing all the URLs in a buffer
       config = function()
         require("urlview").setup({
           default_picker = "telescope",
@@ -118,7 +117,7 @@ return packer.startup({
       end,
     })
     use({
-      "https://gitlab.com/yorickpeterse/nvim-window.git",
+      "https://gitlab.com/yorickpeterse/nvim-window.git", -- Easily jump between NeoVim windows
       config = function()
         vim.cmd([[hi BlackOnLightYellow guifg=#000000 guibg=#f2de91]])
         require("nvim-window").setup({
@@ -130,38 +129,38 @@ return packer.startup({
       end,
     })
     use({
-      "kevinhwang91/nvim-ufo",
+      "kevinhwang91/nvim-ufo", -- make Neovim's fold look modern and keep high performance
       requires = "kevinhwang91/promise-async",
       config = [[require('plugins.config.ufo')]],
     })
     use({
-      "akinsho/git-conflict.nvim",
+      "akinsho/git-conflict.nvim", -- visualise and resolve merge conflicts in neovim
       tag = "*",
       config = function()
         require("git-conflict").setup()
       end,
     })
     use({
-      "ruifm/gitlinker.nvim",
+      "ruifm/gitlinker.nvim", -- generate shareable file permalinks (with line ranges) for several git web frontend hosts
       config = function()
         require("gitlinker").setup()
       end,
     })
     use({
-      "folke/todo-comments.nvim",
+      "folke/todo-comments.nvim", -- Highlight, list and search todo comments in codebase
       config = function()
         require("todo-comments").setup()
       end,
     })
     use({
-      "chentoast/marks.nvim",
+      "chentoast/marks.nvim", -- A better user experience for viewing and interacting with Vim marks
       event = "BufReadPre",
       config = function()
         require("marks").setup({})
       end,
     })
     use({
-      "abecodes/tabout.nvim",
+      "abecodes/tabout.nvim", -- Supercharge your workflow and start tabbing out from parentheses, quotes, and similar contexts
       after = { "nvim-cmp" },
       config = function()
         require("tabout").setup({
@@ -225,7 +224,13 @@ return packer.startup({
     use("tpope/vim-sleuth") -- automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
     use("tpope/vim-abolish") -- switch case using crc, crs, crm, etc.
     use("tpope/vim-rails")
-    use("tpope/vim-dadbod")
+    use({
+      "tpope/vim-dadbod",
+      requires = {
+        { "kristijanhusak/vim-dadbod-ui" },
+        { "kristijanhusak/vim-dadbod-completion" },
+      },
+    })
     use({
       "tpope/vim-surround",
       "wellle/targets.vim", -- provides additional powerfull text objects!!
@@ -298,7 +303,7 @@ return packer.startup({
         "ray-x/lsp_signature.nvim",
         "haringsrob/nvim_context_vt",
         {
-          "SmiteshP/nvim-navic",
+          "SmiteshP/nvim-navic", -- A simple statusline/winbar component that uses LSP to show your current code context.
           config = function()
             require("nvim-navic").setup({})
           end,
@@ -310,13 +315,13 @@ return packer.startup({
           end,
         },
         {
-          "j-hui/fidget.nvim",
+          "j-hui/fidget.nvim", -- Standalone UI for nvim-lsp progress
           config = function()
             require("fidget").setup({})
           end,
         },
         {
-          "folke/trouble.nvim",
+          "folke/trouble.nvim", -- A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.
           config = function()
             require("trouble").setup({})
           end,
@@ -326,7 +331,7 @@ return packer.startup({
 
     -- LSP Powerfull Plugins
     use({
-      "stevearc/aerial.nvim",
+      "stevearc/aerial.nvim", -- A code outline window for skimming and quick navigation
       config = function()
         require("aerial").setup({
           manage_folds = true,
@@ -340,7 +345,7 @@ return packer.startup({
       end,
     })
     use({
-      "glepnir/lspsaga.nvim",
+      "glepnir/lspsaga.nvim", -- A light-weight lsp plugin based on neovim's built-in lsp with a highly performant UI.
       config = function()
         require("lspsaga").init_lsp_saga({
           symbol_in_winbar = {
@@ -429,13 +434,10 @@ return packer.startup({
     })
 
     use("vim-test/vim-test") -- test running tool for many languages
-    use("buoto/gotests-vim") -- generate go table driven tests easily
     use("AndrewRadev/splitjoin.vim") -- Switch between single-line and multiline forms of code: gS to split a one-liner into multiple lines. gJ (with the cursor on the first line of a block) to join a block into a single-line.
     use("AndrewRadev/switch.vim") -- switch segments of text with predefined replacements. default mapping `gs` to trigger the command
-    use("kristijanhusak/vim-dadbod-ui")
-    use("kristijanhusak/vim-dadbod-completion")
     use("kg8m/vim-simple-align")
-    -- use 'alvan/vim-closetag'
+    -- use("buoto/gotests-vim") -- generate go table driven tests easily
     -- use 'kchmck/vim-coffee-script'
     -- }}}
   end,
