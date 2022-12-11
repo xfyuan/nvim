@@ -10,7 +10,6 @@ local options = {
   scrolloff      = 4,                       --- Always keep space when scrolling to bottom/top edge
   showtabline    = 2,                       --- Always show tabs
   signcolumn     = "yes:2",                 --- Add extra sign column next to line number
-  smartcase      = true,                    --- Uses case in search
   splitbelow     = true,                    --- Horizal splits will automatically be to the bottom
   splitright     = true,                    --- Vertical splits will automatically be to the right
   termguicolors  = true,                    --- Correct terminal colors
