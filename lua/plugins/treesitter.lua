@@ -1,6 +1,5 @@
 local treesitter = require('nvim-treesitter.configs')
 local spellsitter = require('spellsitter')
-local gps = require('nvim-gps')
 
 -- vim-matchup plugin, uses treesitter
 -- Do not show the not visible matching context on statusline
@@ -95,27 +94,4 @@ treesitter.setup({
 spellsitter.setup({
   hl = 'SpellBad',
   captures = { 'comment', 'string' },
-})
-
-gps.setup({
-  separator = ' › ',
-  icons = {
-    ['class-name'] = ' ',
-    ['container-name'] = ' ',
-    ['function-name'] = ' ',
-    ['method-name'] = ' ',
-    ['tag-name'] = ' ',
-  },
-  languages = {
-    ruby = {
-      icons = {
-        ['class-name'] = '::',
-        ['container-name'] = '::',
-        ['function-name'] = '.',
-        ['method-name'] = '#',
-        ['tag-name'] = '',
-      },
-      separator = '',
-    },
-  },
 })

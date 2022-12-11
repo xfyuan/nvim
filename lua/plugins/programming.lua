@@ -28,18 +28,6 @@ cmd([[omap <leader>db  <Plug>(DBExe)]])
 cmd([[nmap <leader>dn  <Plug>(DBExeLine)]])
 -- }}}
 
--- nvim-lightbulb {{{
-cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
--- }}}
-
--- Others {{{
-require("aerial").setup({
-  manage_folds = true,
-  link_folds_to_tree = true,
-  link_tree_to_folds = true,
-})
--- }}}
-
 -- DAP {{{
 local dap, dapui = require("dap"), require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()

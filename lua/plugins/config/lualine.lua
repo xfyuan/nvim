@@ -1,5 +1,5 @@
 local lualine = require('lualine')
-local gps = require("nvim-gps")
+local navic = require("nvim-navic")
 
 local bufnr = function()
   return tostring(vim.api.nvim_get_current_buf())
@@ -72,7 +72,7 @@ lualine.setup({
         color_hint = '#50A14F',
         color_info = '#6699CC',
       },
-      { gps.get_location, cond = gps.is_available }
+      { navic.get_location, cond = navic.is_available },
     },
     lualine_x = {
       {

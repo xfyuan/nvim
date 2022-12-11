@@ -82,6 +82,7 @@ cmp.setup({
         {name = "emoji"},
         {name = "spell"},
         {name = "path"},
+        {name = 'nvim_lsp_signature_help'},
     },
     sorting = {
         comparators = {

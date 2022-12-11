@@ -132,7 +132,13 @@ wk.register({
   k = {'<Plug>DashSearch', 'Search word in Dash'}, -- dash.vim plugin
   o = {'<cmd>AerialToggle<cr>', 'Toggle code outline window'}, -- aerial.nvim plugin
   d = {
-    name = 'Debugger/db/buffer',
+    name = 'Debugger/Diff/DB/Buffer',
+    f = {
+      name = 'Diff view',
+      o = {'<cmd>DiffviewOpen<CR>', 'Open diffview'},
+      u = {'<cmd>DiffviewOpen -uno<CR>', 'Open diffview hide untracked files'},
+      h = {'<cmd>DiffviewFileHistory<CR>', 'Open diffview file history'},
+    },
     -- bufdelete.nvim plugin
     d = {'<cmd>Bdelete<cr>', 'Delete buffer'},
     -- vim-dadbod plugin
@@ -208,29 +214,8 @@ wk.register({
     -- vim-prettier plugin
     -- t = {'<Plug>(Prettier)', 'prettier format current buffer'},
   },
-  l = {
-    name = 'LSP',
-    j = {"<cmd>Telescope lsp_definitions jump_type=vsplit<cr>", 'List word definition'},
-    s = {"<cmd>Telescope lsp_document_symbols<cr>", 'List document symbols'},
-    k = {'<cmd>lua vim.lsp.buf.hover()<cr>', 'Show hover doc'},
-    r = {"<cmd>Telescope lsp_references<CR>", 'List references'},
-    R = {"<cmd>lua vim.lsp.buf.rename()<CR>", 'Rename'},
-    a = {"<cmd>Telescope lsp_code_actions<CR>", 'Code action'},
-    i = {'<cmd>TSLspImportAll<CR>', 'TS import all'},
-    o = {'<cmd>TSLspOrganize<CR>', 'TS organize imports'},
-    q = {'<cmd>TSLspFixCurrent<CR>', 'TS quick fix' },
-    -- o = {
-    --   name = 'LSP original function',
-    --   d = {'<cmd>lua vim.lsp.buf.definition()<cr>', 'definition'},
-    --   k = {'<cmd>lua vim.lsp.buf.hover()<cr>', 'hover doc'},
-    --   n = {'<cmd>lua vim.lsp.buf.references()<cr>', 'references'},
-    --   r = {'<cmd>lua vim.lsp.buf.rename()<CR>', 'rename'},
-    --   i = {'<cmd>lua vim.lsp.buf.implementation()<cr>', 'implementation'},
-    --   t = {'<cmd>lua vim.lsp.buf.type_definition()<CR>', 'type definition'},
-    -- },
-  },
   s = {
-    name = "Search/session/spectre",
+    name = "Search/Session/Spectre",
     -- search
     c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
     C = {"<cmd>Telescope commands<cr>", "Commands"},
@@ -250,17 +235,11 @@ wk.register({
     f = {'<cmd>SearchSession<cr>', 'Search auto session'},
   },
   t = {
-    name = 'Test/trouble',
+    name = 'Test',
     -- vim-test plugin
     t = {'<cmd>TestNearest<cr>', 'Test nearest case'},
     l = {'<cmd>TestLast<cr>', 'Test last case'},
     f = {'<cmd>TestFile<cr>', 'Test whole file'},
-    -- lsp-trouble plugin
-    w = {"<cmd>Trouble workspace_diagnostics<cr>", "Lsp Workspace Diagnostics"},
-    d = {"<cmd>Trouble document_diagnostics<cr>", "Lsp Document Diagnostic"},
-    j = {"<cmd>Trouble lsp_definitions<cr>", "Lsp Definitions"},
-    r = {"<cmd>Trouble lsp_references<cr>", "LSP References"},
-    q = {"<cmd>Trouble quickfix<cr>", "Lsp Quickfix"},
     o = {"<cmd>TodoLocList<cr>", "List todos in quickfix"},
   },
   u = {
@@ -269,8 +248,9 @@ wk.register({
     l = { "<cmd>UrlView buffer action=clipboard<cr>", "Copy URL" },
   },
   w = {
-    name = 'Window & word',
-    w = {'<cmd>NeoZoomToggle<cr>', 'Toggle window zoom'},
+    name = 'Window/Word',
+    w = {'<cmd>FocusMaxOrEqual<cr>', 'Toggle window zoom'},
+    s = {'<cmd>FocusSplitNicely<cr>', 'Split a window on golden ratio'},
     o = {"<cmd>lua require('nvim-window').pick()<cr>", 'Choose window'},
     t = {"<c-w>t", "Move to new tab"},
     m = {'<cmd>MarkdownPreview<cr>', 'Open markdown preview window'},
@@ -281,22 +261,9 @@ wk.register({
 }, { prefix = "<leader>" })
 
 wk.register({
-  d = {
-    name = 'Diff view',
-    o = {'<cmd>DiffviewOpen<CR>', 'Open diffview'},
-    u = {'<cmd>DiffviewOpen -uno<CR>', 'Open diffview hide untracked files'},
-    h = {'<cmd>DiffviewFileHistory<CR>', 'Open diffview file history'},
-  },
-  l = {
-    name = 'LSP origin actions',
-    d = {'<cmd>lua vim.lsp.buf.definition()<cr>', 'Go to definition'},
-    D = {'<cmd>lua vim.lsp.buf.declaration()<cr>', 'Go to declaration'},
-    r = {'<cmd>lua vim.lsp.buf.references()<cr>', 'Go to references'},
-    a = {'<cmd>lua vim.lsp.buf.code_action()<cr>', 'Go to code action'},
-    f = {'<cmd>vim.lsp.buf.formatting()<cr>', 'Formatting code'},
-    R = {'<cmd>LspRestart<cr>', 'Restart lsp'},
-    i = {'<cmd>lua vim.diagnostic.config{virtual_text=false}<cr>', 'Hide inline diagnosis virtual text'},
-    I = {'<cmd>lua vim.diagnostic.config{virtual_text=true}<cr>', 'Show inline diagnosis virtual text'},
+  c = {
+    name = 'Comment box',
+    B = {'<cmd>CBcbox10<CR>', 'Comment box ascii'},
   },
   o = {
     name = "Go with go.nvim",
