@@ -26,6 +26,7 @@ function M.setup()
       nls.builtins.code_actions.eslint_d,
       nls.builtins.code_actions.gitrebase,
       nls.builtins.code_actions.gitsigns,
+      nls.builtins.code_actions.refactoring,
       nls.builtins.code_actions.shellcheck,
     },
 
