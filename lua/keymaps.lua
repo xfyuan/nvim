@@ -226,7 +226,7 @@ local normal_keymap = {
     -- Spectre
     r = { [[<cmd>lua require('spectre').open_visual({select_word=true})<cr>]], "Replace cursor word" },
     o = { [[<cmd>lua require('spectre').open()<CR>]], "Open spectre" },
-    f = { [[viw:lua require('spectre').open_file_search()<cr>]], "Open spectre" },
+    f = { [[viw:lua require('spectre').open_file_search()<cr>]], "Replace in current file" },
     -- Refactoring
     i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
     b = { [[<cmd>lua require('refactoring').refactor('Exract Block')<cr>]], "Extract Block" },
