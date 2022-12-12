@@ -4,6 +4,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 function M.setup()
   nls.setup({
+    border = "rounded",
     sources = {
       -- formatting
       nls.builtins.formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "2" } }),
