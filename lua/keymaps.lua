@@ -2,10 +2,10 @@ local cmd = vim.cmd
 -- local g = vim.g
 
 -- local opt = {}
-local opt = {silent = true}
+local opt = { silent = true }
 
 local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
+  local options = { noremap = true }
   if opts then
     options = vim.tbl_extend("force", options, opts)
   end
@@ -59,9 +59,9 @@ map("i", "<C-a>", "<C-o>^", opt)
 map("i", "<C-e>", "<END>", opt)
 
 -- Go to beginning of line. Goes to previous line if repeated
-map("n", "H", "getpos('.')[2] == 1 ? 'k' : '^'", {expr = true})
+map("n", "H", "getpos('.')[2] == 1 ? 'k' : '^'", { expr = true })
 -- Go to end of line. Goes to next line if repeated
-map("n", "L", "len(getline('.')) == 0 || len(getline('.')) == getpos('.')[2] ? 'jg_' : 'g_'", {expr = true})
+map("n", "L", "len(getline('.')) == 0 || len(getline('.')) == getpos('.')[2] ? 'jg_' : 'g_'", { expr = true })
 
 -- quick split window
 map("n", "_", [[<Cmd>sp<CR>]], opt)
@@ -92,7 +92,7 @@ map("i", "vv", "<bar>>", opt)
 -- map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 
 -- toggle diff buffers
-map("n", "<leader>df", "&diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'", {expr = true})
+map("n", "<leader>dft", "&diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'", { expr = true })
 -- }}}
 
 -- ================= Plugins Mapping ================= -- {{{
@@ -108,11 +108,13 @@ map("n", "<leader>sO", ":lua require('spectre').open()<cr>", opt)
 
 cmd([[nmap <C-]> <Plug>(fzf_tags)]])
 
-map("v", "<leader>aa", ":SimpleAlign -l 0 ", {})
+map("v", "<leader>aa", ":SimpleAlign ", {})
 -- }}}
 
 -- ================= Whichkey Mapping ================= -- {{{
-require("which-key").setup {
+local wk = require("which-key")
+
+wk.setup({
   triggers_blacklist = {
     -- list of mode / prefixes that should never be hooked by WhichKey
     -- this is mostly relevant for key maps that start with a native binding
@@ -120,50 +122,55 @@ require("which-key").setup {
     i = { "i", "j", "k", "h", "u", "v" },
     v = { "j", "k" },
   },
-}
+})
 
-local wk = require("which-key")
+local n_opts = { mode = "n", prefix = "<leader>" }
+local v_opts = { mode = "v", prefix = "<leader>" }
+local g_opts = { mode = "n", prefix = "g" }
 
-wk.register({
+local normal_keymap = {
   -- ['<leader>'] = {'<cmd>GitFiles<cr>', 'find git files'},
   -- ['1'] = {':normal "lyy"lpwv$r=^"lyyk"lP<cr>', 'mark ======'},
-  q = {':q!<cr>', 'Quit without saving'},
-  Q = {':qa!<cr>', 'Quit all windows without saving'},
-  k = {'<Plug>DashSearch', 'Search word in Dash'}, -- dash.vim plugin
-  o = {'<cmd>AerialToggle<cr>', 'Toggle code outline window'}, -- aerial.nvim plugin
+  q = { ":q!<cr>", "Quit without saving" },
+  Q = { ":qa!<cr>", "Quit all windows without saving" },
+  k = { "<Plug>DashSearch", "Search word in Dash" }, -- dash.vim plugin
+  o = { "<cmd>AerialToggle<cr>", "Toggle code outline window" }, -- aerial.nvim plugin
   d = {
-    name = 'Debugger/Diff/DB/Buffer',
+    name = "Debugger/Diff/DB/Buffer",
     f = {
-      name = 'Diff view',
-      o = {'<cmd>DiffviewOpen<CR>', 'Open diffview'},
-      u = {'<cmd>DiffviewOpen -uno<CR>', 'Open diffview hide untracked files'},
-      h = {'<cmd>DiffviewFileHistory<CR>', 'Open diffview file history'},
+      name = "Diff view",
+      o = { "<cmd>DiffviewOpen<CR>", "Open diffview" },
+      u = { "<cmd>DiffviewOpen -uno<CR>", "Open diffview hide untracked files" },
+      h = { "<cmd>DiffviewFileHistory<CR>", "Open diffview file history" },
     },
     -- bufdelete.nvim plugin
-    d = {'<cmd>Bdelete<cr>', 'Delete buffer'},
+    d = { "<cmd>Bdelete<cr>", "Delete buffer" },
     -- vim-dadbod plugin
     -- u = {'<cmd>DBUI<cr>', 'open db ui'},
     -- l = {'<Plug>(DBExeLine)', 'run line as query'},
     -- g = { function() require('dapui').toggle() end, "Toggle debbuger" },
-    b = { function() require('dap').toggle_breakpoint() end, "Toggle breakpoint" },
-    c = { function() require('dap').continue() end, "Continue or start debuggger" },
-    n = { function() require('dap').step_over() end, "Step over" },
-    i = { function() require('dap').step_into() end, "Step in" },
-    o = { function() require('dap').step_out() end, "Step out" },
-    k = { function() require('dap').up() end, "Go up" },
-    j = { function() require('dap').down() end, "Go down" },
-    u = { function() require("dapui").toggle() end, "Toggle UI" },
-    t = { function()
-      local dap = require("dap")
-      dap.run({
-        type = "go",
-        name = "",
-        request = "launch",
-        mode = "test",
-        program = "./${relativeFileDirname}",
-        args = {"-test.run", ""},
-      })
-    end, "Debug test" },
+    b = { function() require("dap").toggle_breakpoint() end, "Toggle breakpoint", },
+    c = { function() require("dap").continue() end, "Continue or start debuggger", },
+    n = { function() require("dap").step_over() end, "Step over", },
+    i = { function() require("dap").step_into() end, "Step in", },
+    o = { function() require("dap").step_out() end, "Step out", },
+    k = { function() require("dap").up() end, "Go up", },
+    j = { function() require("dap").down() end, "Go down", },
+    u = { function() require("dapui").toggle() end, "Toggle UI", },
+    t = {
+      function()
+        local dap = require("dap")
+        dap.run({
+          type = "go",
+          name = "",
+          request = "launch",
+          mode = "test",
+          program = "./${relativeFileDirname}",
+          args = { "-test.run", "" },
+        })
+      end,
+      "Debug test",
+    },
   },
   f = {
     name = "Fuzzy finder",
@@ -173,97 +180,134 @@ wk.register({
     -- b = {'<cmd>Buffers<cr>', 'find buffers'},
     -- o = {'<cmd>History<cr>', 'find old history'},
     -- telescope
-    o = {'<cmd>Telescope git_files<cr>', 'Find git files'},
-    f = {'<cmd>Telescope find_files<cr>', 'Find files'},
-    b = {'<cmd>Telescope buffers<cr>', 'Find buffers'},
-    h = {'<cmd>Telescope oldfiles<cr>', 'Opened files history'},
-    s = {'<cmd>Telescope luasnip<cr>', 'Search snippet'},
-    p = {'<cmd>Telescope packer<cr>', 'List packer info'},
-    P = {"<cmd>lua require'telescope'.extensions.project.project{}<cr>", "Find project"},
+    o = { "<cmd>Telescope git_files<cr>", "Find git files" },
+    f = { "<cmd>Telescope find_files<cr>", "Find files" },
+    b = { "<cmd>Telescope buffers<cr>", "Find buffers" },
+    h = { "<cmd>Telescope oldfiles<cr>", "Opened files history" },
+    s = { "<cmd>Telescope luasnip<cr>", "Search snippet" },
+    p = { "<cmd>Telescope packer<cr>", "List packer info" },
+    P = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "Find project" },
   },
   g = {
-    name = 'Git',
+    name = "Git",
     -- telescope
-    l = {'<cmd>Telescope git_status<cr>', 'Changed files'},
+    l = { "<cmd>Telescope git_status<cr>", "Changed files" },
     -- vim-fugitive plugin
-    g = {'<cmd>Git blame<cr>', 'Blame'},
-    s = {'<cmd>Git<cr>', 'Status'},
+    g = { "<cmd>Git blame<cr>", "Blame" },
+    s = { "<cmd>Git<cr>", "Status" },
     -- l = {'<cmd>GFiles?<cr>', 'changed files'},
-    d = {'<cmd>Gdiff<cr>', 'Diff'},
-    r = {'<cmd>Gread<cr>', 'Read'},
+    d = { "<cmd>Gdiff<cr>", "Diff" },
+    r = { "<cmd>Gread<cr>", "Read" },
     -- w = {'<cmd>Gwrite<cr>', 'write'},
-    p = {'<cmd>Git push<cr>', 'Push'},
-    c = {'<cmd>Gcommit -v<cr>', 'Commit'},
+    p = { "<cmd>Git push<cr>", "Push" },
+    c = { "<cmd>Gcommit -v<cr>", "Commit" },
     -- gitsigns plugin
-    j = {"<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk"},
-    k = {"<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk"},
-    a = {"<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk"},
-    u = {"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk"},
+    j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
+    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
+    a = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+    u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
     -- vim-rhubarb plugin
     -- b = {'<cmd>Gbrowser<cr>', 'browse github'},
     -- gv.vim plugin
-    h = {'<cmd>GV!<cr>', 'List only current file commits'},
+    h = { "<cmd>GV!<cr>", "List only current file commits" },
   },
   j = {
-    name = 'Hop(easymotion)',
+    name = "Hop(easymotion)",
     -- hop.nvim plugin
-    j = {'<cmd>HopWord<cr>', 'Word'},
-    c = {'<cmd>HopChar2<cr>', '2 char'},
-    l = {'<cmd>HopLine<cr>', 'Line'},
-    p = {'<cmd>HopPattern<cr>', 'Pattern'},
+    j = { "<cmd>HopWord<cr>", "Word" },
+    c = { "<cmd>HopChar2<cr>", "2 char" },
+    l = { "<cmd>HopLine<cr>", "Line" },
+    p = { "<cmd>HopPattern<cr>", "Pattern" },
     -- vim-prettier plugin
     -- t = {'<Plug>(Prettier)', 'prettier format current buffer'},
+  },
+  r = {
+    name = "Refactor",
+    i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
+    b = { [[<cmd>lua require('refactoring').refactor('Exract Block')<cr>]], "Extract Block" },
+    B = { [[<cmd>lua require('refactoring').refactor('Exract Block To File')<cr>]], "Extract Block to File" },
+    P = {
+      [[<cmd>lua require('refactoring').debug.printf({below = false})<cr>]],
+      "Debug Print",
+    },
+    p = {
+      [[<cmd>lua require('refactoring').debug.print_var({normal = true})<cr>]],
+      "Debug Print Variable",
+    },
+    c = { [[<cmd>lua require('refactoring').debug.cleanup({})<cr>]], "Debug Cleanup" },
   },
   s = {
     name = "Search/Session/Spectre",
     -- search
-    c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
-    C = {"<cmd>Telescope commands<cr>", "Commands"},
-    h = {"<cmd>Telescope help_tags<cr>", "Find Help"},
-    H = {"<cmd>Telescope heading<cr>", "Find Header"},
-    m = {"<cmd>Telescope marks<cr>", "Find Mark"},
-    M = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
-    r = {"<cmd>Telescope registers<cr>", "Registers"},
-    t = {"<cmd>Telescope live_grep<cr>", "Text"},
-    s = {"<cmd>Telescope grep_string<cr>", "Text under cursor"},
-    S = {"<cmd>Telescope symbols<cr>", "Search symbols"},
-    k = {"<cmd>Telescope keymaps<cr>", "Keymaps"},
+    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+    C = { "<cmd>Telescope commands<cr>", "Commands" },
+    h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+    H = { "<cmd>Telescope heading<cr>", "Find Header" },
+    m = { "<cmd>Telescope marks<cr>", "Find Mark" },
+    M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+    r = { "<cmd>Telescope registers<cr>", "Registers" },
+    t = { "<cmd>Telescope live_grep<cr>", "Text" },
+    s = { "<cmd>Telescope grep_string<cr>", "Text under cursor" },
+    S = { "<cmd>Telescope symbols<cr>", "Search symbols" },
+    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     -- session
-    a = {"<cmd>SaveSession<cr>", "Add auto session"},
-    l = {"<cmd>RestoreSession<cr>", "Load auto session"},
-    d = {"<cmd>DeleteSession<cr>", "Delete auto session"},
-    f = {'<cmd>SearchSession<cr>', 'Search auto session'},
+    a = { "<cmd>SaveSession<cr>", "Add auto session" },
+    l = { "<cmd>RestoreSession<cr>", "Load auto session" },
+    d = { "<cmd>DeleteSession<cr>", "Delete auto session" },
+    f = { "<cmd>SearchSession<cr>", "Search auto session" },
   },
   t = {
-    name = 'Test',
+    name = "Test",
     -- vim-test plugin
-    t = {'<cmd>TestNearest<cr>', 'Test nearest case'},
-    l = {'<cmd>TestLast<cr>', 'Test last case'},
-    f = {'<cmd>TestFile<cr>', 'Test whole file'},
-    o = {"<cmd>TodoLocList<cr>", "List todos in quickfix"},
+    t = { "<cmd>TestNearest<cr>", "Test nearest case" },
+    l = { "<cmd>TestLast<cr>", "Test last case" },
+    f = { "<cmd>TestFile<cr>", "Test whole file" },
+    o = { "<cmd>TodoLocList<cr>", "List todos in quickfix" },
   },
   u = {
-    name = 'Url view',
+    name = "Url view",
     u = { "<cmd>UrlView buffer<cr>", "Find URL and open" },
     l = { "<cmd>UrlView buffer action=clipboard<cr>", "Copy URL" },
   },
   w = {
-    name = 'Window/Word',
-    w = {'<cmd>FocusMaxOrEqual<cr>', 'Toggle window zoom'},
-    s = {'<cmd>FocusSplitNicely<cr>', 'Split a window on golden ratio'},
-    o = {"<cmd>lua require('nvim-window').pick()<cr>", 'Choose window'},
-    t = {"<c-w>t", "Move to new tab"},
-    m = {'<cmd>MarkdownPreview<cr>', 'Open markdown preview window'},
+    name = "Window/Word",
+    w = { "<cmd>FocusMaxOrEqual<cr>", "Toggle window zoom" },
+    s = { "<cmd>FocusSplitNicely<cr>", "Split a window on golden ratio" },
+    o = { "<cmd>lua require('nvim-window').pick()<cr>", "Choose window" },
+    t = { "<c-w>t", "Move to new tab" },
+    m = { "<cmd>MarkdownPreview<cr>", "Open markdown preview window" },
     -- w = {'<cmd>MacDictPopup<cr>', 'search cursor word in macOS distionary'},
     -- d = {'<cmd>MacDictWord<cr>', 'search in macOS distionary and show in quickfix'},
-    l = {'<Plug>TranslateW', 'Translate word online'},
+    l = { "<Plug>TranslateW", "Translate word online" },
   },
-}, { prefix = "<leader>" })
+}
 
-wk.register({
+local visual_keymap = {
+  g = {
+    name = "Git",
+    Y = {
+      "<cmd>lua require'gitlinker'.get_buf_range_url('v', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
+      "Open permalinks of selected area",
+    },
+  },
+  r = {
+    name = "Refactor",
+    f = { [[<cmd>lua require('refactoring').refactor('Extract Function')<cr>]], "Extract Function" },
+    F = {
+      [[ <cmd>lua require('refactoring').refactor('Extract Function to File')<cr>]],
+      "Extract Function to File",
+    },
+    v = { [[<cmd>lua require('refactoring').refactor('Extract Variable')<cr>]], "Extract Variable" },
+    i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
+    r = { [[<cmd>lua require('telescope').extensions.refactoring.refactors()<cr>]], "Refactor finder" },
+    d = { [[<cmd>lua require('refactoring').debug.print_var({})<cr>]], "Debug Print Var" },
+  },
+}
+
+local global_keymap = {
   c = {
-    name = 'Comment box',
-    B = {'<cmd>CBcbox10<CR>', 'Comment box ascii'},
+    name = "Comment box",
+    B = { "<cmd>CBcbox10<CR>", "Comment box ascii" },
   },
   o = {
     name = "Go with go.nvim",
@@ -271,7 +315,7 @@ wk.register({
     i = { "<cmd>GoInstall<CR>", "Go install" },
     b = { "<cmd>GoBuild<CR>", "Go build" },
     d = { "<cmd>GoDoc<CR>", "Go doc" },
-    f = {"<cmd>GoFmt<cr>", 'Formatting code'},
+    f = { "<cmd>GoFmt<cr>", "Formatting code" },
     r = { "<cmd>!go run %:.<CR>", "Go run current file" },
     e = { "<cmd>GoIfErr<CR>", "Add if err" },
     w = { "<cmd>GoFillSwitch<CR>", "Fill switch" },
@@ -286,5 +330,9 @@ wk.register({
       -- d = { "<cmd>call vimspector#LaunchWithSettings( #{ configuration: 'single test', TestName: go#util#TestName() } )<CR>", "Debug current test" },
     },
   },
-}, { prefix = "g" })
+}
+
+wk.register(normal_keymap, n_opts)
+wk.register(visual_keymap, v_opts)
+wk.register(global_keymap, g_opts)
 -- }}}

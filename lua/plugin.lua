@@ -431,6 +431,26 @@ return packer.startup({
         require("Comment").setup()
       end,
     })
+    use {
+      "ThePrimeagen/refactoring.nvim",
+      config = function()
+        require("refactoring").setup {
+          prompt_func_return_type = {
+            js = true,
+            ts = true,
+            go = true,
+            ruby = true,
+          },
+          prompt_func_param_type = {
+            js = true,
+            ts = true,
+            go = true,
+            ruby = true,
+          },
+        }
+        require("telescope").load_extension "refactoring"
+      end,
+    }
 
     use("vim-test/vim-test") -- test running tool for many languages
     use("AndrewRadev/splitjoin.vim") -- Switch between single-line and multiline forms of code: gS to split a one-liner into multiple lines. gJ (with the cursor on the first line of a block) to join a block into a single-line.
