@@ -101,11 +101,6 @@ map("n", "<C-p>", [[<Cmd>Telescope git_files<CR>]], opt)
 
 -- map("n", "<C-e>", [[<Cmd>CtrlSF<CR>]], opt)
 
-map("n", "<leader>sR", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", opt)
-map("v", "<leader>sR", "<cmd>lua require('spectre').open_visual()<cr>", opt)
-map("n", "<leader>sF", "viw:lua require('spectre').open_file_search()<cr>", opt)
-map("n", "<leader>sO", ":lua require('spectre').open()<cr>", opt)
-
 cmd([[nmap <C-]> <Plug>(fzf_tags)]])
 
 map("v", "<leader>aa", ":SimpleAlign ", {})
@@ -225,8 +220,8 @@ local normal_keymap = {
     name = "Replace/Refactor",
     -- Spectre
     r = { [[<cmd>lua require('spectre').open_visual({select_word=true})<cr>]], "Replace cursor word" },
-    o = { [[<cmd>lua require('spectre').open()<CR>]], "Open spectre" },
     f = { [[viw:lua require('spectre').open_file_search()<cr>]], "Replace in current file" },
+    o = { [[<cmd>lua require('spectre').open()<CR>]], "Open spectre" },
     -- Refactoring
     i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
     b = { [[<cmd>lua require('refactoring').refactor('Exract Block')<cr>]], "Extract Block" },
