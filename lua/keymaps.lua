@@ -24,7 +24,7 @@ map("v", "x", [=[ "_x ]=], opt)
 
 -- ================= Core Powerfull Mapping ================= -- {{{
 
-cmd("inoremap jj <Esc>")
+-- cmd("inoremap jj <Esc>")
 cmd("tnoremap jj <C-\\><C-n>")
 
 -- general --
