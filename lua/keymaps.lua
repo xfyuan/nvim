@@ -222,7 +222,12 @@ local normal_keymap = {
     -- t = {'<Plug>(Prettier)', 'prettier format current buffer'},
   },
   r = {
-    name = "Refactor",
+    name = "Replace/Refactor",
+    -- Spectre
+    r = { [[<cmd>lua require('spectre').open_visual({select_word=true})<cr>]], "Replace cursor word" },
+    o = { [[<cmd>lua require('spectre').open()<CR>]], "Open spectre" },
+    f = { [[viw:lua require('spectre').open_file_search()<cr>]], "Open spectre" },
+    -- Refactoring
     i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
     b = { [[<cmd>lua require('refactoring').refactor('Exract Block')<cr>]], "Extract Block" },
     B = { [[<cmd>lua require('refactoring').refactor('Exract Block To File')<cr>]], "Extract Block to File" },
@@ -237,7 +242,7 @@ local normal_keymap = {
     c = { [[<cmd>lua require('refactoring').debug.cleanup({})<cr>]], "Debug Cleanup" },
   },
   s = {
-    name = "Search/Session/Spectre",
+    name = "Search/Session",
     -- search
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
