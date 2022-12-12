@@ -432,22 +432,21 @@ return packer.startup({
       end,
     })
     use {
-      "max397574/better-escape.nvim",
-      event = { "InsertEnter" },
-      config = function()
-        require("better_escape").setup {
-          mapping = { "jj" },
-          timeout = vim.o.timeoutlen,
-          keys = "<ESC>",
-        }
-      end,
-    }
-    use {
       "ThePrimeagen/refactoring.nvim",
       config = function()
         require("refactoring").setup {
-          prompt_func_return_type = { js = true, ts = true, go = true, ruby = true, },
-          prompt_func_param_type = { js = true, ts = true, go = true, ruby = true, },
+          prompt_func_return_type = {
+            js = true,
+            ts = true,
+            go = true,
+            ruby = true,
+          },
+          prompt_func_param_type = {
+            js = true,
+            ts = true,
+            go = true,
+            ruby = true,
+          },
         }
         require("telescope").load_extension "refactoring"
       end,
