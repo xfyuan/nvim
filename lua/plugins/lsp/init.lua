@@ -140,9 +140,6 @@ function M.on_attach(client, bufnr)
   -- Configure highlighting
   require("plugins.lsp.highlighter").setup(client, bufnr)
 
-  -- Configure formatting
-  -- require("pluginslsp.null-ls.formatters").setup(client, bufnr)
-
   -- tagfunc
   if caps.definitionProvider then
     vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
