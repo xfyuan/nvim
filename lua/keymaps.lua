@@ -130,6 +130,14 @@ local normal_keymap = {
   Q = { ":qa!<cr>", "Quit all windows without saving" },
   k = { "<Plug>DashSearch", "Search word in Dash" }, -- dash.vim plugin
   o = { "<cmd>AerialToggle<cr>", "Toggle code outline window" }, -- aerial.nvim plugin
+  -- Database
+  D = {
+    name = "Database",
+    u = { "<Cmd>DBUIToggle<Cr>", "Toggle UI" },
+    f = { "<Cmd>DBUIFindBuffer<Cr>", "Find buffer" },
+    r = { "<Cmd>DBUIRenameBuffer<Cr>", "Rename buffer" },
+    q = { "<Cmd>DBUILastQueryInfo<Cr>", "Last query info" },
+  },
   d = {
     name = "Debugger/Diff/DB/Buffer",
     f = {
