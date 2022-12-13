@@ -2,12 +2,19 @@ local g = vim.g
 local cmd = vim.cmd
 
 -- vim-test.vim {{{
-vim.api.nvim_command("let test#strategy = 'basic'")
--- vim.api.nvim_command("let test#neovim#term_position = 'vert'")
--- vim.api.nvim_command("let test#ruby#rails#executable = 'dip rspec'")
--- vim.api.nvim_command("let test#ruby#rspec#executable = 'dip rspec'")
-vim.api.nvim_command("let test#ruby#rspec#executable = 'bundle exec rspec'")
-vim.api.nvim_command("let test#go#gotest#executable = 'go test -v'")
+-- vim.api.nvim_command("let test#strategy = 'basic'")
+-- -- vim.api.nvim_command("let test#neovim#term_position = 'vert'")
+-- -- vim.api.nvim_command("let test#ruby#rails#executable = 'dip rspec'")
+-- -- vim.api.nvim_command("let test#ruby#rspec#executable = 'dip rspec'")
+-- vim.api.nvim_command("let test#ruby#rspec#executable = 'bundle exec rspec'")
+-- vim.api.nvim_command("let test#go#gotest#executable = 'go test -v'")
+
+vim.g["test#strategy"] = "basic"
+
+-- Ruby
+vim.g["test#ruby#rspec#executable"] = "bundle exec rspec"
+-- Go
+vim.g["test#go#gotest#executable"] = "go test -v"
 -- }}}
 
 -- vim-dadbod.vim {{{
