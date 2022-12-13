@@ -33,7 +33,9 @@ lualine.setup({
   tabline = {
     lualine_a = {},
     lualine_b = {'branch'},
-    lualine_c = {},
+    lualine_c = {
+      { navic.get_location, cond = navic.is_available },
+    },
     lualine_x = {},
     lualine_y = {},
     lualine_z = {{ 'tabs', mode = 2, tabs_color = { active = 'TSNote' } }},
@@ -72,7 +74,6 @@ lualine.setup({
         color_hint = '#50A14F',
         color_info = '#6699CC',
       },
-      { navic.get_location, cond = navic.is_available },
     },
     lualine_x = {
       {
