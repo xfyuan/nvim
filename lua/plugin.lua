@@ -43,7 +43,6 @@ return packer.startup({
     use("sainnhe/everforest")
     use("folke/tokyonight.nvim")
     use("EdenEast/nightfox.nvim")
-    use("Shatur/neovim-ayu")
     -- }}}
 
     -- ============ Core ============ -- {{{
