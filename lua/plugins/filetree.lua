@@ -22,13 +22,13 @@ require('nvim-tree').setup({
     enable = true,
     ignore = true,
   },
-  ignore_ft_on_setup = {
-    '.git',
-    'node_modules',
-    '.byebug_history',
-    '.vscode',
-    '.idea',
-  },
+  -- ignore_ft_on_setup = {
+  --   '.git',
+  --   'node_modules',
+  --   '.byebug_history',
+  --   '.vscode',
+  --   '.idea',
+  -- },
   renderer = {
     group_empty = true,
     highlight_git = true,
