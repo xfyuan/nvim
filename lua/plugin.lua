@@ -236,7 +236,8 @@ return packer.startup({
     })
 
     -- Junegunn Choi ⭐
-    use({ "junegunn/fzf.vim", requires = { "junegunn/fzf", opt = true } })
+    use { 'junegunn/fzf', run = ":call fzf#install()" }
+    use { 'junegunn/fzf.vim' }
     use("junegunn/vim-fnr") -- Find-N-Replace in Vim with live preview
     use("junegunn/gv.vim")
     -- CONFLICT with hlslens plugin, so disable it 👇

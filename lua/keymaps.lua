@@ -96,7 +96,7 @@ map("n", "<leader>dft", "&diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'", 
 -- }}}
 
 -- ================= Plugins Mapping ================= -- {{{
--- map("n", "<C-p>", [[<Cmd>GitFiles<CR>]], opt)
+-- map("n", "<C-p>", [[<Cmd>GFiles<CR>]], opt)
 map("n", "<C-p>", [[<Cmd>Telescope git_files<CR>]], opt)
 
 -- map("n", "<C-e>", [[<Cmd>CtrlSF<CR>]], opt)
