@@ -129,6 +129,7 @@ local normal_keymap = {
   q = { ":q!<cr>", "Quit without saving" },
   Q = { ":qa!<cr>", "Quit all windows without saving" },
   k = { "<Plug>DashSearch", "Search word in Dash" }, -- dash.vim plugin
+  L = { "<cmd>Lazy<cr>", "open lazy.nvim plugins window" },
   o = { "<cmd>AerialToggle<cr>", "Toggle code outline window" }, -- aerial.nvim plugin
   -- Database
   D = {
@@ -190,7 +191,7 @@ local normal_keymap = {
     b = { "<cmd>Telescope buffers<cr>", "Find buffers" },
     h = { "<cmd>Telescope oldfiles<cr>", "Opened files history" },
     s = { "<cmd>Telescope luasnip<cr>", "Search snippet" },
-    p = { "<cmd>Telescope packer<cr>", "List packer info" },
+    p = { "<cmd>Telescope lazy<cr>", "List lazy plugins info" },
     P = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "Find project" },
   },
   g = {

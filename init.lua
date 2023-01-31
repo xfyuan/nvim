@@ -1,9 +1,8 @@
-require('impatient')
--- load all plugins
-require "plugin"
-
 -- regular settings
 require "setting"
+
+-- load all plugins
+require "plugin"
 
 -- all plugins configuration
 require "plugins.appearance"
