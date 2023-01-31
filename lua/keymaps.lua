@@ -183,8 +183,10 @@ local normal_keymap = {
     -- b = {'<cmd>Buffers<cr>', 'find buffers'},
     -- o = {'<cmd>History<cr>', 'find old history'},
     -- telescope
-    o = { "<cmd>Telescope git_files<cr>", "Find git files" },
-    f = { "<cmd>Telescope find_files<cr>", "Find files" },
+    g = { "<cmd>Telescope git_files<cr>", "Find git files" },
+    o = { "<cmd>Telescope find_files<cr>", "Find files" },
+    f = { "<cmd>GFiles<cr>", "Fzf find git files" },
+    O = { "<cmd>Files<cr>", "Fzf find files" },
     b = { "<cmd>Telescope buffers<cr>", "Find buffers" },
     h = { "<cmd>Telescope oldfiles<cr>", "Opened files history" },
     s = { "<cmd>Telescope luasnip<cr>", "Search snippet" },
