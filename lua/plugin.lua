@@ -457,5 +457,5 @@ require("lazy").setup({
   -- "buoto/gotests-vim", -- generate go table driven tests easily
   -- }}}
 }, {
-  concurrency = 36,
+  concurrency = 24,
 })
