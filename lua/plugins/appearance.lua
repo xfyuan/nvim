@@ -8,7 +8,7 @@ cmd "syntax on"
 -- g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 -- cmd('colorscheme tokyonight')
 -- cmd('colorscheme everforest')
-cmd('colorscheme nightforest')
+-- cmd('colorscheme nightforest')
 
 -- ================= Plugins ================= --
 

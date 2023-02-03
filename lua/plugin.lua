@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   "nvim-lua/popup.nvim",
   "nvim-lua/plenary.nvim",
-  "kyazdani42/nvim-web-devicons",
+  "nvim-tree/nvim-web-devicons",
 
   -- ============ Appearance ============ -- {{{
   {
@@ -42,8 +42,15 @@ require("lazy").setup({
   -- Themes
   "xfyuan/nightforest.nvim",
   "sainnhe/everforest",
-  "folke/tokyonight.nvim",
   "EdenEast/nightfox.nvim",
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd([[colorscheme tokyonight-moon]])
+    end,
+  },
   -- }}}
 
   -- ============ Core ============ -- {{{
@@ -57,7 +64,6 @@ require("lazy").setup({
       require('plugins.config.notify')
     end,
   },
-
   {
     "rmagatti/auto-session", -- Auto Session takes advantage of Neovim's existing session management capabilities to provide seamless automatic session management
     dependencies = { "rmagatti/session-lens" },
@@ -77,14 +83,38 @@ require("lazy").setup({
       require("hop").setup()
     end,
   },
+  {
+    "echasnovski/mini.bufremove", -- Delete Neovim buffers without losing window layout
+    keys = {
+      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
+    },
+  },
+  {
+    "echasnovski/mini.jump", -- Extended f, F, t and T key mappings
+    opts = {
+      mappings = {
+        repeat_jump = '',
+      },
+    },
+    keys = { "f", "F", "t", "T" },
+    config = function(_, opts)
+      require("mini.jump").setup(opts)
+    end,
+  },
+  {
+    "echasnovski/mini.pairs",
+    event = "VeryLazy",
+    config = function(_, opts)
+      require("mini.pairs").setup(opts)
+    end,
+  },
   "ethanholz/nvim-lastplace", -- Intelligently reopen files at your last edit position in Vim
   -- use 'dyng/ctrlsf.vim' -- A powered code search and view tool
   "windwp/nvim-spectre", -- Find the enemy and replace them with dark power
-  "rhysd/clever-f.vim", -- Extended f, F, t and T key mappings
   "xtal8/traces.vim", -- Range, pattern and substitute preview tool
   "akinsho/toggleterm.nvim", -- A neovim lua plugin to help easily manage multiple terminal windows
   "voldikss/vim-translator", -- Asynchronous translating plugin
-  "famiu/bufdelete.nvim", -- Delete Neovim buffers without losing window layout
   { "kevinhwang91/nvim-bqf", ft = "qf" }, -- Better quickfix window in Neovim
   "sindrets/diffview.nvim", -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev
   {
@@ -165,6 +195,7 @@ require("lazy").setup({
   },
   {
     "abecodes/tabout.nvim", -- Supercharge your workflow and start tabbing out from parentheses, quotes, and similar contexts
+    event = "VeryLazy",
     config = function()
       require("tabout").setup({
         completion = false,
@@ -265,12 +296,6 @@ require("lazy").setup({
         "romgrk/nvim-treesitter-context",
         config = function()
           require("treesitter-context").setup()
-        end,
-      },
-      {
-        "windwp/nvim-autopairs",
-        config = function()
-          require("nvim-autopairs").setup()
         end,
       },
       {
