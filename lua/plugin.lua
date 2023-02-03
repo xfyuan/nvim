@@ -458,4 +458,5 @@ require("lazy").setup({
   -- }}}
 }, {
   concurrency = 24,
+  ui = { border = "rounded", }
 })
