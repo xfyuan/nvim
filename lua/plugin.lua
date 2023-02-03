@@ -48,7 +48,7 @@ require("lazy").setup({
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme tokyonight-moon]])
+      vim.cmd([[colorscheme tokyonight-storm]])
     end,
   },
   -- }}}
@@ -83,6 +83,12 @@ require("lazy").setup({
     event = "VeryLazy",
     enabled = true,
     opts = {
+      cmdline = {
+        format = {
+          search_down = { icon = "🔍 ⌄" },
+          search_up = { icon = "🔍 ⌃" },
+        },
+      },
       lsp = {
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
