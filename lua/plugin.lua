@@ -54,7 +54,7 @@ require("lazy").setup({
   -- }}}
 
   -- ============ Core ============ -- {{{
-  "folke/which-key.nvim", -- create keybindings and displays a popup with possible keybindings
+  { "folke/which-key.nvim", lazy = true }, -- create keybindings and displays a popup with possible keybindings
   "kyazdani42/nvim-tree.lua", -- A file explorer tree for neovim written in lua
   "yianwillis/vimcdoc",
   { "milisims/nvim-luaref", event = "BufReadPre" }, -- Add a vim :help reference for lua
@@ -110,9 +110,7 @@ require("lazy").setup({
   },
   {
     "phaazon/hop.nvim", -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
-    config = function()
-      require("hop").setup()
-    end,
+    config = true,
   },
   {
     "echasnovski/mini.bufremove", -- Delete Neovim buffers without losing window layout
@@ -201,28 +199,20 @@ require("lazy").setup({
   {
     "akinsho/git-conflict.nvim", -- visualise and resolve merge conflicts in neovim
     version = "*",
-    config = function()
-      require("git-conflict").setup()
-    end,
+    config = true,
   },
   {
     "ruifm/gitlinker.nvim", -- generate shareable file permalinks (with line ranges) for several git web frontend hosts
-    config = function()
-      require("gitlinker").setup()
-    end,
+    config = true,
   },
   {
     "folke/todo-comments.nvim", -- Highlight, list and search todo comments in codebase
-    config = function()
-      require("todo-comments").setup()
-    end,
+    config = true,
   },
   {
     "chentoast/marks.nvim", -- A better user experience for viewing and interacting with Vim marks
     event = "BufReadPre",
-    config = function()
-      require("marks").setup({})
-    end,
+    config = true,
   },
   {
     "abecodes/tabout.nvim", -- Supercharge your workflow and start tabbing out from parentheses, quotes, and similar contexts
@@ -365,27 +355,19 @@ require("lazy").setup({
       "haringsrob/nvim_context_vt",
       {
         "SmiteshP/nvim-navic", -- A simple statusline/winbar component that uses LSP to show your current code context.
-        config = function()
-          require("nvim-navic").setup({})
-        end,
+        config = true,
       },
       {
         "simrat39/inlay-hints.nvim",
-        config = function()
-          require("inlay-hints").setup()
-        end,
+        config = true,
       },
       {
         "j-hui/fidget.nvim", -- Standalone UI for nvim-lsp progress
-        config = function()
-          require("fidget").setup({})
-        end,
+        config = true,
       },
       {
         "folke/trouble.nvim", -- A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.
-        config = function()
-          require("trouble").setup({})
-        end,
+        config = true,
       },
     },
   },
@@ -417,9 +399,7 @@ require("lazy").setup({
   },
   {
     "ray-x/go.nvim",
-    config = function()
-      require("go").setup()
-    end,
+    config = true,
   },
 
   -- Debugger
@@ -491,9 +471,7 @@ require("lazy").setup({
   "LudoPinelli/comment-box.nvim",
   {
     "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-    end,
+    config = true,
   },
   {
     "ThePrimeagen/refactoring.nvim",
