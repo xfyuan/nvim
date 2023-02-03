@@ -25,6 +25,7 @@ require("lazy").setup({
     },
   {
     "nvim-lualine/lualine.nvim", -- A blazing fast and easy to configure statusline
+    event = "VeryLazy",
     config = function()
       require('plugins.config.lualine')
     end,
@@ -375,17 +376,7 @@ require("lazy").setup({
   -- LSP Powerfull Plugins
   {
     "stevearc/aerial.nvim", -- A code outline window for skimming and quick navigation
-    config = function()
-      require("aerial").setup({
-        manage_folds = true,
-        link_folds_to_tree = true,
-        link_tree_to_folds = true,
-        on_attach = function(bufnr)
-          vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
-          vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
-        end,
-      })
-    end,
+    config = true,
   },
   {
     "glepnir/lspsaga.nvim", -- A light-weight lsp plugin based on neovim's built-in lsp with a highly performant UI.
