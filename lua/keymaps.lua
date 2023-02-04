@@ -147,8 +147,6 @@ local normal_keymap = {
       u = { "<cmd>DiffviewOpen -uno<CR>", "Open diffview hide untracked files" },
       h = { "<cmd>DiffviewFileHistory<CR>", "Open diffview file history" },
     },
-    -- bufdelete.nvim plugin
-    d = { "<cmd>Bdelete<cr>", "Delete buffer" },
     -- vim-dadbod plugin
     -- u = {'<cmd>DBUI<cr>', 'open db ui'},
     -- l = {'<Plug>(DBExeLine)', 'run line as query'},
