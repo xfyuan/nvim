@@ -41,7 +41,6 @@ require("lazy").setup({
     end,
   },
   -- Themes
-  "xfyuan/nightforest.nvim",
   "sainnhe/everforest",
   "EdenEast/nightfox.nvim",
   {
