@@ -76,16 +76,15 @@ return {
         f = {
           name = "Fuzzy finder",
           -- fzf.vim
-          -- j = {'<cmd>GitFiles<cr>', 'find git files'},
-          -- f = {'<cmd>Files<cr>', 'find files'},
           -- b = {'<cmd>Buffers<cr>', 'find buffers'},
           -- o = {'<cmd>History<cr>', 'find old history'},
+          g = { "<cmd>GFiles<cr>", "Fzf find git files" },
+          j = { "<cmd>Files<cr>", "Fzf find files" },
           -- telescope
-          g = { "<cmd>Telescope git_files<cr>", "Find git files" },
+          d = { "<cmd>Telescope diagnostics<cr>", "Find diagnostics" },
+          f = { "<cmd>Telescope git_files<cr>", "Find git files" },
           o = { "<cmd>Telescope find_files<cr>", "Find files" },
-          f = { "<cmd>GFiles<cr>", "Fzf find git files" },
-          O = { "<cmd>Files<cr>", "Fzf find files" },
-          b = { "<cmd>Telescope buffers<cr>", "Find buffers" },
+          b = { "<cmd>Telescope buffers show_all_buffers=true<cr>", "Switch buffers" },
           h = { "<cmd>Telescope oldfiles<cr>", "Opened files history" },
           s = { "<cmd>Telescope luasnip<cr>", "Search snippet" },
           p = { "<cmd>Telescope lazy<cr>", "List lazy plugins info" },
@@ -95,6 +94,7 @@ return {
           name = "Git",
           -- telescope
           l = { "<cmd>Telescope git_status<cr>", "Changed files" },
+          m = { "<cmd>Telescope git_commits<cr>", "Find git commits" },
           -- vim-fugitive plugin
           g = { "<cmd>Git blame<cr>", "Blame" },
           s = { "<cmd>Git<cr>", "Status" },
