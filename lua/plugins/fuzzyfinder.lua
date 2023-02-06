@@ -1,108 +1,108 @@
--- telescope {{{
-local telescope = require('telescope')
-local actions = require('telescope.actions')
-
-telescope.setup({
-  extensions = {
-    fzf = {
-      case_mode = 'smart_case',
-      fuzzy = true,
-      override_file_sorter = true,
-      override_generic_sorter = true,
+return {
+  -- telescope.nvim
+  {
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    version = false, -- telescope did only one release, so use HEAD for now
+    dependencies = {
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      { "nvim-telescope/telescope-symbols.nvim" },
+      { "nvim-telescope/telescope-project.nvim" },
+      { "tsakirist/telescope-lazy.nvim" },
+      { "crispgm/telescope-heading.nvim" },
+      -- { "nvim-telescope/telescope-dap.nvim" },
+      {
+        "rmagatti/auto-session", -- Auto Session takes advantage of Neovim's existing session management capabilities to provide seamless automatic session management
+        dependencies = { "rmagatti/session-lens" },
+        config = function()
+          require("session-lens").setup({})
+          require("auto-session").setup({
+            auto_session_root_dir = vim.fn.stdpath("config") .. "/sessions/",
+            auto_session_enabled = false,
+            pre_save_cmds = { "NvimTreeClose" },
+            post_restore_cmds = { "NvimTreeOpen" },
+          })
+        end,
+      },
     },
-  },
+    -- keys = {
+    --   { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
+    --   { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+    --   -- find
+    --   { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    --   { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+    --   -- git
+    --   { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
+    --   { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
+    --   -- search
+    --   { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
+    --   { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
+    --   { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+    --   { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
+    --   { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+    --   { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
+    --   { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+    --   { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+    --   { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+    --   { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
+    --   { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
+    -- },
+    opts = function()
+      local telescope = require("telescope")
+      local actions = require("telescope.actions")
 
-  pickers = {
-    colorscheme = {
-      enable_preview = true
-    }
-  },
+      telescope.load_extension("fzf")
+      telescope.load_extension("lazy")
+      telescope.load_extension("heading")
+      telescope.load_extension("session-lens")
+      telescope.load_extension("aerial")
+      -- telescope.load_extension('dap')
 
-  defaults = {
-    dynamic_preview_title = true,
-    layout_strategy = 'flex',
-    layout_config = {
-      prompt_position = 'top',
-      preview_cutoff = 3,
-      flex = {
-        flip_columns = 250,
-        flip_lines = 50,
-        vertical = {
-          height = 0.99,
-          width = 0.7,
-          mirror = true,
+      return {
+        extensions = {
+          fzf = {
+            case_mode = "smart_case",
+            fuzzy = true,
+            override_file_sorter = true,
+            override_generic_sorter = true,
+          },
         },
-        horizontal = {
-          height = 0.99,
-          width = 0.99,
-          mirror = false,
+        pickers = {
+          colorscheme = {
+            enable_preview = true,
+          },
         },
-      },
-    },
-    mappings = {
-      i = {
-        ["<esc>"] = actions.close,
-        ["jj"] = actions.close,
-        ['<C-j>'] = actions.move_selection_next,
-        ['<C-k>'] = actions.move_selection_previous,
-        ['<C-n>'] = actions.cycle_history_next,
-        ['<C-p>'] = actions.cycle_history_prev,
-        ['<C-u>'] = { '<c-u>', type = 'command' }, -- delete inputted text
-        ["<C-g>"] = actions.send_selected_to_qflist + actions.open_qflist
-      },
-      n = {
-        ['<C-j>'] = actions.move_selection_next,
-        ['<C-k>'] = actions.move_selection_previous,
-        ['<C-n>'] = actions.cycle_history_next,
-        ['<C-p>'] = actions.cycle_history_prev,
-        ['<C-u>'] = { '<c-u>', type = 'command' }, -- delete inputted text
-      },
-    },
-    path_display = { 'smart' },
-    preview_title = '',
-    prompt_prefix = '› ',
-    selection_caret = '› ',
-    set_env = { ['COLORTERM'] = 'truecolor' },
-    sorting_strategy = 'ascending',
-    file_ignore_patterns = {"node_modules", "%.jpg", "%.png"},
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case',
-    },
-    preview = {
-      treesitter = false,
-    },
-    winblend = 0,
+        defaults = {
+          sorting_strategy = "ascending",
+          layout_strategy = "flex",
+          layout_config = {
+            prompt_position = "top",
+          },
+          prompt_prefix = " ",
+          selection_caret = " ",
+          mappings = {
+            i = {
+              ["<esc>"] = actions.close,
+              ["jj"] = actions.close,
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+              ["<C-Down>"] = actions.cycle_history_next,
+              ["<C-Up>"] = actions.cycle_history_prev,
+              ["<C-g>"] = actions.send_selected_to_qflist + actions.open_qflist,
+              ["<c-t>"] = function(...)
+                return require("trouble.providers.telescope").open_with_trouble(...)
+              end,
+            },
+            n = {
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+              ["<C-Down>"] = actions.cycle_history_next,
+              ["<C-Up>"] = actions.cycle_history_prev,
+              ["<C-c>"] = { "<c-u>", type = "command" }, -- delete inputted text
+            },
+          },
+        },
+      }
+    end,
   },
-})
-
-telescope.load_extension('fzf')
-telescope.load_extension('lazy')
-telescope.load_extension('heading')
-telescope.load_extension('dap')
-telescope.load_extension("session-lens")
-telescope.load_extension('luasnip')
-telescope.load_extension('aerial')
--- }}}
-
--- fzf.vim {{{
-vim.api.nvim_command("let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }")
-vim.api.nvim_exec(
-[[
-function! RipgrepFzf(query, fullscreen)
-    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
-    let initial_command = printf(command_fmt, shellescape(a:query))
-    let reload_command = printf(command_fmt, '{q}')
-    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-    call fzf#vim#grep(initial_command, 1, { 'options': '--color hl:123,hl+:222' }, a:fullscreen)
-endfunction
-]],
-true)
-
-vim.cmd("command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)")
--- }}}
+}

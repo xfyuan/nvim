@@ -1,17 +1,10 @@
--- regular settings
-require "setting"
+require "config.options"
+require "config.lazy"
 
--- load all plugins
-require "plugin"
-
--- all plugins configuration
-require "plugins.appearance"
-require "plugins.core"
-require "plugins.filetree"
-require "plugins.fuzzyfinder"
-require "plugins.lsp"
-require "plugins.programming"
-require "plugins.treesitter"
-
--- key mapping
-require "keymaps"
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    require "config.autocmds"
+    require "config.keymaps"
+  end,
+})

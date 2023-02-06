@@ -1,81 +1,78 @@
 local M = {}
 
-local wk = require "which-key"
--- local legendary = require "legendary"
+---@type PluginLspKeys
+M._keys = nil
 
--- local keymap = vim.api.nvim_set_keymap
--- local buf_keymap = vim.api.nvim_buf_set_keymap
-local keymap = vim.keymap.set
-
-local function keymappings(client, bufnr)
-  local opts = { noremap = true, silent = true }
-
-  -- Key mappings
-  -- buf_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  -- vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
-  keymap("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-
-  keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-  keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-  keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
-  keymap("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
-
-  -- Whichkey
-  local keymap_l = {
-    l = {
-      name = "LSP",
-      a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-      d = { "<cmd>lua require('telescope.builtin').diagnostics()<CR>", "Diagnostics" },
-      f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
-      i = { "<cmd>LspInfo<CR>", "Lsp Info" },
-      j = { "<cmd>Telescope lsp_definitions jump_type=vsplit<cr>", 'Vsplit view definition'},
-      n = { "<cmd>Lspsaga rename<CR>", "Rename" },
-      r = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", "References" },
-      R = { "<cmd>Trouble lsp_references<cr>", "Trouble References" },
-      s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", "Document Symbols" },
-      t = { "<cmd>TroubleToggle document_diagnostics<CR>", "Trouble" },
-      L = { "<cmd>lua vim.lsp.codelens.refresh()<CR>", "Refresh CodeLens" },
-      l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run CodeLens" },
-      D = { "<cmd>lua require('plugins.lsp').toggle_diagnostics()<CR>", "Toggle Inline Diagnostics" },
-    },
+---@return (LazyKeys|{has?:string})[]
+function M.get()
+  local format = require("plugins.lsp.format").format
+  ---@class PluginLspKeys
+  -- stylua: ignore
+  M._keys = M._keys or {
+    { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Goto Definition" },
+    { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+    { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
+    { "gI", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto Implementation" },
+    -- { "gt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Goto Type Definition" },
+    { "K", vim.lsp.buf.hover, desc = "Hover" },
+    { "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
+    { "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
+    { "]d", M.diagnostic_goto(true), desc = "Next Diagnostic" },
+    { "[d", M.diagnostic_goto(false), desc = "Prev Diagnostic" },
+    { "]e", M.diagnostic_goto(true, "ERROR"), desc = "Next Error" },
+    { "[e", M.diagnostic_goto(false, "ERROR"), desc = "Prev Error" },
+    { "]w", M.diagnostic_goto(true, "WARN"), desc = "Next Warning" },
+    { "[w", M.diagnostic_goto(false, "WARN"), desc = "Prev Warning" },
+    { "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
+    { "<leader>cd", vim.diagnostic.open_float, desc = "Line Diagnostics" },
+    { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
+    { "<leader>cf", format, desc = "Format Document", has = "documentFormatting" },
+    { "<leader>cf", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" },
+    { "<leader>cr", M.rename, expr = true, desc = "Rename", has = "rename" },
+    { "<leader>ct", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble" },
   }
-  if client.server_capabilities.documentFormattingProvider then
-    keymap_l.l.F = { "<cmd>lua vim.lsp.buf.format({async = true})<CR>", "Format Document" }
-  end
-
-  local keymap_g = {
-    name = "Goto",
-    d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
-    -- d = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "Definition" },
-    D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
-    h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
-    I = { "<cmd>Telescope lsp_implementations<CR>", "Goto Implementation" },
-    B = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
-    -- b = { "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", "Goto Type Definition" },
-  }
-
-  local keymap_v_l = {
-    l = {
-      name = "LSP",
-      a = { "<cmd>'<,'>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-    },
-  }
-
-  local o = { buffer = bufnr, prefix = "<leader>" }
-  wk.register(keymap_l, o)
-  -- legendary.bind_whichkey(keymap_l, o, false)
-
-  o = { mode = "v", buffer = bufnr, prefix = "<leader>" }
-  wk.register(keymap_v_l, o)
-  -- legendary.bind_whichkey(keymap_v_l, o, false)
-
-  o = { buffer = bufnr, prefix = "g" }
-  wk.register(keymap_g, o)
-  -- legendary.bind_whichkey(keymap_g, o, false)
+  return M._keys
 end
 
-function M.setup(client, bufnr)
-  keymappings(client, bufnr)
+function M.on_attach(client, buffer)
+  local Keys = require("lazy.core.handler.keys")
+  local keymaps = {} ---@type table<string,LazyKeys|{has?:string}>
+
+  for _, value in ipairs(M.get()) do
+    local keys = Keys.parse(value)
+    if keys[2] == vim.NIL or keys[2] == false then
+      keymaps[keys.id] = nil
+    else
+      keymaps[keys.id] = keys
+    end
+  end
+
+  for _, keys in pairs(keymaps) do
+    if not keys.has or client.server_capabilities[keys.has .. "Provider"] then
+      local opts = Keys.opts(keys)
+      ---@diagnostic disable-next-line: no-unknown
+      opts.has = nil
+      opts.silent = true
+      opts.buffer = buffer
+      vim.keymap.set(keys.mode or "n", keys[1], keys[2], opts)
+    end
+  end
+end
+
+function M.rename()
+  if pcall(require, "inc_rename") then
+    return ":IncRename " .. vim.fn.expand("<cword>")
+  else
+    vim.lsp.buf.rename()
+  end
+end
+
+function M.diagnostic_goto(next, severity)
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go({ severity = severity })
+  end
 end
 
 return M
