@@ -120,4 +120,12 @@ return {
       })
     end,
   },
+  -- align text by split chars, defaut hotkey: ga/gA
+  {
+    "echasnovski/mini.align",
+    event = "VeryLazy",
+    config = function(_, opts)
+      require("mini.align").setup(opts)
+    end,
+  },
 }
