@@ -14,6 +14,7 @@ return {
       },
     },
     config = function(_, opts)
+      local Util = require("util")
       local wk = require("which-key")
       wk.setup(opts)
 
@@ -49,54 +50,14 @@ return {
           -- u = {'<cmd>DBUI<cr>', 'open db ui'},
           -- l = {'<Plug>(DBExeLine)', 'run line as query'},
           -- g = { function() require('dapui').toggle() end, "Toggle debbuger" },
-          b = {
-            function()
-              require("dap").toggle_breakpoint()
-            end,
-            "Toggle breakpoint",
-          },
-          c = {
-            function()
-              require("dap").continue()
-            end,
-            "Continue or start debuggger",
-          },
-          n = {
-            function()
-              require("dap").step_over()
-            end,
-            "Step over",
-          },
-          i = {
-            function()
-              require("dap").step_into()
-            end,
-            "Step in",
-          },
-          o = {
-            function()
-              require("dap").step_out()
-            end,
-            "Step out",
-          },
-          k = {
-            function()
-              require("dap").up()
-            end,
-            "Go up",
-          },
-          j = {
-            function()
-              require("dap").down()
-            end,
-            "Go down",
-          },
-          u = {
-            function()
-              require("dapui").toggle()
-            end,
-            "Toggle UI",
-          },
+          b = { function() require("dap").toggle_breakpoint() end, "Toggle breakpoint", },
+          c = { function() require("dap").continue() end, "Continue or start debuggger", },
+          n = { function() require("dap").step_over() end, "Step over", },
+          i = { function() require("dap").step_into() end, "Step in", },
+          o = { function() require("dap").step_out() end, "Step out", },
+          k = { function() require("dap").up() end, "Go up", },
+          j = { function() require("dap").down() end, "Go down", },
+          u = { function() require("dapui").toggle() end, "Toggle UI", },
           t = {
             function()
               local dap = require("dap")
@@ -218,9 +179,16 @@ return {
           -- o = { "<cmd>TodoLocList<cr>", "List todos in quickfix" },
         },
         u = {
-          name = "Url view",
+          name = "Url view/Toggle option",
+          -- urlview
           u = { "<cmd>UrlView buffer<cr>", "Find URL and open" },
           l = { "<cmd>UrlView buffer action=clipboard<cr>", "Copy URL" },
+          -- toggle options
+          f = { function() require("plugins.lsp.format").toggle() end, "Toggle format on Save", },
+          w = { function() Util.toggle("wrap") end, "Toggle Word Wrap", },
+          s = { function() Util.toggle("spell") end, "Toggle Spelling", },
+          n = { function() Util.toggle("relativenumber") end, "Toggle Line Numbers", },
+          d = { function() Util.toggle_diagnostics() end, "Toggle Diagnostics", },
         },
         w = {
           name = "Window/Word",
