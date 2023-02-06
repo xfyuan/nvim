@@ -33,6 +33,24 @@ return {
       { "<leader>ff", Util.telescope("files"), desc = "Find Files" },
       { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
       { "<leader>sc", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      {
+        "<leader>cs",
+        Util.telescope("lsp_document_symbols", {
+          symbols = {
+            "Class",
+            "Function",
+            "Method",
+            "Constructor",
+            "Interface",
+            "Module",
+            "Struct",
+            "Trait",
+            "Field",
+            "Property",
+          },
+        }),
+        desc = "Goto Symbol",
+      },
     },
     opts = function()
       local telescope = require("telescope")
