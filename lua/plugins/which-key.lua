@@ -81,10 +81,7 @@ return {
           g = { "<cmd>GFiles<cr>", "Fzf find git files" },
           j = { "<cmd>Files<cr>", "Fzf find files" },
           -- telescope
-          d = { "<cmd>Telescope diagnostics<cr>", "Find diagnostics" },
-          f = { "<cmd>Telescope git_files<cr>", "Find git files" },
-          o = { "<cmd>Telescope find_files<cr>", "Find files" },
-          b = { "<cmd>Telescope buffers show_all_buffers=true<cr>", "Switch buffers" },
+          b = { "<cmd>Telescope buffers<cr>", "Switch buffers" },
           h = { "<cmd>Telescope oldfiles<cr>", "Opened files history" },
           s = { "<cmd>Telescope luasnip<cr>", "Search snippet" },
           p = { "<cmd>Telescope lazy<cr>", "List lazy plugins info" },
@@ -153,7 +150,7 @@ return {
         s = {
           name = "Search/Session",
           -- search
-          c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+          -- c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
           C = { "<cmd>Telescope commands<cr>", "Commands" },
           h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
           H = { "<cmd>Telescope heading<cr>", "Find Header" },

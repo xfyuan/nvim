@@ -1,3 +1,5 @@
+local Util = require("util")
+
 return {
   -- telescope.nvim
   {
@@ -25,6 +27,13 @@ return {
         end,
       },
     },
+    keys = {
+      -- search
+      { "<C-p>", Util.telescope("files"), desc = "Find Files" },
+      { "<leader>ff", Util.telescope("files"), desc = "Find Files" },
+      { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+      { "<leader>sc", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    },
     opts = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
@@ -43,11 +52,6 @@ return {
             fuzzy = true,
             override_file_sorter = true,
             override_generic_sorter = true,
-          },
-        },
-        pickers = {
-          colorscheme = {
-            enable_preview = true,
           },
         },
         defaults = {

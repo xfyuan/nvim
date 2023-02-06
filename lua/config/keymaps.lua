@@ -83,6 +83,5 @@ keymap("n", "<leader>dft", "&diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'
 
 -- ================= Plugins Mapping ================= -- {{{
 -- keymap("n", "<C-p>", [[<Cmd>GFiles<CR>]])
-keymap("n", "<C-p>", [[<Cmd>Telescope git_files<CR>]])
 
 vim.cmd([[nmap <C-]> <Plug>(fzf_tags)]])
