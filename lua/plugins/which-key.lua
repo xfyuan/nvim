@@ -166,7 +166,6 @@ return {
           w = { "<cmd>FocusMaxOrEqual<cr>", "Toggle window zoom" },
           s = { "<cmd>FocusSplitNicely<cr>", "Split a window on golden ratio" },
           o = { "<cmd>lua require('nvim-window').pick()<cr>", "Choose window" },
-          t = { "<c-w>t", "Move to new tab" },
           m = { "<cmd>MarkdownPreview<cr>", "Open markdown preview window" },
           l = { "<Plug>TranslateW", "Translate word online" },
           -- w = {'<cmd>MacDictPopup<cr>', 'search cursor word in macOS distionary'},

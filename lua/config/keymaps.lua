@@ -35,6 +35,9 @@ keymap("n", "<C-j>", "<C-w>j")
 keymap("n", "<C-k>", "<C-w>k")
 keymap("n", "<C-l>", "<C-w>l")
 
+-- tabs
+keymap("n", "<leader><tab>", "<cmd>tabnext<cr>")
+
 -- Quick split window
 keymap("n", "_", [[<Cmd>sp<CR>]])
 keymap("n", "<bar>", [[<Cmd>vsp<CR>]])
