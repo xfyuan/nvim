@@ -40,10 +40,10 @@ keymap("n", "_", [[<Cmd>sp<CR>]])
 keymap("n", "<bar>", [[<Cmd>vsp<CR>]])
 
 -- Resize window using <shift> arrow keys
-keymap("n", "<S-Up>", "<cmd>resize +2<CR>")
-keymap("n", "<S-Down>", "<cmd>resize -2<CR>")
-keymap("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
-keymap("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
+keymap("n", "<A-Up>", "<cmd>resize +2<CR>")
+keymap("n", "<A-Down>", "<cmd>resize -2<CR>")
+keymap("n", "<A-Left>", "<cmd>vertical resize -2<CR>")
+keymap("n", "<A-Right>", "<cmd>vertical resize +2<CR>")
 
 -- Add undo break-points
 keymap("i", ",", ",<c-g>u")
