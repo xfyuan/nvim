@@ -30,13 +30,10 @@ return {
         k = { "<Plug>DashSearch", "Search word in Dash" }, -- dash.vim plugin
         L = { "<cmd>Lazy<cr>", "open lazy.nvim plugins window" },
         o = { "<cmd>AerialToggle<cr>", "Toggle code outline window" }, -- aerial.nvim plugin
-        -- Database
-        D = {
-          name = "Database",
-          u = { "<Cmd>DBUIToggle<Cr>", "Toggle UI" },
-          f = { "<Cmd>DBUIFindBuffer<Cr>", "Find buffer" },
-          r = { "<Cmd>DBUIRenameBuffer<Cr>", "Rename buffer" },
-          q = { "<Cmd>DBUILastQueryInfo<Cr>", "Last query info" },
+        b = {
+          name = "Buffer/Bot",
+          c = { function() require("util.bot").cht() end, "Cheatsheet(cht.sh)", },
+          s = { function() require("util.bot").stack_overflow() end, "Stack Overflow", },
         },
         -- Database
         -- D = {
