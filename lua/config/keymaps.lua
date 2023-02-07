@@ -80,8 +80,3 @@ keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
 
 -- Toggle diff buffers
 keymap("n", "<leader>dft", "&diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'", { expr = true })
-
--- ================= Plugins Mapping ================= -- {{{
--- keymap("n", "<C-p>", [[<Cmd>GFiles<CR>]])
-
-vim.cmd([[nmap <C-]> <Plug>(fzf_tags)]])
