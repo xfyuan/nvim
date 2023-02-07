@@ -25,8 +25,8 @@ return {
   -- },
 
   -- Junegunn Choi ⭐
-  { "junegunn/fzf", event = "VeryLazy", build = ":call fzf#install()" },
-  { "junegunn/fzf.vim", event = "VeryLazy" },
+  -- { "junegunn/fzf", event = "VeryLazy", build = ":call fzf#install()" },
+  -- { "junegunn/fzf.vim", event = "VeryLazy" },
   -- "junegunn/vim-fnr", -- Find-N-Replace in Vim with live preview
   { "junegunn/gv.vim", event = "VeryLazy" },
 }

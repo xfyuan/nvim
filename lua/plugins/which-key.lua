@@ -78,8 +78,8 @@ return {
           -- fzf.vim
           -- b = {'<cmd>Buffers<cr>', 'find buffers'},
           -- o = {'<cmd>History<cr>', 'find old history'},
-          g = { "<cmd>GFiles<cr>", "Fzf find git files" },
-          j = { "<cmd>Files<cr>", "Fzf find files" },
+          -- g = { "<cmd>GFiles<cr>", "Fzf find git files" },
+          -- j = { "<cmd>Files<cr>", "Fzf find files" },
           -- telescope
           b = { "<cmd>Telescope buffers<cr>", "Switch buffers" },
           h = { "<cmd>Telescope oldfiles<cr>", "Opened files history" },
@@ -95,10 +95,8 @@ return {
           -- vim-fugitive plugin
           g = { "<cmd>Git blame<cr>", "Blame" },
           s = { "<cmd>Git<cr>", "Status" },
-          -- l = {'<cmd>GFiles?<cr>', 'changed files'},
           d = { "<cmd>Gdiff<cr>", "Diff" },
           r = { "<cmd>Gread<cr>", "Read" },
-          -- w = {'<cmd>Gwrite<cr>', 'write'},
           p = { "<cmd>Git push<cr>", "Push" },
           c = { "<cmd>Gcommit -v<cr>", "Commit" },
           -- gitsigns plugin
@@ -115,7 +113,7 @@ return {
           -- vim-rhubarb plugin
           -- b = {'<cmd>Gbrowser<cr>', 'browse github'},
           -- gv.vim plugin
-          h = { "<cmd>GV!<cr>", "List only current file commits" },
+          h = { "<cmd>GV!<cr>", "List current file commits history" },
         },
         r = {
           name = "Replace/Refactor",
