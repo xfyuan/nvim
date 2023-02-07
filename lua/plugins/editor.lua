@@ -104,6 +104,7 @@ return {
         autoresize = false,
         signcolumn = false,
         number = false,
+        compatible_filetrees = {'nvimtree', 'neo-tree'}
       })
     end,
   },

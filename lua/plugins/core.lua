@@ -89,37 +89,60 @@ return {
 
   -- file explorer
   {
-    "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeToggle" },
+    "nvim-neo-tree/neo-tree.nvim",
+    cmd = "Neotree",
     keys = {
-      { "<C-u>", "<cmd>NvimTreeToggle<cr>", desc = "File Explorer" },
+      {
+        "<C-u>",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = require("util").get_root() })
+        end,
+        desc = "Explorer NeoTree (root dir)",
+      },
+      {
+        "<leader>E",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+        end,
+        desc = "Explorer NeoTree (cwd)",
+      },
     },
+    deactivate = function()
+      vim.cmd([[Neotree close]])
+    end,
+    init = function()
+      vim.g.neo_tree_remove_legacy_commands = 1
+      if vim.fn.argc() == 1 then
+        local stat = vim.loop.fs_stat(vim.fn.argv(0))
+        if stat and stat.type == "directory" then
+          require("neo-tree")
+        end
+      end
+    end,
     opts = {
-      disable_netrw = true,
-      hijack_netrw = true,
-      respect_buf_cwd = true,
-      sync_root_with_cwd = true,
-      view = {
-        number = false,
-        relativenumber = false,
-        signcolumn = "yes",
+      close_if_last_window = true,
+      filesystem = {
+        bind_to_cwd = false,
+        follow_current_file = true,
       },
-      filters = {
-        dotfiles = true,
-      },
-      git = {
-        enable = true,
-        ignore = true,
-      },
-      update_focused_file = {
-        enable = true,
-        update_root = true,
-      },
-      actions = {
-        open_file = {
-          quit_on_open = true,
+      window = {
+        width = 32,
+        mappings = {
+          ["<space>"] = "none",
+          ["o"] = "open",
+          ["e"] = function() vim.api.nvim_exec("Neotree focus filesystem left",true) end,
+          ["b"] = function() vim.api.nvim_exec("Neotree focus buffers left",true) end,
+          ["g"] = function() vim.api.nvim_exec("Neotree focus git_status left",true) end,
         },
       },
+      event_handlers = {
+        {
+          event = "file_opened",
+          handler = function(_)
+            require("neo-tree").close_all()
+          end
+        },
+      }
     },
   },
 }
