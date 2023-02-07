@@ -162,6 +162,27 @@ return {
       { "[[", function() require("illuminate").goto_prev_reference(false) end, desc = "Prev Reference", },
     },
   },
+  -- refactoring library based off the Refactoring book by Martin Fowler
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {},
+    config = function(_, opts)
+      require("refactoring").setup(opts)
+      require("telescope").load_extension "refactoring"
+    end,
+    keys = function ()
+      vim.api.nvim_set_keymap(
+        "v",
+        "<leader>rr",
+        "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+        { noremap = true, silent = true }
+      )
+    end
+  },
   --  +------------------------------------------------------------------------------+
   --  |                                   Testing                                    |
   --  +------------------------------------------------------------------------------+

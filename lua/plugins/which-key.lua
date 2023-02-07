@@ -117,16 +117,6 @@ return {
           -- gv.vim plugin
           h = { "<cmd>GV!<cr>", "List only current file commits" },
         },
-        j = {
-          name = "Hop(easymotion)",
-          -- hop.nvim plugin
-          j = { "<cmd>HopWord<cr>", "Word" },
-          c = { "<cmd>HopChar2<cr>", "2 char" },
-          l = { "<cmd>HopLine<cr>", "Line" },
-          p = { "<cmd>HopPattern<cr>", "Pattern" },
-          -- vim-prettier plugin
-          -- t = {'<Plug>(Prettier)', 'prettier format current buffer'},
-        },
         r = {
           name = "Replace/Refactor",
           -- Spectre
@@ -134,18 +124,6 @@ return {
           f = { [[viw:lua require('spectre').open_file_search()<cr>]], "Replace in current file" },
           o = { [[<cmd>lua require('spectre').open()<CR>]], "Open spectre" },
           -- Refactoring
-          i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
-          b = { [[<cmd>lua require('refactoring').refactor('Exract Block')<cr>]], "Extract Block" },
-          B = { [[<cmd>lua require('refactoring').refactor('Exract Block To File')<cr>]], "Extract Block to File" },
-          P = {
-            [[<cmd>lua require('refactoring').debug.printf({below = false})<cr>]],
-            "Debug Print",
-          },
-          p = {
-            [[<cmd>lua require('refactoring').debug.print_var({normal = true})<cr>]],
-            "Debug Print Variable",
-          },
-          c = { [[<cmd>lua require('refactoring').debug.cleanup({})<cr>]], "Debug Cleanup" },
         },
         s = {
           name = "Search/Session",
@@ -170,10 +148,6 @@ return {
         t = {
           name = "Test",
           -- vim-test plugin
-          -- t = { "<cmd>TestNearest<cr>", "Test nearest case" },
-          -- l = { "<cmd>TestLast<cr>", "Test last case" },
-          -- f = { "<cmd>TestFile<cr>", "Test whole file" },
-          -- o = { "<cmd>TodoLocList<cr>", "List todos in quickfix" },
         },
         u = {
           name = "Url view/Toggle option",
@@ -210,15 +184,6 @@ return {
         },
         r = {
           name = "Refactor",
-          f = { [[<cmd>lua require('refactoring').refactor('Extract Function')<cr>]], "Extract Function" },
-          F = {
-            [[ <cmd>lua require('refactoring').refactor('Extract Function to File')<cr>]],
-            "Extract Function to File",
-          },
-          v = { [[<cmd>lua require('refactoring').refactor('Extract Variable')<cr>]], "Extract Variable" },
-          i = { [[<cmd>lua require('refactoring').refactor('Inline Variable')<cr>]], "Inline Variable" },
-          r = { [[<cmd>lua require('telescope').extensions.refactoring.refactors()<cr>]], "Refactor finder" },
-          d = { [[<cmd>lua require('refactoring').debug.print_var({})<cr>]], "Debug Print Var" },
         },
       }
 
@@ -239,14 +204,6 @@ return {
           w = { "<cmd>GoFillSwitch<CR>", "Fill switch" },
           g = { "<cmd>GoAddTag<CR>", "Add json tag" },
           c = { "<cmd>lua require('go.comment').gen()<CR>", "Comment current func" },
-          t = {
-            name = "Testing",
-            t = { "<cmd>GoTestFunc<CR>", "Go test -s [current test]" },
-            f = { "<cmd>GoTestFile<CR>", "Go test [current file]" },
-            a = { "<cmd>GoTest ./...<CR>", "Go test ./..." },
-            c = { "<cmd>GoCoverage<CR>", "Annotate with coverage" },
-            -- d = { "<cmd>call vimspector#LaunchWithSettings( #{ configuration: 'single test', TestName: go#util#TestName() } )<CR>", "Debug current test" },
-          },
         },
       }
 
