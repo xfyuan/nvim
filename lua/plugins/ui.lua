@@ -261,37 +261,12 @@ return {
   },
   --  +------------------------------------------------------------------------------+
   --  |                                  Dashboard                                   |
-  --  +------------------------------------------------------------------------------+
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
     opts = function()
       local dashboard = require("alpha.themes.dashboard")
-      local logo = [[
-      &&%                     ---.____    ,/x.                                      &&
-       &&&&&&&                  ___,---'  /  ia,__,-----.___                 .&&&&&&&
-        &#&&&&&&& &,                   ,-' ,  `:7o----.__---`           %& &&&&&&&.&
-          &&&&&&&&&&&&&            _.-/   '  /f.`.en,                &&&&&&&&&&&&&
-           %&&&&&&&&&&&&&       --'  ,    ,-' ^6g, `.'^=._         &&&&&&&&&&&&&
-             *&&&&&&&&&&&&&&&.                                &&&&&&&&&&&&&&&
-                &* &&&&&& &&&&&&&                         &&&&&&&/&&&&&& (&
-                   &&&&&&&&&* &&&&&                     &&&&& &&&&&&&&&&
-                     &&&&&&&&&&* &&&&&               &&&&& &&&&&&&&&&&
-                        &&&&&&&&&&  &&&%            &&&  &&&&&&&&&&
-                           &%/#&&&&&, &&&&       .&&& &&&&&&#/&%
-                               %&&&&&&& &&      .&& &&&&&&&/
-                                      *&&         &&.
-                                          %     &
-
-                            ✯¸.•´✿¨`✯•❀     &&&     ✿•✯`¨❀`•.¸✯
-                                          %&   &
-                                         ✿       ❀
-                                        ✿         ❀
-                                       ✿           ❀
-
-                                    The NeoVim of XY v0.8
-      ]]
-
+      local logo = require("util.logo")["random"]
       dashboard.section.header.val = vim.split(logo, "\n")
       dashboard.section.buttons.val = {
         -- dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
@@ -300,7 +275,7 @@ return {
         dashboard.button("u", "鈴" .. " Update plugins", ":Lazy update<CR>"),
         -- dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
         -- dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-        -- dashboard.button("q", " " .. " Quit", ":qa<CR>"),
+        dashboard.button("q", " " .. " Quit", ":qa<CR>"),
       }
       for _, button in ipairs(dashboard.section.buttons.val) do
         button.opts.hl = "AlphaButtons"
@@ -333,10 +308,14 @@ return {
         callback = function()
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          dashboard.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+
+          local version = " v" .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
+          local plugins = "⚡Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+          local footer = "\t" .. version .. "\t" .. plugins
+          dashboard.section.footer.val = footer
           pcall(vim.cmd.AlphaRedraw)
         end,
       })
     end,
   },
-}
+  --  +------------------------------------------------------------------------------+
