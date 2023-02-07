@@ -33,6 +33,7 @@ return {
       { "<leader>ff", Util.telescope("files"), desc = "Find Files" },
       { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
       { "<leader>sc", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Fuzzy find current buffer" },
       {
         "<leader>cs",
         Util.telescope("lsp_document_symbols", {
