@@ -61,20 +61,33 @@ return {
           -- j = { "<cmd>Files<cr>", "Fzf find files" },
           -- telescope
           b = { "<cmd>Telescope buffers<cr>", "Switch buffers" },
-          h = { "<cmd>Telescope oldfiles<cr>", "Opened files history" },
-          s = { "<cmd>Telescope luasnip<cr>", "Search snippet" },
+          h = { "<cmd>Telescope oldfiles<cr>", "File history" },
+          j = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy find current buffer" },
+          m = { "<cmd>Telescope marks<cr>", "Find Mark" },
+          d = { "<cmd>Telescope diagnostics<cr>", "Find Diagnostics" },
+          r = { "<cmd>Telescope registers<cr>", "Find Registers" },
+          s = { "<cmd>Telescope grep_string<cr>", "Grep text under cursor" },
+          t = { "<cmd>Telescope live_grep<cr>", "Grep text" },
           p = { "<cmd>Telescope lazy<cr>", "List lazy plugins info" },
           P = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "Find project" },
+          S = { "<cmd>Telescope luasnip<cr>", "Search snippet" },
+          e = {
+            name = "Extra finder",
+            C = { "<cmd>Telescope commands<cr>", "Commands" },
+            h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+            H = { "<cmd>Telescope heading<cr>", "Find Header" },
+            M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+            S = { "<cmd>Telescope symbols<cr>", "Search symbols" },
+            k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+          }
         },
         g = {
           name = "Git",
           -- telescope
           l = { "<cmd>Telescope git_status<cr>", "Changed files" },
-          m = { "<cmd>Telescope git_commits<cr>", "Find git commits" },
           -- vim-fugitive plugin
-          g = { "<cmd>Git blame<cr>", "Blame" },
           s = { "<cmd>Git<cr>", "Status" },
-          d = { "<cmd>Gdiff<cr>", "Diff" },
+          -- d = { "<cmd>Gdiff<cr>", "Diff" },
           r = { "<cmd>Gread<cr>", "Read" },
           p = { "<cmd>Git push<cr>", "Push" },
           c = { "<cmd>Gcommit -v<cr>", "Commit" },
@@ -83,39 +96,31 @@ return {
           j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
           k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
           a = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-          u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
-          P = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-          A = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Buffer" },
-          R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-          D = { "<cmd>lua require 'gitsigns'.diffthis()<cr>", "Diff This" },
-          w = { "<cmd>lua require 'gitsigns'.diffthis('~')<cr>", "Diff This ~" },
-          -- vim-rhubarb plugin
-          -- b = {'<cmd>Gbrowser<cr>', 'browse github'},
-          -- gv.vim plugin
-          h = { "<cmd>GV!<cr>", "List current file commits history" },
+          d = { "<cmd>lua require 'gitsigns'.diffthis()<cr>", "Diff This" },
+          e = {
+            name = "Extra action",
+            b = { "<cmd>Git blame<cr>", "Blame" },
+            m = { "<cmd>Telescope git_commits<cr>", "Find git commits" },
+            d = { "<cmd>lua require 'gitsigns'.diffthis('~')<cr>", "Diff This ~" },
+            p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+            a = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Buffer" },
+            r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+            u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
+            -- gv.vim plugin
+            h = { "<cmd>GV!<cr>", "List current file commits history" },
+            -- vim-rhubarb plugin
+            -- b = {'<cmd>Gbrowser<cr>', 'browse github'},
+          },
         },
         r = {
-          name = "Replace/Refactor",
+          name = "Replace",
           -- Spectre
           r = { [[<cmd>lua require('spectre').open_visual({select_word=true})<cr>]], "Replace cursor word" },
           f = { [[viw:lua require('spectre').open_file_search()<cr>]], "Replace in current file" },
           o = { [[<cmd>lua require('spectre').open()<CR>]], "Open spectre" },
-          -- Refactoring
         },
         s = {
-          name = "Search/Session",
-          -- search
-          -- c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-          C = { "<cmd>Telescope commands<cr>", "Commands" },
-          h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-          H = { "<cmd>Telescope heading<cr>", "Find Header" },
-          m = { "<cmd>Telescope marks<cr>", "Find Mark" },
-          M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-          r = { "<cmd>Telescope registers<cr>", "Registers" },
-          t = { "<cmd>Telescope live_grep<cr>", "Text" },
-          s = { "<cmd>Telescope grep_string<cr>", "Text under cursor" },
-          S = { "<cmd>Telescope symbols<cr>", "Search symbols" },
-          k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+          name = "Session",
           -- session
           a = { "<cmd>SaveSession<cr>", "Add auto session" },
           l = { "<cmd>RestoreSession<cr>", "Load auto session" },

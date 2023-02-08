@@ -131,7 +131,7 @@ return {
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment", },
       { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
       { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+      { "<leader>fT", "<cmd>TodoTelescope<cr>", desc = "Find Todo" },
     },
   },
   --  +------------------------------------------------------------------------------+
@@ -295,6 +295,7 @@ return {
 
       require("dap.ext.vscode").load_launchjs()
       require("telescope").load_extension "dap"
+      -- adapters
       require("dap-go").setup()
     end,
   },
