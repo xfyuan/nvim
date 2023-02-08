@@ -90,7 +90,7 @@ return {
           -- d = { "<cmd>Gdiff<cr>", "Diff" },
           r = { "<cmd>Gread<cr>", "Read" },
           p = { "<cmd>Git push<cr>", "Push" },
-          c = { "<cmd>Gcommit -v<cr>", "Commit" },
+          c = { "<cmd>Git commit --verify<cr>", "Commit" },
           -- gitsigns plugin
           b = { "<cmd>lua require 'gitsigns'.blame_line({ full = true })<cr>", "Blame Line" },
           j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
