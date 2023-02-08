@@ -5,8 +5,8 @@ return {
     config = function()
       require("styler").setup({
         themes = {
-          markdown = { colorscheme = "nightfox" },
-          help = { colorscheme = "terafox" },
+          markdown = { colorscheme = "gruvbox" },
+          help = { colorscheme = "gruvbox" },
         },
       })
     end,
@@ -19,5 +19,5 @@ return {
       vim.cmd([[colorscheme tokyonight-storm]])
     end,
   },
-  { "EdenEast/nightfox.nvim", lazy = false, config = true },
+  { "ellisonleao/gruvbox.nvim", lazy = false, config = true },
 }
