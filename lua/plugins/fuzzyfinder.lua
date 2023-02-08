@@ -12,7 +12,6 @@ return {
       { "nvim-telescope/telescope-project.nvim" },
       { "tsakirist/telescope-lazy.nvim" },
       { "crispgm/telescope-heading.nvim" },
-      -- { "nvim-telescope/telescope-dap.nvim" },
       {
         "rmagatti/auto-session", -- Auto Session takes advantage of Neovim's existing session management capabilities to provide seamless automatic session management
         dependencies = { "rmagatti/session-lens" },
@@ -62,7 +61,6 @@ return {
       telescope.load_extension("heading")
       telescope.load_extension("session-lens")
       telescope.load_extension("aerial")
-      -- telescope.load_extension('dap')
 
       return {
         extensions = {
