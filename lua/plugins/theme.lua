@@ -5,7 +5,7 @@ return {
     config = function()
       require("styler").setup({
         themes = {
-          markdown = { colorscheme = "terafox" },
+          markdown = { colorscheme = "nightfox" },
           help = { colorscheme = "terafox" },
         },
       })
