@@ -126,13 +126,12 @@ return {
         follow_current_file = true,
       },
       window = {
-        width = 32,
         mappings = {
           ["<space>"] = "none",
           ["o"] = "open",
           ["e"] = function() vim.api.nvim_exec("Neotree focus filesystem left",true) end,
           ["b"] = function() vim.api.nvim_exec("Neotree focus buffers left",true) end,
-          ["g"] = function() vim.api.nvim_exec("Neotree focus git_status left",true) end,
+          -- ["g"] = function() vim.api.nvim_exec("Neotree focus git_status left",true) end,
         },
       },
       event_handlers = {
