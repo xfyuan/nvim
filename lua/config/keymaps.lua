@@ -1,8 +1,8 @@
 local keymap = vim.keymap.set
 
 -- Remap for dealing with word wrap
-keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
-keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+keymap("n", "j", "gj", { silent = true })
+keymap("n", "k", "gk", { silent = true })
 -- Go to beginning of line. Goes to previous line if repeated
 keymap("n", "H", "getpos('.')[2] == 1 ? 'k' : '^'", { expr = true })
 -- Go to end of line. Goes to next line if repeated
