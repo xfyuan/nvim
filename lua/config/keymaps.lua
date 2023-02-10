@@ -24,10 +24,10 @@ vim.cmd("nnoremap <Enter> o<ESC>") -- Insert New Line quickly
 -- Better escape using jk in insert and terminal mode
 keymap("i", "jj", "<ESC>")
 keymap("t", "jj", "<C-\\><C-n>")
-keymap("t", "<C-h>", "<C-\\><C-n><C-w>h")
-keymap("t", "<C-j>", "<C-\\><C-n><C-w>j")
-keymap("t", "<C-k>", "<C-\\><C-n><C-w>k")
-keymap("t", "<C-l>", "<C-\\><C-n><C-w>l")
+-- keymap("t", "<C-h>", "<C-\\><C-n><C-w>h")
+-- keymap("t", "<C-j>", "<C-\\><C-n><C-w>j")
+-- keymap("t", "<C-k>", "<C-\\><C-n><C-w>k")
+-- keymap("t", "<C-l>", "<C-\\><C-n><C-w>l")
 
 -- Move to window using the <ctrl> hjkl keys
 keymap("n", "<C-h>", "<C-w>h")
