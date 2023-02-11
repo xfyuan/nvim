@@ -105,6 +105,7 @@ return {
         marksman = {},
         jsonls = {},
         tsserver = {},
+        ruby_ls = {},
         tailwindcss = {},
         vimls = {},
         vuels = {},
