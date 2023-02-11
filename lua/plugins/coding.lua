@@ -183,6 +183,34 @@ return {
       )
     end
   },
+  -- navigate between files that are related using regexp pattern
+  {
+    "otavioschwanck/telescope-alternate" ,
+    config = function()
+      require('telescope-alternate').setup({
+        presets = { 'rails', 'rspec', },
+        mappings = {
+          -- jihulab rails
+          { 'jh/app/models/(.*).rb', {
+            { 'jh/app/controllers/**/*[1:pluralize]_controller.rb', 'JH Controller' },
+            { 'jh/app/views/[1:pluralize]/*.html.haml', 'JH View' },
+            { 'jh/app/helpers/[1]_helper.rb', 'JH Helper' },
+          } },
+          { 'jh/app/controllers(.*)/(.*)_controller.rb', {
+            { 'jh/app/models/**/*[2:singularize].rb', 'JH Model' },
+            { 'jh/app/views/[1][2]/*.html.haml', 'JH View' },
+            { 'jh/app/helpers/**/*[2]_helper.rb', 'JH Helper' },
+          } },
+          -- jihulab rspec
+          { 'jh/app/(.*).rb', { { 'jh/spec/[1]_spec.rb', 'JH Test' } } },
+          { 'jh/spec/(.*)_spec.rb', { { 'jh/app/[1].rb', 'JH Original', true } } },
+          { 'jh/app/controllers/(.*)_controller.rb', { { 'jh/spec/requests/[1]_spec.rb', 'JH Request Test' } } },
+          { 'jh/spec/requests/(.*)_spec.rb', { { 'jh/app/controllers/[1]_controller.rb', 'JH Original Controller', true } } },
+        },
+      })
+      require('telescope').load_extension('telescope-alternate')
+    end,
+  },
   --  +------------------------------------------------------------------------------+
   --  |                                   Testing                                    |
   --  +------------------------------------------------------------------------------+

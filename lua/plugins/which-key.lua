@@ -60,6 +60,7 @@ return {
           -- g = { "<cmd>GFiles<cr>", "Fzf find git files" },
           -- j = { "<cmd>Files<cr>", "Fzf find files" },
           -- telescope
+          a = { "<cmd>Telescope telescope-alternate alternate_file<cr>", "Alternate file" },
           b = { "<cmd>Telescope buffers<cr>", "Switch buffers" },
           h = { "<cmd>Telescope frecency<cr>", "Most (f)recently used files" },
           j = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy find current buffer" },
