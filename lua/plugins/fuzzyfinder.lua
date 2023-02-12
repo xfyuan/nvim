@@ -98,10 +98,6 @@ return {
             default_workspace = 'CWD',
             show_unindexed = false,
             ignore_patterns = { '*.git/*', '*node_modules/*', '*vendor/*' },
-            workspaces = {
-              conf = vim.env.DOTFILES,
-              project = vim.env.PROJECTS_DIR,
-            },
           },
           live_grep_args = {
             auto_quoting = true,
