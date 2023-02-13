@@ -5,7 +5,7 @@ return {
     config = function()
       require("styler").setup({
         themes = {
-          markdown = { colorscheme = "gruvbox" },
+          markdown = { colorscheme = "catppuccin-mocha" },
           help = { colorscheme = "gruvbox" },
         },
       })
@@ -20,4 +20,5 @@ return {
     end,
   },
   { "ellisonleao/gruvbox.nvim", lazy = false, config = true },
+  { "catppuccin/nvim", lazy = false, name = "catppuccin" },
 }
