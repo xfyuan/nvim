@@ -3,6 +3,11 @@ return {
   {
     "echasnovski/mini.animate",
     event = "VeryLazy",
+    keys = {
+      { "<leader>ua", function ()
+        vim.g.minianimate_disable = not vim.g.minianimate_disable
+      end, desc = "Toggle animation" },
+    },
     opts = function()
       -- don't use animate when scrolling with the mouse
       local mouse_scrolled = false
