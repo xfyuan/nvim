@@ -1,12 +1,20 @@
+local Util = require("lazy.core.util")
+local function toggle_animation()
+  vim.g.minianimate_disable = not vim.g.minianimate_disable
+  if vim.g.minianimate_disable then
+    Util.warn("Disabled mini automation", { title = "Animation" })
+  else
+    Util.info("Enabled mini automation", { title = "Animation" })
+  end
+end
+
 return {
   -- animations
   {
     "echasnovski/mini.animate",
     event = "VeryLazy",
     keys = {
-      { "<leader>ua", function ()
-        vim.g.minianimate_disable = not vim.g.minianimate_disable
-      end, desc = "Toggle animation" },
+      { "<leader>ua", function() toggle_animation() end, desc = "Toggle animation" },
     },
     opts = function()
       -- don't use animate when scrolling with the mouse
