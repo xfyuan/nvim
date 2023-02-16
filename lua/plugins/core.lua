@@ -133,6 +133,13 @@ return {
           ["e"] = function() vim.api.nvim_exec("Neotree focus filesystem left",true) end,
           ["b"] = function() vim.api.nvim_exec("Neotree focus buffers left",true) end,
           -- ["g"] = function() vim.api.nvim_exec("Neotree focus git_status left",true) end,
+          ["Y"] = function(state)
+            local node = state.tree:get_node()
+            -- relative
+            local content = node.path:gsub(state.path, ""):sub(2)
+            vim.fn.setreg('"', content)
+            vim.fn.setreg('*', content)
+          end,
         },
       },
       event_handlers = {
