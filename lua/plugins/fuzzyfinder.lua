@@ -68,7 +68,7 @@ return {
           prompt_prefix = " ",
           selection_caret = " ",
           path_display = { 'truncate' },
-          file_ignore_patterns = {"node_modules", "%.jpg", "%.png"},
+          file_ignore_patterns = {"node_modules", "vendor/bundle", "%.jpg", "%.png"},
           history = {
             path = vim.fn.stdpath('data') .. '/telescope_history.sqlite3',
           },
