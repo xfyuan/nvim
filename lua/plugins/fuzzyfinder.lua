@@ -76,7 +76,6 @@ return {
           },
           mappings = {
             i = {
-              ["<esc>"] = actions.close,
               ['<Tab>'] = actions.toggle_selection,
               ["jj"] = actions.close,
               ["<C-j>"] = actions.move_selection_next,
@@ -88,6 +87,9 @@ return {
                 return require("trouble.providers.telescope").open_with_trouble(...)
               end,
             },
+            n = {
+              ["q"] = actions.close,
+            }
           },
         },
         extensions = {
