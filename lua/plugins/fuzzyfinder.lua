@@ -10,6 +10,7 @@ return {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       { "nvim-telescope/telescope-symbols.nvim" },
       { "nvim-telescope/telescope-project.nvim" },
+      { "nvim-telescope/telescope-file-browser.nvim" },
       { 'nvim-telescope/telescope-frecency.nvim', },
       { 'nvim-telescope/telescope-smart-history.nvim', },
       { 'nvim-telescope/telescope-live-grep-args.nvim', },
@@ -31,7 +32,8 @@ return {
     keys = {
       -- search
       { "<C-p>", Util.telescope("files"), desc = "Find Files" },
-      { "<leader>ff", Util.telescope("files"), desc = "Find Files" },
+      { "<leader>ff", "<cmd>Telescope file_browser<cr>", desc = "Browser" },
+      { "<leader>fo", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "Browser on current buffer" },
       { "<leader>fc", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
       {
         "<leader>cs",
@@ -79,8 +81,8 @@ return {
               ["jj"] = actions.close,
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,
-              ["<C-Down>"] = actions.cycle_history_next,
-              ["<C-Up>"] = actions.cycle_history_prev,
+              ["<C-n>"] = actions.cycle_history_next,
+              ["<C-p>"] = actions.cycle_history_prev,
               ["<C-g>"] = actions.send_selected_to_qflist + actions.open_qflist,
               ["<c-t>"] = function(...)
                 return require("trouble.providers.telescope").open_with_trouble(...)
@@ -94,6 +96,10 @@ return {
             fuzzy = true,
             override_file_sorter = true,
             override_generic_sorter = true,
+          },
+          file_browser = {
+            theme = "ivy",
+            hijack_netrw = true,
           },
           frecency = {
             default_workspace = 'CWD',
@@ -115,6 +121,7 @@ return {
       telescope.setup(opts)
 
       telescope.load_extension("fzf")
+      telescope.load_extension("file_browser")
       telescope.load_extension("frecency")
       telescope.load_extension("smart_history")
       telescope.load_extension("live_grep_args")
