@@ -51,13 +51,13 @@ return {
     end,
     opts = {
       mappings = {
-        add = "gza", -- Add surrounding in Normal and Visual modes
-        delete = "gzd", -- Delete surrounding
-        find = "gzf", -- Find surrounding (to the right)
-        find_left = "gzF", -- Find surrounding (to the left)
-        highlight = "gzh", -- Highlight surrounding
-        replace = "gzr", -- Replace surrounding
-        update_n_lines = "gzn", -- Update `n_lines`
+        add = "ma", -- Add surrounding in Normal and Visual modes
+        delete = "md", -- Delete surrounding
+        find = "mf", -- Find surrounding (to the right)
+        find_left = "mF", -- Find surrounding (to the left)
+        highlight = "mh", -- Highlight surrounding
+        replace = "mr", -- Replace surrounding
+        update_n_lines = "mn", -- Update `n_lines`
       },
     },
     config = function(_, opts)
