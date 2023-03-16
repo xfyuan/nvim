@@ -62,7 +62,13 @@ return {
         "vue",
         "yaml",
       },
-      highlight = { enable = true },
+      highlight = {
+        enable = true,
+        disable = function(_, bufnr) -- Disable in large buffers
+          -- return lang == "cpp" and vim.api.nvim_buf_line_count(bufnr) > 5000
+          return vim.api.nvim_buf_line_count(bufnr) > 5000
+        end,
+      },
       indent = { enable = true, disable = { "ruby" } },
       context_commentstring = { enable = true },
       incremental_selection = {
@@ -132,8 +138,8 @@ return {
         },
       },
       refactor = {
-        highlight_definitions = { enable = true },
-        highlight_current_scope = { enable = true },
+        highlight_definitions = { enable = false },
+        highlight_current_scope = { enable = false },
         navigation = { enable = true },
         smart_rename = { enable = true },
       },
