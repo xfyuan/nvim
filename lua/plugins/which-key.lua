@@ -148,7 +148,7 @@ return {
         },
         w = {
           name = "Window/Word",
-          w = { "<cmd>FocusMaxOrEqual<cr>", "Toggle window zoom" },
+          f = { "<cmd>FocusToggle<cr>", "Toggle window focus" }, w = { "<cmd>FocusMaxOrEqual<cr>", "Toggle window zoom" },
           s = { "<cmd>FocusSplitNicely<cr>", "Split a window on golden ratio" },
           o = { "<cmd>lua require('nvim-window').pick()<cr>", "Choose window" },
           m = { "<cmd>MarkdownPreview<cr>", "Open markdown preview window" },

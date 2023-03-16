@@ -108,7 +108,7 @@ return {
     event = "VeryLazy",
     config = function()
       require("focus").setup({
-        autoresize = false,
+        autoresize = true,
         signcolumn = false,
         number = false,
         compatible_filetrees = {'nvimtree', 'neo-tree'}
