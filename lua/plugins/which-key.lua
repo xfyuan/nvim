@@ -64,7 +64,7 @@ return {
           b = { "<cmd>Telescope buffers<cr>", "Switch buffers" },
           h = { "<cmd>Telescope frecency<cr>", "Most (f)recently used files" },
           j = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy find current buffer" },
-          m = { "<cmd>Telescope marks<cr>", "Find Mark" },
+          m = { "<cmd>MarksListBuf<cr>", "Find Mark in buffer" },
           d = { "<cmd>Telescope diagnostics<cr>", "Find Diagnostics" },
           r = { "<cmd>Telescope registers<cr>", "Find Registers" },
           s = { "<cmd>Telescope grep_string<cr>", "Grep text under cursor" },
