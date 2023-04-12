@@ -115,10 +115,10 @@ return {
           -- ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<C-l>"] = cmp.mapping {
-            i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false },
+            i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
             c = function(fallback)
               if cmp.visible() then
-                cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
+                cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true }
               else
                 fallback()
               end
