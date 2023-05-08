@@ -23,19 +23,36 @@ return {
   -- press [/] to select next/previous cursor
   -- press q to skip current and get next occurrence
   -- press Q to remove current cursor/selection
+  --
   { "mg979/vim-visual-multi", event = "BufReadPre" },
 
   -- easily jump to any location and enhanced f/t motions for Leap
   {
+    "ggandor/flit.nvim",
+    keys = function()
+      local ret = {}
+      for _, key in ipairs { "f", "F", "t", "T" } do
+        ret[#ret + 1] = { key, mode = { "n", "x", "o" }, desc = key }
+      end
+      return ret
+    end,
+    opts = { labeled_modes = "nx" },
+  },
+  {
     "ggandor/leap.nvim",
-    event = "VeryLazy",
-    dependencies = { { "ggandor/flit.nvim", opts = { labeled_modes = "nv" } } },
+    keys = {
+      -- { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
+      -- { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+      { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
+    },
     config = function(_, opts)
-      local leap = require("leap")
+      local leap = require "leap"
       for k, v in pairs(opts) do
         leap.opts[k] = v
       end
       leap.add_default_mappings(true)
+      vim.keymap.del({ "x", "o" }, "x")
+      vim.keymap.del({ "x", "o" }, "X")
     end,
   },
   -- preview markdown on your modern browser with synchronised scrolling
