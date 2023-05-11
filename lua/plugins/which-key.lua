@@ -104,6 +104,8 @@ return {
             name = "Extra action",
             b = { "<cmd>Git blame<cr>", "Blame" },
             m = { "<cmd>Telescope git_commits<cr>", "Find git commits" },
+            l = { "<cmd>Telescope advanced_git_search search_log_content<cr>", "Search in repo log content" },
+            L = { "<cmd>Telescope advanced_git_search search_log_content_file<cr>", "Search in file log content" },
             d = { "<cmd>lua require 'gitsigns'.diffthis('~')<cr>", "Diff This ~" },
             p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
             a = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Buffer" },

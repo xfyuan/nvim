@@ -14,6 +14,7 @@ return {
       { 'nvim-telescope/telescope-frecency.nvim', },
       { 'nvim-telescope/telescope-smart-history.nvim', },
       { 'nvim-telescope/telescope-live-grep-args.nvim', },
+      { "aaronhallaert/advanced-git-search.nvim" },
       { "tsakirist/telescope-lazy.nvim" },
       { "crispgm/telescope-heading.nvim" },
       {  'kkharji/sqlite.lua'  },
@@ -115,9 +116,16 @@ return {
               i = {
                 ["<C-e>"] = lga_actions.quote_prompt(),
                 ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-                ["<C-t>"] = lga_actions.quote_prompt({ postfix = " -t " }),
+                ["<C-t>"] = lga_actions.quote_prompt({ postfix = " -t" }),
+                ["<C-h>"] = lga_actions.quote_prompt({ postfix = " -truby lib app ee jh -g '!spec/'" }),
               },
             },
+          },
+          advanced_git_search = {
+            diff_plugin = "fugitive",
+            show_builtin_git_pickers = false,
+            git_flags = {},
+            git_diff_flags = {},
           }
         },
       }
@@ -128,10 +136,18 @@ return {
       telescope.load_extension("frecency")
       telescope.load_extension("smart_history")
       telescope.load_extension("live_grep_args")
+      telescope.load_extension("advanced_git_search")
       telescope.load_extension("lazy")
       telescope.load_extension("heading")
       telescope.load_extension("session-lens")
       telescope.load_extension("aerial")
+
+      vim.api.nvim_create_user_command(
+        "DiffCommitLine",
+        "lua require('telescope').extensions.advanced_git_search.diff_commit_line()",
+        { range = true }
+      )
+      vim.api.nvim_set_keymap( "v", "<leader>gl", ":DiffCommitLine<CR>", { noremap = true })
     end,
   },
 }
