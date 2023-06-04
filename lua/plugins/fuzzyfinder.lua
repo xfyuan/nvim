@@ -59,7 +59,15 @@ return {
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
+      local actions_layout = require("telescope.actions.layout")
       local lga_actions = require('telescope-live-grep-args.actions')
+      local enter_normal_mode = function()
+        local mode = vim.api.nvim_get_mode().mode
+        if mode == "i" then
+          vim.cmd [[stopinsert]]
+          return
+        end
+      end
 
       local opts = {
         defaults = {
@@ -80,6 +88,8 @@ return {
             i = {
               ['<Tab>'] = actions.toggle_selection,
               ["jj"] = actions.close,
+              ["jk"] = enter_normal_mode,
+              ["?"] = actions_layout.toggle_preview,
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,
               ["<C-n>"] = actions.cycle_history_next,
