@@ -86,7 +86,7 @@ return {
           },
           mappings = {
             i = {
-              ['<Tab>'] = actions.toggle_selection,
+              ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
               ["jj"] = actions.close,
               ["jk"] = enter_normal_mode,
               ["?"] = actions_layout.toggle_preview,
@@ -95,6 +95,7 @@ return {
               ["<C-n>"] = actions.cycle_history_next,
               ["<C-p>"] = actions.cycle_history_prev,
               ["<C-g>"] = actions.send_selected_to_qflist + actions.open_qflist,
+              ["<c-h>"] = actions.which_key,
               ["<c-t>"] = function(...)
                 return require("trouble.providers.telescope").open_with_trouble(...)
               end,
