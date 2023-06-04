@@ -2,7 +2,7 @@ local Util = require("lazy.core.util")
 
 local M = {}
 
-M.autoformat = false
+M.autoformat = true
 
 function M.toggle()
   M.autoformat = not M.autoformat
