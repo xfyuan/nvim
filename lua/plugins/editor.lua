@@ -50,14 +50,14 @@ return {
         leap.opts[k] = v
       end
       leap.add_default_mappings()
-      -- Remove default key mapping `s/S/x/X`, I CAN'T LIVE WITHOUT `s/S`!! 😄
+      -- Remove default key mapping `s/S/x/X`, I CAN'T LIVE WITHOUT `s/S`!!
       vim.keymap.del({ "x", "o" }, "x")
       vim.keymap.del({ "x", "o" }, "X")
       vim.keymap.del({ "x", "o", "n" }, "s")
       vim.keymap.del({ "x", "o", "n" }, "S")
       -- Add custome key mapping `zj/zk`
-      vim.keymap.set('n', 'zj', '<Plug>(leap-forward)', {})
-      vim.keymap.set('n', 'zk', '<Plug>(leap-backward)', {})
+      vim.keymap.set('n', '<leader>jj', '<Plug>(leap-forward)', {})
+      vim.keymap.set('n', '<leader>jk', '<Plug>(leap-backward)', {})
     end,
   },
   -- preview markdown on your modern browser with synchronised scrolling
