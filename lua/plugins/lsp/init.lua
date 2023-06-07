@@ -102,7 +102,6 @@ return {
         cssls = {},
         dockerls = {},
         html = {},
-        emmet_ls = {},
         marksman = {},
         jsonls = {},
         tsserver = {},
