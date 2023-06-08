@@ -55,9 +55,6 @@ return {
       vim.keymap.del({ "x", "o" }, "X")
       vim.keymap.del({ "x", "o", "n" }, "s")
       vim.keymap.del({ "x", "o", "n" }, "S")
-      -- Add custome key mapping `zj/zk`
-      vim.keymap.set('n', '<leader>jj', '<Plug>(leap-forward)', {})
-      vim.keymap.set('n', '<leader>jk', '<Plug>(leap-backward)', {})
     end,
   },
   -- preview markdown on your modern browser with synchronised scrolling

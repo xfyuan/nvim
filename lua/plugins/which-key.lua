@@ -117,6 +117,12 @@ return {
             -- b = {'<cmd>Gbrowser<cr>', 'browse github'},
           },
         },
+        j = {
+          name = "Easymotion",
+          -- leap.nvim plugin
+          j = { "<Plug>(leap-forward)", "Leap forward" },
+          k = { "<Plug>(leap-backward)", "Leap 2 char" },
+        },
         r = {
           name = "Replace",
           -- Spectre
