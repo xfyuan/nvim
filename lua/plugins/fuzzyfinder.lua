@@ -14,6 +14,8 @@ return {
       { 'nvim-telescope/telescope-frecency.nvim', },
       { 'nvim-telescope/telescope-smart-history.nvim', },
       { 'nvim-telescope/telescope-live-grep-args.nvim', },
+      { 'fcying/telescope-ctags-outline.nvim' },
+      { 'gnfisher/nvim-telescope-ctags-plus' },
       { "aaronhallaert/advanced-git-search.nvim" },
       { "tsakirist/telescope-lazy.nvim" },
       { "crispgm/telescope-heading.nvim" },
@@ -148,6 +150,8 @@ return {
       telescope.load_extension("smart_history")
       telescope.load_extension("live_grep_args")
       telescope.load_extension("advanced_git_search")
+      telescope.load_extension("ctags_outline")
+      telescope.load_extension("ctags_plus")
       telescope.load_extension("lazy")
       telescope.load_extension("heading")
       telescope.load_extension("session-lens")
@@ -159,6 +163,9 @@ return {
         { range = true }
       )
       vim.api.nvim_set_keymap( "v", "<leader>gl", ":DiffCommitLine<CR>", { noremap = true })
+
+      vim.api.nvim_set_keymap( "n", "g]", ":lua require('telescope').extensions.ctags_plus.jump_to_tag()<CR>", { noremap = true })
+      vim.api.nvim_set_keymap( "n", "<leader>ct", ":Telescope ctags_outline outline<CR>", { noremap = true })
     end,
   },
 }
