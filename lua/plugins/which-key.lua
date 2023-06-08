@@ -99,6 +99,7 @@ return {
           j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
           k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
           a = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+          A = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Buffer" },
           d = { "<cmd>lua require 'gitsigns'.diffthis()<cr>", "Diff This" },
           e = {
             name = "Extra action",
@@ -108,8 +109,8 @@ return {
             L = { "<cmd>Telescope advanced_git_search search_log_content_file<cr>", "Search in file log content" },
             d = { "<cmd>lua require 'gitsigns'.diffthis('~')<cr>", "Diff This ~" },
             p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-            a = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Buffer" },
-            r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+            r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+            R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
             u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
             -- gv.vim plugin
             h = { "<cmd>GV!<cr>", "List current file commits history" },
