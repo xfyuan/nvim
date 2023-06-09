@@ -134,10 +134,10 @@ return {
         s = {
           name = "Session",
           -- session
-          a = { "<cmd>SaveSession<cr>", "Add auto session" },
-          l = { "<cmd>RestoreSession<cr>", "Load auto session" },
-          d = { "<cmd>DeleteSession<cr>", "Delete auto session" },
-          f = { "<cmd>SearchSession<cr>", "Search auto session" },
+          a = { "<cmd>SessionSave<cr>", "Add auto session" },
+          l = { "<cmd>SessionRestore<cr>", "Load auto session" },
+          d = { "<cmd>SessionDelete<cr>", "Delete auto session" },
+          f = { "<cmd>Autosession search<cr>", "Search auto session" },
         },
         t = {
           name = "Test",
