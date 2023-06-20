@@ -15,6 +15,8 @@ opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 opt.guifont = "JetBrainsMono Nerd Font Mono:h18"
 opt.inccommand = "nosplit" -- preview incremental substitute
+opt.iskeyword:append("-")
+opt.iskeyword:remove(":")
 opt.laststatus = 0
 opt.list = true -- Show some invisible characters (tabs...
 opt.mouse = "a" -- Enable mouse mode
