@@ -1,6 +1,6 @@
 local ftMap = {
   vim = "indent",
-  python = { "indent" },
+  ruby = { "indent" },
   git = "",
 }
 local handler = function(virtText, lnum, endLnum, width, truncate)
