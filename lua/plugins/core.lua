@@ -124,10 +124,12 @@ return {
       end
     end,
     opts = {
+      open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
       close_if_last_window = true,
       filesystem = {
         bind_to_cwd = false,
         follow_current_file = true,
+        use_libuv_file_watcher = true
       },
       window = {
         mappings = {

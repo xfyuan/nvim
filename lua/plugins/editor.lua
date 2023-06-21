@@ -130,7 +130,7 @@ return {
         autoresize = true,
         signcolumn = false,
         number = false,
-        compatible_filetrees = {'nvimtree', 'neo-tree'}
+        compatible_filetrees = { "nvimtree", "neo-tree" },
       })
     end,
   },
