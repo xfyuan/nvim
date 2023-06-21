@@ -123,6 +123,10 @@ return {
           -- leap.nvim plugin
           j = { "<Plug>(leap-forward)", "Leap forward" },
           k = { "<Plug>(leap-backward)", "Leap 2 char" },
+          -- hop.nvim plugin
+          w = { "<cmd>HopWord<cr>", "Word" },
+          c = { "<cmd>HopChar2<cr>", "2 char" },
+          l = { "<cmd>HopLine<cr>", "Line" },
         },
         r = {
           name = "Replace",

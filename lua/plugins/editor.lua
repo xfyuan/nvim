@@ -25,10 +25,14 @@ return {
   -- press Q to remove current cursor/selection
   --
   { "mg979/vim-visual-multi", event = "BufReadPre" },
-
-  -- easily jump to any location and enhanced f/t motions for Leap
+  -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
   {
-    "ggandor/flit.nvim",
+    "phaazon/hop.nvim",
+    event = "BufReadPre",
+    config = true,
+  },
+  -- easily jump to any location and enhanced f/t motions for Leap
+  { "ggandor/flit.nvim",
     keys = function()
       local ret = {}
       for _, key in ipairs { "f", "F", "t", "T" } do
