@@ -133,7 +133,7 @@ return {
           -- Spectre
           r = { [[<cmd>lua require('spectre').open_visual({select_word=true})<cr>]], "Replace cursor word" },
           f = { [[viw:lua require('spectre').open_file_search()<cr>]], "Replace in current file" },
-          o = { [[<cmd>lua require('spectre').open()<CR>]], "Open spectre" },
+          o = { [[<cmd>lua require('spectre').open()<CR>]], "Replace in files" },
         },
         s = {
           name = "Session",
