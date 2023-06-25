@@ -22,16 +22,17 @@ return {
       {  'kkharji/sqlite.lua'  },
       {
         "rmagatti/auto-session", -- Auto Session takes advantage of Neovim's existing session management capabilities to provide seamless automatic session management
-        dependencies = { "rmagatti/session-lens" },
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
-          require("session-lens").setup({})
           require("auto-session").setup({
             auto_session_root_dir = vim.fn.stdpath("config") .. "/sessions/",
-            auto_session_enabled = false,
+            auto_session_enabled = true,
+            auto_session_enable_last_session = false,
             auto_session_use_git_branch = true,
           })
         end,
       },
+      { "rmagatti/session-lens", event = { "BufReadPre", "BufNewFile" }, config = true },
     },
     keys = {
       -- search
