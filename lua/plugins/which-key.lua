@@ -29,7 +29,7 @@ return {
         Q = { ":qa!<cr>", "Quit all windows without saving" },
         k = { "<Plug>DashSearch", "Search word in Dash" }, -- dash.vim plugin
         L = { "<cmd>Lazy<cr>", "open lazy.nvim plugins window" },
-        o = { "<cmd>AerialToggle<cr>", "Toggle code outline window" }, -- aerial.nvim plugin
+        O = { "<cmd>AerialToggle<cr>", "Toggle code outline window" }, -- aerial.nvim plugin
         b = {
           name = "Buffer/Bot",
           c = { function() require("util.bot").cht() end, "Cheatsheet(cht.sh)", },
