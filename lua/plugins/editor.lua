@@ -114,7 +114,7 @@ return {
   --  +------------------------------------------------------------------------------+
   -- Easily jump between NeoVim windows
   {
-    "https://gitlab.com/yorickpeterse/nvim-window.git",
+    "yorickpeterse/nvim-window",
     config = function()
       vim.cmd([[hi BlackOnLightYellow guifg=#000000 guibg=#f2de91]])
       require("nvim-window").setup({
