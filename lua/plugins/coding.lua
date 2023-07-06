@@ -108,7 +108,14 @@ return {
   --  +------------------------------------------------------------------------------+
   --  |                                   Comments                                   |
   --  +------------------------------------------------------------------------------+
-  { "LudoPinelli/comment-box.nvim", event = "VeryLazy" },
+  {
+    "LudoPinelli/comment-box.nvim",
+    event = "VeryLazy",
+    opts = {
+      doc_width = 100,
+      box_width = 80,
+    },
+  },
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
     "echasnovski/mini.comment",
