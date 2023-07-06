@@ -56,21 +56,6 @@ return {
             },
           },
         },
-        gopls = {
-          settings = {
-            gopls = {
-              hints = {
-                assignVariableTypes = true,
-                compositeLiteralFields = true,
-                compositeLiteralTypes = true,
-                constantValues = true,
-                functionTypeParameters = true,
-                parameterNames = true,
-                rangeVariableTypes = true,
-              },
-            },
-          },
-        },
         yamlls = {
           schemastore = {
             enable = true,
@@ -104,11 +89,12 @@ return {
         html = {},
         marksman = {},
         jsonls = {},
-        tsserver = {},
         ruby_ls = {},
-        tailwindcss = {},
         vimls = {},
         vuels = {},
+        -- gopls = {},
+        -- tsserver = {},
+        -- tailwindcss = {},
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
