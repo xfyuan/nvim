@@ -283,6 +283,7 @@ return {
         dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
         dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
         dashboard.button("r", " " .. " Recent files", ":Telescope frecency <CR>"),
+        dashboard.button("p", " " .. " Projects", ":lua require'telescope'.extensions.project.project{}<CR>"),
         -- dashboard.button("g", " " .. " Grep text", ":Telescope live_grep <CR>"),
         dashboard.button("u", "鈴" .. " Update plugins", ":Lazy update<CR>"),
         dashboard.button("c", " " .. " Config NeoVim", ":e $MYVIMRC <CR>"),
