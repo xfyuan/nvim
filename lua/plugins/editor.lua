@@ -25,42 +25,6 @@ return {
   -- press Q to remove current cursor/selection
   --
   { "mg979/vim-visual-multi", event = "BufReadPre" },
-  -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
-  {
-    "phaazon/hop.nvim",
-    event = "BufReadPre",
-    config = true,
-  },
-  -- easily jump to any location and enhanced f/t motions for Leap
-  { "ggandor/flit.nvim",
-    keys = function()
-      local ret = {}
-      for _, key in ipairs { "f", "F", "t", "T" } do
-        ret[#ret + 1] = { key, mode = { "n", "x", "o" }, desc = key }
-      end
-      return ret
-    end,
-    opts = { labeled_modes = "nx" },
-  },
-  {
-    "ggandor/leap.nvim",
-    event = "BufReadPre",
-    opts = {
-      safe_labels = {},
-    },
-    config = function(_, opts)
-      local leap = require "leap"
-      for k, v in pairs(opts) do
-        leap.opts[k] = v
-      end
-      leap.add_default_mappings()
-      -- Remove default key mapping `s/S/x/X`, I CAN'T LIVE WITHOUT `s/S`!!
-      vim.keymap.del({ "x", "o" }, "x")
-      vim.keymap.del({ "x", "o" }, "X")
-      vim.keymap.del({ "x", "o", "n" }, "s")
-      vim.keymap.del({ "x", "o", "n" }, "S")
-    end,
-  },
   -- preview markdown on your modern browser with synchronised scrolling
   {
     "iamcco/markdown-preview.nvim",
@@ -73,6 +37,74 @@ return {
     config = function()
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end,
+  },
+  --  +------------------------------------------------------------------------------+
+  --  |                                Motion moving                                 |
+  --  +------------------------------------------------------------------------------+
+  -- Neovim motions on speed! An EasyMotion-like plugin allowing you to jump anywhere in a document
+  {
+    "phaazon/hop.nvim",
+    event = "BufReadPre",
+    config = true,
+    keys = {
+      { "<leader>jw", "<cmd>HopWord<cr>", desc = "Hop word" },
+      { "<leader>jc", "<cmd>HopChar2<cr>", desc = "Hop 2 char" },
+      { "<leader>jl", "<cmd>HopLine<cr>", desc = "Hop line" },
+    },
+  },
+  -- Navigate your code with search labels, enhanced character motions and Treesitter integration
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    vscode = true,
+    opts = {
+      modes = {
+        search = {
+          enabled = false,
+        },
+        char = {
+          enabled = true,
+          keys = { "f", "F" },
+          search = { wrap = false },
+          highlight = { backdrop = true },
+          jump = { register = false },
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>jj",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+        desc = "Flash",
+      },
+      {
+        "<leader>jt",
+        mode = { "n", "o", "x" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter",
+      },
+      {
+        "R",
+        mode = { "o", "x" },
+        function()
+          require("flash").treesitter_search()
+        end,
+        desc = "Treesitter Search",
+      },
+      {
+        "r",
+        mode = "o",
+        function()
+          require("flash").remote()
+        end,
+        desc = "Remote Flash",
+      },
+    },
   },
   --  +------------------------------------------------------------------------------+
   --  |                                     Git                                      |
