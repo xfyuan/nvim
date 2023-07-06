@@ -16,11 +16,6 @@ return {
           return require("util").has("nvim-cmp")
         end,
       },
-      {
-        "folke/trouble.nvim",
-        cmd = { "TroubleToggle", "Trouble" },
-        opts = { use_diagnostic_signs = true },
-      },
     },
     ---@class PluginLspOpts
     opts = {
