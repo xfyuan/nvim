@@ -187,16 +187,7 @@ return {
         },
         o = {
           name = "Go with go.nvim",
-          a = { "<cmd>GoAlt<CR>", "Alternate impl and test" },
-          i = { "<cmd>GoInstall<CR>", "Go install" },
-          b = { "<cmd>GoBuild<CR>", "Go build" },
-          d = { "<cmd>GoDoc<CR>", "Go doc" },
-          f = { "<cmd>GoFmt<cr>", "Formatting code" },
-          r = { "<cmd>!go run %:.<CR>", "Go run current file" },
-          e = { "<cmd>GoIfErr<CR>", "Add if err" },
-          w = { "<cmd>GoFillSwitch<CR>", "Fill switch" },
-          g = { "<cmd>GoAddTag<CR>", "Add json tag" },
-          c = { "<cmd>lua require('go.comment').gen()<CR>", "Comment current func" },
+          -- go.nvim
         },
       }
 
