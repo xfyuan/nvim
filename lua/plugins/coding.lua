@@ -265,6 +265,26 @@ return {
       require('telescope').load_extension('telescope-alternate')
     end,
   },
+  {
+    "rgroli/other.nvim" ,
+    event = "VeryLazy",
+    keys = {
+      { "<leader>lo", "<cmd>Other<cr>", desc = "Open other file" },
+      { "<leader>lc", "<cmd>OtherClear<cr>", desc = "Clear reference of other file" },
+    },
+    config = function()
+      require("other-nvim").setup({
+        mappings = {
+          "rails",
+          "golang",
+        },
+        style = {
+          border = "rounded",
+          width = 0.6,
+        },
+      })
+    end,
+  },
   --  +------------------------------------------------------------------------------+
   --  |                                   Testing                                    |
   --  +------------------------------------------------------------------------------+
