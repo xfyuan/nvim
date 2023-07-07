@@ -5,7 +5,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    commit = '219584a6', -- telescope did only one release, so use HEAD for now
+    commit = '219584a6',
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       { "nvim-telescope/telescope-symbols.nvim" },
@@ -86,6 +86,7 @@ return {
           file_ignore_patterns = {"node_modules", "vendor/bundle", "%.jpg", "%.png"},
           history = {
             path = vim.fn.stdpath('data') .. '/telescope_history.sqlite3',
+            limit = 500,
           },
           mappings = {
             i = {
