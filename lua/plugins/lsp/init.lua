@@ -10,12 +10,6 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "haringsrob/nvim_context_vt",
       { "simrat39/inlay-hints.nvim", config = true },
-      {
-        "hrsh7th/cmp-nvim-lsp",
-        cond = function()
-          return require("util").has("nvim-cmp")
-        end,
-      },
     },
     ---@class PluginLspOpts
     opts = {
