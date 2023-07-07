@@ -29,7 +29,6 @@ function M.get()
     { "<leader>cf", format, desc = "Format Document", has = "documentFormatting" },
     { "<leader>cf", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" },
     { "<leader>cr", M.rename, expr = true, desc = "Rename", has = "rename" },
-    { "<leader>cT", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble" },
   }
   return M._keys
 end
