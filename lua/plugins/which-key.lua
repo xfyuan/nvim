@@ -33,7 +33,7 @@ return {
         b = {
           name = "Buffer/Bot",
           c = { function() require("util.bot").cht() end, "Cheatsheet(cht.sh)", },
-          s = { function() require("util.bot").stack_overflow() end, "Stack Overflow", },
+          s = { function() require("util.bot").stackoverflow() end, "Stack Overflow", },
         },
         -- Database
         -- D = {
