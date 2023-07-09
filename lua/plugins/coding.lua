@@ -151,7 +151,21 @@ return {
   -- A code outline window for skimming and quick navigation
   {
     "stevearc/aerial.nvim",
-    config = true,
+    event = "User AstroFile",
+    opts = {
+      attach_mode = "global",
+      backends = { "lsp", "treesitter", "markdown", "man" },
+      layout = { min_width = 28 },
+      show_guides = true,
+      filter_kind = false,
+      autojump = true,
+      guides = {
+        mid_item = "├ ",
+        last_item = "└ ",
+        nested_top = "│ ",
+        whitespace = "  ",
+      },
+    },
   },
   -- Better diagnostics list and others
   {
