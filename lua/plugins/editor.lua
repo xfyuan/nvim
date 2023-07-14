@@ -72,38 +72,10 @@ return {
       },
     },
     keys = {
-      {
-        "<leader>jj",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump()
-        end,
-        desc = "Flash",
-      },
-      {
-        "<leader>jt",
-        mode = { "n", "o", "x" },
-        function()
-          require("flash").treesitter()
-        end,
-        desc = "Flash Treesitter",
-      },
-      {
-        "R",
-        mode = { "o", "x" },
-        function()
-          require("flash").treesitter_search()
-        end,
-        desc = "Treesitter Search",
-      },
-      {
-        "r",
-        mode = "o",
-        function()
-          require("flash").remote()
-        end,
-        desc = "Remote Flash",
-      },
+      { "<leader>jj", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash", },
+      { "<leader>jt", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter", },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search", },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash", },
     },
   },
   --  +------------------------------------------------------------------------------+
