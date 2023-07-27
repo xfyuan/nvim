@@ -63,18 +63,6 @@ return {
             },
           },
         },
-        yamlls = {
-          schemastore = {
-            enable = true,
-          },
-          settings = {
-            yaml = {
-              hover = true,
-              completion = true,
-              validate = true,
-            },
-          },
-        },
         bashls = {},
         cssls = {},
         html = {},
