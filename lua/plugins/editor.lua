@@ -135,10 +135,12 @@ return {
     event = "VeryLazy",
     config = function()
       require("focus").setup({
-        autoresize = true,
-        signcolumn = false,
-        number = false,
-        compatible_filetrees = { "nvimtree", "neo-tree" },
+        autoresize = {
+          enabled = true,
+        },
+        ui = {
+          signcolumn = false,
+        },
       })
     end,
   },
