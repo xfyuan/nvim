@@ -25,12 +25,6 @@ return {
   -- press Q to remove current cursor/selection
   --
   { "mg979/vim-visual-multi", event = "BufReadPre" },
-  -- preview markdown on your modern browser with synchronised scrolling
-  {
-    "iamcco/markdown-preview.nvim",
-    build = "cd app && yarn install",
-    ft = "markdown",
-  },
   {
     "andymass/vim-matchup",
     event = { "BufReadPost" },
@@ -143,6 +137,21 @@ return {
         },
       })
     end,
+  },
+--  +------------------------------------------------------------------------------+
+--  |                                   Markdown                                   |
+--  +------------------------------------------------------------------------------+
+  -- preview markdown on your modern browser with synchronised scrolling
+  {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && yarn install",
+    ft = "markdown",
+  },
+  {
+    "Zeioth/markmap.nvim",
+    build = "yarn global add markmap-cli",
+    cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
+    config = true,
   },
   --  +------------------------------------------------------------------------------+
   --  |                                    Extras                                    |
