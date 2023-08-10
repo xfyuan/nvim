@@ -48,6 +48,7 @@ return {
           f = {
             name = "Diff view",
             o = { "<cmd>DiffviewOpen<CR>", "Open diffview" },
+            c = { "<cmd>DiffviewClose<CR>", "Close diffview" },
             u = { "<cmd>DiffviewOpen -uno<CR>", "Open diffview hide untracked files" },
             h = { "<cmd>DiffviewFileHistory<CR>", "Open diffview file history" },
           },
