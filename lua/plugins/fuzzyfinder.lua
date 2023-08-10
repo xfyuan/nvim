@@ -93,7 +93,7 @@ return {
               ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
               ["jj"] = actions.close,
               ["jk"] = enter_normal_mode,
-              ["?"] = actions_layout.toggle_preview,
+              ["|"] = actions_layout.toggle_preview,
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,
               ["<C-n>"] = actions.cycle_history_next,
