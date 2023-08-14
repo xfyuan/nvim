@@ -167,6 +167,12 @@ return {
       },
     },
   },
+  { "rmagatti/goto-preview",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      default_mappings = true,
+    },
+  },
   -- Better diagnostics list and others
   {
     "folke/trouble.nvim",
