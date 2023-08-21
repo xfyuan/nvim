@@ -125,13 +125,11 @@ return {
   },
   -- Auto-Focusing and Auto-Resizing Splits/Windows
   {
-    "beauwilliams/focus.nvim",
+    "nvim-focus/focus.nvim",
+    commit = 'a994282f',
     event = "VeryLazy",
     config = function()
       require("focus").setup({
-        autoresize = {
-          enabled = true,
-        },
         ui = {
           signcolumn = false,
         },
