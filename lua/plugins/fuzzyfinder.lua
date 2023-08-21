@@ -72,10 +72,19 @@ return {
         end
       end
 
+      local layout_strategies = require("telescope.pickers.layout_strategies")
+      layout_strategies.dynamic = function(self, max_columns, max_lines, layout_config)
+        if vim.o.columns > 120 then
+          return layout_strategies.flex(self, max_columns, max_lines, layout_config)
+        else
+          return layout_strategies.vertical(self, max_columns, max_lines, layout_config)
+        end
+      end
+
       local opts = {
         defaults = {
           sorting_strategy = "ascending",
-          layout_strategy = "flex",
+          layout_strategy = "dynamic",
           layout_config = {
             prompt_position = "top",
           },
