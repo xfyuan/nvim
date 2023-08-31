@@ -71,7 +71,8 @@ keymap("i", "hh", "-")
 keymap("i", "ii", "=")
 keymap("i", "kk", "->")
 keymap("i", "jk", "=>")
-keymap("i", "vv", "<bar>>")
+-- keymap("i", "vv", "<bar>>")
+keymap("i", "vv", ":=")
 
 -- Move Lines
 keymap("n", "<A-j>", ":m .+1<CR>==")
