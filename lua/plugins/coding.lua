@@ -14,16 +14,6 @@ return {
       { "gt", "<cmd>Switch<cr>", desc = "Switch" },
     },
   },
-  -- tabbing out from parentheses, quotes, and similar contexts
-  {
-    "abecodes/tabout.nvim",
-    event = "InsertEnter",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "hrsh7th/nvim-cmp",
-    },
-    config = true,
-  },
   -- surround
   {
     "kylechui/nvim-surround",
@@ -32,10 +22,10 @@ return {
         require("nvim-surround").setup()
     end
   },
-  -- auto pairs
+  -- auto pair parentheses, quotes, and similar contexts
   {
     "echasnovski/mini.pairs",
-    event = "VeryLazy",
+    event = "InsertEnter",
     config = function(_, opts)
       require("mini.pairs").setup(opts)
     end,
