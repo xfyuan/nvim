@@ -57,11 +57,12 @@ return {
               s = { "<cmd>GoFillStruct<cr>", "Autofill struct" },
               t = {
                 name = "Tests",
-                r = { "<cmd>GoTest -v<cr>", "Run tests" },
-                t = { "<cmd>GoTestFunc -v<cr>", "Run test for current func" },
-                f = { "<cmd>GoTestFile -v<cr>", "Run test for current file" },
-                a = { "<cmd>GoAlt!<cr>", "Open alt file" },
-                s = { "<cmd>GoAltS!<cr>", "Open alt file in split" },
+                -- r = { "<cmd>GoTest -v<cr>", "Run tests" },
+                -- t = { "<cmd>GoTestFunc -v<cr>", "Run test for current func" },
+                -- f = { "<cmd>GoTestFile -v<cr>", "Run test for current file" },
+                a = { "<cmd>GoAddTest<cr>", "Add test for current func" },
+                A = { "<cmd>GoAddAllTest<cr>", "Add test for all func" },
+                -- s = { "<cmd>GoAltS!<cr>", "Open alt file in split" },
                 v = { "<cmd>GoAltV!<cr>", "Open alt file in vertical split" },
               },
               x = {
