@@ -5,11 +5,7 @@ return {
     cmd = "Copilot",
     build = ":Copilot auth",
     event = "InsertEnter",
-    keys = {
-      { "<leader>ait", "<cmd>Copilot toggle<cr>", desc = "Copilot toggle" },
-      { "<leader>ais", "<cmd>Copilot status<cr>", desc = "Copilot status" },
-      { "<leader>aip", "<cmd>Copilot panel<cr>", desc = "Copilot panel" },
-    },
+    keys = {},
     opts = {
       -- suggestion = { enabled = false },
       -- panel = { enabled = false },
@@ -89,6 +85,35 @@ return {
       table.insert(opts.sources, 1, { name = "copilot", group_index = 2 })
       opts.sorting = opts.sorting or require("cmp.config.default")().sorting
       table.insert(opts.sorting.comparators, 1, require("copilot_cmp.comparators").prioritize)
+    end,
+  },
+  -- ChatGPT
+  {
+    "Bryley/neoai.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    cmd = {
+      "NeoAI",
+      "NeoAIOpen",
+      "NeoAIClose",
+      "NeoAIToggle",
+      "NeoAIContext",
+      "NeoAIContextOpen",
+      "NeoAIContextClose",
+      "NeoAIInject",
+      "NeoAIInjectCode",
+      "NeoAIInjectContext",
+      "NeoAIInjectContextCode",
+      "NeoAIShortcut",
+    },
+    keys = {
+      { "<leader>ai", "<cmd>NeoAI<cr>", desc = "AI toggle" },
+      { "<leader>as", desc = "summarize text" },
+    },
+    opts = {},
+    config = function()
+      -- highlight AI output as markdown code block
+      vim.treesitter.language.register('markdown', 'neoai-output')
+      require("neoai").setup {}
     end,
   },
 }
