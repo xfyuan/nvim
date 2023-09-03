@@ -89,16 +89,37 @@ return {
   },
   -- ChatGPT
   {
+    "jackMort/ChatGPT.nvim",
+    cmd = {
+      "ChatGPT",
+      "ChatGPTRun",
+      "ChatGPTActAs",
+      "ChatGPTCompleteCode",
+      "ChatGPTEditWithInstructions"
+    },
+    keys = {
+      { "<leader>ai", "<cmd>ChatGPT<cr>", desc = "ChatGPT" },
+      { "<leader>ac", "<cmd>ChatGPTCompleteCode<cr>", mode = { "n", "v" }, desc = "ChatGPT Complete Code" },
+      { "<leader>ae", "<cmd>ChatGPTEditWithInstructions<cr>", mode = { "n", "v" }, desc = "ChatGPT Edit with Instructions" },
+    },
+    opts = {
+      popup_input = {
+        submit = "<CR>"
+      }
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+  },
+  {
     "Bryley/neoai.nvim",
+    enabled = false,
     dependencies = { "MunifTanjim/nui.nvim" },
     cmd = {
       "NeoAI",
-      "NeoAIOpen",
-      "NeoAIClose",
-      "NeoAIToggle",
       "NeoAIContext",
-      "NeoAIContextOpen",
-      "NeoAIContextClose",
       "NeoAIInject",
       "NeoAIInjectCode",
       "NeoAIInjectContext",
@@ -106,8 +127,8 @@ return {
       "NeoAIShortcut",
     },
     keys = {
-      { "<leader>ai", "<cmd>NeoAI<cr>", desc = "AI toggle" },
-      { "<leader>as", desc = "summarize text" },
+      { "<leader>aI", "<cmd>NeoAI<cr>", desc = "AI toggle" },
+      { "<leader>aS", desc = "summarize text" },
     },
     opts = {},
     config = function()
