@@ -25,7 +25,7 @@ return {
           }),
         },
         resize = {
-          timing = animate.gen_timing.linear({ duration = 66, unit = "total" }),
+          timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
         },
         scroll = {
           timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
