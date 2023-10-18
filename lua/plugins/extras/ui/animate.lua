@@ -33,9 +33,9 @@ return {
       }
     end,
   },
-  -- Whenever cursor jumps some distance or moves between windows, it will flash so you can see where it is
+  -- Flash cursor when jumps or moves between windows
   {
-    "danilamihailov/beacon.nvim",
+    "rainbowhxch/beacon.nvim",
     event = "VeryLazy",
   },
 }
