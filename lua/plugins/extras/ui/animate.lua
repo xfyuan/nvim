@@ -37,5 +37,10 @@ return {
   {
     "rainbowhxch/beacon.nvim",
     event = "VeryLazy",
+    config = function()
+      require('beacon').setup({
+        focus_gained = true,
+      })
+    end,
   },
 }
