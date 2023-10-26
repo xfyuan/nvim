@@ -18,6 +18,7 @@ return {
       { 'gnfisher/nvim-telescope-ctags-plus' },
       { "aaronhallaert/advanced-git-search.nvim" },
       { "tsakirist/telescope-lazy.nvim" },
+      { "jemag/telescope-diff.nvim" },
       { "crispgm/telescope-heading.nvim" },
       {  'kkharji/sqlite.lua'  },
       {
@@ -167,6 +168,7 @@ return {
       telescope.load_extension("heading")
       telescope.load_extension("session-lens")
       telescope.load_extension("aerial")
+      telescope.load_extension("diff")
 
       vim.api.nvim_create_user_command(
         "DiffCommitLine",

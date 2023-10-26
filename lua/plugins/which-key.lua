@@ -51,6 +51,8 @@ return {
             c = { "<cmd>DiffviewClose<CR>", "Close diffview" },
             u = { "<cmd>DiffviewOpen -uno<CR>", "Open diffview hide untracked files" },
             h = { "<cmd>DiffviewFileHistory<CR>", "Open diffview file history" },
+            s = { "<cmd>lua require'telescope'.extensions.diff.diff_current({ hidden = true })<cr>", "Compare file with current" },
+            S = { "<cmd>lua require'telescope'.extensions.diff.diff_files({ hidden = true })<cr>", "Compare 2 files" },
           },
         },
         f = {
