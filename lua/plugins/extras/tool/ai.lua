@@ -103,9 +103,9 @@ return {
       { "<leader>ae", "<cmd>ChatGPTEditWithInstructions<cr>", mode = { "n", "v" }, desc = "ChatGPT Edit with Instructions" },
     },
     opts = {
-      popup_input = {
-        submit = "<CR>"
-      }
+      -- popup_input = {
+      --   submit = "<CR>"
+      -- }
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
