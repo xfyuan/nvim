@@ -107,6 +107,11 @@ return {
     "ruifm/gitlinker.nvim",
     config = true,
   },
+  -- A range and area selectable :Diffthis to compare partially
+  {
+    "rickhowe/spotdiff.vim",
+    event = { "BufReadPost", "BufNewFile" },
+  },
   --  +------------------------------------------------------------------------------+
   --  |                                   Windows                                    |
   --  +------------------------------------------------------------------------------+
