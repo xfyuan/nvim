@@ -97,16 +97,16 @@ return {
     config = true,
   },
   -- visualise and resolve merge conflicts in neovim
-  {
-    "akinsho/git-conflict.nvim",
-    version = "*",
-    config = true,
-  },
+  -- {
+  --   "akinsho/git-conflict.nvim",
+  --   version = "*",
+  --   config = true,
+  -- },
   -- generate shareable file permalinks (with line ranges) for several git web frontend hosts
-  {
-    "ruifm/gitlinker.nvim",
-    config = true,
-  },
+  -- {
+  --   "ruifm/gitlinker.nvim",
+  --   config = true,
+  -- },
   -- A range and area selectable :Diffthis to compare partially
   {
     "rickhowe/spotdiff.vim",
@@ -150,12 +150,12 @@ return {
     build = "cd app && yarn install",
     ft = "markdown",
   },
-  {
-    "Zeioth/markmap.nvim",
-    build = "yarn global add markmap-cli",
-    cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
-    config = true,
-  },
+  -- {
+  --   "Zeioth/markmap.nvim",
+  --   build = "yarn global add markmap-cli",
+  --   cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
+  --   config = true,
+  -- },
   --  +------------------------------------------------------------------------------+
   --  |                                    Extras                                    |
   --  +------------------------------------------------------------------------------+

@@ -27,7 +27,7 @@ return {
         -- ['1'] = {':normal "lyy"lpwv$r=^"lyyk"lP<cr>', 'mark ======'},
         q = { ":q!<cr>", "Quit without saving" },
         Q = { ":qa!<cr>", "Quit all windows without saving" },
-        k = { "<Plug>DashSearch", "Search word in Dash" }, -- dash.vim plugin
+        -- k = { "<Plug>DashSearch", "Search word in Dash" }, -- dash.vim plugin
         L = { "<cmd>Lazy<cr>", "open lazy.nvim plugins window" },
         O = { "<cmd>AerialToggle<cr>", "Toggle code outline window" }, -- aerial.nvim plugin
         b = {

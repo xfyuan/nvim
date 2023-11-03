@@ -2,7 +2,7 @@ return {
   --  +------------------------------------------------------------------------------+
   --  |                              Basic enhencement                               |
   --  +------------------------------------------------------------------------------+
-  { "rizzatti/dash.vim", event = "VeryLazy" },
+  -- { "rizzatti/dash.vim", event = "VeryLazy" },
 
   -- Switch between single-line and multiline forms of code: gS to split a one-liner into multiple lines. gJ (with the cursor on the first line of a block) to join a block into a single-line.
   { "AndrewRadev/splitjoin.vim", event = "VeryLazy" },
@@ -14,7 +14,7 @@ return {
       { "gt", "<cmd>Switch<cr>", desc = "Switch" },
     },
   },
-  -- surround
+  -- surround, visual mode key mapping `S` to surround selected text
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
@@ -98,6 +98,7 @@ return {
   --  +------------------------------------------------------------------------------+
   --  |                                   Comments                                   |
   --  +------------------------------------------------------------------------------+
+  -- key mapping use `gcB`
   {
     "LudoPinelli/comment-box.nvim",
     event = "VeryLazy",
@@ -157,6 +158,7 @@ return {
       },
     },
   },
+  -- A small Neovim plugin for previewing definitions using floating windows. default key mapping is `gp*`
   { "rmagatti/goto-preview",
     event = { "BufReadPost", "BufNewFile" },
     opts = {
