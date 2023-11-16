@@ -5,7 +5,6 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    commit = '219584a6',
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       { "nvim-telescope/telescope-symbols.nvim" },
