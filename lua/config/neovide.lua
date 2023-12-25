@@ -1,6 +1,7 @@
 if vim.g.neovide then
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_hide_mouse_when_typing = true
+  vim.opt.mouse = "a"
 
   -- Helper function for transparency formatting
   local alpha = function()
