@@ -41,7 +41,7 @@ return {
     event = "BufReadPre",
     config = true,
     keys = {
-      { "<leader>jw", "<cmd>HopWord<cr>", desc = "Hop word" },
+      { "<leader>jj", "<cmd>HopWord<cr>", desc = "Hop word" },
       { "<leader>jc", "<cmd>HopChar2<cr>", desc = "Hop 2 char" },
       { "<leader>jl", "<cmd>HopLine<cr>", desc = "Hop line" },
     },
@@ -66,7 +66,7 @@ return {
       },
     },
     keys = {
-      { "<leader>jj", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash", },
+      { "<leader>jf", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash", },
       { "<leader>jt", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter", },
       { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search", },
       { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash", },
