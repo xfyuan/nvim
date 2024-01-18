@@ -1,0 +1,22 @@
+{
+  "pry shell": {
+    "prefix": "bps",
+    "body": "binding.pry_shell",
+    "description": "insert pry shell breakpoint here"
+  },
+  "jh feature flag disabled in rspec": {
+    "prefix": "jhffd",
+    "body": "stub_feature_flags(${1:ff_name}: false)",
+    "description": "JH Feature flag disabled in rspec"
+  },
+  "jh feature flag enabled?": {
+    "prefix": "jhffe",
+    "body": "::Feature.enabled?(:${1:ff_name})",
+    "description": "JH Feature flag enabled?"
+  },
+  "jh sass env": {
+    "prefix": "jhsass",
+    "body": "::Gitlab.com?",
+    "description": "JH Check if in sass env"
+  }
+}

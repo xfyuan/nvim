@@ -7,11 +7,15 @@
     "snippets": [
       {
         "language": "all",
-        "path": "./all.json"
+        "path": "./snips/all.json"
       },
       {
         "language": "markdown",
-        "path": "./markdown.json"
+        "path": "./snips/markdown.json"
+      },
+      {
+        "language": "ruby",
+        "path": "./snips/ruby.json"
       }
     ]
   }
