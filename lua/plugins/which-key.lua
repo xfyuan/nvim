@@ -57,11 +57,6 @@ return {
         },
         f = {
           name = "Fuzzy finder",
-          -- fzf.vim
-          -- b = {'<cmd>Buffers<cr>', 'find buffers'},
-          -- o = {'<cmd>History<cr>', 'find old history'},
-          -- g = { "<cmd>GFiles<cr>", "Fzf find git files" },
-          -- j = { "<cmd>Files<cr>", "Fzf find files" },
           -- telescope
           a = { "<cmd>Telescope telescope-alternate alternate_file<cr>", "Alternate file" },
           b = { "<cmd>Telescope buffers<cr>", "Switch buffers" },
