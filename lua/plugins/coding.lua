@@ -208,10 +208,22 @@ return {
   -- references
   {
     "RRethy/vim-illuminate",
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "CursorHold", "CursorHoldI" },
     opts = {
       delay = 200,
-      large_file_cutoff = 2000,
+      large_file_cutoff = 2000, -- number of lines
+      filetypes_denylist = {
+        "DressingSelect",
+        "neo-tree",
+        "TelescopePrompt",
+        "Trouble",
+        "aerial",
+        "alpha",
+        "dashboard",
+        "fugitive",
+        "help",
+        "toggleterm",
+      },
     },
     config = function(_, opts)
       require("illuminate").configure(opts)
