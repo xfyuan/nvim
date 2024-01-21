@@ -37,8 +37,9 @@ return {
     keys = {
       -- search
       { "<C-p>", Util.telescope("files"), desc = "Find Files" },
-      { "<leader>ff", "<cmd>Telescope file_browser<cr>", desc = "Browser" },
-      { "<leader>fo", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "Browser on current buffer" },
+      { "<leader>fO", "<cmd>Telescope aerial<cr>", desc = "Find aerial symbol" },
+      { "<leader>ff", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
+      { "<leader>fo", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser on current buffer" },
       { "<leader>fc", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
       {
         "<leader>cs",
