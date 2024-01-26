@@ -22,7 +22,6 @@ return {
       { "nvim-treesitter/nvim-treesitter-refactor" },
       { "nvim-treesitter/playground" },
       { "RRethy/nvim-treesitter-textsubjects" },
-      { "JoosepAlviste/nvim-ts-context-commentstring" },
       { "RRethy/nvim-treesitter-endwise" },
       { "windwp/nvim-ts-autotag", config = true },
       {
