@@ -18,18 +18,15 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      { "nvim-treesitter/nvim-treesitter-refactor" },
+      { "nvim-treesitter/nvim-treesitter-textobjects" },
       { "nvim-treesitter/playground" },
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        opts = { mode = "cursor", max_lines = 3 },
+      },
       { "RRethy/nvim-treesitter-textsubjects" },
       { "RRethy/nvim-treesitter-endwise" },
       { "windwp/nvim-ts-autotag", config = true },
-      {
-        "romgrk/nvim-treesitter-context",
-        config = function()
-          require("treesitter-context").setup()
-        end,
-      },
     },
     build = ":TSUpdate",
     event = "BufReadPost",
@@ -40,7 +37,6 @@ return {
         "cmake",
         "css",
         "html",
-        "help",
         "http",
         "markdown",
         "markdown_inline",
