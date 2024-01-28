@@ -58,12 +58,12 @@ keymap("i", ";", ";<c-g>u")
 -- keymap("v", ">", ">gv")
 
 -- Paste over currently selected text without yanking it
-keymap("v", "p", '"_dP')
+-- keymap("v", "p", '"_dP')
 
 -- Yank and paste
 keymap("n", "Y", "y$") -- Yanking to the end of line
-keymap("n", "p", "p`[") -- Paste yank after, keep cursor position
-keymap("n", "P", "P`[") -- Paste yank before, keep cursor position
+-- keymap("n", "p", "p`[") -- Paste yank after, keep cursor position
+-- keymap("n", "P", "P`[") -- Paste yank before, keep cursor position
 
 -- Input shortcuts
 keymap("i", "uu", "_")
