@@ -84,3 +84,18 @@ keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
 
 -- Toggle diff buffers
 keymap("n", "<leader>dft", "&diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'", { expr = true })
+
+--          +-----------------------------------------------------------------------------+
+--          |                               EXTRA KEYMAP TIPS                             |
+--          +-----------------------------------------------------------------------------+
+
+-- go back the original place from jumping to definitions like ctags
+keymap("n", "<BS>", "<C-o>")
+
+-- repeat or execute macro on all visually selected lines
+-- (eg. press A"<esc> on line one, select all others, press . and they all end in "
+keymap("x", ".", ":norm .<CR>")
+keymap("x", "@", ":norm @q<CR>")
+
+-- Reload snippets folder
+keymap("n", "<leader>sr", "<cmd>source ~/.config/nvim/snippets/*<cr>", { desc = "Reload snippets" })
