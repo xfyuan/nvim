@@ -135,6 +135,8 @@ return {
         mappings = {
           ["<space>"] = "none",
           ['/'] = 'noop',
+          ['z'] = 'noop',
+          ['M'] = 'close_all_nodes',
           ["o"] = "open",
           ["e"] = function() vim.api.nvim_exec("Neotree focus filesystem left",true) end,
           ["b"] = function() vim.api.nvim_exec("Neotree focus buffers left",true) end,
