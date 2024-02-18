@@ -139,6 +139,8 @@ return {
             hijack_netrw = true,
           },
           frecency = {
+            auto_validate = false,
+            show_scores = true,
             default_workspace = 'CWD',
             show_unindexed = false,
             ignore_patterns = { '*.git/*', '*node_modules/*', '*vendor/*' },
