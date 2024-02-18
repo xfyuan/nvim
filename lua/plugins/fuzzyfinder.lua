@@ -1,6 +1,27 @@
 local Util = require("util")
 
 return {
+  -- Simple session management
+  {
+    "olimorris/persisted.nvim",
+    keys = {
+      { "<leader>ss", "<cmd>SessionSave<cr>", desc = "persisted Save session" },
+      { "<leader>sl", "<cmd>SessionLoad<cr>", desc = "persisted Load session" },
+      { "<leader>sd", "<cmd>SessionDelete<cr>", desc = "persisted Delete session" },
+      { "<leader>sf", "<cmd>Telescope persisted<cr>", desc = "persisted Find session" },
+    },
+    opts = {
+        save_dir = vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/"),
+        use_git_branch = true,
+        autosave = true,
+        should_autosave = function()
+          if vim.bo.filetype == "alpha" then
+            return false
+          end
+          return true
+        end,
+    },
+  },
   -- telescope.nvim
   {
     "nvim-telescope/telescope.nvim",
@@ -20,19 +41,6 @@ return {
       { "jemag/telescope-diff.nvim" },
       { "crispgm/telescope-heading.nvim" },
       {  'kkharji/sqlite.lua'  },
-      {
-        "rmagatti/auto-session", -- Auto Session takes advantage of Neovim's existing session management capabilities to provide seamless automatic session management
-        event = { "BufReadPre", "BufNewFile" },
-        config = function()
-          require("auto-session").setup({
-            auto_session_root_dir = vim.fn.stdpath("config") .. "/sessions/",
-            auto_session_enabled = true,
-            auto_session_enable_last_session = false,
-            auto_session_use_git_branch = true,
-          })
-        end,
-      },
-      { "rmagatti/session-lens", event = { "BufReadPre", "BufNewFile" }, config = true },
     },
     keys = {
       -- search
@@ -166,7 +174,7 @@ return {
       telescope.load_extension("ctags_plus")
       telescope.load_extension("lazy")
       telescope.load_extension("heading")
-      telescope.load_extension("session-lens")
+      telescope.load_extension("persisted")
       telescope.load_extension("aerial")
       telescope.load_extension("diff")
 
