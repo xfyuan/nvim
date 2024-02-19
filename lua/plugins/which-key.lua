@@ -174,7 +174,7 @@ return {
       local global_keymap = {
         c = {
           name = "Comment box",
-          B = { "<cmd>CBcbox10<CR>", "Comment box ascii" },
+          B = { "<cmd>CBccbox10<CR>", "Comment box ascii" },
         },
         o = {
           name = "Go with go.nvim",
