@@ -32,6 +32,43 @@ return {
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end,
   },
+  -- automatically disables certain features if the opened file is big
+  {
+    "LunarVim/bigfile.nvim",
+    event = "BufReadPre",
+    config = function()
+      local cmp = {
+        name = "nvim-cmp",
+        opts = { defer = true },
+        disable = function()
+          require("cmp").setup.buffer({ enabled = false })
+        end,
+      }
+
+      require("bigfile").setup {
+        filesize = 4, -- size of the file in MiB
+        -- Detect long files, if function returns false, filesize will be used as a fallback
+        pattern = function(bufnr, _)
+          local file_contents = vim.fn.readfile(vim.api.nvim_buf_get_name(bufnr))
+          local file_length = #file_contents
+          if file_length > 5000 then
+            return true
+          end
+        end,
+        features = { -- features to disable
+          "indent_blankline",
+          "illuminate",
+          "treesitter",
+          "matchparen",
+          "vimopts",
+          -- "lsp",
+          "syntax",
+          "filetype",
+          cmp,
+        },
+      }
+    end,
+  },
   --  +------------------------------------------------------------------------------+
   --  |                                Motion moving                                 |
   --  +------------------------------------------------------------------------------+
