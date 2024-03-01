@@ -20,7 +20,6 @@ return {
     dependencies = {
       { "nvim-treesitter/nvim-treesitter-textobjects" },
       { "nvim-treesitter/nvim-treesitter-refactor" },
-      { "nvim-treesitter/playground" },
       {
         "nvim-treesitter/nvim-treesitter-context",
         opts = { mode = "cursor", max_lines = 3 },
@@ -131,11 +130,6 @@ return {
       },
       matchup = {
         enable = true,
-      },
-      playground = {
-        enable = true,
-        updatetime = 25,
-        persist_queries = false,
       },
       query_linter = {
         enable = true,
