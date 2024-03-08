@@ -46,15 +46,8 @@ return {
       }
 
       require("bigfile").setup {
-        filesize = 4, -- size of the file in MiB
-        -- Detect long files, if function returns false, filesize will be used as a fallback
-        pattern = function(bufnr, _)
-          local file_contents = vim.fn.readfile(vim.api.nvim_buf_get_name(bufnr))
-          local file_length = #file_contents
-          if file_length > 5000 then
-            return true
-          end
-        end,
+        filesize = 1, -- size of the file in MiB
+        pattern = { "*" },
         features = { -- features to disable
           "indent_blankline",
           "illuminate",
