@@ -168,7 +168,6 @@ return {
   -- Auto-Focusing and Auto-Resizing Splits/Windows
   {
     "nvim-focus/focus.nvim",
-    commit = 'a994282f',
     event = "VeryLazy",
     config = function()
       require("focus").setup({
