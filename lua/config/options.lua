@@ -6,7 +6,7 @@ local opt = vim.opt
 -- opt.autowrite = true -- Enable auto write
 -- opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
-opt.conceallevel = 3 -- Hide * markup for bold and italic
+opt.conceallevel = 2 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
@@ -44,7 +44,7 @@ opt.undofile = true
 opt.undolevels = 1000
 opt.undoreload = 1000
 opt.updatetime = 200 -- Save swap file and trigger CursorHold
-opt.wildmode = "longest:full,full" -- Command-line completion mode
+opt.wildmode = "full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = true -- Enable line wrap
 

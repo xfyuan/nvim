@@ -1,3 +1,5 @@
+local Util = require("util")
+
 return {
   -- lspconfig
   {
@@ -50,7 +52,7 @@ return {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           -- Use this to add any additional keymaps
           -- for specific lsp servers
-          ---@type LazyKeys[]
+          ---@type LazyKeysSpec[]
           -- keys = {},
           settings = {
             Lua = {
@@ -68,7 +70,7 @@ return {
         html = {},
         marksman = {},
         jsonls = {},
-        ruby_ls = {},
+        -- ruby_ls = {},
         vimls = {},
         vuels = {},
       },
@@ -87,8 +89,6 @@ return {
     },
     ---@param opts PluginLspOpts
     config = function(_, opts)
-      local Util = require("util")
-
       if Util.has("neoconf.nvim") then
         local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
         require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
@@ -122,7 +122,7 @@ return {
 
       if opts.inlay_hints.enabled and inlay_hint then
         Util.on_attach(function(client, buffer)
-          if client.server_capabilities.inlayHintProvider then
+          if client.supports_method('textDocument/inlayHint') then
             inlay_hint(buffer, true)
           end
         end)

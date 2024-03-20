@@ -22,7 +22,7 @@ return {
       { "nvim-treesitter/nvim-treesitter-refactor" },
       {
         "nvim-treesitter/nvim-treesitter-context",
-        opts = { mode = "cursor", max_lines = 3 },
+        opts = { mode = "cursor", max_lines = 5 },
       },
       { "RRethy/nvim-treesitter-textsubjects" },
       { "RRethy/nvim-treesitter-endwise" },

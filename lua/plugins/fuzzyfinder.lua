@@ -163,6 +163,12 @@ return {
             git_diff_flags = {},
           }
         },
+        aerial = {
+          show_nesting = {
+            ["_"] = false, -- This key will be the default
+            lua = true, -- You can set the option for specific filetypes
+          },
+        },
       }
       telescope.setup(opts)
 
