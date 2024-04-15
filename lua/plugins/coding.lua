@@ -26,6 +26,11 @@ return {
   {
     "echasnovski/mini.pairs",
     event = "InsertEnter",
+    opts = {
+      mappings = {
+        ["`"] = { action = "closeopen", pair = "``", neigh_pattern = "[^\\`].", register = { cr = false } },
+      },
+    },
     config = function(_, opts)
       require("mini.pairs").setup(opts)
     end,
