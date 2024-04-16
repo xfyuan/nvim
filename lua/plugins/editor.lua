@@ -152,9 +152,7 @@ return {
       vim.cmd([[hi BlackOnLightYellow guifg=#000000 guibg=#f2de91]])
       require("nvim-window").setup({
         chars = { "a", "s", "f", "g", "h", "j", "k", "l" },
-        normal_hl = "BlackOnLightYellow",
         hint_hl = "Bold",
-        border = "none",
       })
     end,
   },
