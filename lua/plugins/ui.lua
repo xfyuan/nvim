@@ -263,7 +263,7 @@ return {
     "norcalli/nvim-colorizer.lua",
     event = "VeryLazy",
     config = function()
-      require("colorizer").setup({ "css", "scss", "erb", "html", "javascript" }, {
+      require("colorizer").setup({ "lua", "css", "scss", "erb", "html", "javascript" }, {
         RGB = true, -- #RGB hex codes
         RRGGBB = true, -- #RRGGBB hex codes
         names = true, -- "Name" codes like Blue
