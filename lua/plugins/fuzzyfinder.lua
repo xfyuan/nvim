@@ -193,7 +193,7 @@ return {
       )
       vim.api.nvim_set_keymap( "v", "<leader>gl", ":DiffCommitLine<CR>", { noremap = true })
 
-      vim.api.nvim_set_keymap( "n", "g]", ":lua require('telescope').extensions.ctags_plus.jump_to_tag()<CR>", { noremap = true })
+      vim.api.nvim_set_keymap( "n", "g]", ":lua require('telescope').extensions.ctags_plus.jump_to_tag({fname_width = 55})<CR>", { noremap = true })
       vim.api.nvim_set_keymap( "n", "<leader>o", ":Telescope ctags_outline outline<CR>", { noremap = true })
     end,
   },
