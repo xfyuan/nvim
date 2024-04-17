@@ -16,6 +16,16 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
+      require('tokyonight').setup {
+        dim_inactive = true,
+        on_colors = function(c)
+          c.bg_dark = "#1e2030"
+          c.border = c.dark3
+        end,
+        -- on_colors = function(c)
+        --   c.border = c.dark3
+        -- end,
+      }
       vim.cmd([[colorscheme tokyonight-storm]])
     end,
   },
