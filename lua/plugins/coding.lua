@@ -5,7 +5,15 @@ return {
   -- { "rizzatti/dash.vim", event = "VeryLazy" },
 
   -- Switch between single-line and multiline forms of code: gS to split a one-liner into multiple lines. gJ (with the cursor on the first line of a block) to join a block into a single-line.
-  { "AndrewRadev/splitjoin.vim", event = "VeryLazy" },
+  -- { "AndrewRadev/splitjoin.vim", event = "VeryLazy" },
+  -- Splitting/joining blocks of code
+  {
+    "Wansmer/treesj",
+    keys = {
+      { "gT", "<cmd>TSJToggle<cr>", desc = "Split/Join Toggle" },
+    },
+    opts = { use_default_keymaps = false, max_join_length = 150 },
+  },
 
   -- switch segments of text with predefined replacements. default mapping `gs` to trigger the command
   {
