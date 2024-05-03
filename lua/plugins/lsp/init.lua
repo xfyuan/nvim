@@ -9,12 +9,12 @@ return {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
       { "folke/neodev.nvim", opts = {} },
       "mason.nvim",
+      "b0o/SchemaStore.nvim",
       "williamboman/mason-lspconfig.nvim",
       "haringsrob/nvim_context_vt",
     },
     ---@class PluginLspOpts
     opts = {
-      -- options for vim.diagnostic.config()
       diagnostics = {
         underline = true,
         update_in_insert = false,
@@ -25,42 +25,115 @@ return {
         },
         severity_sort = true,
       },
-      -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
-      -- Be aware that you also will need to properly configure your LSP server to
-      -- provide the inlay hints.
-      inlay_hints = {
-        enabled = false,
-      },
-      -- add any global capabilities here
+      inlay_hints = { enabled = true, },
       capabilities = {},
-      -- Automatically format on save
       autoformat = false,
-      -- Enable this to show formatters used in a notification
-      -- Useful for debugging formatter issues
       format_notify = false,
-      -- options for vim.lsp.buf.format
-      -- `bufnr` and `filter` is handled by the LazyVim formatter,
-      -- but can be also overridden when specified
-      format = {
-        formatting_options = nil,
-        timeout_ms = nil,
+      format = { formatting_options = nil, timeout_ms = nil,
       },
-      -- LSP Server Settings
-      ---@type lspconfig.options
       servers = {
         lua_ls = {
-          -- mason = false, -- set to false if you don't want this server to be installed with mason
-          -- Use this to add any additional keymaps
-          -- for specific lsp servers
-          ---@type LazyKeysSpec[]
-          -- keys = {},
+          single_file_support = true,
           settings = {
             Lua = {
               workspace = {
                 checkThirdParty = false,
               },
               completion = {
-                callSnippet = "Replace",
+                workspaceWord = true,
+                callSnippet = "Both",
+              },
+              misc = {
+                parameters = {
+                  -- "--log-level=trace",
+                },
+              },
+              hover = { expandAlias = false },
+              hint = {
+                enable = true,
+                setType = false,
+                paramType = true,
+                paramName = "Disable",
+                semicolon = "Disable",
+                arrayIndex = "Disable",
+              },
+              doc = {
+                privateName = { "^_" },
+              },
+              type = {
+                castNumberToInteger = true,
+              },
+              diagnostics = {
+                disable = { "incomplete-signature-doc", "trailing-space" },
+                groupSeverity = {
+                  strong = "Warning",
+                  strict = "Warning",
+                },
+                groupFileStatus = {
+                  ["ambiguity"] = "Opened",
+                  ["await"] = "Opened",
+                  ["codestyle"] = "None",
+                  ["duplicate"] = "Opened",
+                  ["global"] = "Opened",
+                  ["luadoc"] = "Opened",
+                  ["redefined"] = "Opened",
+                  ["strict"] = "Opened",
+                  ["strong"] = "Opened",
+                  ["type-check"] = "Opened",
+                  ["unbalanced"] = "Opened",
+                  ["unused"] = "Opened",
+                },
+                unusedLocalExclude = { "_*" },
+              },
+              format = {
+                enable = true,
+                defaultConfig = {
+                  indent_style = "space",
+                  indent_size = "2",
+                  continuation_indent_size = "2",
+                },
+              },
+            },
+          },
+        },
+        -- lua_ls = {
+        --   -- mason = false, -- set to false if you don't want this server to be installed with mason
+        --   -- Use this to add any additional keymaps
+        --   -- for specific lsp servers
+        --   ---@type LazyKeysSpec[]
+        --   -- keys = {},
+        --   settings = {
+        --     Lua = {
+        --       workspace = {
+        --         checkThirdParty = false,
+        --       },
+        --       completion = {
+        --         callSnippet = "Replace",
+        --       },
+        --     },
+        --   },
+        -- },
+        jsonls = {
+          -- lazy-load schemastore when needed
+          on_new_config = function(new_config)
+            new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+            vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+          end,
+          settings = {
+            json = {
+              format = {
+                enable = true,
+              },
+              validate = { enable = true },
+            },
+          },
+        },
+        yamlls = {
+          capabilities = {
+            textDocument = {
+              foldingRange = {
+                dynamicRegistration = false,
+                lineFoldingOnly = true,
               },
             },
           },
@@ -69,14 +142,10 @@ return {
         cssls = {},
         html = {},
         marksman = {},
-        jsonls = {},
         -- ruby_ls = {},
         vimls = {},
         vuels = {},
       },
-      -- you can do any additional lsp server setup here
-      -- return true if you don't want this server to be setup with lspconfig
-      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
       setup = {
         -- example to setup with typescript.nvim
         -- tsserver = function(_, opts)
@@ -93,9 +162,7 @@ return {
         local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
         require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
       end
-      -- setup autoformat
-      require("plugins.lsp.format").setup(opts)
-      -- setup formatting and keymaps
+      -- setup keymaps
       Util.on_attach(function(client, buffer)
         require("plugins.lsp.keymaps").on_attach(client, buffer)
       end)
@@ -116,28 +183,6 @@ return {
       for name, icon in pairs(require("config.icons").diagnostics) do
         name = "DiagnosticSign" .. name
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-      end
-
-      local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
-
-      if opts.inlay_hints.enabled and inlay_hint then
-        Util.on_attach(function(client, buffer)
-          if client.supports_method('textDocument/inlayHint') then
-            inlay_hint(buffer, true)
-          end
-        end)
-      end
-
-      if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
-        opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
-          or function(diagnostic)
-            local icons = require("config.icons").diagnostics
-            for d, icon in pairs(icons) do
-              if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-                return icon
-              end
-            end
-          end
       end
 
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
@@ -192,94 +237,135 @@ return {
       if have_mason then
         mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup } })
       end
-
-      if Util.lsp_get_config("denols") and Util.lsp_get_config("tsserver") then
-        local is_deno = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")
-        Util.lsp_disable("tsserver", is_deno)
-        Util.lsp_disable("denols", function(root_dir)
-          return not is_deno(root_dir)
-        end)
-      end
     end,
   },
-
-  -- formatters
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "mason.nvim" },
-    opts = function()
-      local nls = require("null-ls")
-      return {
-        border = "rounded",
-        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
-        sources = {
-          -- formatting
-          nls.builtins.formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "2" } }),
-          nls.builtins.formatting.prettier.with({
-            extra_args = { "--single-quote", "false" },
-          }),
-          nls.builtins.formatting.goimports,
-          nls.builtins.formatting.gofumpt,
-          nls.builtins.formatting.shfmt,
-          nls.builtins.formatting.jq,
-
-          -- diagnostics
-          nls.builtins.diagnostics.eslint_d,
-          nls.builtins.diagnostics.standardrb,
-          nls.builtins.diagnostics.golangci_lint,
-          nls.builtins.diagnostics.zsh,
-
-          -- code actions
-          nls.builtins.code_actions.eslint_d,
-          nls.builtins.code_actions.gitrebase,
-          nls.builtins.code_actions.gitsigns,
-          nls.builtins.code_actions.refactoring,
-          nls.builtins.code_actions.shellcheck,
-        },
-      }
-    end,
-  },
-
   -- cmdline tools and lsp servers
   {
-
     "williamboman/mason.nvim",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+      "whoissethdaniel/mason-tool-installer.nvim",
+    },
     cmd = "Mason",
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-    opts = {
-      ui = { border = "rounded" },
-      ensure_installed = {
-        -- Formatter
-        "stylua",
-        "prettier",
-        "shfmt",
-        "jq",
-        -- Linter
-        "eslint_d",
-        "standardrb",
-        "golangci-lint",
-        "shellcheck",
-        "yamllint",
+    config = function()
+      local mason = require("mason")
+      local mason_lspconfig = require("mason-lspconfig")
+      local mason_tool_installer = require("mason-tool-installer")
+
+      mason.setup({
+        ui = { border = "rounded" },
+      })
+
+      mason_lspconfig.setup({
+        ensure_installed = {
+          "tsserver",
+          "html",
+          "cssls",
+          "tailwindcss",
+          "lua_ls",
+          "graphql",
+          "emmet_ls",
+        },
+      })
+
+      mason_tool_installer.setup({
+        ensure_installed = {
+          -- formatter
+          "prettierd",
+          "stylua",
+          "shfmt",
+          "gofumpt",
+          "goimports",
+          -- linter
+          "eslint_d",
+          "yamllint",
+          "markdownlint",
+        },
+      })
+    end,
+  },
+  -- formatters
+  {
+    "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    keys = {
+      {
+        "<leader>F",
+        '<cmd>lua require("conform").format({ async = false, lsp_fallback = true, timeout_ms = 1000 })<CR>',
+        mode = { "n", "v" },
+        desc = "Format file or range (in visual mode)",
       },
     },
-    ---@param opts MasonSettings | {ensure_installed: string[]}
-    config = function(_, opts)
-      require("mason").setup(opts)
-      local mr = require("mason-registry")
-      local function ensure_installed()
-        for _, tool in ipairs(opts.ensure_installed) do
-          local p = mr.get_package(tool)
-          if not p:is_installed() then
-            p:install()
-          end
+    opts = {
+      notify_on_error = true,
+      format_on_save = function(bufnr)
+        local enable_filetypes = { "markdown", "json", "yaml" }
+        if vim.tbl_contains(enable_filetypes, vim.bo[bufnr].filetype) then
+          return { timeout_ms = 1000, lsp_fallback = true, async = false, }
+        else
+          return
         end
-      end
-      if mr.refresh then
-        mr.refresh(ensure_installed)
-      else
-        ensure_installed()
-      end
+      end,
+      formatters_by_ft = {
+        javascript = { "prettierd" },
+        typescript = { "prettierd" },
+        javascriptreact = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        vue = { "prettierd" },
+        css = { "prettierd" },
+        scss = { "prettierd" },
+        html = { "prettierd" },
+        json = { "prettierd" },
+        yaml = { "prettierd" },
+        markdown = { "prettierd" },
+        graphql = { "prettierd" },
+        lua = { "stylua" },
+        sh = { "shfmt" },
+        go = { "gofumpt", "goimports" },
+        sql = { "sqlfluff" },
+        ["*"] = { "trim_whitespace" },
+      },
+    },
+    formatters = {
+      injected = {
+        lang_to_ext = {
+          graphql = "graphql"
+        }
+      },
+      stylua = {
+        prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" },
+      },
+      shfmt = {
+        prepend_args = { "-i", "2", "-ci" },
+      },
+    },
+  },
+  -- linter
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local lint = require("lint")
+
+      lint.linters_by_ft = {
+        javascript = { "eslint_d" },
+        typescript = { "eslint_d" },
+        javascriptreact = { "eslint_d" },
+        typescriptreact = { "eslint_d" },
+        dockerfile = { "hadolint" },
+        go = { "golangcilint" },
+        markdown = { "markdownlint" },
+        yaml = { "yamllint" },
+      }
+
+      local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+      vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+        group = lint_augroup,
+        callback = function()
+          lint.try_lint()
+        end,
+      })
     end,
   },
 }
