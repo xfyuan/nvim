@@ -7,7 +7,14 @@ return {
   -- Better quickfix window in Neovim
   { "kevinhwang91/nvim-bqf", ft = "qf" },
   -- search/replace in multiple files
-  { "windwp/nvim-spectre" },
+  {
+    "windwp/nvim-spectre",
+    keys = {
+      { "<leader>rw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", desc = "Replace cursor word" },
+      { "<leader>rf", "viw:lua require('spectre').open_file_search()<cr>", desc = "Replace in current file" },
+      { "<leader>ro", "<cmd>lua require('spectre').open()<CR>", desc = "Replace in files" },
+    },
+  },
 
   -- A better user experience for viewing and interacting with Vim marks
   {
@@ -96,7 +103,7 @@ return {
       },
     },
     keys = {
-      { "<leader>jf", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash", },
+      { "<leader>jf", mode = { "n", "o", "x" }, function() require("flash").jump() end, desc = "Flash", },
       { "<leader>jt", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter", },
       { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search", },
       { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash", },
@@ -119,12 +126,27 @@ return {
         untracked = { text = "▎" },
       },
     },
+    keys = {
+      { "<leader>hb", "<cmd>lua require 'gitsigns'.blame_line({ full = true })<cr>", desc = "Blame Line" },
+      { "<leader>hB", "<cmd>lua require 'gitsigns'.toggle_current_line_blame()<cr>", desc = "Toggle line blame" },
+      { "<leader>hd", "<cmd>lua require 'gitsigns'.diffthis()<cr>", desc = "Diff This" },
+      { "<leader>hD", "<cmd>lua require 'gitsigns'.diffthis('~')<cr>", desc = "Diff This ~" },
+      { "<leader>hj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", desc = "Next Hunk" },
+      { "<leader>hk", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", desc = "Prev Hunk" },
+      { "<leader>hs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", desc = "Stage Hunk" },
+      { "<leader>hr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
+      { "<leader>hu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk" },
+      { "<leader>hS", "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", desc = "Stage Buffer" },
+      { "<leader>hR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer" },
+      { "<leader>hp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", desc = "Preview Hunk" },
+    },
   },
   -- single tabpage interface for easily cycling through diffs for all modified files
   {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
-    config = true,
+    opts = {},
+    keys = { { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "DiffView" } },
   },
   -- visualise and resolve merge conflicts in neovim
   -- {
@@ -133,21 +155,27 @@ return {
   --   config = true,
   -- },
   -- generate shareable file permalinks (with line ranges) for several git web frontend hosts
-  -- {
-  --   "ruifm/gitlinker.nvim",
-  --   config = true,
-  -- },
-  -- A range and area selectable :Diffthis to compare partially
   {
-    "rickhowe/spotdiff.vim",
-    event = { "BufReadPost", "BufNewFile" },
+    "ruifm/gitlinker.nvim",
+    config = true,
+    keys = {
+      { "<leader>gY", "<cmd>lua require'gitlinker'.get_buf_range_url('v', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>", desc = "Flash", mode = { "v" }, },
+    },
   },
+  -- A range and area selectable :Diffthis to compare partially
+  -- {
+  --   "rickhowe/spotdiff.vim",
+  --   event = { "BufReadPost", "BufNewFile" },
+  -- },
   --  +------------------------------------------------------------------------------+
   --  |                                   Windows                                    |
   --  +------------------------------------------------------------------------------+
   -- Easily jump between NeoVim windows
   {
     "yorickpeterse/nvim-window",
+    keys = {
+      { "<leader>wp", "<cmd>lua require('nvim-window').pick()<cr>", desc = "Pick window" },
+    },
     config = function()
       vim.cmd([[hi BlackOnLightYellow guifg=#000000 guibg=#f2de91]])
       require("nvim-window").setup({
@@ -160,6 +188,12 @@ return {
   {
     "nvim-focus/focus.nvim",
     event = "VeryLazy",
+    keys = {
+      { "<leader>wf", "<cmd>FocusToggle<cr>", desc = "Toggle window focus" },
+      { "<leader>wl", "<cmd>FocusToggleBuffer<cr>", desc = "Toggle lock window again on buffer" },
+      { "<leader>ww", "<cmd>FocusMaxOrEqual<cr>", desc = "Toggle window zoom" },
+      { "<leader>ws", "<cmd>FocusSplitNicely<cr>", desc = "Split a window on golden ratio" },
+    },
     config = function()
       require("focus").setup({
         ui = {
@@ -176,6 +210,9 @@ return {
     "iamcco/markdown-preview.nvim",
     build = "cd app && yarn install",
     ft = "markdown",
+    keys = {
+      { "<leader>wm", "<cmd>MarkdownPreview<cr>", desc = "Open markdown preview window" },
+    },
   },
   -- {
   --   "Zeioth/markmap.nvim",
@@ -195,6 +232,10 @@ return {
         default_picker = "telescope",
       })
     end,
+    keys = {
+      { "<leader>ll", "<cmd>UrlView buffer<cr>", desc = "Find URL and open" },
+      { "<leader>lc", "<cmd>UrlView buffer action=clipboard<cr>", desc = "Find URL and copy" },
+    },
   },
   -- align text by split chars, defaut hotkey: ga/gA
   {

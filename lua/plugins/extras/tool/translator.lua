@@ -2,6 +2,9 @@ return {
   {
     "voldikss/vim-translator",
     event = "VeryLazy",
+    keys = {
+      { "<leader>wm", "<Plug>TranslateW", desc = "Translate word online" },
+    },
   }, -- Asynchronous translating plugin
   -- {
   --   "potamides/pantran.nvim", -- Use your favorite machine translation engines without having to leave your favorite editor

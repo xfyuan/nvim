@@ -83,7 +83,7 @@ keymap("v", "<A-k>", ":m '<-2<CR>gv=gv")
 keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
 
 -- Toggle diff buffers
-keymap("n", "<leader>dft", "&diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'", { expr = true })
+keymap("n", "<leader>df", "&diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'", { expr = true })
 
 --          +-----------------------------------------------------------------------------+
 --          |                               EXTRA KEYMAP TIPS                             |

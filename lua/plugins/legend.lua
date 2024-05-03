@@ -12,10 +12,17 @@ return {
   { "tpope/vim-rails", event = "VeryLazy" },
   {
     "tpope/vim-fugitive",
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile" },
     cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
     dependencies = {
       "tpope/vim-rhubarb",
+    },
+    keys = {
+      { "<leader>gs", "<cmd>Git<cr>", desc = "Git Status" },
+      { "<leader>gb", "<cmd>Git blame<cr>", desc = "Git Blame" },
+      { "<leader>gr", "<cmd>Gread<cr>", desc = "Git Read" },
+      { "<leader>gp", "<cmd>Git push<cr>", desc = "Git Push" },
+      { "<leader>gc", "<cmd>Git commit --verify<cr>", desc = "Git Commit" },
     },
   },
   -- {

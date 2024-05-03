@@ -11,7 +11,7 @@ return {
   {
     "AndrewRadev/switch.vim",
     keys = {
-      { "gt", "<cmd>Switch<cr>", desc = "Switch" },
+      { "gt", "<cmd>Switch<cr>", desc = "Switch segments of text" },
     },
   },
   -- surround, visual mode key mapping `S` to surround selected text
@@ -36,69 +36,69 @@ return {
     end,
   },
   -- better text-objects
-  {
-    "echasnovski/mini.ai",
-    event = "VeryLazy",
-    opts = function()
-      local ai = require("mini.ai")
-      return {
-        n_lines = 500,
-        custom_textobjects = {
-          o = ai.gen_spec.treesitter({
-            a = { "@block.outer", "@conditional.outer", "@loop.outer" },
-            i = { "@block.inner", "@conditional.inner", "@loop.inner" },
-          }, {}),
-          f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
-          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
-        },
-      }
-    end,
-    config = function(_, opts)
-      require("mini.ai").setup(opts)
-      if require("util").has "which-key.nvim" then
-        ---@type table<string, string|table>
-        local i = {
-          [" "] = "Whitespace",
-          ['"'] = 'Balanced "',
-          ["'"] = "Balanced '",
-          ["`"] = "Balanced `",
-          ["("] = "Balanced (",
-          [")"] = "Balanced ) including white-space",
-          [">"] = "Balanced > including white-space",
-          ["<lt>"] = "Balanced <",
-          ["]"] = "Balanced ] including white-space",
-          ["["] = "Balanced [",
-          ["}"] = "Balanced } including white-space",
-          ["{"] = "Balanced {",
-          ["?"] = "User Prompt",
-          _ = "Underscore",
-          a = "Argument",
-          b = "Balanced ), ], }",
-          c = "Class",
-          f = "Function",
-          o = "Block, conditional, loop",
-          q = "Quote `, \", '",
-          t = "Tag",
-        }
-        local a = vim.deepcopy(i)
-        for k, v in pairs(a) do
-          a[k] = v:gsub(" including.*", "")
-        end
+  -- {
+  --   "echasnovski/mini.ai",
+  --   event = "VeryLazy",
+  --   opts = function()
+  --     local ai = require("mini.ai")
+  --     return {
+  --       n_lines = 500,
+  --       custom_textobjects = {
+  --         o = ai.gen_spec.treesitter({
+  --           a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+  --           i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+  --         }, {}),
+  --         f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+  --         c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+  --       },
+  --     }
+  --   end,
+  --   config = function(_, opts)
+  --     require("mini.ai").setup(opts)
+  --     if require("util").has "which-key.nvim" then
+  --       ---@type table<string, string|table>
+  --       local i = {
+  --         [" "] = "Whitespace",
+  --         ['"'] = 'Balanced "',
+  --         ["'"] = "Balanced '",
+  --         ["`"] = "Balanced `",
+  --         ["("] = "Balanced (",
+  --         [")"] = "Balanced ) including white-space",
+  --         [">"] = "Balanced > including white-space",
+  --         ["<lt>"] = "Balanced <",
+  --         ["]"] = "Balanced ] including white-space",
+  --         ["["] = "Balanced [",
+  --         ["}"] = "Balanced } including white-space",
+  --         ["{"] = "Balanced {",
+  --         ["?"] = "User Prompt",
+  --         _ = "Underscore",
+  --         a = "Argument",
+  --         b = "Balanced ), ], }",
+  --         c = "Class",
+  --         f = "Function",
+  --         o = "Block, conditional, loop",
+  --         q = "Quote `, \", '",
+  --         t = "Tag",
+  --       }
+  --       local a = vim.deepcopy(i)
+  --       for k, v in pairs(a) do
+  --         a[k] = v:gsub(" including.*", "")
+  --       end
 
-        local ic = vim.deepcopy(i)
-        local ac = vim.deepcopy(a)
-        for key, name in pairs { n = "Next", l = "Last" } do
-          i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
-          a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
-        end
-        require("which-key").register {
-          mode = { "o", "x" },
-          i = i,
-          a = a,
-        }
-      end
-    end,
-  },
+  --       local ic = vim.deepcopy(i)
+  --       local ac = vim.deepcopy(a)
+  --       for key, name in pairs { n = "Next", l = "Last" } do
+  --         i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
+  --         a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
+  --       end
+  --       require("which-key").register {
+  --         mode = { "o", "x" },
+  --         i = i,
+  --         a = a,
+  --       }
+  --     end
+  --   end,
+  -- },
   --  +------------------------------------------------------------------------------+
   --  |                                   Comments                                   |
   --  +------------------------------------------------------------------------------+
@@ -109,6 +109,9 @@ return {
     opts = {
       doc_width = 100,
       box_width = 80,
+    },
+    keys = {
+      { "gcB", "<cmd>CBccbox10<CR>", desc = "Comment box ascii" }
     },
   },
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
@@ -128,9 +131,7 @@ return {
     keys = {
       { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment", },
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment", },
-      { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>fT", "<cmd>TodoTelescope<cr>", desc = "Find Todo" },
+      { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find Todo" },
     },
   },
   --  +------------------------------------------------------------------------------+
@@ -140,6 +141,9 @@ return {
   {
     "stevearc/aerial.nvim",
     event = "User AstroFile",
+    keys = {
+      { "<leader>co", "<cmd>AerialToggle<cr>", desc = "Toggle code outline window" },
+    },
     opts = {
       attach_mode = "global",
       backends = { "lsp", "treesitter", "markdown", "man" },
@@ -156,22 +160,23 @@ return {
     },
   },
   -- A small Neovim plugin for previewing definitions using floating windows. default key mapping is `gp*`
-  { "rmagatti/goto-preview",
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      default_mappings = true,
-    },
-  },
+  -- { "rmagatti/goto-preview",
+  --   event = { "BufReadPost", "BufNewFile" },
+  --   opts = {
+  --     default_mappings = true,
+  --   },
+  -- },
   -- Better diagnostics list and others
   {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
     opts = { use_diagnostic_signs = true },
     keys = {
-      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
-      { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-      { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-      { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+      { "<leader>xx", "<cmd>TroubleToggle<CR>", desc = "Toggle trouble list" },
+      { "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+      { "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
+      { "<leader>xl", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
+      { "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
       {
         "[q",
         function()
@@ -238,26 +243,26 @@ return {
     },
   },
   -- refactoring library based off the Refactoring book by Martin Fowler
-  {
-    "ThePrimeagen/refactoring.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    opts = {},
-    config = function(_, opts)
-      require("refactoring").setup(opts)
-      require("telescope").load_extension "refactoring"
-    end,
-    keys = function ()
-      vim.api.nvim_set_keymap(
-        "v",
-        "<leader>rr",
-        "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-        { noremap = true, silent = true }
-      )
-    end
-  },
+  -- {
+  --   "ThePrimeagen/refactoring.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  --   opts = {},
+  --   config = function(_, opts)
+  --     require("refactoring").setup(opts)
+  --     require("telescope").load_extension "refactoring"
+  --   end,
+  --   keys = function ()
+  --     vim.api.nvim_set_keymap(
+  --       "v",
+  --       "<leader>rr",
+  --       "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+  --       { noremap = true, silent = true }
+  --     )
+  --   end
+  -- },
   -- navigate between files that are related using regexp pattern
   {
     "otavioschwanck/telescope-alternate" ,
@@ -291,7 +296,7 @@ return {
     event = "VeryLazy",
     keys = {
       { "<leader>lo", "<cmd>Other<cr>", desc = "Open other file" },
-      { "<leader>lc", "<cmd>OtherClear<cr>", desc = "Clear reference of other file" },
+      { "<leader>lr", "<cmd>OtherClear<cr>", desc = "Clear reference of other file" },
     },
     config = function()
       require("other-nvim").setup({
@@ -331,59 +336,59 @@ return {
 --  +------------------------------------------------------------------------------+
 --  |                                    Debug                                     |
 --  +------------------------------------------------------------------------------+
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-      { "rcarriga/nvim-dap-ui" },
-      { "theHamsta/nvim-dap-virtual-text" },
-      { "nvim-telescope/telescope-dap.nvim" },
-      { "leoluz/nvim-dap-go" },
-    },
-    -- stylua: ignore
-    keys = {
-      { "<leader>dE", function() require("dapui").eval(vim.fn.input "[Expression] > ") end, desc = "Evaluate Input", },
-      { "<leader>dS", function() require("dap.ui.widgets").scopes() end, desc = "Scopes", },
-      { "<leader>dU", function() require("dapui").toggle() end, desc = "Toggle UI", },
-      { "<leader>dC", function() require("dap").set_breakpoint(vim.fn.input "[Condition] > ") end, desc = "Conditional Breakpoint", },
-      { "<leader>dR", function() require("dap").run_to_cursor() end, desc = "Run to Cursor", },
-      { "<leader>db", function() require("dap").step_back() end, desc = "Step Back", },
-      { "<leader>dc", function() require("dap").continue() end, desc = "Continue", },
-      { "<leader>dd", function() require("dap").disconnect() end, desc = "Disconnect", },
-      { "<leader>de", function() require("dapui").eval() end, mode = {"n", "v"}, desc = "Evaluate", },
-      { "<leader>dg", function() require("dap").session() end, desc = "Get Session", },
-      { "<leader>dh", function() require("dap.ui.widgets").hover() end, desc = "Hover Variables", },
-      { "<leader>di", function() require("dap").step_into() end, desc = "Step Into", },
-      { "<leader>du", function() require("dap").step_out() end, desc = "Step Out", },
-      { "<leader>do", function() require("dap").step_over() end, desc = "Step Over", },
-      { "<leader>dp", function() require("dap").pause.toggle() end, desc = "Pause", },
-      { "<leader>dq", function() require("dap").close() end, desc = "Quit", },
-      { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL", },
-      { "<leader>ds", function() require("dap").continue() end, desc = "Start", },
-      { "<leader>dt", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint", },
-      { "<leader>dx", function() require("dap").terminate() end, desc = "Terminate", },
-    },
-    config = function()
-      require("nvim-dap-virtual-text").setup {
-        commented = true,
-      }
+  -- {
+  --   "mfussenegger/nvim-dap",
+  --   dependencies = {
+  --     { "rcarriga/nvim-dap-ui" },
+  --     { "theHamsta/nvim-dap-virtual-text" },
+  --     { "nvim-telescope/telescope-dap.nvim" },
+  --     { "leoluz/nvim-dap-go" },
+  --   },
+  --   -- stylua: ignore
+  --   keys = {
+  --     { "<leader>dE", function() require("dapui").eval(vim.fn.input "[Expression] > ") end, desc = "Evaluate Input", },
+  --     { "<leader>dS", function() require("dap.ui.widgets").scopes() end, desc = "Scopes", },
+  --     { "<leader>dU", function() require("dapui").toggle() end, desc = "Toggle UI", },
+  --     { "<leader>dC", function() require("dap").set_breakpoint(vim.fn.input "[Condition] > ") end, desc = "Conditional Breakpoint", },
+  --     { "<leader>dR", function() require("dap").run_to_cursor() end, desc = "Run to Cursor", },
+  --     { "<leader>db", function() require("dap").step_back() end, desc = "Step Back", },
+  --     { "<leader>dc", function() require("dap").continue() end, desc = "Continue", },
+  --     { "<leader>dd", function() require("dap").disconnect() end, desc = "Disconnect", },
+  --     { "<leader>de", function() require("dapui").eval() end, mode = {"n", "v"}, desc = "Evaluate", },
+  --     { "<leader>dg", function() require("dap").session() end, desc = "Get Session", },
+  --     { "<leader>dh", function() require("dap.ui.widgets").hover() end, desc = "Hover Variables", },
+  --     { "<leader>di", function() require("dap").step_into() end, desc = "Step Into", },
+  --     { "<leader>du", function() require("dap").step_out() end, desc = "Step Out", },
+  --     { "<leader>do", function() require("dap").step_over() end, desc = "Step Over", },
+  --     { "<leader>dp", function() require("dap").pause.toggle() end, desc = "Pause", },
+  --     { "<leader>dq", function() require("dap").close() end, desc = "Quit", },
+  --     { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL", },
+  --     { "<leader>ds", function() require("dap").continue() end, desc = "Start", },
+  --     { "<leader>dt", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint", },
+  --     { "<leader>dx", function() require("dap").terminate() end, desc = "Terminate", },
+  --   },
+  --   config = function()
+  --     require("nvim-dap-virtual-text").setup {
+  --       commented = true,
+  --     }
 
-      local dap, dapui = require "dap", require "dapui"
-      dapui.setup {}
+  --     local dap, dapui = require "dap", require "dapui"
+  --     dapui.setup {}
 
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
+  --     dap.listeners.after.event_initialized["dapui_config"] = function()
+  --       dapui.open()
+  --     end
+  --     dap.listeners.before.event_terminated["dapui_config"] = function()
+  --       dapui.close()
+  --     end
+  --     dap.listeners.before.event_exited["dapui_config"] = function()
+  --       dapui.close()
+  --     end
 
-      require("dap.ext.vscode").load_launchjs()
-      require("telescope").load_extension "dap"
-      -- adapters
-      require("dap-go").setup()
-    end,
-  },
+  --     require("dap.ext.vscode").load_launchjs()
+  --     require("telescope").load_extension "dap"
+  --     -- adapters
+  --     require("dap-go").setup()
+  --   end,
+  -- },
 }

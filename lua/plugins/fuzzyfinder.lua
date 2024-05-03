@@ -43,12 +43,30 @@ return {
       {  'kkharji/sqlite.lua'  },
     },
     keys = {
-      -- search
       { "<C-p>", Util.telescope("files"), desc = "Find Files" },
+      { "<leader>gl", "<cmd>Telescope git_status<cr>", desc = "Git changed files" },
       { "<leader>fO", "<cmd>Telescope aerial<cr>", desc = "Find aerial symbol" },
+      { "<leader>fa", "<cmd>Telescope telescope-alternate alternate_file<cr>", desc = "Find Alternate file" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Switch buffers" },
+      { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Find Diagnostics" },
       { "<leader>ff", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
+      { "<leader>fh", "<cmd>Telescope frecency<cr>", desc = "Most (f)recently used files" },
+      { "<leader>fj", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Fuzzy find current buffer" },
+      { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find Keymaps" },
+      { "<leader>fm", "<cmd>MarksListBuf<cr>", desc = "Find Mark in buffer" },
       { "<leader>fo", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser on current buffer" },
+      { "<leader>fp", "<cmd>Telescope lazy<cr>", desc = "List lazy plugins info" },
+      { "<leader>fr", "<cmd>Telescope registers<cr>", desc = "Find Registers" },
+      { "<leader>fs", "<cmd>Telescope luasnip<cr>", desc = "Search snippet" },
       { "<leader>fc", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      -- extensions
+      { "<leader>fl", "<cmd>lua require'telescope'.extensions.live_grep_args.live_grep_args()<cr>", desc = "Live grep text with args" },
+      { "<leader>fg", "<cmd>lua require'telescope'.extensions.live_grep_args.live_grep_args({default_text=vim.fn.expand('<cword>')})<cr>", desc = "Grep cursor word with args" },
+      { "<leader>fP", "<cmd>lua require'telescope'.extensions.project.project{}<cr>", desc = "Find project" },
+      { "<leader>dc", "<cmd>lua require'telescope'.extensions.diff.diff_current({ hidden = true })<cr>", desc = "Telescope compare file with current" },
+      { "<leader>dC", "<cmd>lua require'telescope'.extensions.diff.diff_files({ hidden = true })<cr>", desc = "Telescope compare 2 files" },
+      { "<leader>gel", "<cmd>Telescope advanced_git_search search_log_content_file<cr>", desc = "Search in file log content" },
+      { "<leader>geL", "<cmd>Telescope advanced_git_search search_log_content<cr>", desc = "Search in repo log content" },
       {
         "<leader>cs",
         Util.telescope("lsp_document_symbols", {
