@@ -202,6 +202,30 @@ return {
       })
     end,
   },
+  {
+    "folke/zen-mode.nvim",
+    dependencies = {
+      "folke/twilight.nvim",
+    },
+    keys = {
+      { "<leader>wz", "<cmd>ZenMode<cr>", desc = "Toggle zen mode" },
+      { '<leader>wd', "<cmd>Twilight<cr>", desc = "Toggle dim state" }
+    },
+    opts = {
+      window = {
+        backdrop = 1,
+        width = 0.70,
+      },
+      on_open = function(win)
+        vim.opt["conceallevel"] = 3
+        vim.opt["concealcursor"] = "nc"
+      end,
+      on_close = function()
+        vim.opt["conceallevel"] = 0
+        vim.opt["concealcursor"] = ""
+      end,
+    },
+  },
 --  +------------------------------------------------------------------------------+
 --  |                                   Markdown                                   |
 --  +------------------------------------------------------------------------------+
