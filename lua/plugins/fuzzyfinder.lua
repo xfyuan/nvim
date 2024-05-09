@@ -30,7 +30,6 @@ return {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       { "nvim-telescope/telescope-symbols.nvim" },
       { "nvim-telescope/telescope-project.nvim" },
-      { "nvim-telescope/telescope-file-browser.nvim" },
       { 'nvim-telescope/telescope-frecency.nvim', },
       { 'nvim-telescope/telescope-smart-history.nvim', },
       { 'nvim-telescope/telescope-live-grep-args.nvim', },
@@ -49,12 +48,10 @@ return {
       { "<leader>fa", "<cmd>Telescope telescope-alternate alternate_file<cr>", desc = "Find Alternate file" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Switch buffers" },
       { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Find Diagnostics" },
-      { "<leader>ff", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
       { "<leader>fh", "<cmd>Telescope frecency<cr>", desc = "Most (f)recently used files" },
       { "<leader>fj", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Fuzzy find current buffer" },
       { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find Keymaps" },
       { "<leader>fm", "<cmd>MarksListBuf<cr>", desc = "Find Mark in buffer" },
-      { "<leader>fo", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser on current buffer" },
       { "<leader>fp", "<cmd>Telescope lazy<cr>", desc = "List lazy plugins info" },
       { "<leader>fr", "<cmd>Telescope registers<cr>", desc = "Find Registers" },
       { "<leader>fs", "<cmd>Telescope luasnip<cr>", desc = "Search snippet" },
@@ -152,10 +149,6 @@ return {
             override_file_sorter = true,
             override_generic_sorter = true,
           },
-          file_browser = {
-            theme = "ivy",
-            hijack_netrw = true,
-          },
           frecency = {
             auto_validate = false,
             show_scores = true,
@@ -191,7 +184,6 @@ return {
       telescope.setup(opts)
 
       telescope.load_extension("fzf")
-      telescope.load_extension("file_browser")
       telescope.load_extension("frecency")
       telescope.load_extension("smart_history")
       telescope.load_extension("live_grep_args")
