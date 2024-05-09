@@ -19,7 +19,7 @@ return {
       local animate = require("mini.animate")
       return {
         cursor = {
-          timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
+          timing = animate.gen_timing.linear({ duration = 10, unit = "total" }),
           path = animate.gen_path.line({
             predicate = function(destination) return destination[1] < -2 or 2 < destination[1] end,
           }),
@@ -28,7 +28,7 @@ return {
           timing = animate.gen_timing.linear({ duration = 10, unit = "total" }),
         },
         scroll = {
-          timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
+          timing = animate.gen_timing.linear({ duration = 20, unit = "total" }),
         },
       }
     end,
