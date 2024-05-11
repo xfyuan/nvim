@@ -275,12 +275,18 @@ return {
           "prettierd",
           "stylua",
           "shfmt",
-          "gofumpt",
-          "goimports",
           -- linter
           "eslint_d",
           "yamllint",
           "markdownlint",
+          -- Go
+          "gofumpt",
+          "goimports",
+          "gomodifytags",
+          "golangci-lint",
+          "gotests",
+          "iferr",
+          "impl",
         },
       })
     end,
