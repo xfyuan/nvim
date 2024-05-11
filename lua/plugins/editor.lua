@@ -191,23 +191,13 @@ return {
       })
     end,
   },
-  -- Auto-Focusing and Auto-Resizing Splits/Windows
+  -- Toggle maximize window
   {
-    "nvim-focus/focus.nvim",
+    "declancm/maximize.nvim",
     event = "VeryLazy",
     keys = {
-      { "<leader>wf", "<cmd>FocusToggle<cr>", desc = "Toggle window focus" },
-      { "<leader>wl", "<cmd>FocusToggleBuffer<cr>", desc = "Toggle lock window again on buffer" },
-      { "<leader>ww", "<cmd>FocusMaxOrEqual<cr>", desc = "Toggle window zoom" },
-      { "<leader>ws", "<cmd>FocusSplitNicely<cr>", desc = "Split a window on golden ratio" },
+      { "<leader>ww", "<cmd>lua require('maximize').toggle()<cr>", desc = "Toggle window max" },
     },
-    config = function()
-      require("focus").setup({
-        ui = {
-          signcolumn = false,
-        },
-      })
-    end,
   },
   {
     "folke/zen-mode.nvim",
