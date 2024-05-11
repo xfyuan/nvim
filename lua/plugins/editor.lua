@@ -21,6 +21,10 @@ return {
     "chentoast/marks.nvim",
     event = "BufReadPre",
     config = true,
+    keys = {
+      { "<leader>mb", "<cmd>MarksListBuf<cr>", desc = "Find Mark in buffer" },
+      { "<leader>ma", "<cmd>MarksListAll<cr>", desc = "Find Mark in all buffers" },
+    },
   },
   -- new generation multiple cursors plugin,
   -- select words with Ctrl-N (like Ctrl-d in Sublime Text/VS Code)
@@ -146,7 +150,10 @@ return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
     opts = {},
-    keys = { { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "DiffView" } },
+    keys = {
+      { "<leader>df", "<cmd>DiffviewOpen<cr>", desc = "Open DiffView" },
+      { "<leader>dc", "<cmd>DiffviewClose<cr>", desc = "Close DiffView" },
+    },
   },
   -- visualise and resolve merge conflicts in neovim
   -- {
