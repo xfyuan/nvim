@@ -41,6 +41,7 @@ keymap("n", "<leader><tab>", "<cmd>tabnext<cr>")
 -- Quick split window
 keymap("n", "_", [[<Cmd>sp<CR>]])
 keymap("n", "<bar>", [[<Cmd>vsp<CR>]])
+keymap("n", "<leader>ws", "<Cmd>vsp<CR>")
 
 -- Resize window using <shift> arrow keys
 keymap("n", "<A-Up>", "<cmd>resize +5<CR>")
