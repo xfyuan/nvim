@@ -300,7 +300,7 @@ return {
     opts = {
       notify_on_error = true,
       format_on_save = function(bufnr)
-        local enable_filetypes = { "markdown", "json", "yaml" }
+        local enable_filetypes = { "markdown" }
         if vim.tbl_contains(enable_filetypes, vim.bo[bufnr].filetype) then
           return { timeout_ms = 1000, lsp_fallback = true, async = false, }
         else
