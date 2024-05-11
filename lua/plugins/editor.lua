@@ -8,7 +8,7 @@ return {
   { "kevinhwang91/nvim-bqf", ft = "qf" },
   -- search/replace in multiple files
   {
-    "windwp/nvim-spectre",
+    "nvim-pack/nvim-spectre",
     keys = {
       { "<leader>rw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", desc = "Replace cursor word" },
       { "<leader>rf", "viw:lua require('spectre').open_file_search()<cr>", desc = "Replace in current file" },
@@ -153,6 +153,7 @@ return {
     keys = {
       { "<leader>df", "<cmd>DiffviewOpen<cr>", desc = "Open DiffView" },
       { "<leader>dc", "<cmd>DiffviewClose<cr>", desc = "Close DiffView" },
+      { "<leader>dp", "<cmd>DiffviewToggleFiles<cr>", desc = "Toggle DiffView file panel" },
     },
   },
   -- visualise and resolve merge conflicts in neovim
