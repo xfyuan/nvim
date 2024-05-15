@@ -30,6 +30,9 @@ return {
         b = {
           name = "Buffer",
         },
+        c = {
+          name = "Coding",
+        },
         d = {
           name = "Diff",
         },
@@ -47,6 +50,12 @@ return {
         },
         l = {
           name = "Url link / LSP",
+        },
+        m = {
+          name = "Marks / Markdown",
+        },
+        n = {
+          name = "Notification",
         },
         r = {
           name = "Replace",
@@ -66,6 +75,9 @@ return {
         },
         w = {
           name = "Window / Word",
+        },
+        x = {
+          name = "Trouble",
         },
       }
 

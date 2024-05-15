@@ -245,10 +245,6 @@ return {
         end,
       })
     end,
-    keys = {
-      { "]]", function() require("illuminate").goto_next_reference(false) end, desc = "Next Reference", },
-      { "[[", function() require("illuminate").goto_prev_reference(false) end, desc = "Prev Reference", },
-    },
   },
   -- refactoring library based off the Refactoring book by Martin Fowler
   -- {
@@ -303,8 +299,7 @@ return {
     "rgroli/other.nvim" ,
     event = "VeryLazy",
     keys = {
-      { "<leader>lo", "<cmd>Other<cr>", desc = "Open other file" },
-      { "<leader>lr", "<cmd>OtherClear<cr>", desc = "Clear reference of other file" },
+      { "<leader>lo", "<cmd>Other<cr>", desc = "Open other file", ft = "ruby" },
     },
     config = function()
       require("other-nvim").setup({
