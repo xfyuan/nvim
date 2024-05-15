@@ -207,4 +207,57 @@ function M.on_load(name, fn)
   end
 end
 
+--          +-----------------------------------------------------------------------------+
+--          |                                  Markdown                                   |
+--          +-----------------------------------------------------------------------------+
+
+-- Inserts a new empty code block below the current line
+M.markdown_insert_codeblock = function()
+  local win = vim.api.nvim_get_current_win()
+  local row, _ = unpack(vim.api.nvim_win_get_cursor(win))
+
+  -- Insert the text in a new line below the current line
+  vim.api.nvim_buf_set_lines(0, row, row, false, { "```", "```" })
+
+  local newRow = row + 1 -- Move cursor down one line
+  local newCol = 4
+
+  vim.api.nvim_win_set_cursor(win, { newRow, newCol })
+end
+
+-- Navigate between links / headers
+M.markdown_next_link = function()
+  if vim.fn.search("\\(](.\\+)\\|^#\\+ .\\+\\|\\[\\[.\\+]]\\)", "w") ~= 0 then
+    vim.cmd("norm w")
+  else
+    vim.notify("No markdown headers or links found.")
+  end
+end
+M.markdown_prev_link = function()
+  if vim.fn.search("\\(](.\\+)\\|^#\\+ .\\+\\|\\[\\[.\\+]]\\)", "b") ~= 0 then
+    -- I have to search twice backwards because the cursor is moved
+    -- with 'w' and the backward search finds the same item
+    vim.fn.search("\\(](.\\+)\\|^#\\+ .\\+\\|\\[\\[.\\+]]\\)", "b")
+    vim.cmd("norm w")
+  else
+    vim.notify("No markdown headers or links found.")
+  end
+end
+
+-- Toggle To-Dos
+M.markdown_todo_toggle = function()
+  -- In lua '%' are escape chars
+  if string.match(vim.api.nvim_get_current_line(), "- %[ %] ") ~= nil then
+    vim.cmd([[
+      s/- \[ \] /- \[x\] /g
+      nohl
+    ]])
+  elseif string.match(vim.api.nvim_get_current_line(), "- %[[xX]%] ") ~= nil then
+    vim.cmd([[
+      s/- \[[xX]\] /- \[ \] /g
+      nohl
+      ]])
+  end
+end
+
 return M
