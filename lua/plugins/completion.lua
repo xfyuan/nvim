@@ -59,11 +59,12 @@ return {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "saadparwaiz1/cmp_luasnip",
-      "ray-x/cmp-treesitter",
+      "onsails/lspkind-nvim",
     },
     opts = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
+      local lspkind = require("lspkind")
 
       local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -126,7 +127,11 @@ return {
           -- ["<C-j>"] = cmp.mapping(function(fallback)
           ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-              cmp.select_next_item()
+              if #cmp.get_entries() == 1 then
+                cmp.confirm({ select = true })
+              else
+                cmp.select_next_item()
+              end
             elseif luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
             elseif has_words_before() then
@@ -152,17 +157,23 @@ return {
           { name = "calc" },
           { name = "path" },
           { name = "luasnip" },
-          { name = "treesitter" },
           { name = "nvim_lsp_signature_help" },
         }),
         formatting = {
-          format = function(_, item)
-            local icons = require("config.icons").kinds
-            if icons[item.kind] then
-              item.kind = icons[item.kind] .. item.kind
-            end
-            return item
-          end,
+          format = lspkind.cmp_format({
+            mode = "symbol_text",
+            with_text = true,
+            maxwidth = 55,
+            ellipsis_char = "…",
+            menu = {
+              buffer = "[BUF]",
+              path = "[PATH]",
+              luasnip = "[SNIP]",
+              nvim_lua = "[LUA]",
+              nvim_lsp = "[LSP]",
+              nvim_lsp_signature_help = "[LSP]",
+            },
+          }),
         },
         experimental = {
           ghost_text = {
