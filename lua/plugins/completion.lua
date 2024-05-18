@@ -59,12 +59,10 @@ return {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "saadparwaiz1/cmp_luasnip",
-      "onsails/lspkind-nvim",
     },
     opts = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      local lspkind = require("lspkind")
 
       local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -160,20 +158,21 @@ return {
           { name = "nvim_lsp_signature_help" },
         }),
         formatting = {
-          format = lspkind.cmp_format({
-            mode = "symbol_text",
-            with_text = true,
-            maxwidth = 55,
-            ellipsis_char = "…",
-            menu = {
-              buffer = "[BUF]",
-              path = "[PATH]",
-              luasnip = "[SNIP]",
-              nvim_lua = "[LUA]",
-              nvim_lsp = "[LSP]",
-              nvim_lsp_signature_help = "[LSP]",
-            },
-          }),
+          format = function(entry, item)
+            local icons = require("config.icons").kinds
+            if icons[item.kind] then
+              item.kind = icons[item.kind] .. item.kind
+            end
+            item.menu = ({
+              buffer = "[Buf]",
+              path = "[Path]",
+              luasnip = "[Snip]",
+              nvim_lua = "[Lua]",
+              nvim_lsp = "[Lsp]",
+              nvim_lsp_signature_help = "[Lsp]",
+            })[entry.source.name]
+            return item
+          end,
         },
         experimental = {
           ghost_text = {
