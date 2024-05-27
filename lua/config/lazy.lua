@@ -18,7 +18,6 @@ require("lazy").setup({
     { import = "plugins" },
     { import = "plugins.extras.lang" },
     { import = "plugins.extras.tool" },
-    { import = "plugins.extras.ui" },
   },
   concurrency = 24,
   defaults = { lazy = true, version = nil },
