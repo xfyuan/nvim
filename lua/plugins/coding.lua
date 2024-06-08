@@ -221,7 +221,7 @@ return {
     event = { "CursorHold", "CursorHoldI" },
     opts = {
       delay = 200,
-      large_file_cutoff = 2000, -- number of lines
+      large_file_cutoff = 5000, -- number of lines
       filetypes_denylist = {
         "DressingSelect",
         "neo-tree",
