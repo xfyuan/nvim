@@ -160,4 +160,33 @@ return {
       }
     },
   },
+  {
+    'stevearc/oil.nvim',
+    keys = {
+      { "<leader>e", "<cmd>Oil<cr>", mode = { "n" }, desc = "File explorer" },
+    },
+    opts = {
+      use_default_keymaps = false,
+      skip_confirm_for_simple_edits = true,
+      keymaps = {
+        ["g?"] = "actions.show_help",
+        ["<CR>"] = "actions.select",
+        ["<C-v>"] = "actions.select_vsplit",
+        ["<C-s>"] = "actions.select_split",
+        ["<C-t>"] = "actions.select_tab",
+        ["<C-p>"] = "actions.preview",
+        ["q"] = "actions.close",
+        ["<C-r>"] = "actions.refresh",
+        ["<C-y>"] = "actions.copy_entry_path",
+        ["<BS>"] = "actions.parent",
+        ["_"] = "actions.open_cwd",
+        ["`"] = "actions.cd",
+        ["~"] = "actions.tcd",
+        ["gs"] = "actions.change_sort",
+        ["gx"] = "actions.open_external",
+        ["g."] = "actions.toggle_hidden",
+        ["g\\"] = "actions.toggle_trash",
+      },
+    },
+  },
 }
