@@ -17,12 +17,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- resize splits if window got resized
-vim.api.nvim_create_autocmd({ "VimResized" }, {
-  group = augroup("resize_splits"),
-  callback = function()
-    vim.cmd("tabdo wincmd =")
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "VimResized" }, {
+--   group = augroup("resize_splits"),
+--   callback = function()
+--     vim.cmd("tabdo wincmd =")
+--   end,
+-- })
 
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -97,31 +97,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     local file = vim.loop.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
-})
-
--- Disable Focus for certain buffer or file types
-local ignore_filetypes = { 'neo-tree' }
-local ignore_buftypes = { 'nofile', 'prompt', 'popup' }
-local augroup =
-    vim.api.nvim_create_augroup('FocusDisable', { clear = true })
-
-vim.api.nvim_create_autocmd('WinEnter', {
-  group = augroup,
-  callback = function(_)
-    if vim.tbl_contains(ignore_buftypes, vim.bo.buftype) then
-      vim.b.focus_disable = true
-    end
-  end,
-  desc = 'Disable focus autoresize for BufType',
-})
-vim.api.nvim_create_autocmd('FileType', {
-  group = augroup,
-  callback = function(_)
-    if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
-      vim.b.focus_disable = true
-    end
-  end,
-  desc = 'Disable focus autoresize for FileType',
 })
 
 -- auto close neovim when nvim-tree is the last window
