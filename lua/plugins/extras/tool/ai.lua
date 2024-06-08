@@ -88,53 +88,53 @@ return {
     end,
   },
   -- ChatGPT
-  {
-    "jackMort/ChatGPT.nvim",
-    cmd = {
-      "ChatGPT",
-      "ChatGPTRun",
-      "ChatGPTActAs",
-      "ChatGPTCompleteCode",
-      "ChatGPTEditWithInstructions"
-    },
-    keys = {
-      { "<leader>ai", "<cmd>ChatGPT<cr>", desc = "ChatGPT" },
-      { "<leader>ac", "<cmd>ChatGPTCompleteCode<cr>", mode = { "n", "v" }, desc = "ChatGPT Complete Code" },
-      { "<leader>ae", "<cmd>ChatGPTEditWithInstructions<cr>", mode = { "n", "v" }, desc = "ChatGPT Edit with Instructions" },
-    },
-    opts = {
-      -- popup_input = {
-      --   submit = "<CR>"
-      -- }
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-  },
-  {
-    "Bryley/neoai.nvim",
-    enabled = false,
-    dependencies = { "MunifTanjim/nui.nvim" },
-    cmd = {
-      "NeoAI",
-      "NeoAIContext",
-      "NeoAIInject",
-      "NeoAIInjectCode",
-      "NeoAIInjectContext",
-      "NeoAIInjectContextCode",
-      "NeoAIShortcut",
-    },
-    keys = {
-      { "<leader>aI", "<cmd>NeoAI<cr>", desc = "AI toggle" },
-      { "<leader>aS", desc = "summarize text" },
-    },
-    opts = {},
-    config = function()
-      -- highlight AI output as markdown code block
-      vim.treesitter.language.register('markdown', 'neoai-output')
-      require("neoai").setup {}
-    end,
-  },
+  -- {
+  --   "jackMort/ChatGPT.nvim",
+  --   cmd = {
+  --     "ChatGPT",
+  --     "ChatGPTRun",
+  --     "ChatGPTActAs",
+  --     "ChatGPTCompleteCode",
+  --     "ChatGPTEditWithInstructions"
+  --   },
+  --   keys = {
+  --     { "<leader>ai", "<cmd>ChatGPT<cr>", desc = "ChatGPT" },
+  --     { "<leader>ac", "<cmd>ChatGPTCompleteCode<cr>", mode = { "n", "v" }, desc = "ChatGPT Complete Code" },
+  --     { "<leader>ae", "<cmd>ChatGPTEditWithInstructions<cr>", mode = { "n", "v" }, desc = "ChatGPT Edit with Instructions" },
+  --   },
+  --   opts = {
+  --     -- popup_input = {
+  --     --   submit = "<CR>"
+  --     -- }
+  --   },
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  -- },
+  -- {
+  --   "Bryley/neoai.nvim",
+  --   enabled = false,
+  --   dependencies = { "MunifTanjim/nui.nvim" },
+  --   cmd = {
+  --     "NeoAI",
+  --     "NeoAIContext",
+  --     "NeoAIInject",
+  --     "NeoAIInjectCode",
+  --     "NeoAIInjectContext",
+  --     "NeoAIInjectContextCode",
+  --     "NeoAIShortcut",
+  --   },
+  --   keys = {
+  --     { "<leader>aI", "<cmd>NeoAI<cr>", desc = "AI toggle" },
+  --     { "<leader>aS", desc = "summarize text" },
+  --   },
+  --   opts = {},
+  --   config = function()
+  --     -- highlight AI output as markdown code block
+  --     vim.treesitter.language.register('markdown', 'neoai-output')
+  --     require("neoai").setup {}
+  --   end,
+  -- },
 }
