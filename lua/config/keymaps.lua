@@ -42,7 +42,9 @@ keymap("n", "<leader><tab>", "<cmd>tabnext<cr>")
 keymap("n", "_", [[<Cmd>sp<CR>]])
 keymap("n", "<bar>", [[<Cmd>vsp<CR>]])
 -- Vertical split and resize window to be golden radio!!
-keymap("n", "<leader>ws", "<cmd>vsp<CR><cmd>vertical resize +25<CR>")
+-- keymap("n", "<leader>ws", "<cmd>vsp<CR><cmd>vertical resize +25<CR>")
+-- keymap("n", "<leader>we", "<c-w>=")
+-- keymap("n", "<leader>wf", "<cmd>vertical resize +25<CR>")
 
 -- Resize window using <shift> arrow keys
 keymap("n", "<A-Up>", "<cmd>resize +5<CR>")
