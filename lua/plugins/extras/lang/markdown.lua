@@ -4,15 +4,13 @@ _G.whichkey_markdown = function()
   local Util = require("util")
   local wk = require("which-key")
   local buf = vim.api.nvim_get_current_buf()
-  wk.register({
-    ["<tab>"] = {function() Util.markdown_next_link() end, "Next heading or link", buffer = buf },
-    ["<leader>m"] = {
-      name = "Markdown",
-      j = { function() Util.markdown_next_link() end, "Next heading or link", buffer = buf },
-      k = { function() Util.markdown_prev_link() end, "Prev heading or link", buffer = buf },
-      c = { function() Util.markdown_insert_codeblock() end, "Insert code block", buffer = buf },
-      t = { function() Util.markdown_todo_toggle() end, "Toggle todo", },
-    },
+  wk.add({
+    { "<tab>", function() Util.markdown_next_link() end, buffer = 1, desc = "Next heading or link" },
+    { "<leader>m", group = "Markdown" },
+    { "<leader>mh", "<cmd>Telescope heading<cr>", desc = "Jump markdown heading" },
+    { "<leader>mc", function() Util.markdown_insert_codeblock() end, buffer = 1, desc = "Insert code block" },
+    { "<leader>mj", function() Util.markdown_next_link() end, buffer = 1, desc = "Next heading or link" },
+    { "<leader>mk", function() Util.markdown_prev_link() end, buffer = 1, desc = "Prev heading or link" },
   })
 end
 
@@ -35,7 +33,7 @@ return {
     ft = "markdown",
     name = 'render-markdown',
     keys = {
-      { "<leader>um", "<cmd>RenderMarkdownToggle<cr>", desc = "Toggle markdown render preview", ft = "markdown" },
+      { "<leader>um", "<cmd>RenderMarkdown toggle<cr>", desc = "Toggle markdown render preview", ft = "markdown" },
     },
     config = function()
       require('render-markdown').setup({})
