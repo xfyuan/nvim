@@ -322,18 +322,9 @@ return {
       })
     end,
   },
-  -- LSP renaming with immediate visual feedback
-  {
-    "smjonas/inc-rename.nvim",
-    cmd = "IncRename",
-    config = true,
-    keys = function ()
-      vim.keymap.set("n", "<leader>rn", function()
-        return ":IncRename " .. vim.fn.expand("<cword>")
-      end, { expr = true })
-    end
-  },
   -- Treesitter based structural search and replace
+  -- Press <leader><cr> to replace all matches in current buffer,
+  -- or <cr> to choose which match to replace.
   {
     "cshuaimin/ssr.nvim",
     keys = {
