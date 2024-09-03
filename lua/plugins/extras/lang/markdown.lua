@@ -3,14 +3,13 @@ vim.cmd(([[autocmd FileType markdown lua whichkey_markdown()]]))
 _G.whichkey_markdown = function()
   local Util = require("util")
   local wk = require("which-key")
-  local buf = vim.api.nvim_get_current_buf()
   wk.add({
-    { "<tab>", function() Util.markdown_next_link() end, buffer = 1, desc = "Next heading or link" },
+    { "<tab>", function() Util.markdown_next_link() end, desc = "Next heading or link" },
     { "<leader>m", group = "Markdown" },
     { "<leader>mh", "<cmd>Telescope heading<cr>", desc = "Jump markdown heading" },
-    { "<leader>mc", function() Util.markdown_insert_codeblock() end, buffer = 1, desc = "Insert code block" },
-    { "<leader>mj", function() Util.markdown_next_link() end, buffer = 1, desc = "Next heading or link" },
-    { "<leader>mk", function() Util.markdown_prev_link() end, buffer = 1, desc = "Prev heading or link" },
+    { "<leader>mc", function() Util.markdown_insert_codeblock() end, desc = "Insert code block" },
+    { "<leader>mj", function() Util.markdown_next_link() end, desc = "Next heading or link" },
+    { "<leader>mk", function() Util.markdown_prev_link() end, desc = "Prev heading or link" },
   })
 end
 
@@ -24,7 +23,7 @@ return {
     build = "cd app && yarn install",
     ft = "markdown",
     keys = {
-      { "<leader>wm", "<cmd>MarkdownPreview<cr>", desc = "Open markdown preview window", ft = "markdown" },
+      { "<leader>mp", "<cmd>MarkdownPreview<cr>", desc = "Open markdown preview window", ft = "markdown" },
     },
   },
   -- improve viewing Markdown files
