@@ -42,28 +42,41 @@ return {
       {  'kkharji/sqlite.lua'  },
     },
     keys = {
+      --  +-----------------------------------------------------------------------------+
+      --  |                               Top daily used                                |
+      --  +-----------------------------------------------------------------------------+
+      { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+      { "<leader>,", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Switch Buffer" },
+      { "<leader>'", "<cmd>Telescope registers<cr>", desc = "Find Registers" },
+      { "<leader>/", "<cmd>lua require'telescope'.extensions.live_grep_args.live_grep_args()<cr>", desc = "Live grep text with args" },
+      { "<leader>.", "<cmd>lua require('telescope').extensions.ctags_plus.jump_to_tag({fname_width = 55})<CR>", desc = "Ctag jumping" },
       { "<C-p>", Util.telescope("files"), desc = "Find Files" },
-      { "<leader>gl", "<cmd>Telescope git_status<cr>", desc = "Git changed files" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Switch buffers" },
-      { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Find Diagnostics" },
+      -- { "<leader>fH", Util.telescope("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent Files" },
+      -- { "g]", "<cmd>lua require('telescope').extensions.ctags_plus.jump_to_tag({fname_width = 55})<CR>", desc = "Ctag jumping" },
+      { "<leader>gg", "<cmd>Telescope git_status<cr>", desc = "Git changed files" },
+      { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Switch buffers" },
+      { "<leader>fh", "<cmd>Telescope frecency<cr>", desc = "Most (f)recently used files" },
+      { "<leader>ff", "<cmd>lua require'telescope'.extensions.live_grep_args.live_grep_args()<cr>", desc = "Live grep text with args" },
+      { "<leader>fg", "<cmd>lua require'telescope'.extensions.live_grep_args.live_grep_args({default_text=vim.fn.expand('<cword>')})<cr>", desc = "Grep cursor word with args" },
+      { "<leader>gl", "<cmd>Telescope advanced_git_search search_log_content_file<cr>", desc = "Search in file git log content" },
+      { "<leader>gL", "<cmd>Telescope advanced_git_search search_log_content<cr>", desc = "Search in repo git log content" },
+
+      -- Nornmal used
+      -- { "<leader>fr", "<cmd>Telescope registers<cr>", desc = "Find Registers" },
       { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find Keymaps" },
-      { "<leader>fr", "<cmd>Telescope registers<cr>", desc = "Find Registers" },
-      { "<leader>fc", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>fC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Find Diagnostics" },
+
       -- extensions
       { "<leader>fp", "<cmd>Telescope lazy<cr>", desc = "List lazy plugins info" },
-      { "<leader>fh", "<cmd>Telescope frecency<cr>", desc = "Most (f)recently used files" },
       { "<leader>fa", "<cmd>Telescope telescope-alternate alternate_file<cr>", desc = "Find Alternate file" },
       { "<leader>fo", "<cmd>Telescope aerial<cr>", desc = "Find aerial symbol" },
-      { "<leader>fj", "<cmd>Telescope heading<cr>", desc = "Jump markdown heading" },
+      { "<leader>fc", "<cmd>Telescope ctags_outline outline<cr>", desc = "Find ctag outline" },
       { "<leader>fs", "<cmd>Telescope luasnip<cr>", desc = "Search snippet" },
       { "<leader>fm", "<cmd>Telescope symbols<cr>", desc = "Search emoji symbols" },
-      { "<leader>fl", "<cmd>lua require'telescope'.extensions.live_grep_args.live_grep_args()<cr>", desc = "Live grep text with args" },
-      { "<leader>fg", "<cmd>lua require'telescope'.extensions.live_grep_args.live_grep_args({default_text=vim.fn.expand('<cword>')})<cr>", desc = "Grep cursor word with args" },
       { "<leader>fP", "<cmd>lua require'telescope'.extensions.project.project{}<cr>", desc = "Find project" },
       { "<leader>ds", "<cmd>lua require'telescope'.extensions.diff.diff_current({ hidden = true })<cr>", desc = "Telescope compare file with current" },
       { "<leader>dS", "<cmd>lua require'telescope'.extensions.diff.diff_files({ hidden = true })<cr>", desc = "Telescope compare 2 files" },
-      { "<leader>gel", "<cmd>Telescope advanced_git_search search_log_content_file<cr>", desc = "Search in file log content" },
-      { "<leader>geL", "<cmd>Telescope advanced_git_search search_log_content<cr>", desc = "Search in repo log content" },
       {
         "<leader>cs",
         Util.telescope("lsp_document_symbols", {
@@ -202,9 +215,6 @@ return {
         { range = true }
       )
       vim.api.nvim_set_keymap( "v", "<leader>gl", ":DiffCommitLine<CR>", { noremap = true })
-
-      vim.api.nvim_set_keymap( "n", "g]", ":lua require('telescope').extensions.ctags_plus.jump_to_tag({fname_width = 55})<CR>", { noremap = true })
-      vim.api.nvim_set_keymap( "n", "<leader>o", ":Telescope ctags_outline outline<CR>", { noremap = true })
     end,
   },
 }
