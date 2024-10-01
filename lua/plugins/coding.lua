@@ -135,6 +135,11 @@ return {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = "BufReadPost",
+    opts = {
+      keywords = {
+        XY = { icon = " ", color = "warning" },
+      },
+    },
     config = true,
     keys = {
       { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment", },
