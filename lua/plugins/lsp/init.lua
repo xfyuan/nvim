@@ -150,6 +150,22 @@ return {
         html = {},
         marksman = {},
         svelte = {},
+        solargraph = {
+          -- root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
+          -- commandPath = '/Users/xfyuan/.asdf/shims/solargraph',
+          settings = {
+            solargraph = {
+              completion = true,
+              symbols = true,
+              diagnostics = true,
+              definitions = true,
+              hover = true,
+              references = true,
+              rename = true,
+              useBundler = true,
+            },
+          },
+        },
         vimls = {},
       },
       setup = {
