@@ -99,6 +99,50 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
+-- Keep your cursor not at the bottom of the screen
+vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufEnter" }, {
+  group = grp,
+  callback = function()
+    local win_h = vim.api.nvim_win_get_height(0)
+    local off = math.min(vim.o.scrolloff, math.floor(win_h / 2))
+    local dist = vim.fn.line "$" - vim.fn.line "."
+    local rem = vim.fn.line "w$" - vim.fn.line "w0" + 1
+    if dist < off and win_h - rem + dist < off then
+      local view = vim.fn.winsaveview()
+      view.topline = view.topline + off - (win_h - rem + dist)
+      vim.fn.winrestview(view)
+    end
+  end,
+})
+
+local ignore_filetypes = { 'neo-tree' }
+local ignore_buftypes = { 'nofile', 'prompt', 'popup' }
+
+vim.api.nvim_create_autocmd('WinEnter', {
+  group = augroup("focus_disable"),
+  callback = function(_)
+    if vim.tbl_contains(ignore_buftypes, vim.bo.buftype)
+    then
+      vim.w.focus_disable = true
+    else
+      vim.w.focus_disable = false
+    end
+  end,
+  desc = 'Disable focus autoresize for BufType',
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup("focus_disable"),
+  callback = function(_)
+    if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
+      vim.b.focus_disable = true
+    else
+      vim.b.focus_disable = false
+    end
+  end,
+  desc = 'Disable focus autoresize for FileType',
+})
+
 -- auto close neovim when nvim-tree is the last window
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   group = vim.api.nvim_create_augroup("NvimTreeClose", { clear = true }),
