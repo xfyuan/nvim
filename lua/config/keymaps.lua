@@ -79,12 +79,12 @@ keymap("i", "jk", "=>")
 keymap("i", "vv", ":=")
 
 -- Move Lines
-keymap("n", "<A-j>", ":m .+1<CR>==")
-keymap("v", "<A-j>", ":m '>+1<CR>gv=gv")
-keymap("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
-keymap("n", "<A-k>", ":m .-2<CR>==")
-keymap("v", "<A-k>", ":m '<-2<CR>gv=gv")
-keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
+-- keymap("n", "<A-j>", ":m .+1<CR>==")
+-- keymap("v", "<A-j>", ":m '>+1<CR>gv=gv")
+-- keymap("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
+-- keymap("n", "<A-k>", ":m .-2<CR>==")
+-- keymap("v", "<A-k>", ":m '<-2<CR>gv=gv")
+-- keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
 
 -- Toggle diff two buffers
 keymap("n", "<leader>dF", "&diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'", { expr = true })
@@ -94,7 +94,7 @@ keymap("n", "<leader>dF", "&diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'"
 --          +-----------------------------------------------------------------------------+
 
 -- go back the original place from jumping to definitions like ctags
-keymap("n", "<BS>", "<C-o>")
+-- keymap("n", "<BS>", "<C-o>")
 
 -- repeat or execute macro on all visually selected lines
 -- (eg. press A"<esc> on line one, select all others, press . and they all end in "
