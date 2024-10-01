@@ -162,6 +162,7 @@ return {
                 ["<C-e>"] = lga_actions.quote_prompt(),
                 -- ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
                 ["<C-t>"] = lga_actions.quote_prompt({ postfix = " -t" }),
+                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --hidden" }),
                 ["<C-h>"] = lga_actions.quote_prompt({ postfix = " -truby app lib ee jh -g '!spec/'" }),
               },
             },
