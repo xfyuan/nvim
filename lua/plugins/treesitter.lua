@@ -56,6 +56,7 @@ return {
         "regex",
         "scss",
         "sql",
+        "svelte",
         "yaml",
         "toml",
         "vim",

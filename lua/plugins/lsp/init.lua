@@ -139,12 +139,19 @@ return {
           },
         },
         bashls = {},
-        cssls = {},
+        cssls = {
+          settings = {
+            css = {
+              lint = {
+                unknownAtRules = 'ignore',
+              },
+            },
+          },
+        },
         html = {},
         marksman = {},
-        -- ruby_ls = {},
+        svelte = {},
         vimls = {},
-        vuels = {},
       },
       setup = {
         -- example to setup with typescript.nvim
@@ -319,6 +326,7 @@ return {
         javascriptreact = { "prettierd" },
         typescriptreact = { "prettierd" },
         vue = { "prettierd" },
+        svelte = { "prettierd" },
         css = { "prettierd" },
         scss = { "prettierd" },
         html = { "prettierd" },
