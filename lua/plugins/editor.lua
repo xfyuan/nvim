@@ -149,10 +149,16 @@ return {
   {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
-    opts = {},
+    opts = {
+      hooks = {
+        view_opened = function()
+          require("diffview.actions").toggle_files()
+        end,
+      },
+    },
     keys = {
-      { "<leader>df", "<cmd>DiffviewOpen<cr>", desc = "Open DiffView" },
-      { "<leader>dc", "<cmd>DiffviewClose<cr>", desc = "Close DiffView" },
+      { "<leader>df", "<cmd>DiffviewOpen -uno<cr>", desc = "Open DiffView" },
+      { "<leader>dq", "<cmd>DiffviewClose<cr>", desc = "Quit DiffView" },
       { "<leader>dp", "<cmd>DiffviewToggleFiles<cr>", desc = "Toggle DiffView file panel" },
     },
   },
