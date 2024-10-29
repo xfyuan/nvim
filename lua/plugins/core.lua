@@ -18,23 +18,16 @@ return {
   -- terminal toggle
   {
     "akinsho/toggleterm.nvim",
-    keys = { [[<C-\>]] },
+    lazy = false,
     cmd = { "ToggleTerm", "TermExec" },
     opts = {
-      hide_numbers = true,
       open_mapping = [[<C-\>]],
-      shade_filetypes = {},
-      shade_terminals = false,
-      shading_factor = 0.3,
-      start_in_insert = true,
-      persist_size = true,
       direction = "horizontal",
-      winbar = {
-        enabled = false,
-        name_formatter = function(term)
-          return term.name
-        end,
-      },
+      size = 16,
+    },
+    keys = {
+      { "<leader>tms", "<cmd>ToggleTermSendVisualSelection<cr>", mode = { 'v' }, desc = "Send selection to terminal" },
+      { "<leader>tml", "<cmd>ToggleTermSendCurrentLine<cr>", desc = "Send line to terminal" },
     },
   },
 
