@@ -7,6 +7,9 @@ return {
         themes = {
           markdown = { colorscheme = "catppuccin-mocha" },
           help = { colorscheme = "gruvbox" },
+          oil = { colorscheme = "kanagawa" },
+          ["neo-tree"] = { colorscheme = "nightfox" },
+          aerial = { colorscheme = "nightfox" },
         },
       })
     end,
@@ -29,6 +32,8 @@ return {
       vim.cmd([[colorscheme tokyonight-storm]])
     end,
   },
-  { "ellisonleao/gruvbox.nvim", lazy = false, config = true },
   { "catppuccin/nvim", lazy = false, name = "catppuccin" },
+  { "ellisonleao/gruvbox.nvim", lazy = false },
+  { "EdenEast/nightfox.nvim", lazy = false },
+  { "rebelot/kanagawa.nvim", lazy = false },
 }
