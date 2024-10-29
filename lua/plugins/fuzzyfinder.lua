@@ -4,6 +4,7 @@ return {
   -- Simple session management
   {
     "olimorris/persisted.nvim",
+    lazy = false,
     keys = {
       { "<leader>ss", "<cmd>SessionSave<cr>", desc = "persisted Save session" },
       { "<leader>sl", "<cmd>SessionLoad<cr>", desc = "persisted Load session" },
@@ -64,16 +65,17 @@ return {
       -- Nornmal used
       -- { "<leader>fr", "<cmd>Telescope registers<cr>", desc = "Find Registers" },
       { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find Keymaps" },
-      { "<leader>fC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>fc", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
       { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Find Diagnostics" },
+      { "<leader>fm", "<cmd>Telescope marks mark_type=local<cr>", desc = "Buffer Marks" },
 
       -- extensions
       { "<leader>fp", "<cmd>Telescope lazy<cr>", desc = "List lazy plugins info" },
       { "<leader>fa", "<cmd>Telescope telescope-alternate alternate_file<cr>", desc = "Find Alternate file" },
       { "<leader>fo", "<cmd>Telescope aerial<cr>", desc = "Find aerial symbol" },
-      { "<leader>fc", "<cmd>Telescope ctags_outline outline<cr>", desc = "Find ctag outline" },
+      { "<leader>ft", "<cmd>Telescope ctags_outline outline<cr>", desc = "Find ctag outline" },
       { "<leader>fs", "<cmd>Telescope luasnip<cr>", desc = "Search snippet" },
-      { "<leader>fm", "<cmd>Telescope symbols<cr>", desc = "Search emoji symbols" },
+      { "<leader>fM", "<cmd>Telescope symbols<cr>", desc = "Search emoji symbols" },
       { "<leader>fP", "<cmd>lua require'telescope'.extensions.project.project{}<cr>", desc = "Find project" },
       { "<leader>ds", "<cmd>lua require'telescope'.extensions.diff.diff_current({ hidden = true })<cr>", desc = "Telescope compare file with current" },
       { "<leader>dS", "<cmd>lua require'telescope'.extensions.diff.diff_files({ hidden = true })<cr>", desc = "Telescope compare 2 files" },
