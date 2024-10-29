@@ -4,7 +4,6 @@ _G.whichkey_markdown = function()
   local Util = require("util")
   local wk = require("which-key")
   wk.add({
-    { "<tab>", function() Util.markdown_next_link() end, desc = "Next heading or link" },
     { "<leader>m", group = "Markdown" },
     { "<leader>mh", "<cmd>Telescope heading<cr>", desc = "Jump markdown heading" },
     { "<leader>mc", function() Util.markdown_insert_codeblock() end, desc = "Insert code block" },
@@ -28,15 +27,16 @@ return {
   },
   -- improve viewing Markdown files
   {
-    'MeanderingProgrammer/markdown.nvim',
+    "OXY2DEV/markview.nvim",
+    lazy = false,      -- Recommended
     ft = "markdown",
-    name = 'render-markdown',
-    keys = {
-      { "<leader>um", "<cmd>RenderMarkdown toggle<cr>", desc = "Toggle markdown render preview", ft = "markdown" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
     },
-    config = function()
-      require('render-markdown').setup({})
-    end,
+    keys = {
+      { "<leader>um", "<cmd>Markview<cr>", desc = "Toggle markdown render preview", ft = "markdown" },
+    },
   },
   -- keymaps for toggling text formatting
   --<C-k>: Adds a link to visually selected text.
