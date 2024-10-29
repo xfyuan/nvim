@@ -149,7 +149,6 @@ return {
       link_folds_to_tree = true,
       link_tree_to_folds = true,
       show_guides = true,
-      filter_kind = false,
       autojump = true,
       guides = {
         mid_item = "├ ",
