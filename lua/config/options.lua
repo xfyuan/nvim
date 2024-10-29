@@ -71,12 +71,6 @@ local cmd = vim.cmd
 cmd("nnoremap ; :")
 cmd("nnoremap : ;")
 
--- text object for the current line
-cmd("xnoremap il g_o^")
-cmd("onoremap il :normal vil<CR>")
-cmd("xnoremap al $o^")
-cmd("onoremap al :normal val<CR>")
-
 -- remove trailing whitespaces
 cmd([[autocmd BufWritePre * %s/\s\+$//e]])
 cmd([[autocmd BufWritePre * %s/\n\+\%$//e]])

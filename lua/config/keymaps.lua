@@ -11,6 +11,7 @@ keymap("n", "L", "len(getline('.')) == 0 || len(getline('.')) == getpos('.')[2] 
 -- core useful
 keymap("n", "<leader><leader>", "<c-^>") -- Switch between 2 buffers
 keymap("n", "<TAB>", "%")
+keymap("n", "<leader><enter>", "^vg_", { desc = "Entire line select" })
 vim.cmd('nnoremap <leader>p "*p') -- Paste content from OS's clipboard
 vim.cmd('vnoremap <leader>y "*y') -- Yank content in OS's clipboard
 vim.cmd("nnoremap <Enter> o<ESC>") -- Insert New Line quickly
