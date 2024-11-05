@@ -69,7 +69,7 @@ return {
       symbol = "│",
       options = { try_as_border = true },
     },
-    config = function(_, opts)
+    init = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason", "notify", "toggleterm" },
         callback = function()
@@ -77,6 +77,11 @@ return {
         end,
       })
     end,
+    config = function(_, opts)
+      require("mini.indentscope").setup(opts)
+      -- set highlight color to grey, default is too bright
+      vim.cmd [[highlight MiniIndentscopeSymbol cterm=nocombine gui=nocombine guifg=grey]]
+    end
   },
   --  +------------------------------------------------------------------------------+
   --  |                                  Statusline                                  |
