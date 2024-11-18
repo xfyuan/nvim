@@ -83,6 +83,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.wrap = true
+    vim.diagnostic.enable(false)
     -- vim.opt_local.spell = true
   end,
 })
