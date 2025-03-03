@@ -37,10 +37,6 @@ return {
         { "<leader>w", group = "Window / Word" },
         { "<leader>x", group = "Trouble" },
         { "<leader>u", group = "Toggle option" },
-        { "<leader>ud", function() Util.toggle_diagnostics() end, desc = "Toggle Diagnostics" },
-        { "<leader>un", function() Util.toggle("relativenumber") end, desc = "Toggle Line Numbers" },
-        { "<leader>us", function() Util.toggle("spell") end, desc = "Toggle Spelling" },
-        { "<leader>uw", function() Util.toggle("wrap") end, desc = "Toggle Word Wrap" },
       }
 
       local global_keymap = {
