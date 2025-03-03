@@ -326,6 +326,20 @@ return {
       },
     },
   },
+  {
+    'EvWilson/spelunk.nvim',
+    event = "BufReadPost",
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    config = function()
+      require('spelunk').setup({
+        enable_persist = true,
+        statusline_prefix = '',
+      })
+    end
+  },
   --  +------------------------------------------------------------------------------+
   --  |                                   Testing                                    |
   --  +------------------------------------------------------------------------------+

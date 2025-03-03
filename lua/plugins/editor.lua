@@ -6,6 +6,12 @@ return {
   "xtal8/traces.vim",
   -- Better quickfix window in Neovim
   { "kevinhwang91/nvim-bqf", ft = "qf" },
+  -- Improved UI and workflow for the quickfix
+  {
+    'stevearc/quicker.nvim',
+    event = "FileType qf",
+    opts = {},
+  },
   -- Search and Replace using the full power of rg
   {
     "MagicDuck/grug-far.nvim",
@@ -278,5 +284,22 @@ return {
     config = function(_, opts)
       require("mini.align").setup(opts)
     end,
+  },
+  -- displays the keys you are typing
+  {
+    "NStefan002/screenkey.nvim",
+    lazy = false,
+    keys = {
+      { "<leader>K", "<cmd>Screenkey<cr>", desc = "Screenkey Toggle" },
+    },
+    opts = {
+      win_opts = {
+        -- row = 3,
+        col = vim.o.columns * 0.5 + 20,
+        height = 1,
+        border = 'rounded',
+      },
+      group_mappings = true,
+    },
   },
 }
