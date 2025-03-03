@@ -61,28 +61,28 @@ return {
     },
   },
   -- active indent guide and indent text objects
-  {
-    "echasnovski/mini.indentscope",
-    version = false, -- wait till new 0.7.0 release to put it back on semver
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      symbol = "│",
-      options = { try_as_border = true },
-    },
-    init = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason", "notify", "toggleterm" },
-        callback = function()
-          vim.b.miniindentscope_disable = true
-        end,
-      })
-    end,
-    config = function(_, opts)
-      require("mini.indentscope").setup(opts)
-      -- set highlight color to grey, default is too bright
-      vim.cmd [[highlight MiniIndentscopeSymbol cterm=nocombine gui=nocombine guifg=grey]]
-    end
-  },
+  -- {
+  --   "echasnovski/mini.indentscope",
+  --   version = false, -- wait till new 0.7.0 release to put it back on semver
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   opts = {
+  --     symbol = "│",
+  --     options = { try_as_border = true },
+  --   },
+  --   init = function()
+  --     vim.api.nvim_create_autocmd("FileType", {
+  --       pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason", "notify", "toggleterm" },
+  --       callback = function()
+  --         vim.b.miniindentscope_disable = true
+  --       end,
+  --     })
+  --   end,
+  --   config = function(_, opts)
+  --     require("mini.indentscope").setup(opts)
+  --     -- set highlight color to grey, default is too bright
+  --     vim.cmd [[highlight MiniIndentscopeSymbol cterm=nocombine gui=nocombine guifg=grey]]
+  --   end
+  -- },
   --  +------------------------------------------------------------------------------+
   --  |                                  Statusline                                  |
   --  +------------------------------------------------------------------------------+
@@ -147,6 +147,7 @@ return {
                 removed = icons.git.removed,
               },
             },
+            { 'spelunk' },
           },
           lualine_y = {
             { "encoding", padding = 0, separator = "" },
@@ -196,22 +197,22 @@ return {
   --  |                           Beautifull notification                            |
   --  +------------------------------------------------------------------------------+
   -- Better `vim.notify()`
-  {
-    "rcarriga/nvim-notify",
-    keys = {
-      { "<leader>nD", function() require("notify").dismiss({ silent = true, pending = true }) end, desc = "Delete all Notifications", },
-    },
-    opts = {
-      timeout = 1000,
-      top_down = false,
-      max_height = function()
-        return math.floor(vim.o.lines * 0.75)
-      end,
-      max_width = function()
-        return math.floor(vim.o.columns * 0.75)
-      end,
-    },
-  },
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   keys = {
+  --     { "<leader>nD", function() require("notify").dismiss({ silent = true, pending = true }) end, desc = "Delete all Notifications", },
+  --   },
+  --   opts = {
+  --     timeout = 1000,
+  --     top_down = false,
+  --     max_height = function()
+  --       return math.floor(vim.o.lines * 0.75)
+  --     end,
+  --     max_width = function()
+  --       return math.floor(vim.o.columns * 0.75)
+  --     end,
+  --   },
+  -- },
   -- noicer ui
   {
     "folke/noice.nvim",
@@ -285,13 +286,9 @@ return {
   --  |                                  Animation                                  |
   --  +-----------------------------------------------------------------------------+
   {
-    "rainbowhxch/beacon.nvim",
+    'danilamihailov/beacon.nvim',
     event = "VeryLazy",
-    config = function()
-      require('beacon').setup({
-        focus_gained = true,
-      })
-    end,
+    config = true,
   },
   --  +------------------------------------------------------------------------------+
   --  |                                 Programming                                  |
@@ -317,11 +314,11 @@ return {
       dashboard.section.header.val = vim.split(logo, "\n")
       dashboard.section.buttons.val = {
         dashboard.button("n", " " .. " New file", "<cmd>ene <BAR> startinsert <CR>"),
-        dashboard.button("r", " " .. " Recent files", "<cmd>Telescope frecency <CR>"),
+        dashboard.button("r", " " .. " Recent files", "<cmd>Telescope frecency <CR>"),
         dashboard.button("g", " " .. " Git changed files", "<cmd>Telescope git_status <CR>"),
         dashboard.button("s", " " .. " Restore Session", "<cmd>SessionLoad<cr>"),
         dashboard.button("p", " " .. " Projects", "<cmd>lua require'telescope'.extensions.project.project{}<CR>"),
-        dashboard.button("u", "鈴" .. " Update plugins", "<cmd>Lazy update<CR>"),
+        dashboard.button("u", " " .. " Update plugins", "<cmd>Lazy update<CR>"),
         dashboard.button("q", " " .. " Quit", "<cmd>qa<CR>"),
         -- dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
         -- dashboard.button("g", " " .. " Grep text", ":Telescope live_grep <CR>"),
