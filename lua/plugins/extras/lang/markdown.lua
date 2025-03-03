@@ -28,7 +28,7 @@ return {
   -- improve viewing Markdown files
   {
     "OXY2DEV/markview.nvim",
-    lazy = false,      -- Recommended
+    -- lazy = false,      -- Recommended
     ft = "markdown",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -47,6 +47,13 @@ return {
     'antonk52/markdowny.nvim',
     ft = "markdown",
     config = true,
+  },
+  -- markdown table editor for Neovim that formats the table as you type.
+  -- <A-t> to insert a new table
+  {
+    'SCJangra/table-nvim',
+    ft = 'markdown',
+    opts = {},
   },
   -- {
   --   "Zeioth/markmap.nvim",
