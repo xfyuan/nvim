@@ -1,4 +1,18 @@
 return {
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = function()
+      return {
+        library = {
+          uv = "luvit-meta/library",
+          lazyvim = "LazyVim",
+        },
+      }
+    end,
+  },
+  -- Manage libuv types with lazy. Plugin will never be loaded
+  { "Bilal2453/luvit-meta", lazy = true },
   -- snippets
   {
     "L3MON4D3/LuaSnip",
@@ -20,31 +34,6 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
     end,
-    keys = {
-      {
-        "<tab>",
-        function()
-          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-        end,
-        expr = true,
-        silent = true,
-        mode = "i",
-      },
-      {
-        "<tab>",
-        function()
-          require("luasnip").jump(1)
-        end,
-        mode = "s",
-      },
-      {
-        "<s-tab>",
-        function()
-          require("luasnip").jump(-1)
-        end,
-        mode = { "i", "s" },
-      },
-    },
   },
   -- auto completion
   {
@@ -56,6 +45,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "dmitmel/cmp-cmdline-history",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "saadparwaiz1/cmp_luasnip",
@@ -63,6 +53,7 @@ return {
     opts = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
+      local types = require "cmp.types"
 
       local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -79,28 +70,24 @@ return {
       -- `:` cmdline setup.
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = "path" },
-        }, {
-            {
-              name = "cmdline",
-              option = {
-                ignore_cmds = { 'Man', 'Git', '!' }
-              }
-            },
-          }),
+        sources = cmp.config.sources(
+          { { name = "path", max_item_count = 20 } },
+          { { name = "cmdline", max_item_count = 30 } },
+          { { name = "cmdline_history", max_item_count = 10 } }
+        ),
       })
 
       return {
         view = {
-          entries = { name = "custom", selection_order = "near_cursor" },
+          entries = { name = "custom", selection_order = "top_down" },
         },
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
         },
-        completion = {
-          completeopt = "menu,menuone,noinsert",
+        confirm_opts = {
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = false,
         },
         snippet = {
           expand = function(args)
@@ -108,21 +95,39 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          -- ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<C-l>"] = cmp.mapping {
-            i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
-            c = function(fallback)
-              if cmp.visible() then
-                cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true }
-              else
-                fallback()
-              end
-            end,
+          -- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-p>"] = cmp.mapping(
+            cmp.mapping.select_prev_item { behavior = types.cmp.SelectBehavior.Select },
+            { "i", "c" }
+          ),
+          ["<C-n>"] = cmp.mapping(
+            cmp.mapping.select_next_item { behavior = types.cmp.SelectBehavior.Select },
+            { "i", "c" }
+          ),
+          ["<C-h>"] = function()
+            if cmp.visible_docs() then
+              cmp.close_docs()
+            else
+              cmp.open_docs()
+            end
+          end,
+          ["<C-l>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+          ["<C-e>"] = cmp.mapping {
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close(),
           },
-          -- ["<C-j>"] = cmp.mapping(function(fallback)
+          ["<CR>"] = cmp.mapping.confirm { select = true },
+          -- ["<C-y>"] = cmp.mapping {
+          --   i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
+          --   c = function(fallback)
+          --     if cmp.visible() then
+          --       cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true }
+          --     else
+          --       fallback()
+          --     end
+          --   end,
+          -- },
           ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               if #cmp.get_entries() == 1 then
@@ -149,11 +154,10 @@ return {
           end, { "i", "s", "c" }),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "nvim_lua" },
+          { name = "path", priority_weight = 100, max_item_count = 40 },
+          { name = "nvim_lsp", priority_weight = 85, max_item_count = 50 },
           { name = "buffer", keyword_length = 5 },
-          { name = "calc" },
-          { name = "path" },
+          { name = "lazydev", group_index = 0 },
           { name = "luasnip" },
           { name = "nvim_lsp_signature_help" },
         }),
@@ -167,7 +171,7 @@ return {
               buffer = "[Buf]",
               path = "[Path]",
               luasnip = "[Snip]",
-              nvim_lua = "[Lua]",
+              lazydev = "[Lua]",
               nvim_lsp = "[Lsp]",
               nvim_lsp_signature_help = "[Lsp]",
             })[entry.source.name]
@@ -175,9 +179,7 @@ return {
           end,
         },
         experimental = {
-          ghost_text = {
-            hl_group = "LspCodeLens",
-          },
+          ghost_text = false,
         },
       }
     end,
