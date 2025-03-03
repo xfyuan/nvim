@@ -220,7 +220,6 @@ return {
     keys = {
       { "<leader>wf", "<cmd>FocusToggle<cr>", desc = "Toggle window focus" },
       { "<leader>wl", "<cmd>FocusToggleBuffer<cr>", desc = "Toggle lock window size on buffer" },
-      { "<leader>ww", "<cmd>FocusMaxOrEqual<cr>", desc = "Toggle window zoom" },
       { "<leader>ws", "<cmd>FocusSplitNicely<cr>", desc = "Split a window on golden ratio" },
     },
     config = function()
