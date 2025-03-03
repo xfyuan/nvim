@@ -35,7 +35,7 @@ return {
     },
     keys = {
       { "<leader>gs", "<cmd>Git<cr>", desc = "Git Status" },
-      { "<leader>gb", "<cmd>Git blame<cr>", desc = "Git Blame" },
+      -- { "<leader>gb", "<cmd>Git blame<cr>", desc = "Git Blame" },
       { "<leader>gr", "<cmd>Gread<cr>", desc = "Git Read" },
       { "<leader>gp", "<cmd>Git push<cr>", desc = "Git Push" },
       { "<leader>gc", "<cmd>Git commit --verify<cr>", desc = "Git Commit" },

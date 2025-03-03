@@ -16,29 +16,29 @@ return {
     end,
   },
   -- terminal toggle
-  {
-    "akinsho/toggleterm.nvim",
-    lazy = false,
-    cmd = { "ToggleTerm", "TermExec" },
-    opts = {
-      open_mapping = [[<C-\>]],
-      direction = "horizontal",
-      size = 16,
-    },
-    keys = {
-      { "<leader>tms", "<cmd>ToggleTermSendVisualSelection<cr>", mode = { 'v' }, desc = "Send selection to terminal" },
-      { "<leader>tml", "<cmd>ToggleTermSendCurrentLine<cr>", desc = "Send line to terminal" },
-    },
-  },
+  -- {
+  --   "akinsho/toggleterm.nvim",
+  --   lazy = false,
+  --   cmd = { "ToggleTerm", "TermExec" },
+  --   opts = {
+  --     open_mapping = [[<C-\>]],
+  --     direction = "horizontal",
+  --     size = 16,
+  --   },
+  --   keys = {
+  --     { "<leader>tms", "<cmd>ToggleTermSendVisualSelection<cr>", mode = { 'v' }, desc = "Send selection to terminal" },
+  --     { "<leader>tml", "<cmd>ToggleTermSendCurrentLine<cr>", desc = "Send line to terminal" },
+  --   },
+  -- },
 
   -- buffer remove
-  {
-    "echasnovski/mini.bufremove",
-    keys = {
-      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer", },
-      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)", },
-    },
-  },
+  -- {
+  --   "echasnovski/mini.bufremove",
+  --   keys = {
+  --     { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer", },
+  --     { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)", },
+  --   },
+  -- },
 
   -- beautiful buffer line bar
   -- {
