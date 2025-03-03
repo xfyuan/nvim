@@ -39,12 +39,8 @@ return {
   -- A better user experience for viewing and interacting with Vim marks
   {
     "chentoast/marks.nvim",
-    event = "BufReadPre",
-    config = true,
-    keys = {
-      { "<leader>mb", "<cmd>MarksListBuf<cr>", desc = "Find Mark in buffer" },
-      { "<leader>ma", "<cmd>MarksListAll<cr>", desc = "Find Mark in all buffers" },
-    },
+    event = "VeryLazy",
+    opts = {},
   },
   -- new generation multiple cursors plugin,
   -- select words with Ctrl-N (like Ctrl-d in Sublime Text/VS Code)
@@ -144,8 +140,8 @@ return {
       signs = {
         add = { text = "▎" },
         change = { text = "▎" },
-        delete = { text = "契" },
-        topdelete = { text = "契" },
+        delete = { text = "" },
+        topdelete = { text = "" },
         changedelete = { text = "▎" },
         untracked = { text = "▎" },
       },
