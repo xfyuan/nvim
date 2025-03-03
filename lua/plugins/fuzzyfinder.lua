@@ -6,10 +6,10 @@ return {
     "olimorris/persisted.nvim",
     lazy = false,
     keys = {
-      { "<leader>ss", "<cmd>SessionSave<cr>", desc = "persisted Save session" },
+      -- { "<leader>ss", "<cmd>SessionSave<cr>", desc = "persisted Save session" },
       { "<leader>sl", "<cmd>SessionLoad<cr>", desc = "persisted Load session" },
-      { "<leader>sd", "<cmd>SessionDelete<cr>", desc = "persisted Delete session" },
-      { "<leader>sf", "<cmd>Telescope persisted<cr>", desc = "persisted Find session" },
+      -- { "<leader>sd", "<cmd>SessionDelete<cr>", desc = "persisted Delete session" },
+      -- { "<leader>sf", "<cmd>Telescope persisted<cr>", desc = "persisted Find session" },
     },
     opts = {
         save_dir = vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/"),
@@ -126,6 +126,8 @@ return {
           layout_strategy = "dynamic",
           layout_config = {
             prompt_position = "top",
+            width = 0.9,
+            height = 0.9,
           },
           dynamic_preview_title = true,
           prompt_prefix = " ",
