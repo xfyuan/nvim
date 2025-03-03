@@ -6,16 +6,36 @@ return {
   "xtal8/traces.vim",
   -- Better quickfix window in Neovim
   { "kevinhwang91/nvim-bqf", ft = "qf" },
-  -- search/replace in multiple files
+  -- Search and Replace using the full power of rg
   {
-    "nvim-pack/nvim-spectre",
+    "MagicDuck/grug-far.nvim",
+    cmd = "GrugFar",
+    opts = {
+      keymaps = {
+        close = { n = 'q' },
+      },
+    },
     keys = {
-      { "<leader>rw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", desc = "Replace cursor word" },
-      { "<leader>rf", "viw:lua require('spectre').open_file_search()<cr>", desc = "Replace in current file" },
-      { "<leader>ro", "<cmd>lua require('spectre').open()<CR>", desc = "Replace in files" },
+      { "<leader>rr", "<cmd>lua require('grug-far').open({ prefills = { search = vim.fn.expand('<cword>'), paths = vim.fn.expand('%') } })<cr>", desc = "Replace cursor word in current file" },
+      { "<leader>rg", "<cmd>lua require('grug-far').open({ prefills = { search = vim.fn.expand('<cword>') } })<cr>", desc = "Replace cursor word" },
+      { "<leader>rf", "<cmd>lua require('grug-far').open({ prefills = { paths = vim.fn.expand('%') } })<cr>", desc = "Replace in current file" },
+      {
+        "<leader>R",
+        function()
+          local grug = require("grug-far")
+          local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+          grug.open({
+            transient = true,
+            prefills = {
+              filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+            },
+          })
+        end,
+        mode = { "n", "v" },
+        desc = "Search and Replace",
+      },
     },
   },
-
   -- A better user experience for viewing and interacting with Vim marks
   {
     "chentoast/marks.nvim",
