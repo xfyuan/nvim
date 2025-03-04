@@ -158,13 +158,6 @@ return {
       },
     },
   },
-  -- A small Neovim plugin for previewing definitions using floating windows. default key mapping is `gp*`
-  -- { "rmagatti/goto-preview",
-  --   event = { "BufReadPost", "BufNewFile" },
-  --   opts = {
-  --     default_mappings = true,
-  --   },
-  -- },
   -- Better diagnostics list and others
   {
     "folke/trouble.nvim",

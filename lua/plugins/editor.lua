@@ -65,36 +65,6 @@ return {
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end,
   },
-  -- automatically disables certain features if the opened file is big
-  -- {
-  --   "LunarVim/bigfile.nvim",
-  --   event = "BufReadPre",
-  --   config = function()
-  --     local cmp = {
-  --       name = "nvim-cmp",
-  --       opts = { defer = true },
-  --       disable = function()
-  --         require("cmp").setup.buffer({ enabled = false })
-  --       end,
-  --     }
-
-  --     require("bigfile").setup {
-  --       filesize = 4, -- size of the file in MiB
-  --       pattern = { "*" },
-  --       features = { -- features to disable
-  --         "indent_blankline",
-  --         "illuminate",
-  --         "treesitter",
-  --         "matchparen",
-  --         "vimopts",
-  --         -- "lsp",
-  --         "syntax",
-  --         "filetype",
-  --         cmp,
-  --       },
-  --     }
-  --   end,
-  -- },
   --  +------------------------------------------------------------------------------+
   --  |                                Motion moving                                 |
   --  +------------------------------------------------------------------------------+
@@ -184,12 +154,6 @@ return {
       { "<leader>dp", "<cmd>DiffviewToggleFiles<cr>", desc = "Toggle DiffView file panel" },
     },
   },
-  -- visualise and resolve merge conflicts in neovim
-  -- {
-  --   "akinsho/git-conflict.nvim",
-  --   version = "*",
-  --   config = true,
-  -- },
   -- generate shareable file permalinks (with line ranges) for several git web frontend hosts
   {
     "ruifm/gitlinker.nvim",
@@ -198,11 +162,6 @@ return {
       { "<leader>gY", "<cmd>lua require'gitlinker'.get_buf_range_url('v', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>", desc = "Flash", mode = { "v" }, },
     },
   },
-  -- A range and area selectable :Diffthis to compare partially
-  -- {
-  --   "rickhowe/spotdiff.vim",
-  --   event = { "BufReadPost", "BufNewFile" },
-  -- },
   --  +------------------------------------------------------------------------------+
   --  |                                   Windows                                    |
   --  +------------------------------------------------------------------------------+
@@ -236,30 +195,6 @@ return {
       })
     end,
   },
-  -- {
-  --   "folke/zen-mode.nvim",
-  --   dependencies = {
-  --     "folke/twilight.nvim",
-  --   },
-  --   keys = {
-  --     { "<leader>wz", "<cmd>ZenMode<cr>", desc = "Toggle zen mode" },
-  --     { '<leader>wd', "<cmd>Twilight<cr>", desc = "Toggle dim state" }
-  --   },
-  --   opts = {
-  --     window = {
-  --       backdrop = 1,
-  --       width = 0.70,
-  --     },
-  --     on_open = function(win)
-  --       vim.opt["conceallevel"] = 3
-  --       vim.opt["concealcursor"] = "nc"
-  --     end,
-  --     on_close = function()
-  --       vim.opt["conceallevel"] = 0
-  --       vim.opt["concealcursor"] = ""
-  --     end,
-  --   },
-  -- },
   --  +------------------------------------------------------------------------------+
   --  |                                    Extras                                    |
   --  +------------------------------------------------------------------------------+
