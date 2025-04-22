@@ -4,7 +4,7 @@ if vim.g.neovide then
   vim.opt.mouse = "a"
   vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h20"
 
-  vim.g.neovide_transparency = 0.95
+  vim.g.neovide_opacity = 0.95
   vim.g.transparency = 0.8
 
   vim.cmd('vnoremap <D-c> "*y')
