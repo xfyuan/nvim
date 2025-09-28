@@ -52,6 +52,7 @@ return {
         "lua",
         "luadoc",
         "query",
+        "python",
         "ruby",
         "regex",
         "scss",
